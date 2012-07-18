@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" 
+             xmlns="http://java.sun.com/xml/ns/persistence" 
+             xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+
+  <persistence-unit name="org.jbpm.task">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+      <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="hibernate.connection.url" value="jdbc:oracle:thin:@//10.66.129.154:1521/JBOSS" />
+      <property name="hibernate.connection.username" value="GSSTEST"/>
+      <property name="hibernate.connection.password" value="redhat"/>
+
+      <property name="hibernate.connection.autocommit" value="false" />
+      <property name="hibernate.max_fetch_depth" value="3"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+      <property name="hibernate.show_sql" value="true" />
+    </properties>
+  </persistence-unit>
+  
+</persistence>

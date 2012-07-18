@@ -1,0 +1,141 @@
+2012-07-18 15:55:40,106 INFO  [org.hibernate.cfg.annotations.Version] (main) Hibernate Annotations 3.4.0.GA
+2012-07-18 15:55:40,119 INFO  [org.hibernate.cfg.Environment] (main) Hibernate 3.3.2.GA
+2012-07-18 15:55:40,120 INFO  [org.hibernate.cfg.Environment] (main) hibernate.properties not found
+2012-07-18 15:55:40,169 INFO  [org.hibernate.cfg.Environment] (main) Bytecode provider name : javassist
+2012-07-18 15:55:40,172 INFO  [org.hibernate.cfg.Environment] (main) using JDK 1.4 java.sql.Timestamp handling
+2012-07-18 15:55:40,254 INFO  [org.hibernate.annotations.common.Version] (main) Hibernate Commons Annotations 3.1.0.GA
+2012-07-18 15:55:40,256 INFO  [org.hibernate.ejb.Version] (main) Hibernate EntityManager 3.4.0.GA
+2012-07-18 15:55:40,269 DEBUG [org.hibernate.ejb.Ejb3Configuration] (main) Look up for persistence unit: org.jbpm.task
+2012-07-18 15:55:40,287 DEBUG [org.hibernate.util.DTDEntityResolver] (main) trying to resolve system-id [http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd]
+2012-07-18 15:55:40,287 DEBUG [org.hibernate.cfg.EJB3DTDEntityResolver] (main) recognized EJB3 ORM namespace; attempting to resolve on classpath under org/hibernate/ejb
+2012-07-18 15:55:40,288 DEBUG [org.hibernate.cfg.EJB3DTDEntityResolver] (main) located [http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd] in classpath
+2012-07-18 15:55:40,307 DEBUG [org.hibernate.ejb.Ejb3Configuration] (main) Detect class: true; detect hbm: true
+2012-07-18 15:55:40,313 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Searching mapped entities in jar/par: file:/home/kylin/work/project/jBPM-Drools-Example/sandbox/brms/target/classes/
+2012-07-18 15:55:40,313 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.App
+2012-07-18 15:55:40,341 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.api.KnowledgeSessionTest
+2012-07-18 15:55:40,342 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.api.KnowledgeTest
+2012-07-18 15:55:40,342 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.humantask.jpa.BRMSjBPMHumanTaskDBTableTest
+2012-07-18 15:55:40,344 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.humantask.jpa.JPAUtil
+2012-07-18 15:55:40,344 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.humantask.HumanTaskExecutor
+2012-07-18 15:55:40,345 DEBUG [org.hibernate.ejb.packaging.AbstractJarVisitor] (main) Filtering: com.kylin.brms.jbpm.humantask.StartHumanTaskServiceTest
+2012-07-18 15:55:40,346 DEBUG [org.hibernate.ejb.Ejb3Configuration] (main) Detect class: true; detect hbm: true
+2012-07-18 15:55:40,346 DEBUG [org.hibernate.ejb.Ejb3Configuration] (main) Creating Factory: org.jbpm.task
+2012-07-18 15:55:40,347 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,369 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,373 INFO  [org.hibernate.cfg.AnnotationConfiguration] (main) Hibernate Validator not found: ignoring
+2012-07-18 15:55:40,377 WARN  [org.hibernate.ejb.Ejb3Configuration] (main) hibernate.connection.autocommit = false break the EJB3 specification
+2012-07-18 15:55:40,378 DEBUG [org.hibernate.ejb.util.NamingHelper] (main) No JNDI name configured for binding Ejb3Configuration
+2012-07-18 15:55:40,380 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Validator not present in classpath, ignoring event listener registration
+2012-07-18 15:55:40,381 DEBUG [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Search not present in classpath, ignoring event listener registration.
+2012-07-18 15:55:40,381 INFO  [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2012-07-18 15:55:40,381 DEBUG [org.hibernate.cfg.Configuration] (main) Preparing to build session factory with filters : {}
+2012-07-18 15:55:40,381 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,381 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,381 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,382 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,385 INFO  [org.hibernate.connection.DriverManagerConnectionProvider] (main) Using Hibernate built-in connection pool (not for production use!)
+2012-07-18 15:55:40,385 INFO  [org.hibernate.connection.DriverManagerConnectionProvider] (main) Hibernate connection pool size: 20
+2012-07-18 15:55:40,385 INFO  [org.hibernate.connection.DriverManagerConnectionProvider] (main) autocommit mode: false
+2012-07-18 15:55:40,464 INFO  [org.hibernate.connection.DriverManagerConnectionProvider] (main) using driver: oracle.jdbc.driver.OracleDriver at URL: jdbc:oracle:thin:@//10.66.129.154:1521/JBOSS
+2012-07-18 15:55:40,464 INFO  [org.hibernate.connection.DriverManagerConnectionProvider] (main) connection properties: {user=GSSTEST, password=redhat, autocommit=false, release_mode=auto}
+2012-07-18 15:55:40,464 DEBUG [org.hibernate.connection.DriverManagerConnectionProvider] (main) opening new JDBC connection
+2012-07-18 15:55:40,717 DEBUG [org.hibernate.connection.DriverManagerConnectionProvider] (main) created connection to: jdbc:oracle:thin:@//10.66.129.154:1521/JBOSS, Isolation Level: 2
+2012-07-18 15:55:40,718 INFO  [org.hibernate.cfg.SettingsFactory] (main) RDBMS: Oracle, version: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+2012-07-18 15:55:40,718 INFO  [org.hibernate.cfg.SettingsFactory] (main) JDBC driver: Oracle JDBC driver, version: 11.2.0.1.0
+2012-07-18 15:55:40,738 INFO  [org.hibernate.dialect.Dialect] (main) Using dialect: org.hibernate.dialect.Oracle10gDialect
+2012-07-18 15:55:40,765 INFO  [org.hibernate.transaction.TransactionFactoryFactory] (main) Transaction strategy: org.hibernate.transaction.JDBCTransactionFactory
+2012-07-18 15:55:40,766 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+2012-07-18 15:55:40,766 INFO  [org.hibernate.cfg.SettingsFactory] (main) Automatic flush during beforeCompletion(): disabled
+2012-07-18 15:55:40,766 INFO  [org.hibernate.cfg.SettingsFactory] (main) Automatic session close at end of transaction: disabled
+2012-07-18 15:55:40,766 INFO  [org.hibernate.cfg.SettingsFactory] (main) JDBC batch size: 15
+2012-07-18 15:55:40,767 INFO  [org.hibernate.cfg.SettingsFactory] (main) JDBC batch updates for versioned data: disabled
+2012-07-18 15:55:40,767 INFO  [org.hibernate.cfg.SettingsFactory] (main) Scrollable result sets: enabled
+2012-07-18 15:55:40,767 DEBUG [org.hibernate.cfg.SettingsFactory] (main) Wrap result sets: disabled
+2012-07-18 15:55:40,767 INFO  [org.hibernate.cfg.SettingsFactory] (main) JDBC3 getGeneratedKeys(): disabled
+2012-07-18 15:55:40,767 INFO  [org.hibernate.cfg.SettingsFactory] (main) Connection release mode: auto
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Maximum outer join fetch depth: 3
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Default batch fetch size: 1
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Generate SQL with comments: disabled
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Order SQL updates by primary key: disabled
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Order SQL inserts for batching: disabled
+2012-07-18 15:55:40,768 INFO  [org.hibernate.cfg.SettingsFactory] (main) Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+2012-07-18 15:55:40,769 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] (main) Using ASTQueryTranslatorFactory
+2012-07-18 15:55:40,769 INFO  [org.hibernate.cfg.SettingsFactory] (main) Query language substitutions: {}
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) JPA-QL strict compliance: enabled
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) Second-level cache: enabled
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) Query cache: disabled
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) Optimize cache for minimal puts: disabled
+2012-07-18 15:55:40,770 INFO  [org.hibernate.cfg.SettingsFactory] (main) Structured second-level cache entries: disabled
+2012-07-18 15:55:40,773 INFO  [org.hibernate.cfg.SettingsFactory] (main) Echoing all SQL to stdout
+2012-07-18 15:55:40,773 INFO  [org.hibernate.cfg.SettingsFactory] (main) Statistics: disabled
+2012-07-18 15:55:40,774 INFO  [org.hibernate.cfg.SettingsFactory] (main) Deleted entity synthetic identifier rollback: disabled
+2012-07-18 15:55:40,774 INFO  [org.hibernate.cfg.SettingsFactory] (main) Default entity-mode: pojo
+2012-07-18 15:55:40,774 INFO  [org.hibernate.cfg.SettingsFactory] (main) Named query checking : enabled
+2012-07-18 15:55:40,808 INFO  [org.hibernate.impl.SessionFactoryImpl] (main) building session factory
+2012-07-18 15:55:40,809 DEBUG [org.hibernate.impl.SessionFactoryImpl] (main) Session factory constructed with filter configurations : {}
+2012-07-18 15:55:40,809 DEBUG [org.hibernate.impl.SessionFactoryImpl] (main) instantiating session factory with properties: {java.runtime.name=OpenJDK Runtime Environment, hibernate.connection.password=redhat, sun.boot.library.path=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386, java.vm.version=20.0-b11, hibernate.connection.username=GSSTEST, java.vm.vendor=Sun Microsystems Inc., java.vendor.url=http://java.sun.com/, path.separator=:, java.vm.name=OpenJDK Server VM, file.encoding.pkg=sun.io, user.country=US, sun.java.launcher=SUN_STANDARD, sun.os.patch.level=unknown, java.vm.specification.name=Java Virtual Machine Specification, user.dir=/home/kylin/work/project/jBPM-Drools-Example/sandbox/brms, java.runtime.version=1.6.0_22-b22, hibernate.ejb.discard_pc_on_close=false, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.endorsed.dirs=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/endorsed, os.arch=i386, hibernate.connection.autocommit=false, java.io.tmpdir=/tmp, line.separator=
+, java.vm.specification.vendor=Sun Microsystems Inc., os.name=Linux, sun.jnu.encoding=UTF-8, java.library.path=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386/server:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/../lib/i386:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386/client:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/i386::/usr/java/packages/lib/i386:/lib:/usr/lib, java.specification.name=Java Platform API Specification, java.class.version=50.0, sun.management.compiler=HotSpot Tiered Compilers, hibernate.transaction.factory_class=org.hibernate.transaction.JDBCTransactionFactory, os.version=2.6.43.8-1.fc15.i686.PAE, user.home=/home/kylin, user.timezone=PRC, java.awt.printerjob=sun.print.PSPrinterJob, hibernate.connection.release_mode=auto, java.specification.version=1.6, file.encoding=UTF-8, hibernate.connection.driver_class=oracle.jdbc.driver.OracleDriver, java.class.path=/home/kylin/work/project/jBPM-Drools-Example/sandbox/brms/target/classes:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hibernate-jpa-2.0-api-1.0.1.Final.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/slf4j-api-1.6.0.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/antlr-runtime-3.3.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hibernate-annotations-3.4.0.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jdom-1.0.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hornetq-core-2.2.10.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/xmlpull-1.1.3.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/knowledge-api-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/antlr-3.3.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-bam-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/ejb3-persistence-1.0.2.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/stringtemplate-3.2.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/xstream-1.4.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-flow-builder-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/h2-1.3.161.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/btm-2.1.2.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/activation-1.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-human-task-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/antlr-2.7.7.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/smack-3.0.4.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/slf4j-log4j12-1.6.0.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/javassist-3.14.0-GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hibernate-entitymanager-3.4.0.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/commons-io-1.4.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-workitems-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-bpmn2-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/drools-compiler-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/ecj-3.5.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jta-1.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/rome-0.9.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-flow-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/commons-net-2.0.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/commons-exec-1.0.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/mina-core-2.0.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/drools-persistence-jpa-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/commons-collections-3.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/protobuf-java-2.4.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hibernate-core-3.3.2.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/xpp3_min-1.1.4c.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/mvel2-2.1.0.drools16.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/dom4j-1.6.1.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/log4j-1.2.14.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/hibernate-commons-annotations-3.1.0.GA.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/commons-compress-1.0.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-persistence-jpa-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/jbpm-test-5.3.0.BRMS.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/trove4j-3.0.2.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/xml-apis-1.3.04.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/mail-1.4.jar:/home/kylin/work/brms/brms-standalone-5.3.0/jboss-as/client/jbpm/drools-core-5.3.0.BRMS.jar:/home/kylin/work/brms/eclipse-drools-5.4.0/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar:/home/kylin/work/brms/eclipse-drools-5.4.0/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar:/home/kylin/work/tools/jars/ojdbc6.jar, user.name=kylin, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.use_identifier_rollback=false, java.vm.specification.version=1.0, sun.arch.data.model=32, java.home=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre, sun.java.command=com.kylin.brms.jbpm.humantask.jpa.BRMSjBPMHumanTaskDBTableTest, hibernate.connection.url=jdbc:oracle:thin:@//10.66.129.154:1521/JBOSS, hibernate.dialect=org.hibernate.dialect.Oracle10gDialect, java.specification.vendor=Sun Microsystems Inc., user.language=en, java.vm.info=mixed mode, java.version=1.6.0_22, hibernate.transaction.flush_before_completion=false, java.ext.dirs=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/ext:/usr/java/packages/lib/ext, sun.boot.class.path=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/resources.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/rt.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/jsse.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/jce.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/charsets.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/netx.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/plugin.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/rhino.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/jre/classes, java.vendor=Sun Microsystems Inc., file.separator=/, java.vendor.url.bug=http://java.sun.com/cgi-bin/bugreport.cgi, hibernate.hbm2ddl.auto=create-drop, sun.cpu.endian=little, sun.io.unicode.encoding=UnicodeLittle, hibernate.query.jpaql_strict_compliance=true, sun.desktop=gnome, hibernate.max_fetch_depth=3, sun.cpu.isalist=}
+2012-07-18 15:55:40,810 DEBUG [org.hibernate.impl.SessionFactoryObjectFactory] (main) initializing class SessionFactoryObjectFactory
+2012-07-18 15:55:40,811 DEBUG [org.hibernate.impl.SessionFactoryObjectFactory] (main) registered: ff808081389915d301389915d3890000 (unnamed)
+2012-07-18 15:55:40,811 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Not binding factory to JNDI, no JNDI name configured
+2012-07-18 15:55:40,811 DEBUG [org.hibernate.impl.SessionFactoryImpl] (main) instantiated session factory
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,814 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,815 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,815 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,815 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,815 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,815 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,816 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,816 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,816 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,816 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,818 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (main) Running hbm2ddl schema export
+2012-07-18 15:55:40,819 DEBUG [org.hibernate.tool.hbm2ddl.SchemaExport] (main) import file not found: /import.sql
+2012-07-18 15:55:40,819 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (main) exporting generated schema to database
+2012-07-18 15:55:40,852 INFO  [org.hibernate.tool.hbm2ddl.SchemaExport] (main) schema export complete
+2012-07-18 15:55:40,853 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,853 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,853 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Execute first pass mapping processing
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process hbm files
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) Process annotated classes
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.AnnotationConfiguration] (main) processing fk mappings (*ToOne and JoinedSubclass)
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing extends queue
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing collection mappings
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing native query and ResultSetMapping mappings
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing association property references
+2012-07-18 15:55:40,854 DEBUG [org.hibernate.cfg.Configuration] (main) processing foreign key constraints
+2012-07-18 15:55:40,855 DEBUG [org.hibernate.impl.SessionFactoryImpl] (main) Checking 0 named HQL queries
+2012-07-18 15:55:40,855 DEBUG [org.hibernate.impl.SessionFactoryImpl] (main) Checking 0 named SQL queries
+2012-07-18 15:55:40,889 DEBUG [org.hibernate.impl.SessionImpl] (main) opened session at timestamp: 13425981408
+2012-07-18 15:55:40,890 DEBUG [org.hibernate.transaction.JDBCTransaction] (main) begin
+2012-07-18 15:55:40,890 DEBUG [org.hibernate.jdbc.ConnectionManager] (main) opening JDBC connection
+2012-07-18 15:55:40,890 DEBUG [org.hibernate.transaction.JDBCTransaction] (main) current autocommit status: false
