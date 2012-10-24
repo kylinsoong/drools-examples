@@ -1,0 +1,11 @@
+package org.drools.expert.stu06
+
+import org.drools.expert.stu06.Foo;
+import org.drools.expert.stu06.Bar;
+
+rule one
+	when
+		exists Foo()
+		exits Bar()
+	then
+end

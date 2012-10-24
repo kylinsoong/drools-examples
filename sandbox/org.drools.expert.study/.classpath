@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/knowledge-api-5.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/drools-compiler-5.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/drools-core-5.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/mvel2-2.1.0.drools14.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-runtime-3.3.jar"/>
+	<classpathentry kind="lib" path="lib/ecj-3.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/knowledge-internal-api-5.5.0-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
