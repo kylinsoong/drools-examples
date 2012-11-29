@@ -23,3 +23,55 @@ jBPM 5.4 installation
 . plugins/org.jbpm.eclipse.task_5.5.0.Final.jar
 . plugins/org.drools.eclipse_5.5.0.Final.jar
 
+
+Configuring jBPM 5.4 to use Oracle Database 11g 
+-----------------------------------------------
+
+Introduction
+^^^^^^^^^^^^
+
+* jBPM 5.4 have three types of persistent entities 
+. entities used for saving the the actual session, process and work item information.
+. entities used for logging and generating Business Activity Monitoring (BAM) information.
+. entities used by the task service.
+
+* jBPM 5.4 have two different persistent units
+. persistent units for jBPM and the logging/BAM information
+. persistent units for the task service
+
+Database setup
+^^^^^^^^^^^^^^
+
+Create 2 uses:
+
+----
+create tablespace JBPM5SPACE datafile '/oracle/oradata/JBPM5SPACE.DBF' size 100M;
+create user jbpm54 identified by redhat default tablespace JBPM5SPACE;
+create user jbpm54_task identified by redhat default tablespace JBPM5SPACE;
+grant connect,resource,dba to jbpm54;
+grant connect,resource,dba to jbpm54_task;
+----
+
+Modify default `h2` parameter to `oracle` 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Change hibernate dialect
+
+change defalt
+
+----
+<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+----
+
+to 
+
+----
+<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>
+----
+
+NOTE: both jbpm-gwt-console-server/WEB-INF/classes/META-INF/persistence.xml and jbpm-human-task-war/WEB-INF/classes/META-INF/persistence.xml has  dialect configration
+
+* create datasource
+Step 6 and Step 7 in https://github.com/kylinsoong/EJB/blob/master/docs/README.asciidoc
+
+link:datasource-subsystem[Sample standalone-full.xml datasource subsystem]
