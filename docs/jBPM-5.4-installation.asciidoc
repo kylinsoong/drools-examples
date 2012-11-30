@@ -47,9 +47,7 @@ Create 2 uses:
 ----
 create tablespace JBPM5SPACE datafile '/oracle/oradata/JBPM5SPACE.DBF' size 100M;
 create user jbpm54 identified by redhat default tablespace JBPM5SPACE;
-create user jbpm54_task identified by redhat default tablespace JBPM5SPACE;
 grant connect,resource,dba to jbpm54;
-grant connect,resource,dba to jbpm54_task;
 ----
 
 Modify default `h2` parameter to `oracle` 
