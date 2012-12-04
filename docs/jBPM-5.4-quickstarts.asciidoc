@@ -1,0 +1,17 @@
+HelloWorld
+----------
+
+image::img/com.kylin.jbpm.quickstart.helloworld.png[Script HelloWorld BPMN2 Process]
+
+For above BPMN2 process we should:
+
+. set a unique id `com.kylin.jbpm.quickstart.helloworld`, which we use this id to start process
+. set a Object variable, which process will use.
+
+* Run & Test
+
+Run java class `com.kylin.jbpm.quickstarts.helloworld.HelloWorldServiceStart` will execute `helloworld` process, HelloWorld prompts will printed.
+
+
+
+

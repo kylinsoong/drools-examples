@@ -12,32 +12,84 @@
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <drools.version>5.5.0.Final</drools.version>	
+      <drools.version>6.0.0-SNAPSHOT</drools.version>
+      <jbpm.version>6.0.0-SNAPSHOT</jbpm.version>	
    </properties>
 
-   <dependencies>
-<!--
-     <dependency>
-        <groupId>org.drools</groupId>
-        <artifactId>drools-core</artifactId>
-        <version>${drools.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.drools</groupId>
-        <artifactId>drools-compiler</artifactId>
-        <version>${drools.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.drools</groupId>
-        <artifactId>drools-spring</artifactId>
-        <version>${drools.version}</version>
-    </dependency>
-    <dependency>
-	<groupId>org.drools</groupId>
-	<artifactId>guvnor-webapp-core</artifactId>
-	<version>${drools.version}</version>
-     </dependency> -->
-   </dependencies>
+	<dependencies>
+	 	
+	 	<!-- Drools dependency -->
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-core</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-compiler</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>kie-ci</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-persistence-jpa</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		
+		<!-- Guvnor dependency -->
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>guvnor-api</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>guvnor-webapp-core</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
+		
+     
+        <!-- jBPM dependency -->
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-flow</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-flow-builder</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-persistence-jpa</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bam</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bpmn2</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bpmn2-emfextmodel</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-workitems</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+	</dependencies>
 
    <build>
       <plugins>
