@@ -1,0 +1,58 @@
+Source Code Location
+--------------------
+
+* https://github.com/droolsjbpm/jbpm/tree/master/jbpm-gwt/jbpm-gwt-console-server/pom.xml
+
+This is root entry, execute `mvn` build in this folder will generate `jbpm-gwt-console-server.war`
+
+*jbpm-gwt-console-server dependencies:*
+
+----
+<dependency>
+      <groupId>org.jboss.bpm</groupId>
+      <artifactId>gwt-console-server-jbpm</artifactId>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.bpm</groupId>
+      <artifactId>activity-monitor-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.bpm</groupId>
+      <artifactId>gwt-console-server-integration</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-gwt-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-gwt-graph</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-gwt-form</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-gwt-shared</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-persistence-jpa</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-entitymanager</artifactId>
+    </dependency>
+----
+
+The first 3 dependency code reference:
+
+. `gwt-console-server-jbpm` -> https://github.com/bpmc/bpm-console/blob/master/server/wars/jbpm/pom.xml
+. `activity-monitor-model` -> 
+. `gwt-console-server-integration` -> https://github.com/bpmc/bpm-console/blob/master/server/integration/pom.xml
