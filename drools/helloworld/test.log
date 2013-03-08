@@ -1,0 +1,65 @@
+<object-stream>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>HelloWorld_11 [1]</activationId>
+  <rule>HelloWorld_11</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>1</type>
+  <factId>1</factId>
+  <objectToString>com.sample.DecisionTableTest$Message@121fd61</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
+  <activationId>HelloWorld_11 [1]</activationId>
+  <rule>HelloWorld_11</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>HelloWorld_11 [1]</activationId>
+  <rule>HelloWorld_11</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>2</type>
+  <factId>1</factId>
+  <objectToString>com.sample.DecisionTableTest$Message@121fd61</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>4</type>
+  <activationId>HelloWorld_12 [1]</activationId>
+  <rule>HelloWorld_12</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>5</type>
+  <activationId>HelloWorld_11 [1]</activationId>
+  <rule>HelloWorld_11</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ObjectLogEvent>
+  <type>2</type>
+  <factId>1</factId>
+  <objectToString>com.sample.DecisionTableTest$Message@121fd61</objectToString>
+</org.drools.audit.event.ObjectLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>7</type>
+  <activationId>HelloWorld_11 [1]</activationId>
+  <rule>HelloWorld_11</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>6</type>
+  <activationId>HelloWorld_12 [1]</activationId>
+  <rule>HelloWorld_12</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+<org.drools.audit.event.ActivationLogEvent>
+  <type>7</type>
+  <activationId>HelloWorld_12 [1]</activationId>
+  <rule>HelloWorld_12</rule>
+  <declarations>m=com.sample.DecisionTableTest$Message@121fd61(1)</declarations>
+</org.drools.audit.event.ActivationLogEvent>
+</object-stream>
