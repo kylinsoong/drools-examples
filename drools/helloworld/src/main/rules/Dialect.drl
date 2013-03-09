@@ -1,0 +1,28 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+
+/**
+* Using "dialect", you can write a rule with java style or mvel style. 
+* for more information about mvel, please visit following site.
+* Language Guide for 2.0
+* http://mvel.codehaus.org/Language+Guide+for+2.0
+**/
+
+rule "Hello World"
+	dialect "mvel"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        modify ( m ) { message = "Goodbye cruel world",
+                       status = Message.GOODBYE };
+end
+
+rule "GoodBye"
+	dialect "java"
+    when
+        m : Message( status == Message.GOODBYE)
+    then
+        System.out.println(m.getMessage());
+end

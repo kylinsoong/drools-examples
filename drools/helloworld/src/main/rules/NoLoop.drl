@@ -1,0 +1,28 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+
+/**
+* no-loop will block loop when update() is invoked within the same rule.
+* Please comment out "no-loop" and see what's happen.
+**/
+
+rule "Hello World"
+
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMessage( "Goodbye cruel world" );
+        m.setStatus( Message.GOODBYE );
+        update( m );
+end
+
+rule "GoodBye"
+    no-loop
+    when
+       m : Message( status == Message.GOODBYE, myMessage : message )
+    then
+    	System.out.println( myMessage );
+    	update(m);
+end

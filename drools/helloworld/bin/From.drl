@@ -1,0 +1,18 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+import java.util.List;
+
+/**
+* for more information, please read following document.
+* JBoss Rules 5 Reference Guide  16.24. The Conditional Element From
+* https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/JBoss_Rules_5_Reference_Guide/index.html#The_Conditional_Element_from
+**/
+
+rule "Hello World"
+    when
+        list : List()
+        m : Message( status == Message.HELLO) from list
+    then
+        System.out.println( m.getMessage() );
+end

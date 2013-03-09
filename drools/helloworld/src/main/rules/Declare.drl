@@ -1,0 +1,45 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+import java.util.Date
+
+/**
+* for more information, please read following document.
+* JBoss Rules 5 Reference Guide  13.5. Type Declarations
+* https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/JBoss_Rules_5_Reference_Guide/index.html#Type_Declarations
+**/
+
+declare Log
+    timestamp : Date
+    message : String
+    type : String
+end
+ 
+rule "Hello World"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        Log log = new Log();
+        log.setTimestamp(new Date());
+        log.setMessage(myMessage);
+        log.setType("console");
+        insert(log);
+        m.setMessage( "Goodbye cruel world" );
+        m.setStatus( Message.GOODBYE );
+        update( m );
+end
+
+rule "GoodBye"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+rule "Logging"
+	when
+		log : Log( type == "console")
+	then
+		System.out.println(log.getTimestamp()+"::"+log.getMessage());
+end
