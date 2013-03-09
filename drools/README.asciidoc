@@ -94,5 +94,12 @@ Test Rule Attribute Entries
 
 `com.sample.attributes.AttributesTest` is the entry of all above test.
 
- 
+twitterCBR demo 
++++++++++++++++
+
+* git clone git://github.com/droolsjbpm/droolsjbpm-contributed-experiments.git
+* cd droolsjbpm-contributed-experiments/twittercbr
+* Read README.txt to start
+* Try to understand what rules are doing
+* https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/BRMS_Complex_Event_Processing_Guide/index.html
 
