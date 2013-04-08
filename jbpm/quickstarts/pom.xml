@@ -12,8 +12,8 @@
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <drools.version>6.0.0-SNAPSHOT</drools.version>
-      <jbpm.version>6.0.0-SNAPSHOT</jbpm.version>	
+      <drools.version>5.3.0.Final</drools.version>
+      <jbpm.version>5.2.0.Final</jbpm.version>	
    </properties>
 
 	<dependencies>
@@ -31,26 +31,11 @@
 		</dependency>
 		<dependency>
 	        <groupId>org.drools</groupId>
-	        <artifactId>kie-ci</artifactId>
-	        <version>${drools.version}</version>
-		</dependency>
-		<dependency>
-	        <groupId>org.drools</groupId>
 	        <artifactId>drools-persistence-jpa</artifactId>
 	        <version>${drools.version}</version>
 		</dependency>
 		
 		<!-- Guvnor dependency -->
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>guvnor-api</artifactId>
-			<version>${drools.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>guvnor-webapp-core</artifactId>
-			<version>${drools.version}</version>
-		</dependency>
 		
      
         <!-- jBPM dependency -->

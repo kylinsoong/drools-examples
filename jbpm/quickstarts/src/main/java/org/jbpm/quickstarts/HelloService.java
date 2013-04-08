@@ -1,4 +1,4 @@
-package com.kylin.jbpm.quickstarts.helloworld;
+package org.jbpm.quickstarts;
 
 public class HelloService {
 	
@@ -9,6 +9,6 @@ public class HelloService {
 	}
 	
 	public void sayHello(String name) {
-		System.out.println("Hello " + name);
+		System.out.println("Hello '" + name + "'");
 	}
 }

@@ -1,0 +1,31 @@
+HelloWorld Script Task Process
+------------------------------
+
+Process Diagram Overview
+++++++++++++++++++++++++
+
+image::img/org.jbpm.quickstarts.helloworldScript.png[Script Task HelloWorld BPMN2 Process]
+
+This is very simple Process, only have one Script Task which intialize a `Person` Object then print Person's name
+
+Run in J2SE Environment
++++++++++++++++++++++++
+
+* Import quickstarts to either Ecplise with JBoss Tools, or JBDS
+* Run `org.jbpm.quickstarts.helloworld.HelloWorldScriptTaskStart` as Application
+* Result, the following will be output in Eclipse console:
+----
+Hello 'Kylin Soong'
+----
+
+Run in BRMS console
++++++++++++++++++++
+
+* Start BRMS 5.3
+* Add `helloworldScriptTask.bpmn` to BRMS Repository, make sure `org.jbpm.quickstarts` package build correctly
+* Start Process in http://localhost:8080/business-central 
+
+
+
+
+

@@ -1,4 +1,4 @@
-package com.kylin.jbpm.quickstarts.helloworld;
+package org.jbpm.quickstarts;
 
 public class Person {
 	
@@ -14,6 +14,11 @@ public class Person {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + "]";
 	}
 
 }
