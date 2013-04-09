@@ -33,8 +33,48 @@ Run in BRMS console
 ----
 
 
+Looping Process
+---------------
 
+Process Diagram Overview
+++++++++++++++++++++++++
 
+image::img/org.jbpm.quickstarts.looping.png[Looping BPMN2 Process]
 
+The Process contain 3 Script Task nodes: Init, Loop, Done. The Init node init 2 interger `count`, `i`, the Loop node do loop until `i` > `count`, the Done node finish the process.
 
+Run in J2SE Environment
++++++++++++++++++++++++
 
+* Import quickstarts to either Ecplise with JBoss Tools, or JBDS
+* Run `org.jbpm.quickstarts.looping.LoopingStart` as Application
+* Result, the following will be output in Eclipse console:
+----
+Loop started
+  i = 0
+  i = 1
+  i = 2
+  i = 3
+  i = 4
+Loop completed
+----
+
+Run in BRMS console
++++++++++++++++++++
+
+* Start BRMS 5.3
+* Add `looping.bpmn` to BRMS Repository, make sure `org.jbpm.quickstarts` package build correctly
+* Make sure BRMS pre-configuration is correct.
+* Maven build quickstarts project, copy generated archive to brms-standalone-5.3.0/jboss-as/server/default/deploy/business-central-server.war/WEB-INF/lib/
+* Start Process
+** Re-Start BRMS 5.3
+** login to http://localhost:8080/business-central, in Processes widget, click Refresh button, HelloWorldScript will come out, select HelloWorldScript Process, click Start button, HelloWorld Script Task Process will run and the following will output in BRMS console:
+----
+2013-04-09 21:31:22,019 INFO  [STDOUT] (http-127.0.0.1-8080-2) Loop started
+2013-04-09 21:31:22,035 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 0
+2013-04-09 21:31:22,044 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 1
+2013-04-09 21:31:22,051 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 2
+2013-04-09 21:31:22,058 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 3
+2013-04-09 21:31:22,064 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 4
+2013-04-09 21:31:22,069 INFO  [STDOUT] (http-127.0.0.1-8080-2) Loop completed
+----
