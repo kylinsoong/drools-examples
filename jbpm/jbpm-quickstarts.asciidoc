@@ -23,7 +23,16 @@ Run in BRMS console
 
 * Start BRMS 5.3
 * Add `helloworldScriptTask.bpmn` to BRMS Repository, make sure `org.jbpm.quickstarts` package build correctly
-* Start Process in http://localhost:8080/business-central 
+* Make sure BRMS pre-configuration is correct.
+* Maven build quickstarts project, copy generated archive to brms-standalone-5.3.0/jboss-as/server/default/deploy/business-central-server.war/WEB-INF/lib/
+* Start Process
+** Re-Start BRMS 5.3
+** login to http://localhost:8080/business-central, in Processes widget, click Refresh button, HelloWorldScript will come out, select HelloWorldScript Process, click Start button, HelloWorld Script Task Process will run and the following will output in BRMS console:
+----
+14:23:53,178 INFO  [STDOUT] Hello 'Kylin Soong'
+----
+
+
 
 
 
