@@ -74,6 +74,11 @@
 	        <artifactId>jbpm-workitems</artifactId>
 	        <version>${jbpm.version}</version>
 		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-human-task</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
 	</dependencies>
 
    <build>
