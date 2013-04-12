@@ -1,0 +1,7 @@
+<change-set xmlns='http://drools.org/drools-5.0/change-set'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+    xs:schemaLocation='http://drools.org/drools-5.0/change-set http://anonsvn.jboss.org/repos/labs/labs/jbossrules/trunk/drools-api/src/main/resources/change-set-1.0.0.xsd' >
+    <add>
+         <resource source='http://hcs591jbosda903.state.mi.us:8080/jboss-brms/org.drools.guvnor.Guvnor/package/SubprocessTest/LATEST' type='PKG'  basicAuthentication="enabled" username="admin" password="admin" />
+    </add>
+</change-set>

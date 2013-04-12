@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>OrderApproval</display-name>
+  <servlet>
+    <display-name>SubmitOrderServlet</display-name>
+    <servlet-name>SubmitOrderServlet</servlet-name>
+    <servlet-class>com.sample.SubmitOrderServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>HumanTaskServlet</display-name>
+    <servlet-name>HumanTaskServlet</servlet-name>
+    <servlet-class>com.sample.HumanTaskServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <display-name>NavServlet</display-name>
+    <servlet-name>NavServlet</servlet-name>
+    <servlet-class>com.sample.NavServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmitOrderServlet</servlet-name>
+    <url-pattern>/SubmitOrderServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HumanTaskServlet</servlet-name>
+    <url-pattern>/HumanTaskServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NavServlet</servlet-name>
+    <url-pattern>/NavServlet</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>orderEntry1.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
