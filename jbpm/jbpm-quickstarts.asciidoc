@@ -78,3 +78,38 @@ Run in BRMS console
 2013-04-09 21:31:22,064 INFO  [STDOUT] (http-127.0.0.1-8080-2)   i = 4
 2013-04-09 21:31:22,069 INFO  [STDOUT] (http-127.0.0.1-8080-2) Loop completed
 ----
+
+Reusable Sub-Process Risky Account Demo
+---------------------------------------
+
+Process Diagram Overview
++++++++++++++++++++++++++
+
+image::img/org.jbpm.quickstarts.subprocess.png[Risky Account Process]
+
+* Use `enoughMoney.drl` declare a Global variable which be shared between main process and sub process
+* Drools and jBPM intergration
+* The process procedure: main process `Start` node print current risky accounts and add a account to risky accounts list; main process's `SubProcess` node invoke sub process; sub process start; sub process `Print Risky Account` node print all risky account; sub process done; main process done
+
+Run in J2SE Environment
++++++++++++++++++++++++
+
+* Import quickstarts to either Ecplise with JBoss Tools, or JBDS
+* Run `org.jbpm.quickstarts.subprocess.SubProcessStart` as Application
+* Result, the following will be output in Eclipse console:
+----
+Not enough money on the account!
+
+Mainprocess - Start, Process ID: 1
+Current risky account: 
+  [money=-10, name=Kylin Soong]
+Add  [money=-20, name=Kobe Bryant] to risky acount list
+
+Subprocess - Start, Process ID: 2
+Subprocess - Print Rsiky Account
+Current risky account: 
+  [money=-10, name=Kylin Soong]  [money=-20, name=Kobe Bryant]
+Subprocess - Done, Process ID: 2
+
+Mainprocess - Done, Process ID: 1
+----
