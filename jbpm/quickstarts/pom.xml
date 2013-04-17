@@ -18,11 +18,13 @@
 
 	<dependencies>
 	 	
+	 	<!--
 	 	<dependency>
 			<groupId>com.customized.tools</groupId>
 			<artifactId>cst-persist</artifactId>
 			<version>2.0</version>
 		</dependency>
+	 	-->
 	 	
 	 	<!-- Drools dependency -->
 		<dependency>
@@ -85,6 +87,11 @@
 	        <artifactId>jbpm-human-task</artifactId>
 	        <version>${jbpm.version}</version>
 		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-test</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency>
 	</dependencies>
 
    <build>

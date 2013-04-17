@@ -2,23 +2,37 @@ package org.jbpm.quickstarts.usertask.test;
 
 import javax.persistence.EntityManagerFactory;
 
-import com.customized.tools.persist.DataSourceUtil;
-import com.customized.tools.persist.H2Helper;
-import com.customized.tools.persist.JPAUtil;
+import org.drools.SystemEventListenerFactory;
+import org.jbpm.quickstarts.usertask.util.JPAUtil;
+import org.jbpm.task.service.TaskService;
+import org.jbpm.task.service.mina.MinaTaskServer;
+import org.jbpm.test.JBPMHelper;
 
+
+/**
+ * How to build?
+ *   mvn clean install dependency:copy-dependencies
+ * 
+ * How to run?
+ *   mvn clean install dependency:copy-dependencies
+ * 
+ * @author kylin
+ *
+ */
 public class TaskServiceTest {
 
 	public static void main(String[] args) {
 		
-		H2Helper.startH2Server();
-		
-		DataSourceUtil.setupDataSource("jdbc/jbpm-ds");
+		JBPMHelper.startH2Server();
+		JBPMHelper.setupDataSource();
 		
 		EntityManagerFactory emf = JPAUtil.getEntityManagerFactory("org.jbpm.task");
 		
-		emf.createEntityManager();
+		TaskService taskService = new TaskService(emf, SystemEventListenerFactory.getSystemEventListener());
 		
-		System.out.println("org.jbpm.task.service.TaskService");
+		MinaTaskServer taskServer = new MinaTaskServer(taskService);
+		new Thread(taskServer).start();
+		
 	}
 
 }
