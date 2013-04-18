@@ -26,15 +26,6 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
  */
 public class MinaClient {
 	
-	static {
-		ConsoleAppender console = new ConsoleAppender();
-		String PATTERN = "%d %-5p [%c] (%t) %m%n";
-		console.setLayout(new PatternLayout(PATTERN));
-		console.setThreshold(Level.INFO);
-		console.activateOptions();
-		Logger.getRootLogger().addAppender(console);
-	}
-	
 	private static final int PORT = 1234;
 
 	public static void main(String[] args) {

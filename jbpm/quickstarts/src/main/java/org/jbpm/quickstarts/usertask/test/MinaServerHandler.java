@@ -1,6 +1,5 @@
 package org.jbpm.quickstarts.usertask.test;
 
-import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
@@ -17,15 +16,19 @@ import org.apache.mina.core.session.IoSession;
  */
 public class MinaServerHandler extends IoHandlerAdapter {
 	
-	private final Logger logger = Logger.getLogger(MinaServerHandler.class);
+	
+	public MinaServerHandler() {
+		Log.log("MinaServerHandler Start");
+	}
 
 	public void sessionOpened(IoSession session) throws Exception {
+		Log.log("Session opened in Server, session ID: " + session.getId());
 		session.getConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
-		session.setAttribute("Values: ");
+		session.setAttribute("key", "value");
 	}
 
 	public void sessionIdle(IoSession session, IdleStatus status) throws Exception {
-		logger.info("Disconnecting the idle.");
+		Log.log("Disconnecting the idle.");
 		session.close(true);
 	}
 
@@ -34,8 +37,9 @@ public class MinaServerHandler extends IoHandlerAdapter {
 	}
 
 	public void messageReceived(IoSession session, Object message) throws Exception {
-		logger.info("Message received in the server..");
-		logger.info("Message is: " + message.toString());
+		Log.log("Message received in the server..");
+		Log.log("Message is: " + message.toString());
+		session.write("Server write back ack message");
 	}
 	
 	

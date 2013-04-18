@@ -4,10 +4,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
@@ -27,18 +23,11 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
  */
 public class MinaServer {
 	
-	static {
-		ConsoleAppender console = new ConsoleAppender();
-		String PATTERN = "%d %-5p [%c] (%t) %m%n";
-		console.setLayout(new PatternLayout(PATTERN));
-		console.setThreshold(Level.INFO);
-		console.activateOptions();
-		Logger.getRootLogger().addAppender(console);
-	}
-	
 	private static final int PORT = 1234;
+		
 
 	public static void main(String[] args) throws IOException {
+		
 		
 		IoAcceptor acceptor = new NioSocketAcceptor();
 		

@@ -1,13 +1,10 @@
 package org.jbpm.quickstarts.usertask.test;
 
-import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 public class MinaClientHandler extends IoHandlerAdapter {
-	
-	private final Logger logger = Logger.getLogger(MinaClientHandler.class);
-	
+		
 	private final String values;
 	
 	private boolean finished;
@@ -21,12 +18,14 @@ public class MinaClientHandler extends IoHandlerAdapter {
 	}
 	
 	public void sessionOpened(IoSession session) {
+		Log.log("Session opened in client, session ID: " + session.getId());
 		session.write(values);
 	}
 	
 	public void messageReceived(IoSession session, Object message) {
-		logger.info("Message received in the client..");
-		logger.info("Message is: " + message.toString());
+		Log.log("Message received in the client");
+		Log.log("Message is: " + message.toString());
+		Log.log("key -> " + session.getAttribute("key"));
 	}
 	
 	public void exceptionCaught(IoSession session, Throwable cause) {
