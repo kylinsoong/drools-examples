@@ -1,0 +1,20 @@
+package org.drools.examples;
+
+declare MyFact
+	myString : String
+	myInt : int
+end
+
+function MyFact createFact(String input, int intInput) {
+   MyFact fact = new MyFact();
+   fact.setMyString(input);
+   fact.setMyInt(intInput);
+   return fact;
+}
+
+rule "Using a declared Type in function"
+when
+	eval( true )
+then
+	System.out.println(createFact("hello", 4));
+end
