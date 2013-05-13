@@ -1,0 +1,17 @@
+package org.drools.compiler.research;
+
+rule "Duplicated Rule Name in one file"
+dialect "java"
+when
+	eval( true )
+then
+	System.out.println("Version 1");
+end
+
+rule "Duplicated Rule Name in one file"
+dialect "java"
+when
+	eval( true )
+then
+	System.out.println("Version 1");
+end

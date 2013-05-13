@@ -19,6 +19,7 @@
     
     <modules>
         <module>examples</module>
+	<module>compiler-research</module>
     </modules>
 
 </project>
