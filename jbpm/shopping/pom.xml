@@ -6,8 +6,8 @@
    <artifactId>jbpm-shopping</artifactId>
    <version>1.0</version>
    <packaging>war</packaging>
-   <name>web application</name>
-   <description>Web Application</description>
+   <name>jBPM Shopping Demo</name>
+   <description>jBPM Shopping Demo</description>
 
    <url>https://github.com/kylinsoong</url>
 

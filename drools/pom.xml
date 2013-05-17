@@ -7,7 +7,7 @@
     <artifactId>org.drools.examples-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>Parent for drools examples project</name>
+    <name>Parent for drools</name>
 
     <licenses>
         <license>

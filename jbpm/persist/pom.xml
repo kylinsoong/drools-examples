@@ -7,8 +7,8 @@
     <artifactId>jbpm-persist</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>jBPM persistence</name>
-    <description>jBPM persistence</description>
+    <name>jBPM persistence Test</name>
+    <description>jBPM persistence Test</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
