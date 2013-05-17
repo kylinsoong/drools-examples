@@ -1,0 +1,54 @@
+jBPM 5.x persistence
+--------------------
+
+persistence.xml mapping a classpath file
+++++++++++++++++++++++++++++++++++++++++
+
+----
+<persistence-unit name="org.jbpm.persistence.jpa" transaction-type="JTA">
+    <mapping-file>META-INF/JBPMorm.xml</mapping-file>
+    <mapping-file>META-INF/Taskorm.xml</mapping-file>
+    <mapping-file>META-INF/ProcessInstanceInfo.hbm.xml</mapping-file>
+</persistence-unit>
+----
+
+What above configured JBPMorm.xml, Taskorm.xml, ProcessInstanceInfo.hbm.xml, means these 3 file should be in classpath, Hibernate EntityManager will try to load the mapping file located in the jar file from META_INF.
+
+How jBPM 5.x use `named-query`
+++++++++++++++++++++++++++++++
+
+Query templates can be statically declared using the NamedQuery and NamedQueries annotations, The template also can be configured in xml file, below is a demo:
+
+* `persistence.xml` define mapping file as below:
+----
+<persistence-unit name="org.jbpm.test.persist">
+    <mapping-file>META-INF/orm.xml</mapping-file>
+</persistence-unit>
+----
+
+* `orm.xml` looks like as below:
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_1_0.xsd"
+                 version="1.0">
+                 
+	<named-query name="namedQueryTest">
+		<query>select t.name from PersistTestUser t</query>
+	</named-query>
+                 
+</entity-mappings>
+----
+
+* JBA code use named-query definition code as below:
+----
+EntityManager em = emf.createEntityManager();
+Query query = em.createNamedQuery("namedQueryTest");
+for(Object obj : query.getResultList()) {
+    System.out.println("  " + obj);
+}
+em.close();
+----
+
+NOTE: jBPM 5.x define a series of templates in `JBPMorm.xml`, `Taskorm.xml` files
