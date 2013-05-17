@@ -1,0 +1,38 @@
+Run jBPM Approve Demo on jboss-eap-6.0, jboss-eap-6.1, jboss-as-7.1.1.Final
+---------------------------------------------------------------------------
+
+* clone the code
+----
+git clone git@github.com:kylinsoong/jBPM-Drools-Example.git
+----
+
+* mvn build, navigate to jbpm/approve folder execute
+----
+mvn clean install
+----
+
+* deploy
+
+mvn build will generate archive war, deploy this war to JBoss(cli, console, copy). 
+
+Alternatively, use the following mvn commend:
+----
+mvn jboss-as:deploy
+---- 
+
+* test
+
+After above steps finished, click http://localhost:8080/jbpm-approve to test
+
+
+Run jBPM Approve Demo on jboss-eap-5.x
+--------------------------------------
+
+//coming soon
+
+
+Run jBPM Approve Demo on OpenShift
+----------------------------------
+
+//coming soon
+
