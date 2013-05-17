@@ -9,14 +9,12 @@
 
 <body>
     
-	<form method="post" action="process">
-		<select name="recipient">
-			<option selected="selected">krisv</option>
-			<option>kylin</option>
-			<option>jay</option>
-		</select>
-		<input type="submit" value="Start a process">
-	</form>
+	<ul>
+		<li><a href="index.jsp">Home</a></li>
+		<li><a href="task?user=john&cmd=list">John's Task</a></li>
+		<li><a href="task?user=mary&cmd=list">Mary's Task</a></li>
+		<li><a href="index.jsp">Audit</a></li>
+	</ul>
     
 </body>
 </html>
