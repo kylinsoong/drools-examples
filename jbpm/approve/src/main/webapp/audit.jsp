@@ -2,7 +2,7 @@
 <%@ page import="java.util.*" %>
 <html>
 <head>
-<title>Audit</title>
+<title>jBPM Approve Demo</title>
 </head>
 <body>
 

@@ -12,7 +12,7 @@
 <body>
     <div id="container">
         <div align="right" class="dualbrand">
-            <img src="resources/gfx/dualbrand_logo.png" />
+            <img src="resources/gfx/bpmn2_process.png" />
         </div>
         <div id="content">
 

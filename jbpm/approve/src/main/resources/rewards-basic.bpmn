@@ -12,7 +12,15 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
+  <itemDefinition id="_recipientItem" structureRef="String" />
+
   <process processType="Private" isExecutable="true" id="org.jbpm.demo.rewards-basic" name="Rewards Basic" tns:packageName="org.jbpm.demo" >
+
+    <extensionElements>
+     <tns:import name="org.jbpm.demo.approve.audit.*" />
+    </extensionElements>
+    <!-- process variables -->
+    <property id="recipient" itemSubjectRef="_recipientItem"/>
 
     <!-- nodes -->
     <startEvent id="_1" name="Start" />
@@ -153,15 +161,21 @@
         </resourceAssignmentExpression>
       </potentialOwner>
     </userTask>
-    <scriptTask id="_6" name="Script" scriptFormat="http://www.java.com/java" >
-      <script>System.out.println("Process has been finished!");</script>
+    <scriptTask id="_6" name="End" scriptFormat="http://www.java.com/java" >
+      <script>String message = "Ticket (id = " + kcontext.getProcessInstance().getId() +") finished";
+ System.out.println(message);</script>
+    </scriptTask>
+    <scriptTask id="_7" name="Start" scriptFormat="http://www.java.com/java" >
+      <script>String message = recipient + "'s ticket (id = " + kcontext.getProcessInstance().getId() +")";
+ AuditDAOFactory.defaultDAO().addAudit(kcontext.getProcessInstance().getId() , message);</script>
     </scriptTask>
 
     <!-- connections -->
     <sequenceFlow id="_6-_3" sourceRef="_6" targetRef="_3" />
-    <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+    <sequenceFlow id="_7-_4" sourceRef="_7" targetRef="_4" />
     <sequenceFlow id="_4-_5" sourceRef="_4" targetRef="_5" />
     <sequenceFlow id="_5-_6" sourceRef="_5" targetRef="_6" />
+    <sequenceFlow id="_1-_7" sourceRef="_1" targetRef="_7" />
 
   </process>
 
@@ -171,32 +185,39 @@
         <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="588" y="17" width="48" height="48" />
+        <dc:Bounds x="623" y="19" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" >
-        <dc:Bounds x="96" y="16" width="144" height="48" />
+        <dc:Bounds x="195" y="21" width="144" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_5" >
-        <dc:Bounds x="289" y="15" width="133" height="48" />
+        <dc:Bounds x="360" y="18" width="133" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_6" >
-        <dc:Bounds x="461" y="17" width="80" height="48" />
+        <dc:Bounds x="521" y="17" width="73" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7" >
+        <dc:Bounds x="90" y="19" width="71" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_6-_3" >
-        <di:waypoint x="501" y="41" />
-        <di:waypoint x="612" y="41" />
+        <di:waypoint x="557" y="41" />
+        <di:waypoint x="647" y="43" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_1-_4" >
-        <di:waypoint x="40" y="40" />
-        <di:waypoint x="168" y="40" />
+      <bpmndi:BPMNEdge bpmnElement="_7-_4" >
+        <di:waypoint x="125" y="43" />
+        <di:waypoint x="267" y="45" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_4-_5" >
-        <di:waypoint x="168" y="40" />
-        <di:waypoint x="355" y="39" />
+        <di:waypoint x="267" y="45" />
+        <di:waypoint x="426" y="42" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_5-_6" >
-        <di:waypoint x="355" y="39" />
-        <di:waypoint x="501" y="41" />
+        <di:waypoint x="426" y="42" />
+        <di:waypoint x="557" y="41" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_7" >
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="125" y="43" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
