@@ -22,7 +22,7 @@
             
             <p>
             	<label style="color: green;width: 100%;text-align: left;">
-            		<%= request.getAttribute("message") == null ? "" : request.getAttribute("message") %>
+            		<%= request.getAttribute("message") == null ? "no action" : request.getAttribute("message") %>
             	</label> 
 			</p>
 			<br/>

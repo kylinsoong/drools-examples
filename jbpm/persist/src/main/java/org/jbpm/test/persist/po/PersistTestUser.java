@@ -28,5 +28,9 @@ public class PersistTestUser {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String toString() {
+		return "PersistTestUser [id=" + id + ", name=" + name + "]";
+	}
 	
 }

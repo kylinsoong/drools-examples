@@ -12,18 +12,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jbpm.test.persist.po.PersistTestUser;
+
 @WebServlet("/test.do")
 public class JBPMPersistTestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5386275090654917513L;
 	
-	@PersistenceUnit(unitName = "org.jbpm.persistence.jpa")
+	@PersistenceUnit(unitName = "org.hibernate.ogm.tutorial.jpa")
     private EntityManagerFactory emf;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 				
 		System.out.println("-------------- jBPM Persistence Test Start -------------");
-		System.out.println(emf);
+		EntityManager em = emf.createEntityManager();
+		System.out.println("Add User");
+		PersistTestUser user = new PersistTestUser();
+		user.setId("1");
+		user.setName("Test");
+		em.persist(user);
+		PersistTestUser result = em.find(PersistTestUser.class, "1");
+		System.out.println("Search User: " + result);
+		System.out.println("Remove User");
+		em.remove(result);
 	}
 	
 	protected void namedQueryTest() {

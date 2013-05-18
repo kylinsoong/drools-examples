@@ -1,4 +1,4 @@
-package org.jbpm.demo.rewards.servlet;
+package org.jbpm.demo.approve.servlet;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jbpm.demo.rewards.ejb.ProcessService;
+import org.jbpm.demo.approve.ejb.ProcessService;
 
 @WebServlet("/process")
 public class ProcessServlet extends HttpServlet {
@@ -33,7 +33,8 @@ public class ProcessServlet extends HttpServlet {
             throw new ServletException(e);
         }
 
-        req.setAttribute("message", "process instance (id = " + processInstanceId + ") has been started.");
+        String message = recipient + " started a ticket (id = " + processInstanceId + ")" ;
+        req.setAttribute("message",  message);
 
         ServletContext context = this.getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/index.jsp");

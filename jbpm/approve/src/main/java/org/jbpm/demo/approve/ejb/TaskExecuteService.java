@@ -1,4 +1,4 @@
-package org.jbpm.demo.rewards.ejb;
+package org.jbpm.demo.approve.ejb;
 
 import java.util.List;
 

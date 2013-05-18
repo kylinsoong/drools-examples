@@ -1,4 +1,4 @@
-package org.jbpm.demo.rewards.servlet;
+package org.jbpm.demo.approve.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jbpm.demo.rewards.ejb.ProcessOperationException;
-import org.jbpm.demo.rewards.ejb.TaskExecuteService;
+import org.jbpm.demo.approve.ejb.ProcessOperationException;
+import org.jbpm.demo.approve.ejb.TaskExecuteService;
 import org.jbpm.task.query.TaskSummary;
 
 @WebServlet("/task")
@@ -29,6 +29,7 @@ public class TaskServlet extends HttpServlet {
 
         String cmd = req.getParameter("cmd");
         String user = req.getParameter("user");
+        String processId = req.getParameter("processId");
         
         if (cmd.equals("list")) {
             List<TaskSummary> taskList;
@@ -47,10 +48,10 @@ public class TaskServlet extends HttpServlet {
             long taskId = Long.parseLong(req.getParameter("taskId"));
             try {
                 taskService.approveTask(user, taskId);
-                message = "Task (id = " + taskId + ") has been completed by " + user;
+                message = "Ticket (id = " + processId + ") has been approved by " + user;
             } catch (ProcessOperationException e) {
                 // Recoverable exception
-                message = "Task operation failed. Please retry : " + e.getMessage();
+                message = "Ticket (id = " + processId + ") operation failed. Please retry : " + e.getMessage();
             } catch (Exception e) {
                 // Unexpected exception
                 throw new ServletException(e);

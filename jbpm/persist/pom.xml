@@ -47,7 +47,39 @@
     </dependencyManagement>
 
     <dependencies>
-    <!-- -->
+    	<dependency>
+            <groupId>org.jboss.spec.javax.servlet</groupId>
+            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+			<groupId>org.hibernate.ogm</groupId>
+			<artifactId>hibernate-ogm-core</artifactId>
+			<version>4.0.0.Beta1</version>
+		</dependency>
+    	<dependency>
+			<groupId>org.hibernate.ogm</groupId>
+			<artifactId>hibernate-ogm-infinispan</artifactId>
+			<version>4.0.0.Beta1</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.antlr</groupId>
+	        <artifactId>antlr</artifactId>
+	        <version>3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.jbossts</groupId>
+			<artifactId>jbossjta</artifactId>
+			<version>4.16.4.Final</version>
+		</dependency>
+		
+    	
+    <!-- 
         <dependency>
 	        <groupId>org.drools</groupId>
 	        <artifactId>drools-persistence-jpa</artifactId>
@@ -68,21 +100,8 @@
 	        <artifactId>jbpm-bam</artifactId>
 	        <version>${jbpm.version}</version>
 		</dependency>
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+		-->
+        
 
     </dependencies>
 
