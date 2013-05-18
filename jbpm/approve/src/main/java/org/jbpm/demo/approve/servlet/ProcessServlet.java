@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jbpm.demo.approve.audit.AuditDAOFactory;
 import org.jbpm.demo.approve.ejb.ProcessService;
 
 @WebServlet("/process")
@@ -33,9 +34,9 @@ public class ProcessServlet extends HttpServlet {
             throw new ServletException(e);
         }
 
-        String message = recipient + " started a ticket (id = " + processInstanceId + ")" ;
+        String message =  "Ticket (id = " + processInstanceId + ") has been started by " + recipient ;
         req.setAttribute("message",  message);
-
+        AuditDAOFactory.defaultDAO().addAudit(processInstanceId , message);
         ServletContext context = this.getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, res);

@@ -38,12 +38,6 @@
 			</thead>
 			<% 
 			
-			List<Object> list = (List<Object>)request.getAttribute("taskList");
-			for(Object obj : list) {
-				org.jbpm.task.query.TaskSummary taskSummary = (org.jbpm.task.query.TaskSummary)obj;
-				System.out.println(taskSummary);	
-			}
-			
 			for (TaskSummary task : (List<TaskSummary>)request.getAttribute("taskList")) { 
 				
 			%>

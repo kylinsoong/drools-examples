@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.jbpm.demo.approve.audit.AuditDAOFactory;
 import org.jbpm.demo.approve.ejb.ProcessOperationException;
 import org.jbpm.demo.approve.ejb.TaskExecuteService;
 import org.jbpm.task.query.TaskSummary;
@@ -57,6 +58,7 @@ public class TaskServlet extends HttpServlet {
                 throw new ServletException(e);
             }
             req.setAttribute("message", message);
+            AuditDAOFactory.defaultDAO().addAudit(Long.parseLong(processId), message);
             ServletContext context = this.getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher("/index.jsp");
             dispatcher.forward(req, res);

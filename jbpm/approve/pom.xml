@@ -20,6 +20,7 @@
         <maven.compiler.source>1.6</maven.compiler.source>
         <drools.version>5.3.5.Final</drools.version>
         <jbpm.version>5.2.5.Final</jbpm.version>
+        <infinispan.version>5.2.0.Final</infinispan.version>
     </properties>
 
     <dependencyManagement>
@@ -53,11 +54,12 @@
 			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!--  -->
 		<dependency>
             <groupId>org.jboss.spec.javax.servlet</groupId>
             <artifactId>jboss-servlet-api_3.0_spec</artifactId>
             <scope>provided</scope>
-        </dependency>
+        </dependency> 
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -69,6 +71,11 @@
        		<version>1.2.16</version>
       		 <scope>provided</scope>
 		</dependency>
+		<dependency>
+         <groupId>org.infinispan</groupId>
+         <artifactId>infinispan-core</artifactId>
+         <version>${infinispan.version}</version>
+      </dependency>
 		<!-- jBPM Drools jars start -->
         <dependency>
 	        <groupId>org.drools</groupId>

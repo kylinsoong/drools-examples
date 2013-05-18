@@ -13,7 +13,7 @@
 		<li><a href="index.jsp">Home</a></li>
 		<li><a href="task?user=john&cmd=list">John's Task</a></li>
 		<li><a href="task?user=mary&cmd=list">Mary's Task</a></li>
-		<li><a href="index.jsp">Audit</a></li>
+		<li><a href="audit?id=no&num=1">Audit</a></li>
 	</ul>
     
 </body>
