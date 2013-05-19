@@ -26,10 +26,11 @@ public class ProcessServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
             	
         String recipient = req.getParameter("recipient");
+        String ticketname =req.getParameter("ticketname");
 
         long processInstanceId = -1;
         try {
-            processInstanceId = processService.startProcess(recipient);
+            processInstanceId = processService.startProcess(recipient, ticketname);
         } catch (Exception e) {
             throw new ServletException(e);
         }

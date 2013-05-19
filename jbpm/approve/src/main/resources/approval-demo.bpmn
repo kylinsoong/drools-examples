@@ -13,14 +13,16 @@
              xmlns:tns="http://www.jboss.org/drools">
 
   <itemDefinition id="_recipientItem" structureRef="String" />
+  <itemDefinition id="_ticketnameItem" structureRef="String" />
 
-  <process processType="Private" isExecutable="true" id="org.jbpm.demo.rewards-basic" name="Rewards Basic" tns:packageName="org.jbpm.demo" >
+  <process processType="Private" isExecutable="true" id="org.jbpm.demo.approval" name="Approval demo" tns:packageName="org.jbpm.demo" >
 
     <extensionElements>
      <tns:import name="org.jbpm.demo.approve.audit.*" />
     </extensionElements>
     <!-- process variables -->
     <property id="recipient" itemSubjectRef="_recipientItem"/>
+    <property id="ticketname" itemSubjectRef="_ticketnameItem"/>
 
     <!-- nodes -->
     <startEvent id="_1" name="Start" />
@@ -166,7 +168,7 @@
  System.out.println(message);</script>
     </scriptTask>
     <scriptTask id="_7" name="Start" scriptFormat="http://www.java.com/java" >
-      <script>String message = recipient + "'s ticket (id = " + kcontext.getProcessInstance().getId() +")";
+      <script>String message = recipient + "'s ticket (id = " + kcontext.getProcessInstance().getId() +") " + ticketname;
  AuditDAOFactory.defaultDAO().addAudit(kcontext.getProcessInstance().getId() , message);</script>
     </scriptTask>
 
@@ -180,7 +182,7 @@
   </process>
 
   <bpmndi:BPMNDiagram>
-    <bpmndi:BPMNPlane bpmnElement="org.jbpm.demo.rewards-basic" >
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.demo.approval" >
       <bpmndi:BPMNShape bpmnElement="_1" >
         <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>

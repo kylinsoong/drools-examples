@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-web>
-	<context-root>jbpm-approve</context-root>
+	<context-root>jbpm-approval</context-root>
 </jboss-web> 

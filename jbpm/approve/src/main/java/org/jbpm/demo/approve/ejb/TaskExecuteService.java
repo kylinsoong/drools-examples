@@ -144,7 +144,7 @@ public class TaskExecuteService {
 		}
 
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("rewards-basic.bpmn"), ResourceType.BPMN2);
+		kbuilder.add(ResourceFactory.newClassPathResource("approval-demo.bpmn"), ResourceType.BPMN2);
 		return kbuilder.newKnowledgeBase();
 	}
 

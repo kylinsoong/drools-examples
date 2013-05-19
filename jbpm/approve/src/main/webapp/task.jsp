@@ -1,20 +1,11 @@
 <%@ page import="org.jbpm.task.query.TaskSummary" %>
 <%@ page import="java.util.*" %>
-<html>
-<head>
-<title>jBPM Approve Demo</title>
-</head>
-<body>
-
-</body>
-</html>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>jBPM Approve Demo</title>
+<title>jBPM Approval Demo</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Here we include the css file  -->
 <link rel="stylesheet" type="text/css" href="resources/css/screen.css" />
@@ -37,8 +28,14 @@
 				</tr>
 			</thead>
 			<% 
-			
-			for (TaskSummary task : (List<TaskSummary>)request.getAttribute("taskList")) { 
+			List<TaskSummary> tasklist = (List<TaskSummary>)request.getAttribute("taskList");
+			String message = "no ticket";
+			if(tasklist.size() == 1) {
+				message = "1 ticket";
+			} else if(tasklist.size() > 1){
+				message = tasklist.size() + " tickets" ;
+			}
+			for (TaskSummary task : tasklist) { 
 				
 			%>
 			<tr>
@@ -50,6 +47,12 @@
 			<% } %>
 			</table>
 			
+			<p>
+            	<label style="color: green;width: 100%;text-align: left;">
+            		<%=message %>
+            	</label> 
+			</p>
+			<br/>
 			<%@ include file="menu.jsp"%>
 
         </div>

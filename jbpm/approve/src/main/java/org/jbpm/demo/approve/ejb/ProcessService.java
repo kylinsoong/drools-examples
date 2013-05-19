@@ -45,7 +45,7 @@ public class ProcessService {
 	@Resource
     private UserTransaction ut;
 	
-	public long startProcess(String recipient) throws Exception {
+	public long startProcess(String recipient, String ticketname) throws Exception {
 		
 		// Use this when you want to ignore user existence issues
         UserGroupCallbackManager.getInstance().setCallback(new DefaultUserGroupCallbackImpl());
@@ -62,7 +62,8 @@ public class ProcessService {
             // start a new process instance
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("recipient", recipient);
-            ProcessInstance processInstance = ksession.startProcess("org.jbpm.demo.rewards-basic", params);
+            params.put("ticketname", ticketname);
+            ProcessInstance processInstance = ksession.startProcess("org.jbpm.demo.approval", params);
 
             processInstanceId = processInstance.getId();
 
@@ -111,7 +112,7 @@ public class ProcessService {
 		}
 
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("rewards-basic.bpmn"), ResourceType.BPMN2);
+		kbuilder.add(ResourceFactory.newClassPathResource("approval-demo.bpmn"), ResourceType.BPMN2);
 		return kbuilder.newKnowledgeBase();
 	}
 

@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>jBPM Approve Demo</title>
+<title>jBPM Approval Demo</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <!-- Here we include the css file  -->
 <link rel="stylesheet" type="text/css" href="resources/css/screen.css" />
@@ -16,7 +16,7 @@
         </div>
         <div id="content">
 
-            <p style="FONT-SIZE: large;">jBPM Approve Demo</p>
+            <p style="FONT-SIZE: large;">jBPM Approval Demo</p>
 
             <%@ include file="startProcess.jsp"%>
             
