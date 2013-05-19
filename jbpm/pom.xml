@@ -19,7 +19,7 @@
     
     <modules>
         <module>quickstarts</module>
-        <module>approve</module>
+        <module>approval</module>
 	<module>persist</module>
 	<module>shopping</module>
     </modules>

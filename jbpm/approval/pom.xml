@@ -2,12 +2,12 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.jbpm.demo</groupId>
-   <artifactId>jbpm-approve-demo</artifactId>
+   <artifactId>jbpm-approval-demo</artifactId>
    <version>1.0</version>
    <packaging>war</packaging>
   
-  <name>jBPM Approve Demo</name>
-  <description>jBPM Approve Demo</description>
+  <name>jBPM Approval Demo</name>
+  <description>jBPM Approval Demo</description>
   <url>https://github.com/kylinsoong</url>
 
  <properties>
