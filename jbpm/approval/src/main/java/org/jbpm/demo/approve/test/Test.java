@@ -1,4 +1,4 @@
-package org.jbpm.demo.approve.audit;
+package org.jbpm.demo.approve.test;
 
 public class Test {
 

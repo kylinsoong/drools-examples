@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jbpm.demo.approve.audit.Audit;
 import org.jbpm.demo.approve.audit.AuditDAOFactory;
-import org.jbpm.demo.approve.audit.AuditTest;
+import org.jbpm.demo.approve.test.AuditTest;
 
 @WebServlet("/audit")
 public class AuditServlet extends HttpServlet {

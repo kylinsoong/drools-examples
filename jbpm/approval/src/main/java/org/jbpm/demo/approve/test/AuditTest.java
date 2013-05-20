@@ -1,7 +1,12 @@
-package org.jbpm.demo.approve.audit;
+package org.jbpm.demo.approve.test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jbpm.demo.approve.audit.Audit;
+import org.jbpm.demo.approve.audit.AuditDAO;
+import org.jbpm.demo.approve.audit.AuditDAOFactory;
+import org.jbpm.demo.approve.audit.Util;
 
 public class AuditTest {
 	

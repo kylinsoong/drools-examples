@@ -1,38 +1,37 @@
-Run jBPM Approve Demo on jboss-eap-6.0, jboss-eap-6.1, jboss-as-7.1.1.Final
----------------------------------------------------------------------------
+Quick Entrance
+--------------
 
-* clone the code
-----
-git clone git@github.com:kylinsoong/jBPM-Drools-Example.git
-----
+* jBPM Approval Demo on OpenShift
 
-* mvn build, navigate to jbpm/approve folder execute
-----
-mvn clean install
-----
+http://jeedemo-ksoong.rhcloud.com/jbpm-approval/
 
-* deploy
+* jBPM Approval Demo Test
 
-mvn build will generate archive war, deploy this war to JBoss(cli, console, copy). 
+link:jBPM-approval-test.asciidoc[Test Procedure]
 
-Alternatively, use the following mvn commend:
-----
-mvn jboss-as:deploy
----- 
+* jBPM Approval Demo Run
 
-* test
-
-After above steps finished, click http://localhost:8080/jbpm-approve to test
+link:jBPM-approval-run.asciidoc[Build and Run]
 
 
-Run jBPM Approve Demo on jboss-eap-5.x
---------------------------------------
+About jBPM Approval Demo
+------------------------
 
-//coming soon
+image::img/bpmn2_process.png[BPMN2 Process]
 
+As showed in above diagram:
 
-Run jBPM Approve Demo on OpenShift
-----------------------------------
+* A ticket should be approved by both PM and HR
+* A ticket should be first approved by PM, then approved by HR
 
-//coming soon
+In jBPM Approval Demo, you can appy a ticket via click Apply Button, John play a role with PM who will first approve your ticket, Mary play a role with HR who will approve your ticket after John approve.
 
+image::img/jbpm-approval-architecture.png[jBPM Approval Demo Architecture]
+
+As showed in above diagram:
+
+* jBPM use RDBMS
+* Java EE App use jBPM load jBPM Process(approval-demo.bpmn)
+* Java EE App use Infinispan store data
+
+The jBPM Approval Demo is traditional Java EE App, which use jBPM expose business logic to jBPM BPMN process. Additionally, Infinispan(Open Source Data Grid) be used to store data.

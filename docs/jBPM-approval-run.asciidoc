@@ -1,0 +1,63 @@
+Overview
+--------
+
+This document will cover:
+
+* Build jBPM Approval Demo from source
+* Run jBPM Approval Demo on JBoss
+* Run jBPM Approval Demo on OpenShift
+
+
+Build jBPM Approval Demo from source
+------------------------------------
+
+* clone the source code from github
+----
+git clone git@github.com:kylinsoong/jBPM-Drools-Example.git
+----
+
+* mvn build, navigate to jbpm/approval folder execute:
+----
+mvn clean install
+----
+
+Then `jbpm-approval-demo.war` will be generated(jbpm/approval/target/jbpm-approval-demo.war).
+
+
+Run jBPM Approve Demo on JBoss
+------------------------------
+
+* deploy
+
+We can use Management Console, Management CLI, or directly copy deploy `jbpm-approval-demo.war` to JBoss.
+
+Alternatively, use the following mvn command deploy from souce code:
+----
+mvn jboss-as:deploy
+---- 
+
+* test
+
+After above steps finished, click http://localhost:8080/jbpm-approval to test as below:
+
+link:jBPM-approval-test.asciidoc[jBPM Approval Demo Test]
+
+NOTE: Currently, we only support run jBPM Approval Demo on `jboss-eap-6.x` and `jboss-as-7.x`
+
+
+Run jBPM Approve Demo on OpenShift
+----------------------------------
+
+* Register a account in https://openshift.redhat.com
+
+* Install OpenShift Client Tools, set up the clint tools, `Client Tools Installation Guide` (https://access.redhat.com/site/documentation/OpenShift_Enterprise/)
+
+* Use `jbossas-7` Cartridge create a app on OpenShift, `User Guide` (https://access.redhat.com/site/documentation/OpenShift_Enterprise)
+
+* Clone the app(you created in above step) to local disk, the `deployments` folder will be exist under $YOUR_APP_NAME, copy `jbpm-approval-demo.war` to deployments folder
+
+* Use git commit and push `jbpm-approval-demo.war` to OpenShift
+
+* Test via http://<your app name>-<your namespace>.rhcloud.com/jbpm-approval/
+
+link:jBPM-approval-test.asciidoc[jBPM Approval Demo Test]
