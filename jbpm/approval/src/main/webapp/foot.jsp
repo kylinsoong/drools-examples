@@ -10,7 +10,7 @@
 <body>
     <img src="resources/gfx/approve_logo.png" alt="jBPM & Infinispan" />
 	<p>
-		<a href="https://github.com/kylinsoong/jBPM-Drools-Example/blob/master/docs/jBPM-approve.asciidoc">About jBPM Approval Demo</a> &nbsp;&nbsp; | &nbsp;&nbsp;
+		<a href="https://github.com/kylinsoong/jBPM-Drools-Example/blob/master/docs/jBPM-approval.asciidoc">About jBPM Approval Demo</a> &nbsp;&nbsp; | &nbsp;&nbsp;
 		<a href="http://about.me/ksoong">Author: Kylin Soong</a> &nbsp;&nbsp; | &nbsp;&nbsp;
 		<a href="https://github.com/kylinsoong">More demos on github</a> &nbsp;&nbsp;
 		<br />
