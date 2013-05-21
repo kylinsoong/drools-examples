@@ -5,7 +5,9 @@ Quick Entrance
 
 http://jeedemo-ksoong.rhcloud.com/jbpm-approval/
 
-Due to Chinese Great Firewall above link may be forbided, please try https://jeedemo-ksoong.rhcloud.com/jbpm-approval/ if above link can not be accessed
+https://jeedemo-ksoong.rhcloud.com/jbpm-approval/
+
+NOTE: `https` used for penetrating through Chinese Firewall
 
 * jBPM Approval Demo Test
 
