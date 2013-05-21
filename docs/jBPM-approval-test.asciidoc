@@ -5,7 +5,7 @@ Primary purpose of this doc is give a procedure for testing jBPM Approval Demo.
 
 link:jBPM-approval-run.asciidoc[How to run jBPM Approval Demo on JBoss or OpenShift]
 
-Assume I have deployed jBPM Approval Demo on OpenShift, and can test via http://jeedemo-ksoong.rhcloud.com/jbpm-approval
+Assume I have deployed jBPM Approval Demo on OpenShift, and can test via http://jeedemo-ksoong.rhcloud.com/jbpm-approval (If you access demo under Chinese Greate Firewall, you should try https://jeedemo-ksoong.rhcloud.com/jbpm-approval)
 
 
 Test Procedure
