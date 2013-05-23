@@ -1,0 +1,13 @@
+package org.jbpm.quickstarts
+
+import org.jbpm.quickstarts.subprocess.Account
+import org.jbpm.quickstarts.subprocess.RiskyAccounts
+
+global RiskyAccounts risky;
+rule "enoughMoney"
+when
+$account : Account( money < 0 )
+then
+  System.out.println( "Not enough money on the account!");
+  risky.add($account);
+end
