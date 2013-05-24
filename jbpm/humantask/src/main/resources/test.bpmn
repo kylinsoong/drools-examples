@@ -12,17 +12,21 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
-  <itemDefinition id="_employeeItem" structureRef="String" />
+  <itemDefinition id="_nameItem" structureRef="String" />
+  <itemDefinition id="_numberItem" structureRef="String" />
 
-  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.evaluation" name="Evaluation" tns:packageName="org.jbpm.quickstarts" >
+  <process processType="Private" isExecutable="true" id="org.jbpm.humantask.test" name="Test" tns:packageName="defaultPackage" >
 
     <!-- process variables -->
-    <property id="employee" itemSubjectRef="_employeeItem"/>
+    <property id="name" itemSubjectRef="_nameItem"/>
+    <property id="number" itemSubjectRef="_numberItem"/>
 
     <!-- nodes -->
     <startEvent id="_1" name="StartProcess" />
-    <userTask id="_2" name="Apply" >
+    <userTask id="_2" name="User Task" >
       <ioSpecification>
+        <dataInput id="_2_param1Input" name="param1" />
+        <dataInput id="_2_param2Input" name="param2" />
         <dataInput id="_2_CommentInput" name="Comment" />
         <dataInput id="_2_SkippableInput" name="Skippable" />
         <dataInput id="_2_LocaleInput" name="Locale" />
@@ -30,6 +34,8 @@
         <dataInput id="_2_GroupIdInput" name="GroupId" />
         <dataInput id="_2_PriorityInput" name="Priority" />
         <inputSet>
+          <dataInputRefs>_2_param1Input</dataInputRefs>
+          <dataInputRefs>_2_param2Input</dataInputRefs>
           <dataInputRefs>_2_CommentInput</dataInputRefs>
           <dataInputRefs>_2_SkippableInput</dataInputRefs>
           <dataInputRefs>_2_LocaleInput</dataInputRefs>
@@ -41,16 +47,24 @@
         </outputSet>
       </ioSpecification>
       <dataInputAssociation>
+        <sourceRef>name</sourceRef>
+        <targetRef>_2_param1Input</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <sourceRef>number</sourceRef>
+        <targetRef>_2_param2Input</targetRef>
+      </dataInputAssociation>
+      <dataInputAssociation>
         <targetRef>_2_CommentInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression">#{employee} Apply</from>
+          <from xsi:type="tFormalExpression">This is test comment</from>
           <to xsi:type="tFormalExpression">_2_CommentInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
         <targetRef>_2_SkippableInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression">false</from>
+          <from xsi:type="tFormalExpression">true</from>
           <to xsi:type="tFormalExpression">_2_SkippableInput</to>
         </assignment>
       </dataInputAssociation>
@@ -64,27 +78,27 @@
       <dataInputAssociation>
         <targetRef>_2_TaskNameInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression">Employee Apply</from>
+          <from xsi:type="tFormalExpression">Task</from>
           <to xsi:type="tFormalExpression">_2_TaskNameInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
         <targetRef>_2_GroupIdInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression"></from>
+          <from xsi:type="tFormalExpression">pm</from>
           <to xsi:type="tFormalExpression">_2_GroupIdInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
         <targetRef>_2_PriorityInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression"></from>
+          <from xsi:type="tFormalExpression">2</from>
           <to xsi:type="tFormalExpression">_2_PriorityInput</to>
         </assignment>
       </dataInputAssociation>
       <potentialOwner>
         <resourceAssignmentExpression>
-          <formalExpression>#{employee}</formalExpression>
+          <formalExpression>john</formalExpression>
         </resourceAssignmentExpression>
       </potentialOwner>
     </userTask>
@@ -99,23 +113,23 @@
   </process>
 
   <bpmndi:BPMNDiagram>
-    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.evaluation" >
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.humantask.test" >
       <bpmndi:BPMNShape bpmnElement="_1" >
-        <dc:Bounds x="43" y="56" width="48" height="48" />
+        <dc:Bounds x="4" y="53" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_2" >
-        <dc:Bounds x="182" y="56" width="100" height="48" />
+        <dc:Bounds x="106" y="52" width="100" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="452" y="55" width="48" height="48" />
+        <dc:Bounds x="261" y="54" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_1-_2" >
-        <di:waypoint x="67" y="80" />
-        <di:waypoint x="232" y="80" />
+        <di:waypoint x="28" y="77" />
+        <di:waypoint x="156" y="76" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_2-_3" >
-        <di:waypoint x="232" y="80" />
-        <di:waypoint x="476" y="79" />
+        <di:waypoint x="156" y="76" />
+        <di:waypoint x="285" y="78" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
