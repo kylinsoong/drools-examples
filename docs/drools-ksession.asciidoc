@@ -9,8 +9,8 @@ This docments give the ways to load StatefulKnowledgeSession, it will conver:
 
 NOTE: The source code path: ./drools/ksession, `KnowledgeAgentUsage.drl` should synchronised to Guvnor and `org.drools.examples` build successful in Guvnor
 
-Load StatefulKnowledgeSession locally
--------------------------------------
+Load ksession locally
+---------------------
 
 The ksession load code like below:
 ----
@@ -25,8 +25,8 @@ The ksession load code like below:
 ----
 
 
-Load StatefulKnowledgeSession remotely via KnowledgeAgent
----------------------------------------------------------
+Load ksession remotely via KnowledgeAgent
+-----------------------------------------
 
 The ksession load code like below:
 ----
@@ -42,18 +42,18 @@ The ksession load code like below:
 ----
 
 
-Load StatefulKnowledgeSession remotely via URL
-----------------------------------------------
+Load ksession remotely via URL
+------------------------------
 
 The ksession load code like below:
 ----
 	private static StatefulKnowledgeSession newKnowledgeSession(String url) throws Exception {
 		UrlResource resource = (UrlResource) ResourceFactory.newUrlResource(url);
 		resource.setBasicAuthentication("enabled");
-        resource.setUsername("admin");
-        resource.setPassword("admin");
-        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        kbuilder.add(resource, ResourceType.PKG);
+        	resource.setUsername("admin");
+        	resource.setPassword("admin");
+       		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+       		kbuilder.add(resource, ResourceType.PKG);
 		KnowledgeBase kbase = kbuilder.newKnowledgeBase();
 		return kbase.newStatefulKnowledgeSession();
 	}
