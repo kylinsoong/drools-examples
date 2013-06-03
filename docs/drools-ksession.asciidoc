@@ -1,0 +1,60 @@
+What's this
+-----------
+
+This docments give the ways to load StatefulKnowledgeSession, it will conver:
+
+* Load StatefulKnowledgeSession locally
+* Load StatefulKnowledgeSession remotely via KnowledgeAgent
+* Load StatefulKnowledgeSession remotely via URL
+
+NOTE: The source code path: ./drools/ksession, `KnowledgeAgentUsage.drl` should synchronised to Guvnor and `org.drools.examples` build successful in Guvnor
+
+Load StatefulKnowledgeSession locally
+-------------------------------------
+
+The ksession load code like below:
+----
+	private static StatefulKnowledgeSession readKnowledgeSession(String name) throws Exception {
+		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+		kbuilder.add(ResourceFactory.newClassPathResource(name),ResourceType.DRL);
+		KnowledgeBuilderErrors errors = kbuilder.getErrors();
+		KnowledgeBase kbase = KnowledgeBaseFactory.newKnowledgeBase();
+		kbase.addKnowledgePackages(kbuilder.getKnowledgePackages());
+		return kbase.newStatefulKnowledgeSession();
+	}
+----
+
+
+Load StatefulKnowledgeSession remotely via KnowledgeAgent
+---------------------------------------------------------
+
+The ksession load code like below:
+----
+	private static StatefulKnowledgeSession readKnowledgeSession(String changeset) throws Exception {
+		kagent = KnowledgeAgentFactory.newKnowledgeAgent("kagent");    
+		ResourceFactory.getResourceChangeNotifierService().start();
+		ResourceFactory.getResourceChangeScannerService().start();
+		kagent.setSystemEventListener(new PrintStreamSystemEventListener());
+		kagent.applyChangeSet(ResourceFactory.newClassPathResource(changeset));
+		KnowledgeBase kbase = kagent.getKnowledgeBase();
+		return kbase.newStatefulKnowledgeSession();
+	}
+----
+
+
+Load StatefulKnowledgeSession remotely via URL
+----------------------------------------------
+
+The ksession load code like below:
+----
+	private static StatefulKnowledgeSession newKnowledgeSession(String url) throws Exception {
+		UrlResource resource = (UrlResource) ResourceFactory.newUrlResource(url);
+		resource.setBasicAuthentication("enabled");
+        resource.setUsername("admin");
+        resource.setPassword("admin");
+        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+        kbuilder.add(resource, ResourceType.PKG);
+		KnowledgeBase kbase = kbuilder.newKnowledgeBase();
+		return kbase.newStatefulKnowledgeSession();
+	}
+----

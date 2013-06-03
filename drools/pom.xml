@@ -19,6 +19,7 @@
     
     <modules>
         <module>examples</module>
+	<module>ksession</module>
 	<module>compiler-research</module>
     </modules>
 
