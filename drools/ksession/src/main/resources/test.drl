@@ -1,0 +1,8 @@
+package org.drools.examples;
+
+rule "print test"
+when
+	eval( true )
+then
+	System.out.println("print test");
+end
