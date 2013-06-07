@@ -2,12 +2,12 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.jbpm.demo</groupId>
-   <artifactId>jbpm-demo-approval</artifactId>
+   <artifactId>jbpm-demo-common</artifactId>
    <version>1.0</version>
    <packaging>war</packaging>
   
-  <name>jBPM Approval Demo</name>
-  <description>jBPM Approval Demo</description>
+  <name>jBPM Demo common</name>
+  <description>jBPM Demo common</description>
   <url>https://github.com/kylinsoong</url>
 
  <properties>
@@ -15,7 +15,6 @@
         <version.org.jboss.bom>1.0.4.Final</version.org.jboss.bom>
         <version.jboss.maven.plugin>7.3.Final</version.jboss.maven.plugin>
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
-        <version.war.plugin>2.3</version.war.plugin>
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
         <drools.version>5.3.5.Final</drools.version>
@@ -45,31 +44,16 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jboss.spec.javax.transaction</groupId>
-			<artifactId>jboss-transaction-api_1.1_spec</artifactId>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.ejb</groupId>
-			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<!--  -->
-		<dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.0_spec</artifactId>
-            <scope>provided</scope>
-        </dependency> 
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
 		<dependency>
 			<groupId>log4j</groupId>
        		<artifactId>log4j</artifactId>
        		<version>1.2.16</version>
-      		 <scope>provided</scope>
+      		<scope>provided</scope>
 		</dependency>
 		<dependency>
          <groupId>org.infinispan</groupId>
@@ -330,6 +314,20 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
+		<plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.jbpm.demo.common.mail.crypto.Main</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Jar-Version>${project.version}</Jar-Version>
+                            <Jar-Name>${project.artifactId}</Jar-Name>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
 			<plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.compiler.plugin}</version>
@@ -338,13 +336,6 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.war.plugin}</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
 			<plugin>
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
