@@ -6,15 +6,20 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+import org.apache.commons.codec.binary.Base64;
+
+
 
 public class EncryptionUtil {
 	
 	private static final char[] PASSWORD = "enfldsgbnlsngdlksdsgm".toCharArray();
 	private static final byte[] SALT = { (byte) 0xde, (byte) 0x33, (byte) 0x10, (byte) 0x12, (byte) 0xde, (byte) 0x33, (byte) 0x10, (byte) 0x12, };
 	
-	public static String doEncryption(String sequence) throws Exception {
+//	public static String base64Encryption(String sequence) {
+//		
+//	}
+	
+	public static String doEncryption(String sequence) throws Exception  {
 		return encrypt(sequence);
 	}
 	
@@ -31,7 +36,7 @@ public class EncryptionUtil {
 	}
 
 	private static String base64Encode(byte[] bytes) {
-		return new BASE64Encoder().encode(bytes);
+		return new String(Base64.encodeBase64(bytes));
 	}
 	
 	private static String decrypt(String property) throws Exception {
@@ -43,7 +48,7 @@ public class EncryptionUtil {
     }
 
     private static byte[] base64Decode(String property) throws Exception {
-        return new BASE64Decoder().decodeBuffer(property);
+        return Base64.decodeBase64(property);
     }
 
 

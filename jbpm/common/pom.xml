@@ -4,7 +4,7 @@
    <groupId>org.jbpm.demo</groupId>
    <artifactId>jbpm-demo-common</artifactId>
    <version>1.0</version>
-   <packaging>war</packaging>
+   <packaging>jar</packaging>
   
   <name>jBPM Demo common</name>
   <description>jBPM Demo common</description>
@@ -31,14 +31,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <dependency>
-                <groupId>org.jboss.bom</groupId>
-                <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
-                <version>${version.org.jboss.bom}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -50,265 +42,21 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
 			<groupId>log4j</groupId>
        		<artifactId>log4j</artifactId>
        		<version>1.2.16</version>
       		<scope>provided</scope>
 		</dependency>
-		<dependency>
-         <groupId>org.infinispan</groupId>
-         <artifactId>infinispan-core</artifactId>
-         <version>${infinispan.version}</version>
-      </dependency>
-		<!-- jBPM Drools jars start -->
-        <dependency>
+      <dependency>
 	        <groupId>org.drools</groupId>
-	        <artifactId>drools-persistence-jpa</artifactId>
+	        <artifactId>drools-core</artifactId>
 	        <version>${drools.version}</version>
-	        <exclusions>
-	        	<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>stringtemplate</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</exclusion>
-	        </exclusions>
 		</dependency>
-		 <dependency>
-	        <groupId>org.jbpm</groupId>
-	        <artifactId>jbpm-human-task</artifactId>
-	        <version>${jbpm.version}</version>
-	        <exclusions>
-	        	<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.mail</groupId>
-					<artifactId>mail</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hornetq</groupId>
-					<artifactId>hornetq-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.mina</groupId>
-					<artifactId>mina-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>rome</groupId>
-					<artifactId>rome</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>stringtemplate</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-io</groupId>
-					<artifactId>commons-io</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-compress</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-exec</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-collections</groupId>
-					<artifactId>commons-collections</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>commons-net</groupId>
-					<artifactId>commons-net</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>jdom</groupId>
-					<artifactId>jdom</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.activation</groupId>
-					<artifactId>activation</artifactId>
-				</exclusion>
-	        </exclusions>
-		</dependency>
-		<dependency>
-	        <groupId>org.jbpm</groupId>
-	        <artifactId>jbpm-persistence-jpa</artifactId>
-	        <version>${jbpm.version}</version>
-	        <exclusions>
-	        	<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate</groupId>
-					<artifactId>hibernate-core</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>stringtemplate</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</exclusion>
-	        </exclusions>
-		</dependency>
-		<dependency>
-	        <groupId>org.jbpm</groupId>
-	        <artifactId>jbpm-bam</artifactId>
-	        <version>${jbpm.version}</version>
-	        <exclusions>
-	        	<exclusion>
-					<groupId>org.hibernate</groupId>
-					<artifactId>hibernate-core</artifactId>
-				</exclusion>
-	        	<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>stringtemplate</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>dom4j</groupId>
-					<artifactId>dom4j</artifactId>
-				</exclusion>
-	        </exclusions>
-		</dependency> 
-		<dependency>
-	        <groupId>org.jbpm</groupId>
-	        <artifactId>jbpm-bpmn2</artifactId>
-	        <version>${jbpm.version}</version>
-	        <exclusions>
-	        	<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.hibernate.javax.persistence</groupId>
-					<artifactId>hibernate-jpa-2.0-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>stringtemplate</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.antlr</groupId>
-					<artifactId>antlr</artifactId>
-				</exclusion>
-	        </exclusions>
-		</dependency>
-		<!-- jBPM Drools jars end -->
     </dependencies>
   
 	<build>

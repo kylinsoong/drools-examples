@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -19,7 +20,7 @@ public class MailSendTest {
 	 */
 	public static void main(String[] args) {
 		
-		final String username = "kylinsoong.1214@gmail.com";
+		final String username = getUser();
 		final String password = getPassword();
  
 		Properties props = new Properties();
@@ -34,7 +35,7 @@ public class MailSendTest {
 						return new PasswordAuthentication(username, password);
 					}
 				});
-		
+
 		try {
 			 
 			Message message = new MimeMessage(session);
@@ -53,6 +54,14 @@ public class MailSendTest {
 			throw new RuntimeException(e);
 		}
 		
+	}
+	
+	private static String getUser() {
+		try {
+			return EncryptionUtil.doDecryption("mGj4ruUOLlyL876CfOL6GwEjb5JLJV5bFMc5PwHiFv0=");
+		} catch (Exception e) {
+			throw new RuntimeException("", e);
+		}
 	}
 
 	private static String getPassword() {
