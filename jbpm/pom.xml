@@ -18,6 +18,7 @@
     </licenses>
     
     <modules>
+	<module>test</module>
 	<module>common</module>
         <module>quickstarts</module>
         <module>approval</module>
