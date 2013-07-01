@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_numberListItem" structureRef="java.util.List" />
+  <itemDefinition id="_errorListItem" structureRef="java.util.List" />
+  <itemDefinition id="_isEvenNumberItem" structureRef="Boolean" />
+  <itemDefinition id="_oddNumberItem" structureRef="Integer" />
+
+  <itemDefinition id="_2_multiInstanceItemType" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.multiplenodeinstancewithescalationprocess" name="multipleNodeInstanceWithEscalationProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- process variables -->
+    <property id="numberList" itemSubjectRef="_numberListItem"/>
+    <property id="errorList" itemSubjectRef="_errorListItem"/>
+    <property id="isEvenNumber" itemSubjectRef="_isEvenNumberItem"/>
+    <property id="oddNumber" itemSubjectRef="_oddNumberItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_1" name="Start" />
+    <subProcess id="_2" name="Validate Even Number"  >
+      <ioSpecification>
+        <dataInput id="_2_input" name="MultiInstanceInput" />
+        <inputSet/>
+        <outputSet/>
+      </ioSpecification>
+      <dataInputAssociation>
+        <sourceRef>numberList</sourceRef>
+        <targetRef>_2_input</targetRef>
+      </dataInputAssociation>
+      <multiInstanceLoopCharacteristics>
+        <loopDataInputRef>_2_input</loopDataInputRef>
+        <inputDataItem id="n" itemSubjectRef="_2_multiInstanceItemType"/>
+      </multiInstanceLoopCharacteristics>
+    <!-- nodes -->
+    <scriptTask id="_2-2-1" name="Validate" >
+      <script>kcontext.setVariable("isEvenNumber",((n%2)==0));
+System.out.println("Is "+n+" Even? "+kcontext.getVariable("isEvenNumber"));</script>
+    </scriptTask>
+    <startEvent id="_2-2-2" name="Start" />
+    <endEvent id="_2-2-3" name="End" />
+    <exclusiveGateway id="_2-2-4" name="Gateway" gatewayDirection="Diverging" />
+    <scriptTask id="_2-2-5" name="Escalate Error" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Escalating");
+kcontext.getProcessInstance().signalEvent("Message-oddNumberFound",n);</script>
+    </scriptTask>
+    <endEvent id="_2-2-6" name="End" />
+    <intermediateCatchEvent id="_2-2-7" name="Message" >
+      <signalEventDefinition signalRef="oddNumberFound"/>
+    </intermediateCatchEvent>
+    <scriptTask id="_2-2-8" name="Script" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("adasdasdsad");</script>
+    </scriptTask>
+    <endEvent id="_2-2-9" name="End" />
+    <!-- connections -->
+    <sequenceFlow id="_2-2-2-_2-2-1" sourceRef="_2-2-2" targetRef="_2-2-1" />
+    <sequenceFlow id="_2-2-4-_2-2-3" sourceRef="_2-2-4" targetRef="_2-2-3" name="even" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return isEvenNumber == true;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_2-2-1-_2-2-4" sourceRef="_2-2-1" targetRef="_2-2-4" />
+    <sequenceFlow id="_2-2-4-_2-2-5" sourceRef="_2-2-4" targetRef="_2-2-5" name="odd" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return isEvenNumber == false;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_2-2-5-_2-2-6" sourceRef="_2-2-5" targetRef="_2-2-6" />
+    <sequenceFlow id="_2-2-7-_2-2-8" sourceRef="_2-2-7" targetRef="_2-2-8" />
+    <sequenceFlow id="_2-2-8-_2-2-9" sourceRef="_2-2-8" targetRef="_2-2-9" />
+    </subProcess>
+    <endEvent id="_3" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_4" name="Add Odd Number To Error List" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Odd number found= "+oddNumber);
+errorList.add(oddNumber);</script>
+    </scriptTask>
+    <intermediateCatchEvent id="_5" name="Message" >
+      <dataOutput id="_5_Output" name="event" />
+      <dataOutputAssociation>
+      <sourceRef>_5_Output</sourceRef>
+      <targetRef>oddNumber</targetRef>
+      </dataOutputAssociation>
+      <outputSet>
+        <dataOutputRefs>_5_Output</dataOutputRefs>
+      </outputSet>
+      <signalEventDefinition signalRef="oddNumberFound"/>
+    </intermediateCatchEvent>
+    <endEvent id="_6" name="End" />
+
+    <!-- connections -->
+    <sequenceFlow id="_1-_2" sourceRef="_1" targetRef="_2" />
+    <sequenceFlow id="_2-_3" sourceRef="_2" targetRef="_3" />
+    <sequenceFlow id="_5-_4" sourceRef="_5" targetRef="_4" />
+    <sequenceFlow id="_4-_6" sourceRef="_4" targetRef="_6" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.multiplenodeinstancewithescalationprocess" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="16" y="138" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2" >
+        <dc:Bounds x="96" y="16" width="436" height="326" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-1" >
+        <dc:Bounds x="171" y="68" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-2" >
+        <dc:Bounds x="98" y="71" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-3" >
+        <dc:Bounds x="409" y="57" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-4" >
+        <dc:Bounds x="295" y="115" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-5" >
+        <dc:Bounds x="201" y="232" width="175" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-6" >
+        <dc:Bounds x="424" y="246" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-7" >
+        <dc:Bounds x="147" y="289" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-8" >
+        <dc:Bounds x="278" y="306" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2-2-9" >
+        <dc:Bounds x="422" y="321" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="564" y="138" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="204" y="358" width="271" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="77" y="351" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_6" >
+        <dc:Bounds x="540" y="361" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-2-_2-2-1" >
+        <di:waypoint x="26" y="79" />
+        <di:waypoint x="115" y="76" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-4-_2-2-3" >
+        <di:waypoint x="223" y="123" />
+        <di:waypoint x="337" y="65" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-1-_2-2-4" >
+        <di:waypoint x="115" y="76" />
+        <di:waypoint x="223" y="123" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-4-_2-2-5" >
+        <di:waypoint x="223" y="123" />
+        <di:waypoint x="192" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-5-_2-2-6" >
+        <di:waypoint x="192" y="240" />
+        <di:waypoint x="352" y="254" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-7-_2-2-8" >
+        <di:waypoint x="75" y="297" />
+        <di:waypoint x="222" y="314" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-2-8-_2-2-9" >
+        <di:waypoint x="222" y="314" />
+        <di:waypoint x="350" y="329" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_2" >
+        <di:waypoint x="40" y="162" />
+        <di:waypoint x="314" y="179" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_3" >
+        <di:waypoint x="314" y="179" />
+        <di:waypoint x="588" y="162" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_5-_4" >
+        <di:waypoint x="101" y="375" />
+        <di:waypoint x="339" y="382" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4-_6" >
+        <di:waypoint x="339" y="382" />
+        <di:waypoint x="564" y="385" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

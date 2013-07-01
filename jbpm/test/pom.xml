@@ -11,6 +11,9 @@
     
     <modules>
 	<module>lifecycle</module>
+	<module>process</module>
+	<module>subprocess</module>
+	<module>multiple</module>
     </modules>
 
 </project>

@@ -1,0 +1,30 @@
+package org.jbpm.test
+
+#list any import classes here.
+import org.jbpm.test.subprocess.model.Person
+import org.jbpm.test.subprocess.model.Car
+import org.drools.runtime.process.WorkflowProcessInstance;
+
+rule "Select Person Tagger"	
+	ruleflow-group "select_subprocess"
+	when
+		$process: WorkflowProcessInstance()
+		$p:Person()
+	then 
+		System.out.println("Select Person Tagger");
+		((WorkflowProcessInstance)kcontext.getKnowledgeRuntime().getProcessInstance($process.getId())).setVariable("selectedSubProcessId","org.jbpm.test.persontaggerprocess");
+		retract($p);
+		retract($process);
+end
+
+rule "Select Car Tagger"
+	ruleflow-group "select_subprocess"	
+	when
+		$process: WorkflowProcessInstance()
+		$c:Car()
+	then 
+		System.out.println("Select Car Tagger");
+		((WorkflowProcessInstance)kcontext.getKnowledgeRuntime().getProcessInstance($process.getId())).setVariable("selectedSubProcessId","org.jbpm.test.cartaggerprocess");
+		retract($c);
+        retract($process);
+end
