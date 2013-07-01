@@ -4,6 +4,8 @@
 
 [jBPM Approval Demo](https://github.com/kylinsoong/jBPM-Drools-Example/blob/master/docs/jBPM-approval.asciidoc)
 
+[jBPM persistence](https://github.com/kylinsoong/jBPM-Drools-Example/blob/master/docs/jBPM-persist.asciidoc)
+
 
 ### Drools ###
 

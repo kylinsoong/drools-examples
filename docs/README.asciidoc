@@ -1,6 +1,18 @@
-Index
------
+jBPM
+----
 
-link:jBPM-5.4-installation.asciidoc[jBPM 5.4 installation & Configuring jBPM 5.4 to use Oracle Database 11g]
+link:jBPM-5.4-installation.asciidoc[Configuring jBPM 5.x to use Oracle Database 11g]
 
-link:jBPM-5.4-quickstarts.asciidoc[jBPM 5.4 Quick Starts]
+link:jbpm-quickstarts.asciidoc[jBPM quickstarts]
+
+link:jBPM-persist.asciidoc[How jBPM 5.x persistence use `named-query`]
+
+link:jbpm-humanTask.asciidoc[jBPM humanTask Basic]
+
+link:jBPM-approval.asciidoc[jBPM Approval Demo]
+
+
+Drools
+------
+
+link:drools-ksession.asciidoc[3 ways to load ksession]
