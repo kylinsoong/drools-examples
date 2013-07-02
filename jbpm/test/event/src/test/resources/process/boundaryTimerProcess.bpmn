@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_emailServiceItem" structureRef="java.util.List" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.BoundaryTimerEvent" name="boundaryTimerProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- process variables -->
+    <property id="emailService" itemSubjectRef="_emailServiceItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_88AD8D56-832D-4691-985B-6082B13517C0" name="" />
+    <endEvent id="_5B973F9B-6403-426D-850E-C1066C0C989C" name="" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" name="Notify Superior" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Your Supperior was notified!");
+emailService.add("Dear Boss, ...");</script>
+    </scriptTask>
+    <endEvent id="_C1A5EC64-023F-4C03-A3BE-7E8EE82D9E7B" name="" />
+    <subProcess id="_F9E5005F-8113-4840-B758-A532D88839E1" name=""  >
+    <!-- nodes -->
+    <userTask id="_7ADE753C-1927-44E9-B783-4E5030DDF5F6" name="Urgent Task" >
+      <ioSpecification>
+        <dataInput id="_7ADE753C-1927-44E9-B783-4E5030DDF5F6_TaskNameInput" name="TaskName" />
+        <dataInput id="_7ADE753C-1927-44E9-B783-4E5030DDF5F6_ContentInput" name="Content" />
+        <inputSet>
+          <dataInputRefs>_7ADE753C-1927-44E9-B783-4E5030DDF5F6_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_7ADE753C-1927-44E9-B783-4E5030DDF5F6_ContentInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_7ADE753C-1927-44E9-B783-4E5030DDF5F6_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Urgent Task</from>
+          <to xsi:type="tFormalExpression">_7ADE753C-1927-44E9-B783-4E5030DDF5F6_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_7ADE753C-1927-44E9-B783-4E5030DDF5F6_ContentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_7ADE753C-1927-44E9-B783-4E5030DDF5F6_ContentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>user</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <startEvent id="_44D319F2-C48E-4A59-841A-6A169B3AFCB0" name="" />
+    <endEvent id="_A6E37A61-F6E9-4F6C-AD76-89FDA3C50670" name="" />
+    <!-- connections -->
+    <sequenceFlow id="_44D319F2-C48E-4A59-841A-6A169B3AFCB0-_7ADE753C-1927-44E9-B783-4E5030DDF5F6" sourceRef="_44D319F2-C48E-4A59-841A-6A169B3AFCB0" targetRef="_7ADE753C-1927-44E9-B783-4E5030DDF5F6" />
+    <sequenceFlow id="_7ADE753C-1927-44E9-B783-4E5030DDF5F6-_A6E37A61-F6E9-4F6C-AD76-89FDA3C50670" sourceRef="_7ADE753C-1927-44E9-B783-4E5030DDF5F6" targetRef="_A6E37A61-F6E9-4F6C-AD76-89FDA3C50670" />
+    </subProcess>
+    <boundaryEvent id="_545A017A-3A19-4C13-954E-3D9751896647" name="" attachedToRef="_F9E5005F-8113-4840-B758-A532D88839E1" cancelActivity="false" >
+      <timerEventDefinition>
+        <timeDuration xsi:type="tFormalExpression">30000ms</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_F9E5005F-8113-4840-B758-A532D88839E1-_5B973F9B-6403-426D-850E-C1066C0C989C" sourceRef="_F9E5005F-8113-4840-B758-A532D88839E1" targetRef="_5B973F9B-6403-426D-850E-C1066C0C989C" />
+    <sequenceFlow id="_545A017A-3A19-4C13-954E-3D9751896647-_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" sourceRef="_545A017A-3A19-4C13-954E-3D9751896647" targetRef="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" />
+    <sequenceFlow id="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3-_C1A5EC64-023F-4C03-A3BE-7E8EE82D9E7B" sourceRef="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" targetRef="_C1A5EC64-023F-4C03-A3BE-7E8EE82D9E7B" />
+    <sequenceFlow id="_88AD8D56-832D-4691-985B-6082B13517C0-_F9E5005F-8113-4840-B758-A532D88839E1" sourceRef="_88AD8D56-832D-4691-985B-6082B13517C0" targetRef="_F9E5005F-8113-4840-B758-A532D88839E1" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.BoundaryTimerEvent" >
+      <bpmndi:BPMNShape bpmnElement="_88AD8D56-832D-4691-985B-6082B13517C0" >
+        <dc:Bounds x="67" y="108" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5B973F9B-6403-426D-850E-C1066C0C989C" >
+        <dc:Bounds x="622" y="100" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" >
+        <dc:Bounds x="271" y="240" width="154" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_C1A5EC64-023F-4C03-A3BE-7E8EE82D9E7B" >
+        <dc:Bounds x="469" y="263" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_F9E5005F-8113-4840-B758-A532D88839E1" >
+        <dc:Bounds x="205" y="39" width="342" height="173" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7ADE753C-1927-44E9-B783-4E5030DDF5F6" >
+        <dc:Bounds x="93" y="87" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_44D319F2-C48E-4A59-841A-6A169B3AFCB0" >
+        <dc:Bounds x="-7" y="107" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_A6E37A61-F6E9-4F6C-AD76-89FDA3C50670" >
+        <dc:Bounds x="239" y="102" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_545A017A-3A19-4C13-954E-3D9751896647" >
+        <dc:Bounds x="166" y="259" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_44D319F2-C48E-4A59-841A-6A169B3AFCB0-_7ADE753C-1927-44E9-B783-4E5030DDF5F6" >
+        <di:waypoint x="-188" y="92" />
+        <di:waypoint x="-62" y="88" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_7ADE753C-1927-44E9-B783-4E5030DDF5F6-_A6E37A61-F6E9-4F6C-AD76-89FDA3C50670" >
+        <di:waypoint x="-62" y="88" />
+        <di:waypoint x="58" y="87" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_F9E5005F-8113-4840-B758-A532D88839E1-_5B973F9B-6403-426D-850E-C1066C0C989C" >
+        <di:waypoint x="376" y="125" />
+        <di:waypoint x="646" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_545A017A-3A19-4C13-954E-3D9751896647-_CA8439FD-FA09-4666-9A10-427AC5E8A2E3" >
+        <di:waypoint x="190" y="283" />
+        <di:waypoint x="256" y="280" />
+        <di:waypoint x="348" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_CA8439FD-FA09-4666-9A10-427AC5E8A2E3-_C1A5EC64-023F-4C03-A3BE-7E8EE82D9E7B" >
+        <di:waypoint x="348" y="280" />
+        <di:waypoint x="493" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_88AD8D56-832D-4691-985B-6082B13517C0-_F9E5005F-8113-4840-B758-A532D88839E1" >
+        <di:waypoint x="91" y="132" />
+        <di:waypoint x="376" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

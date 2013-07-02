@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_billItem" structureRef="Float" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.timereventprocess" name="TimerEventProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- process variables -->
+    <property id="bill" itemSubjectRef="_billItem"/>
+
+    <!-- nodes -->
+    <parallelGateway id="_17" name="Gateway" gatewayDirection="Converging" />
+    <parallelGateway id="_16" name="Gateway" gatewayDirection="Diverging" />
+    <startEvent id="_1" name="Start" />
+    <intermediateCatchEvent id="_18" name="Timer" >
+      <timerEventDefinition>
+        <timeDuration xsi:type="tFormalExpression">1000ms</timeDuration>
+      </timerEventDefinition>
+    </intermediateCatchEvent>
+    <endEvent id="_8" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_11" name="Start Service" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Starting Service. Your bill will be incremented every 10 seconds");</script>
+    </scriptTask>
+    <userTask id="_12" name="Stop Service Usage" >
+      <ioSpecification>
+        <dataInput id="_12_CommentInput" name="Comment" />
+        <dataInput id="_12_SkippableInput" name="Skippable" />
+        <dataInput id="_12_ContentInput" name="Content" />
+        <dataInput id="_12_TaskNameInput" name="TaskName" />
+        <dataInput id="_12_PriorityInput" name="Priority" />
+        <inputSet>
+          <dataInputRefs>_12_CommentInput</dataInputRefs>
+          <dataInputRefs>_12_SkippableInput</dataInputRefs>
+          <dataInputRefs>_12_ContentInput</dataInputRefs>
+          <dataInputRefs>_12_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_12_PriorityInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_12_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Stop Service Usage</from>
+          <to xsi:type="tFormalExpression">_12_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_12_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_12_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_12_ContentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_12_ContentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_12_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Stop Service Usage</from>
+          <to xsi:type="tFormalExpression">_12_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_12_PriorityInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_12_PriorityInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>user</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <scriptTask id="_14" name="Increment Invoice" scriptFormat="http://www.java.com/java" >
+      <script>kcontext.setVariable("bill",bill+0.10);
+
+System.out.println("Your bill was incremented. Total ammount: $"+kcontext.getVariable("bill"));</script>
+    </scriptTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_12-_17" sourceRef="_12" targetRef="_17" />
+    <sequenceFlow id="_14-_17" sourceRef="_14" targetRef="_17" />
+    <sequenceFlow id="_11-_16" sourceRef="_11" targetRef="_16" />
+    <sequenceFlow id="_16-_18" sourceRef="_16" targetRef="_18" />
+    <sequenceFlow id="_17-_8" sourceRef="_17" targetRef="_8" />
+    <sequenceFlow id="_1-_11" sourceRef="_1" targetRef="_11" />
+    <sequenceFlow id="_16-_12" sourceRef="_16" targetRef="_12" />
+    <sequenceFlow id="_18-_14" sourceRef="_18" targetRef="_14" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.timereventprocess" >
+      <bpmndi:BPMNShape bpmnElement="_17" >
+        <dc:Bounds x="259" y="417" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_16" >
+        <dc:Bounds x="164" y="176" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="164" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_18" >
+        <dc:Bounds x="70" y="257" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" >
+        <dc:Bounds x="259" y="498" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11" >
+        <dc:Bounds x="117" y="96" width="142" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_12" >
+        <dc:Bounds x="205" y="257" width="157" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_14" >
+        <dc:Bounds x="115" y="337" width="142" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_12-_17" >
+        <di:waypoint x="283" y="281" />
+        <di:waypoint x="283" y="441" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_14-_17" >
+        <di:waypoint x="186" y="361" />
+        <di:waypoint x="283" y="441" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_11-_16" >
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="188" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_16-_18" >
+        <di:waypoint x="188" y="200" />
+        <di:waypoint x="94" y="281" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_17-_8" >
+        <di:waypoint x="283" y="441" />
+        <di:waypoint x="283" y="522" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_11" >
+        <di:waypoint x="188" y="40" />
+        <di:waypoint x="188" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_16-_12" >
+        <di:waypoint x="188" y="200" />
+        <di:waypoint x="283" y="281" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_18-_14" >
+        <di:waypoint x="94" y="281" />
+        <di:waypoint x="186" y="361" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
