@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.jbpm.test.lifecycle;
 
 import java.io.File;
@@ -27,13 +23,10 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-/**
- *
- * @author esteban
- */
 public class DelegationProcessTest extends BaseTest implements Serializable {
 
-    private KnowledgeRuntimeLogger fileLogger;
+	private static final long serialVersionUID = 3258872100556762544L;
+	private KnowledgeRuntimeLogger fileLogger;
     private StatefulKnowledgeSession ksession;
     private SyncWSHumanTaskHandler humanTaskHandler;
     
@@ -119,7 +112,7 @@ public class DelegationProcessTest extends BaseTest implements Serializable {
 
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.sampleprocess");
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.sampleprocess");
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         
@@ -136,7 +129,7 @@ public class DelegationProcessTest extends BaseTest implements Serializable {
         Assert.assertNotNull(results);
         Assert.assertTrue(results.isEmpty());
         
-        //tony claims the task
+        //krisv claims the task
         localTaskService.claim(krisvsTask.getId(), "krisv");
 
         //Some days later, krisv goes on vacation. All its tasks should be

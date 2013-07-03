@@ -69,7 +69,7 @@ public class UserGroupsProcessTest extends BaseTest implements Serializable {
         groupIds.add("GroupA");
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.sampleprocess");
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.sampleprocess");
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         

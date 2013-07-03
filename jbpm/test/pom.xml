@@ -15,6 +15,7 @@
 	<module>subprocess</module>
 	<module>multiple</module>
 	<module>event</module>
+	<module>swimlane</module>
     </modules>
 
 </project>

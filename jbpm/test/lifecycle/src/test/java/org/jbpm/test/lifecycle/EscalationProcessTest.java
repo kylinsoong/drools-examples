@@ -96,7 +96,7 @@ public class EscalationProcessTest extends BaseTest implements Serializable {
         parameters.put("Task_A_Deadline_Reassignment_Potential_Owners", "Steve Rogers,Bruce Wayne"); 
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.sampleprocess",parameters);
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.escalationprocess",parameters);
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         
@@ -120,7 +120,7 @@ public class EscalationProcessTest extends BaseTest implements Serializable {
        
 		println("Sleeping");
  
-        Thread.sleep(10000);
+        Thread.sleep(3000);
 
 		println("Coming back");
         

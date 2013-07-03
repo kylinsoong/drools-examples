@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.jbpm.test.lifecycle;
 
 import java.io.ByteArrayOutputStream;
@@ -34,13 +30,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- *
- * @author esteban
- */
 public class ColorsSelectionProcessTest extends BaseTest implements Serializable {
 
-    private KnowledgeRuntimeLogger fileLogger;
+	private static final long serialVersionUID = 8663607434072888847L;
+	private KnowledgeRuntimeLogger fileLogger;
     private StatefulKnowledgeSession ksession;
     private SyncWSHumanTaskHandler humanTaskHandler;
     
@@ -80,7 +73,7 @@ public class ColorsSelectionProcessTest extends BaseTest implements Serializable
         inputParameters.put("createdColors", createdColors);
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.colorselectionprocess", inputParameters);
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.colorselectionprocess", inputParameters);
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         
@@ -114,7 +107,7 @@ public class ColorsSelectionProcessTest extends BaseTest implements Serializable
         inputParameters.put("createdColors", createdColors);
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.colorselectionprocess", inputParameters);
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.colorselectionprocess", inputParameters);
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         
@@ -149,7 +142,7 @@ public class ColorsSelectionProcessTest extends BaseTest implements Serializable
         inputParameters.put("createdColors", createdColors);
         
         //Start the process using its id
-        ProcessInstance process = ksession.startProcess("org.plugtree.training.jbpm.colorselectionprocess", inputParameters);
+        ProcessInstance process = ksession.startProcess("org.jbpm.test.colorselectionprocess", inputParameters);
         
         Assert.assertEquals(ProcessInstance.STATE_ACTIVE, process.getState());
         

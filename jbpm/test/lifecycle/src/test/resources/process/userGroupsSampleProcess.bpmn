@@ -12,7 +12,7 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
-  <process processType="Private" isExecutable="true" id="org.jbpm.test.userGroupsSampleProcess" name="UserGroupsSampleProcess" tns:packageName="org.jbpm.test" >
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.sampleprocess" name="UserGroupsSampleProcess" tns:packageName="org.jbpm.test" >
 
     <!-- nodes -->
     <startEvent id="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9" name="Start" />
@@ -23,15 +23,15 @@
       <ioSpecification>
         <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput" name="Comment" />
         <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput" name="Skippable" />
-        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput" name="TaskName" />
         <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput" name="Content" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput" name="TaskName" />
         <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput" name="GroupId" />
         <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput" name="Priority" />
         <inputSet>
           <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput</dataInputRefs>
           <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput</dataInputRefs>
-          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</dataInputRefs>
           <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</dataInputRefs>
           <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput</dataInputRefs>
           <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput</dataInputRefs>
         </inputSet>
@@ -53,17 +53,17 @@
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
-        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</targetRef>
-        <assignment>
-          <from xsi:type="tFormalExpression">Task A</from>
-          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</to>
-        </assignment>
-      </dataInputAssociation>
-      <dataInputAssociation>
         <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</targetRef>
         <assignment>
           <from xsi:type="tFormalExpression">A</from>
           <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task A</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
@@ -89,7 +89,7 @@
   </process>
 
   <bpmndi:BPMNDiagram>
-    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.userGroupsSampleProcess" >
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.sampleprocess" >
       <bpmndi:BPMNShape bpmnElement="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9" >
         <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
