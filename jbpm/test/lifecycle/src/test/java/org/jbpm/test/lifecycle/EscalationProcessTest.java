@@ -26,6 +26,7 @@ import org.jbpm.task.Task;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.DefaultEscalatedDeadlineHandler;
 import org.jbpm.task.service.EscalatedDeadlineHandler;
+import org.jbpm.task.service.local.LocalTaskService;
 import org.jbpm.test.lifecycle.workitem.SyncDeadlineEnabledWSHumanTaskHandler;
 import org.junit.After;
 import org.junit.Assert;
@@ -132,6 +133,10 @@ public class EscalationProcessTest extends BaseTest implements Serializable {
         Assert.assertEquals( "admin@gmail.com", ((InternetAddress)msg.getRecipients( RecipientType.TO )[0]).getAddress() );
         Assert.assertEquals( "steve.rogers@gmail.com", ((InternetAddress)msg.getRecipients( RecipientType.TO )[1]).getAddress() );
         Assert.assertEquals( "bruce.wayne@gmail.com", ((InternetAddress)msg.getRecipients( RecipientType.TO )[2]).getAddress() );
+        
+        localTaskService.dispose();
+        
+        localTaskService =  new LocalTaskService(taskService);
         
         //The task was Reassigned
         results = localTaskService.getTasksAssignedAsPotentialOwner("Steve Rogers", "en-UK");

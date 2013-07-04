@@ -16,6 +16,8 @@
 	<module>multiple</module>
 	<module>event</module>
 	<module>swimlane</module>
+	<module>workitem</module>
+	<module>humantask</module>
     </modules>
 
 </project>
