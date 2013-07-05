@@ -95,10 +95,18 @@
     <endEvent id="_3" name="End" >
         <terminateEventDefinition />
     </endEvent>
+    <scriptTask id="_4" name="Finish" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Finish");</script>
+    </scriptTask>
+    <scriptTask id="_5" name="Start" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Start");</script>
+    </scriptTask>
 
     <!-- connections -->
-    <sequenceFlow id="_1-_2" sourceRef="_1" targetRef="_2" />
-    <sequenceFlow id="_2-_3" sourceRef="_2" targetRef="_3" />
+    <sequenceFlow id="_5-_2" sourceRef="_5" targetRef="_2" />
+    <sequenceFlow id="_4-_3" sourceRef="_4" targetRef="_3" />
+    <sequenceFlow id="_2-_4" sourceRef="_2" targetRef="_4" />
+    <sequenceFlow id="_1-_5" sourceRef="_1" targetRef="_5" />
 
   </process>
 
@@ -108,18 +116,32 @@
         <dc:Bounds x="45" y="45" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_2" >
-        <dc:Bounds x="148" y="44" width="100" height="48" />
+        <dc:Bounds x="218" y="43" width="100" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="329" y="47" width="48" height="48" />
+        <dc:Bounds x="468" y="50" width="48" height="48" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="_1-_2" >
-        <di:waypoint x="69" y="69" />
-        <di:waypoint x="198" y="68" />
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="370" y="46" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="114" y="45" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_5-_2" >
+        <di:waypoint x="154" y="69" />
+        <di:waypoint x="268" y="67" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_2-_3" >
-        <di:waypoint x="198" y="68" />
-        <di:waypoint x="353" y="71" />
+      <bpmndi:BPMNEdge bpmnElement="_4-_3" >
+        <di:waypoint x="410" y="70" />
+        <di:waypoint x="492" y="74" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_4" >
+        <di:waypoint x="268" y="67" />
+        <di:waypoint x="410" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_5" >
+        <di:waypoint x="69" y="69" />
+        <di:waypoint x="154" y="69" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

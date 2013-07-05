@@ -23,7 +23,6 @@
         <module>quickstarts</module>
         <module>approval</module>
 	<module>persist</module>
-	<module>humantask</module>
 	<module>shopping</module>
     </modules>
 
