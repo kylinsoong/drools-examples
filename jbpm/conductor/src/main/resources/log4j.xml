@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!--
+   For more configuration infromation and examples see the Apache Log4j website: http://logging.apache.org/log4j/
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <!-- A time/date based rolling appender -->
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="jbpm.log"/>
+        <param name="Append" value="false"/>
+
+        <!-- Rollover at midnight each day -->
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+
+        <!-- Rollover at the top of each hour
+           <param name="DatePattern" value="'.'yyyy-MM-dd-HH"/>
+        -->
+        <param name="Threshold" value="INFO"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- The default pattern: Date Priority [Category] Message\n -->
+            <param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n"/>
+
+            <!-- The full pattern: Date MS Priority [Category] (Thread:NDC) Message\n
+           <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+            -->
+        </layout>
+    </appender>
+
+    <!-- <appender name="PER_TEST" class="org.jboss.cache.util.log4j.PerTestFileAppender">
+        <param name="Threshold" value="TRACE"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+             The default pattern: Date Priority [Category] Message\n
+            <param name="ConversionPattern" value="%d %-5p [%c] (%t) %m%n"/>
+
+           <param name="ConversionPattern" value="%d %-5r %-5p [%c] (%t:%x) %m%n"/>
+        </layout>
+    </appender> -->
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Threshold" value="INFO"/>
+        <param name="Target" value="System.out"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <!-- The default pattern: Date Priority [Category] Message\n -->
+            <param name="ConversionPattern" value="%d %-5p [%c{1}] (%t) %m%n"/>
+        </layout>
+    </appender>
+
+
+    <!-- ================ -->
+    <!-- Limit categories -->
+    <!-- ================ -->
+
+ 
+
+    <!-- ======================= -->
+    <!-- Setup the Root category -->
+    <!-- ======================= -->
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="FILE"/>
+        <!--<appender-ref ref="CONSOLE"/>-->
+    </root>
+
+</log4j:configuration>

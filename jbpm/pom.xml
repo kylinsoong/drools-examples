@@ -24,6 +24,7 @@
         <module>approval</module>
 	<module>persist</module>
 	<module>shopping</module>
+	<module>conductor</module>
     </modules>
 
 </project>
