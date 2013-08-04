@@ -6,19 +6,34 @@ import bitronix.tm.resource.jdbc.PoolingDataSource;
 
 public class DataSourceHelper {
 	
-	private static PoolingDataSource pds = null;
+	public static DataSourceHelper instance = null;
 	
-	public static PoolingDataSource setupDataSource(Properties properties) {
+	private DataSourceHelper() {
+		
+	}
+	
+	public static DataSourceHelper newInstance(){
+		if(instance == null){
+			instance = new DataSourceHelper();
+		}
+		return instance;
+	}
+	
+	private PoolingDataSource pds = null;
+	
+	public PoolingDataSource setupDataSource(Properties properties) {
 		
 		if (null != pds) {
 			return pds;
 		}
 		
+		System.out.println("Set up PoolingDataSource via " + properties.getProperty("persistence.datasource.url"));
+		
         // create data source
 		PoolingDataSource pds = new PoolingDataSource();
         pds.setUniqueName(properties.getProperty("persistence.datasource.name", "jdbc/jbpm-ds"));
         pds.setClassName("bitronix.tm.resource.jdbc.lrc.LrcXADataSource");
-        pds.setMaxPoolSize(5);
+        pds.setMaxPoolSize(10);
         pds.setAllowLocalTransactions(true);
         pds.getDriverProperties().put("user", properties.getProperty("persistence.datasource.user", "sa"));
         pds.getDriverProperties().put("password", properties.getProperty("persistence.datasource.password", ""));

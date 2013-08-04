@@ -10,7 +10,6 @@ import javax.persistence.Persistence;
 
 import org.drools.KnowledgeBase;
 import org.drools.KnowledgeBaseFactory;
-import org.drools.SystemEventListenerFactory;
 import org.drools.base.MapGlobalResolver;
 import org.drools.builder.KnowledgeBuilder;
 import org.drools.builder.KnowledgeBuilderError;
@@ -32,17 +31,9 @@ import org.jbpm.marshalling.impl.ProcessMarshallerFactoryServiceImpl;
 import org.jbpm.process.builder.ProcessBuilderFactoryServiceImpl;
 import org.jbpm.process.instance.ProcessRuntimeFactoryServiceImpl;
 import org.jbpm.process.workitem.wsht.CommandBasedWSHumanTaskHandler;
-import org.jbpm.process.workitem.wsht.WSHumanTaskHandler;
-import org.jbpm.task.service.DefaultUserGroupCallbackImpl;
-import org.jbpm.task.service.TaskClient;
-import org.jbpm.task.service.TaskService;
-import org.jbpm.task.service.UserGroupCallbackManager;
-import org.jbpm.task.service.mina.MinaTaskClientConnector;
-import org.jbpm.task.service.mina.MinaTaskClientHandler;
-import org.jbpm.task.service.mina.MinaTaskServer;
+
 
 import bitronix.tm.TransactionManagerServices;
-import bitronix.tm.resource.jdbc.PoolingDataSource;
 
 public class JBPMWorkflowOrchestrator {
 	
@@ -57,29 +48,23 @@ public class JBPMWorkflowOrchestrator {
 	private Environment env;
 	
 	private KnowledgeSessionConfiguration config;
-	
-	private TaskService taskService;
-	
+		
 	private Properties properties ;
-	
-	public JBPMWorkflowOrchestrator() throws Exception {
-		this(DEFAULT_PROC_NAME);
+		
+	public JBPMWorkflowOrchestrator(Properties properties) throws Exception {
+		this(DEFAULT_PROC_NAME, properties);
 	}
 	
-	public JBPMWorkflowOrchestrator(String processName) throws Exception{
+	public JBPMWorkflowOrchestrator(String processName, Properties properties) throws Exception{
+		
 		if(null == processName) {
 			processName = DEFAULT_PROC_NAME;
 		}
 		kbase = readKnowledgeBase(processName) ;
-		properties = getProperties();
-		setupDataSource();
+		
+		this.properties = properties;		
 	}
 	
-	
-	public TaskService getTaskService() {
-		return taskService;
-	}
-
 	public ProcessEntity createProcess(ProcessEntity processEntity) throws Exception {
 		
 		createjBPMProcess(processEntity);
@@ -158,10 +143,13 @@ public class JBPMWorkflowOrchestrator {
 
 	private void registerHumanTaskHandlers(StatefulKnowledgeSession ksession) {
 		
-		Properties properties = getProperties();
-		String transport = properties.getProperty("taskservice.transport", "mina");
+		String transport = properties.getProperty("taskservice.transport", "hornetq");
         if ("mina".equals(transport)) {
 			ksession.getWorkItemManager().registerWorkItemHandler("Human Task", new CommandBasedWSHumanTaskHandler(ksession));
+        } else if("hornetq".equals(transport)){
+        	
+        } else if("jms".equals(transport)){
+        	
         } else {
         	throw new RuntimeException("Unknown task service transport " + transport);
         }
@@ -195,70 +183,16 @@ public class JBPMWorkflowOrchestrator {
 			env.set(EnvironmentName.TRANSACTION_MANAGER, TransactionManagerServices.getTransactionManager());
 			env.set(EnvironmentName.GLOBALS, new MapGlobalResolver());
 			
-			UserGroupCallbackManager.getInstance().setCallback(new DefaultUserGroupCallbackImpl());
-			System.out.println("Task service registered usergroup callback ...");
 			
 			Properties props = new Properties();
 			props.put("drools.processInstanceManagerFactory", "org.jbpm.persistence.processinstance.JPAProcessInstanceManagerFactory");
 			props.put("drools.processSignalManagerFactory", "org.jbpm.persistence.processinstance.JPASignalManagerFactory");
 			config = KnowledgeBaseFactory.newKnowledgeSessionConfiguration(props);
 			
-			taskService = startTaskService();
-			
-			String transport = properties.getProperty("taskservice.transport", "mina");
-			
-			if ("mina".equals(transport)){
-				System.out.println("Starting Mina task server.................");
-				MinaTaskServer taskServer = new MinaTaskServer(taskService);
-	            Thread thread = new Thread(taskServer);
-	            thread.start();
-			} else {
-	        	throw new RuntimeException("Unknown task service transport " + transport);
-	        }
-			
 			initialized = true;
 		}
 	}
 	
-	private TaskService startTaskService() {
-		
-		String dialect = properties.getProperty("persistence.persistenceunit.dialect", "org.hibernate.dialect.H2Dialect");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("hibernate.dialect", dialect);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(properties.getProperty("taskservice.datasource.name", "org.jbpm.task"), map);
-		
-        System.setProperty("jbpm.usergroup.callback", properties.getProperty("taskservice.usergroupcallback", "org.jbpm.task.service.DefaultUserGroupCallbackImpl"));
-		
-		TaskService taskService = new TaskService(emf, SystemEventListenerFactory.getSystemEventListener());
-		
-		return taskService;
-	}
-
-	private Properties getProperties() {
-	    Properties properties = new Properties();
-		try {
-			properties.load(JBPMWorkflowOrchestrator.class.getResourceAsStream("/jBPM.properties"));
-		} catch (Throwable t) {
-			// do nothing, use defaults
-		}
-		return properties;
-	}
-	
-	private PoolingDataSource setupDataSource() {
-		Properties properties = getProperties();
-        // create data source
-		PoolingDataSource pds = new PoolingDataSource();
-        pds.setUniqueName(properties.getProperty("persistence.datasource.name", "jdbc/jbpm-ds"));
-        pds.setClassName("bitronix.tm.resource.jdbc.lrc.LrcXADataSource");
-        pds.setMaxPoolSize(5);
-        pds.setAllowLocalTransactions(true);
-        pds.getDriverProperties().put("user", properties.getProperty("persistence.datasource.user", "sa"));
-        pds.getDriverProperties().put("password", properties.getProperty("persistence.datasource.password", ""));
-        pds.getDriverProperties().put("url", properties.getProperty("persistence.datasource.url", "jdbc:h2:tcp://localhost/~/jbpm-db"));
-        pds.getDriverProperties().put("driverClassName", properties.getProperty("persistence.datasource.driverClassName", "org.h2.Driver"));
-        pds.init();
-        return pds;
-	}
 
 	private KnowledgeBase readKnowledgeBase(String processName) throws Exception {
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();

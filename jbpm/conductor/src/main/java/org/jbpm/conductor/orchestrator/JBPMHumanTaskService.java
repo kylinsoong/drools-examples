@@ -87,15 +87,6 @@ public class JBPMHumanTaskService implements Serializable {
 	public JBPMHumanTaskService(Properties props) {
 		this.props = props;
 	}
-	
-	public JBPMHumanTaskService(Properties props, boolean initDataSource) {
-		
-		this(props);
-		
-		if(initDataSource) {
-			DataSourceHelper.setupDataSource(props);
-		} 	
-	}
 
 	private TaskServer server = null;
 	
