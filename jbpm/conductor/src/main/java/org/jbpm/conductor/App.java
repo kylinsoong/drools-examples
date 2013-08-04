@@ -2,8 +2,8 @@ package org.jbpm.conductor;
 
 import java.util.List;
 
-import org.jbpm.conductor.orch.JBPMWorkflowOrchestrator;
-import org.jbpm.conductor.orch.ProcessEntity;
+import org.jbpm.conductor.orchestrator.JBPMWorkflowOrchestrator;
+import org.jbpm.conductor.orchestrator.ProcessEntity;
 import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.local.LocalTaskService;

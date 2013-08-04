@@ -1,4 +1,4 @@
-package org.jbpm.conductor.orch;
+package org.jbpm.conductor.orchestrator;
 
 import java.util.HashMap;
 import java.util.Map;
