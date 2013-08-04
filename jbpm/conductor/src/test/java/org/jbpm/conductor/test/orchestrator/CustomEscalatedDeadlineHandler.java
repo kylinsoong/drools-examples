@@ -1,4 +1,4 @@
-package org.jbpm.conductor.test;
+package org.jbpm.conductor.test.orchestrator;
 
 import org.jbpm.task.Content;
 import org.jbpm.task.Deadline;

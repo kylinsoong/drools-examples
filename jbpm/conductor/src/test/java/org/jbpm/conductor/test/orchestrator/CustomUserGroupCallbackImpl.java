@@ -1,4 +1,4 @@
-package org.jbpm.conductor.test;
+package org.jbpm.conductor.test.orchestrator;
 
 import java.util.List;
 
