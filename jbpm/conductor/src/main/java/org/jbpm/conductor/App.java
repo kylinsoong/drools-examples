@@ -20,9 +20,7 @@ import org.jbpm.task.service.local.LocalTaskService;
 public class App {
 	
 	public static void main(String[] args) throws Exception {
-		
-		H2Helper.startH2Server();
-		
+				
 		Properties parameters = PropertyLoader.getProperties();
 		
 		DataSourceHelper.newInstance().setupDataSource(parameters);

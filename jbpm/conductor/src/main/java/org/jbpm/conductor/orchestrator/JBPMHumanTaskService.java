@@ -17,7 +17,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.drools.SystemEventListenerFactory;
-import org.jbpm.conductor.util.DataSourceHelper;
 import org.jbpm.task.Group;
 import org.jbpm.task.User;
 import org.jbpm.task.UserInfo;

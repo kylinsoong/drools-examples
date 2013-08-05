@@ -21,7 +21,7 @@ public class ReassignmentProcessTest extends BaseTest {
 
 	@Before
 	public void setup() throws Exception {
-		init();
+		super.setUp();
 		// load up the knowledge base
 		kbase = readKnowledgeBase("humantask/reassignmentSampleProcess.bpmn");
 	}

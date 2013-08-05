@@ -24,7 +24,7 @@ public class WorkItemBasicTest extends BaseTest {
 	
 	@Before
 	public void setup() throws Exception {
-		init();
+		super.setUp();
 		// load up the knowledge base
 		kbase = readKnowledgeBase("humantask/workitemSampleProcess.bpmn");
 	}
