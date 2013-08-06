@@ -7,109 +7,108 @@
   <packaging>jar</packaging>
   <version>1.0</version>
 
-<properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <drools.version>5.3.5.Final</drools.version>
-      <jbpm.version>5.2.5.Final</jbpm.version>
-      <compiler.plugin.version>2.3.1</compiler.plugin.version>
-      <maven.compiler.target>1.6</maven.compiler.target>
-       <maven.compiler.source>1.6</maven.compiler.source>
-   </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<drools.version>5.3.5.Final</drools.version>
+		<jbpm.version>5.2.5.Final</jbpm.version>
+		<compiler.plugin.version>2.3.1</compiler.plugin.version>
+		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.6</maven.compiler.source>
+	</properties>
 
-<dependencies>
-<!-- Drools dependency -->
-<dependency>
-<groupId>org.drools</groupId>
-<artifactId>drools-core</artifactId>
-<version>${drools.version}</version>
-</dependency>
-<dependency>
-<groupId>org.drools</groupId>
-<artifactId>drools-compiler</artifactId>
-<version>${drools.version}</version>
-</dependency>
-<dependency>
-<groupId>org.drools</groupId>
-<artifactId>drools-persistence-jpa</artifactId>
-<version>${drools.version}</version>
-</dependency>
+	<dependencies>
+		<!-- Drools dependency -->
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-compiler</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-persistence-jpa</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
 
 <!-- Guvnor dependency -->
 
      
         <!-- jBPM dependency -->
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-flow</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-flow-builder</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-persistence-jpa</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-bam</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-bpmn2</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-bpmn2-emfextmodel</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-workitems</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-human-task</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jbpm</groupId>
-<artifactId>jbpm-test</artifactId>
-<version>${jbpm.version}</version>
-</dependency>
-<dependency>
-<groupId>org.jboss.netty</groupId>
-<artifactId>netty</artifactId>
-<version>3.2.0.Final</version>
-<scope>provided</scope>
-</dependency>
-<dependency>
-            <groupId>junit</groupId>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-flow</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-flow-builder</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-persistence-jpa</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-bam</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-bpmn2</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-bpmn2-emfextmodel</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-workitems</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-human-task</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.2.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
             <artifactId>junit</artifactId>
-<version>4.8.1</version>
+			<version>4.8.1</version>
             <scope>test</scope>
-        </dependency>
-</dependencies>
+		</dependency>
+	</dependencies>
 
-<build>
-<finalName>${artifactId}</finalName>
-<plugins>
-<plugin>
-<artifactId>maven-compiler-plugin</artifactId>
-<version>${compiler.plugin.version}</version>
-<configuration>
-<source>${maven.compiler.source}</source>
-<target>${maven.compiler.target}</target>
-</configuration>
-  </plugin>
-<plugin>
-<artifactId>maven-jar-plugin</artifactId>
+	<build>
+		<finalName>${artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
@@ -122,6 +121,6 @@
                     </archive>
                 </configuration>
             </plugin>
-</plugins>
-</build>
+		</plugins>
+	</build>
 </project>

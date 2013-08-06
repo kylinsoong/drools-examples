@@ -1,4 +1,4 @@
-package org.jbpm.test.humantask.workitem.wsht;
+package org.jbpm.test.humantask.test.workitem.wsht;
 
 import org.junit.Test;
 

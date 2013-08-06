@@ -1,4 +1,4 @@
-package org.jbpm.test.humantask.workitem.wsht;
+package org.jbpm.test.humantask.test.workitem.wsht;
 
 import org.drools.SystemEventListenerFactory;
 import org.drools.runtime.process.WorkItemHandler;
@@ -8,7 +8,7 @@ import org.jbpm.task.service.TaskServer;
 import org.jbpm.task.service.hornetq.HornetQTaskClientConnector;
 import org.jbpm.task.service.hornetq.HornetQTaskClientHandler;
 import org.jbpm.task.service.hornetq.HornetQTaskServer;
-import org.jbpm.test.humantask.BaseTest;
+import org.jbpm.test.humantask.test.BaseTest;
 import org.junit.Before;
 
 public class WSHumanTaskHandlerHornetQTest extends BaseTest {

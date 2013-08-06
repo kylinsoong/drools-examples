@@ -1,0 +1,10 @@
+* Initialize `org.jbpm.task.service.TaskServvice
+----
+select task0_.id as col_0_0_, deadline1_.id as col_1_0_, deadline1_.deadline_date as col_2_0_ from Task task0_, Deadline deadline1_ where task0_.archived=0 and (deadline1_.id in (select startdeadl2_.id from Deadline startdeadl2_ where task0_.id=startdeadl2_.Deadlines_StartDeadLine_Id) or deadline1_.id in (select enddeadlin3_.id from Deadline enddeadlin3_ where task0_.id=enddeadlin3_.Deadlines_EndDeadLine_Id)) and deadline1_.escalated=0 order by deadline1_.deadline_date
+----
+
+* `org.jbpm.task.service.TaskServiceSession` add User
+----
+select id, DTYPE from OrganizationalEntity where id='john' and DTYPE='User';
+insert into OrganizationalEntity (DTYPE, id) values ('User', 'john');
+----

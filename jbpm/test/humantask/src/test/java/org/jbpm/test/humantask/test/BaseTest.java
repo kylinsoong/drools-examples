@@ -1,4 +1,4 @@
-package org.jbpm.test.humantask;
+package org.jbpm.test.humantask.test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -110,15 +110,20 @@ public class BaseTest {
 
 		StatefulKnowledgeSession ksession;
 
-		Environment env = EnvironmentFactory.newEnvironment();
-		env.set(EnvironmentName.ENTITY_MANAGER_FACTORY, emf);
-		env.set(EnvironmentName.TRANSACTION_MANAGER, TransactionManagerServices.getTransactionManager());
+		if(loadDataSourceProperties().getProperty("kession.persist").equals("true")){
+			Environment env = EnvironmentFactory.newEnvironment();
+			env.set(EnvironmentName.ENTITY_MANAGER_FACTORY, Persistence.createEntityManagerFactory("org.jbpm.persistence.jpa"));
+			env.set(EnvironmentName.TRANSACTION_MANAGER, TransactionManagerServices.getTransactionManager());
 
-		if (sessionId == -1) {
-			ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase, null, env);
+			if (sessionId == -1) {
+				ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase, null, env);
+			} else {
+				ksession = JPAKnowledgeService.loadStatefulKnowledgeSession(sessionId, kbase, null, env);
+			}
 		} else {
-			ksession = JPAKnowledgeService.loadStatefulKnowledgeSession(sessionId, kbase, null, env);
+			ksession = kbase.newStatefulKnowledgeSession();
 		}
+		
 
 		return ksession;
 	}

@@ -1,4 +1,4 @@
-package org.jbpm.test.humantask.workitem;
+package org.jbpm.test.humantask.test.workitem;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.jbpm.task.Task;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.TaskService;
 import org.jbpm.task.service.local.LocalTaskService;
-import org.jbpm.test.humantask.BaseTest;
+import org.jbpm.test.humantask.test.BaseTest;
 import org.junit.Before;
 
 /**

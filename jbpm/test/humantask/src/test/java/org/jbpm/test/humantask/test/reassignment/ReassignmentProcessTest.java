@@ -1,4 +1,4 @@
-package org.jbpm.test.humantask.reassignment;
+package org.jbpm.test.humantask.test.reassignment;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.jbpm.task.Task;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.TaskService;
 import org.jbpm.task.service.local.LocalTaskService;
-import org.jbpm.test.humantask.BaseTest;
+import org.jbpm.test.humantask.test.BaseTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,6 @@ public class ReassignmentProcessTest extends BaseTest {
 		kbase = readKnowledgeBase("humantask/reassignmentSampleProcess.bpmn");
 	}
 
-	@Test
 	public void testReassignmentTaskTest() throws Exception {
 		StatefulKnowledgeSession ksession = newStatefulKnowledgeSession(kbase);
 		LocalTaskService localTaskService = getTaskServiceAndRegisterHumanTaskHandler(ksession);
