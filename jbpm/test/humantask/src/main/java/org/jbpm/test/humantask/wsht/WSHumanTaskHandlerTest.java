@@ -13,12 +13,13 @@ import org.jbpm.task.service.hornetq.HornetQTaskClientConnector;
 import org.jbpm.task.service.hornetq.HornetQTaskClientHandler;
 import org.jbpm.task.service.responsehandlers.BlockingTaskOperationResponseHandler;
 import org.jbpm.task.service.responsehandlers.BlockingTaskSummaryResponseHandler;
+import org.jbpm.test.humantask.HandlerHornetQTest;
 import org.jbpm.test.humantask.TestStatefulKnowledgeSession;
 
 
-public class HumanTaskHandlerTest extends WSHumanTaskHandlerHornetQTest {
+public class WSHumanTaskHandlerTest extends HandlerHornetQTest {
 	
-	public HumanTaskHandlerTest() throws Exception {
+	public WSHumanTaskHandlerTest() throws Exception {
 		
 		setUp();
 	}
@@ -140,6 +141,6 @@ public class HumanTaskHandlerTest extends WSHumanTaskHandlerHornetQTest {
 		
 //		new HumanTaskHandlerTest().testAsyncMultipleHandlers();
 		
-		new HumanTaskHandlerTest().testSampleProcessWithHandler();
+		new WSHumanTaskHandlerTest().testSampleProcessWithHandler();
 	}
 }

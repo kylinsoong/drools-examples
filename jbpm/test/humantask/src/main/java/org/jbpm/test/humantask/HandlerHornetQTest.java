@@ -1,13 +1,12 @@
-package org.jbpm.test.humantask.wsht;
+package org.jbpm.test.humantask;
 
 import org.drools.runtime.process.WorkItemHandler;
 import org.jbpm.process.workitem.wsht.WSHumanTaskHandler;
 import org.jbpm.task.service.TaskClient;
 import org.jbpm.task.service.TaskServer;
 import org.jbpm.task.service.hornetq.HornetQTaskServer;
-import org.jbpm.test.humantask.HumanTaskBase;
 
-public class WSHumanTaskHandlerHornetQTest extends HumanTaskBase {
+public class HandlerHornetQTest extends HumanTaskBase {
 	
 	private TaskServer server;
 	
