@@ -18,6 +18,7 @@
 	<module>swimlane</module>
 	<module>workitem</module>
 	<module>humantask</module>
+	<module>restclient</module>
     </modules>
 
 </project>
