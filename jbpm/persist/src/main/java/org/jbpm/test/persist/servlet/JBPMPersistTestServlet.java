@@ -19,7 +19,7 @@ public class JBPMPersistTestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5386275090654917513L;
 	
-	@PersistenceUnit(unitName = "org.hibernate.ogm.tutorial.jpa")
+	@PersistenceUnit(unitName = "org.infinispan.demo.carmart")
     private EntityManagerFactory emf;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,6 +37,10 @@ public class JBPMPersistTestServlet extends HttpServlet {
 		em.remove(result);
 	}
 	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
+
 	protected void namedQueryTest() {
 		
 		System.out.println("Output NamedQueryTest Result:");

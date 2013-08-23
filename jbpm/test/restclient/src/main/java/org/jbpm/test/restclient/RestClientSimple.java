@@ -25,7 +25,7 @@ import com.google.gson.GsonBuilder;
  * 
  * This Test class need 
  *   1. BRMS 5.3.1 running, which supply Rest service 
- *   2. 'hello.bpmn' be add to BRMS console, and 'org.jbpm.test' build successful in BRMS console
+ *   2. 'hello.bpmn' and 'hellotask.bpmn' be add to BRMS console, and 'org.jbpm.test' build successful in BRMS console
  *   3. 'BRMS_HOME/server/default/deploy/business-central-server.war/WEB-INF/lib/gwt-console-rpc-2.3.8.Final.jar'be added to classpath
  * 
  * @author kylin
@@ -38,7 +38,7 @@ public class RestClientSimple {
 	protected final String username;
 	protected final String password;
 	
-	protected static String PROCESS_ID = "defaultPackage.hello";
+	protected static String PROCESS_ID = "org.jbpm.test.hello";
 
 	public RestClientSimple(String username, String password) {
 		super();

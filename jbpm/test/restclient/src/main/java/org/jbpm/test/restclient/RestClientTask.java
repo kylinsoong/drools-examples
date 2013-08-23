@@ -13,10 +13,9 @@ import org.jboss.bpm.console.client.model.TaskRefWrapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-//System.out.println("Explanation = " + kcontext.getVariable("Explanation") + ", Outcome = " + kcontext.getVariable("Outcome"));
 public class RestClientTask extends RestClientSimple {
 
-	protected static String PROCESS_ID = "defaultPackage.helloTask";
+	protected static String PROCESS_ID = "org.jbpm.test.hellotask";
 
 	public RestClientTask(String username, String password) {
 		super(username, password);
@@ -54,8 +53,8 @@ public class RestClientTask extends RestClientSimple {
 
             // start and complete a task with parameters
             Map<String, String> formParams = new HashMap<String, String>();
-            formParams.put("Explanation", "very good");
-            formParams.put("Outcome", "Approved");
+            formParams.put("Explanation-", "very good");
+            formParams.put("Outcome-", "Approved");
             completeTask(task.getId(), formParams);
         }
 

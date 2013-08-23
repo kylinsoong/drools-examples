@@ -54,6 +54,15 @@ public class HumanTaskBase {
     protected KnowledgeBase kbase;
     
     public static final long TASK_SERVER_START_WAIT_TIME = 10000;
+	private static String DEFAULT_PROCESS_NAME = "sample.bpmn";
+	
+	public HumanTaskBase() {
+		
+	}
+	
+	public HumanTaskBase(String processName) {
+		DEFAULT_PROCESS_NAME = processName ;
+	}
     
     protected void print(String msg) {
     	System.out.println("\n\r" + msg + "\n");
@@ -155,7 +164,7 @@ public class HumanTaskBase {
                 
         taskSession = taskService.createSession();
         
-        ksession = newStatefulKnowledgeSession(readKnowledgeBase("sample.bpmn"));
+        ksession = newStatefulKnowledgeSession(readKnowledgeBase(DEFAULT_PROCESS_NAME));
     }
     
     protected InputStream getConfigFileStream(String location) throws IOException {
