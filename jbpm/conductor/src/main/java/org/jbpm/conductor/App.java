@@ -9,7 +9,6 @@ import org.jbpm.conductor.orchestrator.JBPMHumanTaskService;
 import org.jbpm.conductor.orchestrator.JBPMWorkflowOrchestrator;
 import org.jbpm.conductor.orchestrator.ProcessEntity;
 import org.jbpm.conductor.util.DataSourceHelper;
-import org.jbpm.conductor.util.H2Helper;
 import org.jbpm.conductor.util.PropertyLoader;
 import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;

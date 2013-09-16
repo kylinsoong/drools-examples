@@ -9,7 +9,18 @@ link:ExtraIndexes.hbm.xml[ExtraIndexes.hbm.xml]
 
 * remove `ejb3-persistence-1.0.2.GA.jar`,`log4j-1.2.14.jar`,`xml-apis-1.3.04.jar`,`slf4j-log4j12-1.6.0.jar`,`slf4j-api-1.6.0.jar` from jbpm-gwt-console-server-5.2.6.war/WEB-INF/lib
 
+Deploy `jbpm-gwt-console-5.2.6.war` to JBoss EAP 5.1
+----------------------------------------------------
 
+* Copy
+
+link:users.properties[users.properties]
+
+link:roles.properties[roles.properties]
+
+to JBOSS_HOME/server/PROFILE/conf
+
+* remove `slf4j-api-1.6.0.jar`,`slf4j-log4j12-1.6.0.jar` from jbpm-gwt-console-5.2.6.war/WEB-INF/lib
 
 Source Code Location
 --------------------

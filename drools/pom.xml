@@ -21,6 +21,7 @@
         <module>examples</module>
 	<module>ksession</module>
 	<module>compiler-research</module>
+	<module>rest</module>
     </modules>
 
 </project>

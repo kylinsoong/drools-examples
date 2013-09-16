@@ -3,7 +3,6 @@ package org.jbpm.conductor.orchestrator;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.drools.runtime.StatefulKnowledgeSession;
 
 public class ProcessEntity {
 	

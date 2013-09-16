@@ -106,9 +106,7 @@ public class JBPMHumanTaskService implements Serializable {
 	        		String userInfoClass = getConfigParameter("user.info.class", null);
 		        	userInfo = getInstance(userInfoClass);
         		} catch (IllegalArgumentException e) {
-//        			Properties registryProps = new Properties();
-//        			registryProps.load(this.getClass().getResourceAsStream("/userinfo.properties"));
-//					userInfo = new DefaultUserInfo(registryProps);
+        			throw e;
 				}
 	        	
 	        	((DefaultEscalatedDeadlineHandler)handler).setUserInfo(userInfo);

@@ -82,6 +82,7 @@ public class JBPMWorkflowOrchestrator {
 		Map<String, Object> params = processEntity.getProcessParamMap();
 		
 		StatefulKnowledgeSession ksession = createSession();
+		
 		ProcessInstance p = ksession.startProcess(processId, params);
 		ksession.fireAllRules();
 		
@@ -109,7 +110,7 @@ public class JBPMWorkflowOrchestrator {
 
 		System.out.println("************ Created Knowledge Session, Session id = " + ksession.getId() + " ************");
 		
-		registerHandlers(ksession);
+		registerHumanTaskHandlers(ksession);
 		
 		return ksession;
 	}
@@ -131,25 +132,22 @@ public class JBPMWorkflowOrchestrator {
 
 		System.out.println("************ Loaded Knowledge Session, Session id = " + ksession.getId() + " ************");
 		
-		registerHandlers(ksession);
+		registerHumanTaskHandlers(ksession);
 		
 		return ksession;
 	}
 
-	private void registerHandlers(StatefulKnowledgeSession ksession) {
-
-		registerHumanTaskHandlers(ksession);
-	}
-
 	private void registerHumanTaskHandlers(StatefulKnowledgeSession ksession) {
+		
+		System.out.println("************ Register HumanTask Handler, Session id = " + ksession.getId() + " ************");
 		
 		String transport = properties.getProperty("taskservice.transport", "hornetq");
         if ("mina".equals(transport)) {
 			ksession.getWorkItemManager().registerWorkItemHandler("Human Task", new CommandBasedWSHumanTaskHandler(ksession));
         } else if("hornetq".equals(transport)){
-        	
+        	ksession.getWorkItemManager().registerWorkItemHandler("Human Task", new CommandBasedWSHumanTaskHandler(ksession));
         } else if("jms".equals(transport)){
-        	
+        	throw new RuntimeException("Current unsupport " + transport);
         } else {
         	throw new RuntimeException("Unknown task service transport " + transport);
         }
@@ -210,6 +208,5 @@ public class JBPMWorkflowOrchestrator {
 		
 		return kbuilder.newKnowledgeBase();
 	}
-
 
 }
