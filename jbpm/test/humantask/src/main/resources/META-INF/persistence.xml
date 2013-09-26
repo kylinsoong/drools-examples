@@ -20,6 +20,7 @@
     <class>org.jbpm.process.audit.ProcessInstanceLog</class>
     <class>org.jbpm.process.audit.NodeInstanceLog</class>
     <class>org.jbpm.process.audit.VariableInstanceLog</class>
+    <!--  -->
     <class>org.jbpm.task.Attachment</class>
     <class>org.jbpm.task.Content</class>
     <class>org.jbpm.task.BooleanExpression</class>
@@ -41,13 +42,14 @@
     <class>org.jbpm.task.OnParentAbortAllSubTasksEndStrategy</class>
     <class>org.jbpm.task.OnAllSubTasksEndParentEndStrategy</class>
     <class>org.jbpm.task.User</class>
+    
     <properties>
       <property name="hibernate.max_fetch_depth" value="3"/>
       <property name="hibernate.hbm2ddl.auto" value="create" />
       <property name="hibernate.show_sql" value="false" />	
       <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.BTMTransactionManagerLookup" />
    	  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-<!--    	  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/> -->
+<!--    	  <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> -->
       
     </properties>        
   </persistence-unit>
