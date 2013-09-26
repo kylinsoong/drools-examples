@@ -52,3 +52,14 @@ em.close();
 ----
 
 NOTE: jBPM 5.x define a series of templates in `JBPMorm.xml`, `Taskorm.xml` files
+
+
+JPAKnowledgeService create StatefulKnowledgeSession
+----------------------------------------------------
+
+* debug related sql statement:
+----
+select id, lastModificationDate, startDate, OPTLOCK from SessionInfo;
+----
+
+
