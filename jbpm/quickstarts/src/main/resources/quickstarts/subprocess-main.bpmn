@@ -21,8 +21,7 @@
     <!-- nodes -->
     <startEvent id="_1" name="StartProcess" />
     <scriptTask id="_2" name="Start" scriptFormat="http://www.java.com/java" >
-      <script>System.out.println();
-System.out.println("Mainprocess - Start, " + "Process ID: " + kcontext.getProcessInstance().getId());
+      <script>System.out.println("Mainprocess - Start, " + "Process ID: " + kcontext.getProcessInstance().getId());
 RiskyAccounts account = (RiskyAccounts)  kcontext.getKnowledgeRuntime().getGlobal("risky");
 System.out.println("Current risky account: "+ account);
 Account acc = new Account(-20, "Kobe Bryant");

@@ -1,7 +1,6 @@
 package org.jbpm.quickstarts.helloworld;
 
 import org.drools.runtime.StatefulKnowledgeSession;
-import org.jbpm.quickstarts.Person;
 import org.jbpm.quickstarts.QuickStartBase;
 
 public class HelloWorldScriptTaskStart extends QuickStartBase{

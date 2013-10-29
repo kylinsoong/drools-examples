@@ -51,7 +51,7 @@
       <dataInputAssociation>
         <targetRef>_4_ToInput</targetRef>
         <assignment>
-          <from xsi:type="tFormalExpression">ksoong@redhat.com</from>
+          <from xsi:type="tFormalExpression">ksoong@redhat.com;kylinsoong.1214@gmail.com</from>
           <to xsi:type="tFormalExpression">_4_ToInput</to>
         </assignment>
       </dataInputAssociation>

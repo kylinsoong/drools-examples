@@ -12,27 +12,15 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
-  <itemDefinition id="_globalVItem" structureRef="String" />
-
   <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.helloworldScript" name="HelloWorldScript" tns:packageName="org.jbpm.quickstarts" >
 
     <extensionElements>
-     <tns:import name="org.jbpm.quickstarts.HelloService" />
-     <tns:import name="org.jbpm.quickstarts.Person" />
      <tns:global identifier="myStr" type="java.lang.String" />
     </extensionElements>
-    <!-- process variables -->
-    <property id="globalV" itemSubjectRef="_globalVItem"/>
-
     <!-- nodes -->
     <startEvent id="_1" name="StartProcess" />
     <scriptTask id="_2" name="HelloWorld" scriptFormat="http://www.java.com/java" >
-      <script>Person person = new Person("Kylin Soong");
-HelloService.getInstance().sayHello(person.getName());</script>
-    </scriptTask>
-    <scriptTask id="_3" name="Global" >
-      <script>myStr = "This is Global Variable";
-System.out.println(myStr)</script>
+      <script>System.out.println("Hello World jBPM 5");</script>
     </scriptTask>
     <endEvent id="_4" name="End" >
         <terminateEventDefinition />
@@ -40,8 +28,7 @@ System.out.println(myStr)</script>
 
     <!-- connections -->
     <sequenceFlow id="_1-_2" sourceRef="_1" targetRef="_2" />
-    <sequenceFlow id="_2-_3" sourceRef="_2" targetRef="_3" />
-    <sequenceFlow id="_3-_4" sourceRef="_3" targetRef="_4" />
+    <sequenceFlow id="_2-_4" sourceRef="_2" targetRef="_4" />
 
   </process>
 
@@ -51,25 +38,18 @@ System.out.println(myStr)</script>
         <dc:Bounds x="46" y="105" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_2" >
-        <dc:Bounds x="158" y="107" width="103" height="48" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="375" y="120" width="80" height="48" />
+        <dc:Bounds x="160" y="106" width="116" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" >
-        <dc:Bounds x="575" y="134" width="48" height="48" />
+        <dc:Bounds x="335" y="104" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_1-_2" >
         <di:waypoint x="70" y="129" />
-        <di:waypoint x="209" y="131" />
+        <di:waypoint x="218" y="130" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_2-_3" >
-        <di:waypoint x="209" y="131" />
-        <di:waypoint x="415" y="144" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="_3-_4" >
-        <di:waypoint x="415" y="144" />
-        <di:waypoint x="599" y="158" />
+      <bpmndi:BPMNEdge bpmnElement="_2-_4" >
+        <di:waypoint x="218" y="130" />
+        <di:waypoint x="359" y="128" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

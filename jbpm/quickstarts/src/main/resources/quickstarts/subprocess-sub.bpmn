@@ -17,19 +17,16 @@
     <!-- nodes -->
     <startEvent id="_1" name="StartProcess" />
     <scriptTask id="_2" name="Done" scriptFormat="http://www.java.com/java" >
-      <script>System.out.println("Subprocess - Done, " + "Process ID: " + kcontext.getProcessInstance().getId());
-System.out.println();</script>
+      <script>System.out.println("Subprocess - Done, " + "Process ID: " + kcontext.getProcessInstance().getId());</script>
     </scriptTask>
     <scriptTask id="_3" name="Print Rsiky Account" scriptFormat="http://www.java.com/java" >
-      <script>System.out.println("Subprocess - Print Rsiky Account");
-System.out.println("Current risky account: "+kcontext.getKnowledgeRuntime().getGlobal("risky"));</script>
+      <script>System.out.println("Current risky account: "+kcontext.getKnowledgeRuntime().getGlobal("risky"));</script>
     </scriptTask>
     <endEvent id="_4" name="End" >
         <terminateEventDefinition />
     </endEvent>
     <scriptTask id="_5" name="Start" scriptFormat="http://www.java.com/java" >
-      <script>System.out.println();
-System.out.println("Subprocess - Start, " + "Process ID: " + kcontext.getProcessInstance().getId());</script>
+      <script>System.out.println("Subprocess - Start, " + "Process ID: " + kcontext.getProcessInstance().getId());</script>
     </scriptTask>
 
     <!-- connections -->

@@ -33,12 +33,12 @@ if (request == null) {
 	
 	// define request object.
 	request = new Request("1");
-	request.setPersonId("erics");
+	request.setPersonId("kylin");
 	request.setAmount(5000);
 	kcontext.setVariable("request", request);	
 	
 	// define person object.
-	person = new Person("erics", "Eric D. Schabell");
+	person = new Person("kylin", "Kylin Soong");
 	kcontext.setVariable("person", person);
 }
 

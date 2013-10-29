@@ -127,27 +127,27 @@ public class CustomerEvaluationStart extends QuickStartBase {
 	}
 	
 	private Person getUnderagedCustomer() {
-		Person person = new Person("erics", "Eric D. Schabell");
+		Person person = new Person("kylin", "Kylin Soong");
 		person.setAge(underAged);
 		return person;
 	}
 	
 	private Person getAdultCustomer() {
-		Person person = new Person("erics", "Eric D. Schabell");
+		Person person = new Person("kylin", "Kylin Soong");
 		person.setAge(adultAged);
 		return person;
 	}
 	
 	private Request getRichCustomer() {
 		Request request = new Request("1");
-		request.setPersonId("erics");
+		request.setPersonId("kylin");
 		request.setAmount(richCustomer);
 		return request;
 	}
 	
 	private Request getPoorCustomer() {
 		Request request = new Request("1");
-		request.setPersonId("erics");
+		request.setPersonId("kylin");
 		request.setAmount(poorCutomer);
 		return request;
 	}
