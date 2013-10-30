@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_paymentAmmountItem" structureRef="Integer" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.singleeventprocesswithdata" name="SingleEventProcessWithData" tns:packageName="org.jbpm.quickstarts" >
+
+    <!-- process variables -->
+    <property id="paymentAmmount" itemSubjectRef="_paymentAmmountItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_1" name="Start" />
+    <scriptTask id="_16" name="Refund Money" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Refund Money");</script>
+    </scriptTask>
+    <parallelGateway id="_3" name="Gateway" gatewayDirection="Converging" />
+    <scriptTask id="_4" name="Process Subscription Request" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Process Subscription Request");</script>
+    </scriptTask>
+    <endEvent id="_8" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <intermediateCatchEvent id="_9" name="Payment" >
+      <dataOutput id="_9_Output" name="event" />
+      <dataOutputAssociation>
+      <sourceRef>_9_Output</sourceRef>
+      <targetRef>paymentAmmount</targetRef>
+      </dataOutputAssociation>
+      <outputSet>
+        <dataOutputRefs>_9_Output</dataOutputRefs>
+      </outputSet>
+      <signalEventDefinition signalRef="payment"/>
+    </intermediateCatchEvent>
+    <scriptTask id="_10" name="Create Subscription Data" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Create Subscription Data");</script>
+    </scriptTask>
+    <scriptTask id="_12" name="Send Message" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Send Message");</script>
+    </scriptTask>
+    <endEvent id="_14" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <exclusiveGateway id="_15" name="Gateway" gatewayDirection="Diverging" />
+
+    <!-- connections -->
+    <sequenceFlow id="_12-_16" sourceRef="_12" targetRef="_16" />
+    <sequenceFlow id="_4-_3" sourceRef="_4" targetRef="_3" />
+    <sequenceFlow id="_9-_3" sourceRef="_9" targetRef="_3" />
+    <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+    <sequenceFlow id="_10-_8" sourceRef="_10" targetRef="_8" />
+    <sequenceFlow id="_15-_10" sourceRef="_15" targetRef="_10" name="The payment is enough" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return paymentAmmount &gt;= 100;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_15-_12" sourceRef="_15" targetRef="_12" name="The payment is not enough" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return paymentAmmount &lt; 100;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_16-_14" sourceRef="_16" targetRef="_14" />
+    <sequenceFlow id="_3-_15" sourceRef="_3" targetRef="_15" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.singleeventprocesswithdata" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="16" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_16" >
+        <dc:Bounds x="58" y="280" width="133" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="367" y="56" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="96" y="16" width="239" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" >
+        <dc:Bounds x="488" y="284" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" >
+        <dc:Bounds x="542" y="19" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_10" >
+        <dc:Bounds x="361" y="213" width="218" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_12" >
+        <dc:Bounds x="17" y="208" width="218" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_14" >
+        <dc:Bounds x="223" y="280" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_15" >
+        <dc:Bounds x="368" y="123" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_12-_16" >
+        <di:waypoint x="126" y="232" />
+        <di:waypoint x="124" y="304" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4-_3" >
+        <di:waypoint x="215" y="40" />
+        <di:waypoint x="391" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9-_3" >
+        <di:waypoint x="566" y="43" />
+        <di:waypoint x="391" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_4" >
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="215" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_10-_8" >
+        <di:waypoint x="470" y="237" />
+        <di:waypoint x="512" y="308" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_15-_10" >
+        <di:waypoint x="392" y="147" />
+        <di:waypoint x="470" y="237" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_15-_12" >
+        <di:waypoint x="392" y="147" />
+        <di:waypoint x="126" y="232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_16-_14" >
+        <di:waypoint x="124" y="304" />
+        <di:waypoint x="247" y="304" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_3-_15" >
+        <di:waypoint x="391" y="80" />
+        <di:waypoint x="392" y="147" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

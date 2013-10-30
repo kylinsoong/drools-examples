@@ -45,17 +45,17 @@
         <dc:Bounds x="0" y="0" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_2" >
-        <dc:Bounds x="0" y="0" width="80" height="48" />
+        <dc:Bounds x="161" y="149" width="80" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
         <dc:Bounds x="0" y="0" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="_1-_2" >
         <di:waypoint x="24" y="24" />
-        <di:waypoint x="40" y="24" />
+        <di:waypoint x="201" y="173" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_2-_3" >
-        <di:waypoint x="40" y="24" />
+        <di:waypoint x="201" y="173" />
         <di:waypoint x="24" y="24" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

@@ -21,11 +21,11 @@
 
     <!-- nodes -->
     <parallelGateway id="_17" name="Gateway" gatewayDirection="Converging" />
-    <parallelGateway id="_16" name="Gateway" gatewayDirection="Diverging" />
     <startEvent id="_1" name="Start" />
+    <parallelGateway id="_16" name="Gateway" gatewayDirection="Diverging" />
     <intermediateCatchEvent id="_18" name="Timer" >
       <timerEventDefinition>
-        <timeDuration xsi:type="tFormalExpression">1000ms</timeDuration>
+        <timeDuration xsi:type="tFormalExpression">1000</timeDuration>
       </timerEventDefinition>
     </intermediateCatchEvent>
     <endEvent id="_8" name="End" >
@@ -38,14 +38,14 @@
       <ioSpecification>
         <dataInput id="_12_CommentInput" name="Comment" />
         <dataInput id="_12_SkippableInput" name="Skippable" />
-        <dataInput id="_12_ContentInput" name="Content" />
         <dataInput id="_12_TaskNameInput" name="TaskName" />
+        <dataInput id="_12_ContentInput" name="Content" />
         <dataInput id="_12_PriorityInput" name="Priority" />
         <inputSet>
           <dataInputRefs>_12_CommentInput</dataInputRefs>
           <dataInputRefs>_12_SkippableInput</dataInputRefs>
-          <dataInputRefs>_12_ContentInput</dataInputRefs>
           <dataInputRefs>_12_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_12_ContentInput</dataInputRefs>
           <dataInputRefs>_12_PriorityInput</dataInputRefs>
         </inputSet>
         <outputSet>
@@ -66,17 +66,17 @@
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
-        <targetRef>_12_ContentInput</targetRef>
-        <assignment>
-          <from xsi:type="tFormalExpression"></from>
-          <to xsi:type="tFormalExpression">_12_ContentInput</to>
-        </assignment>
-      </dataInputAssociation>
-      <dataInputAssociation>
         <targetRef>_12_TaskNameInput</targetRef>
         <assignment>
           <from xsi:type="tFormalExpression">Stop Service Usage</from>
           <to xsi:type="tFormalExpression">_12_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_12_ContentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_12_ContentInput</to>
         </assignment>
       </dataInputAssociation>
       <dataInputAssociation>
@@ -115,11 +115,11 @@ System.out.println("Your bill was incremented. Total ammount: $"+kcontext.getVar
       <bpmndi:BPMNShape bpmnElement="_17" >
         <dc:Bounds x="259" y="417" width="48" height="48" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="_16" >
-        <dc:Bounds x="164" y="176" width="48" height="48" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_1" >
         <dc:Bounds x="164" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_16" >
+        <dc:Bounds x="164" y="176" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_18" >
         <dc:Bounds x="70" y="257" width="48" height="48" />

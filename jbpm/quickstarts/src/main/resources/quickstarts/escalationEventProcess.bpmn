@@ -17,7 +17,7 @@
   <itemDefinition id="_hasErrorsItem" structureRef="Boolean" />
 
   <escalation id="InputDataError" escalationCode="InputDataError" />
-  <process processType="Private" isExecutable="true" id="org.jbpm.test.escalationeventprocess" name="Escalation Boundary Event Process" tns:packageName="org.jbpm.test" >
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.escalationeventprocess" name="Escalation Boundary Event Process" tns:packageName="org.jbpm.quickstarts" >
 
     <!-- process variables -->
     <property id="inputData" itemSubjectRef="_inputDataItem"/>
@@ -75,7 +75,7 @@ errorList.add("Invalid input data!");</script>
   </process>
 
   <bpmndi:BPMNDiagram>
-    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.escalationeventprocess" >
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.escalationeventprocess" >
       <bpmndi:BPMNShape bpmnElement="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6" >
         <dc:Bounds x="1" y="242" width="48" height="48" />
       </bpmndi:BPMNShape>
