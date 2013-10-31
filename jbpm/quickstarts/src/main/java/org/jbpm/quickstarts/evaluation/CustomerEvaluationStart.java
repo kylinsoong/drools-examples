@@ -3,8 +3,6 @@ package org.jbpm.quickstarts.evaluation;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.drools.logger.KnowledgeRuntimeLogger;
-import org.drools.logger.KnowledgeRuntimeLoggerFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.jbpm.quickstarts.Person;
 import org.jbpm.quickstarts.QuickStartBase;
@@ -31,9 +29,7 @@ public class CustomerEvaluationStart extends QuickStartBase {
 	protected void emptyRequestCustomerEvaluationTest() {
 
 		StatefulKnowledgeSession ksession = createKnowledgeSessionWithDrl("quickstarts/customerEvaluationFinanceRules.drl", "quickstarts/customerEvaluation.bpmn");
-		
-		KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationEmptyRequest", 1000);
-		
+				
 		Map<String, Object> params = new HashMap<String, Object>();
 		
 		System.out.println("=============================================");
@@ -43,15 +39,12 @@ public class CustomerEvaluationStart extends QuickStartBase {
 		ksession.startProcess("org.jbpm.quickstarts.customerEvaluation", params);
 		
 		ksession.fireAllRules();
-		logger.close();
 		ksession.dispose();
 	}
 
 	protected void richCustomerEvaluationTest() {
 		
 		StatefulKnowledgeSession ksession = createKnowledgeSessionWithDrl("quickstarts/customerEvaluationFinanceRules.drl", "quickstarts/customerEvaluation.bpmn");
-
-		KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationRichAdult", 1000);
 			
 		Person adultEval = getAdultCustomer();
 		Request richEval = getRichCustomer();
@@ -68,7 +61,6 @@ public class CustomerEvaluationStart extends QuickStartBase {
 		ksession.startProcess("org.jbpm.quickstarts.customerEvaluation", params);
 		
 		ksession.fireAllRules();
-		logger.close();
 		ksession.dispose();
 	}
 
@@ -76,8 +68,6 @@ public class CustomerEvaluationStart extends QuickStartBase {
 
 		StatefulKnowledgeSession ksession = createKnowledgeSessionWithDrl("quickstarts/customerEvaluationFinanceRules.drl", "quickstarts/customerEvaluation.bpmn");
 		
-		KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationPoorAdult", 1000);
-
 		Person adultEval = getAdultCustomer();
 		Request poorEval = getPoorCustomer();
 		
@@ -94,16 +84,13 @@ public class CustomerEvaluationStart extends QuickStartBase {
 		ksession.startProcess("org.jbpm.quickstarts.customerEvaluation", params);
 		
 		ksession.fireAllRules();
-		logger.close();
 		ksession.dispose();
 	}
 
 	protected void underagedCustomerEvaluationTest() {
 
 		StatefulKnowledgeSession ksession = createKnowledgeSessionWithDrl("quickstarts/customerEvaluationFinanceRules.drl", "quickstarts/customerEvaluation.bpmn");
-		
-		KnowledgeRuntimeLogger logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(ksession, "CustomerEvaluationUnderaged", 1000);
-		
+				
 		Person underagedEval = getUnderagedCustomer();
 		Request richEval = getRichCustomer();
 		
@@ -120,8 +107,6 @@ public class CustomerEvaluationStart extends QuickStartBase {
 		ksession.startProcess("org.jbpm.quickstarts.customerEvaluation", params);
 		
 		ksession.fireAllRules();
-		
-		logger.close();
 		
 		ksession.dispose();
 	}

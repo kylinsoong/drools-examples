@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_internalMessagesItem" structureRef="java.util.List" />
+  <itemDefinition id="_internalTagItem" structureRef="String" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.reusablesubprocesschild" name="reusableSubProcess.Child" tns:packageName="org.jbpm.quickstarts" >
+
+    <!-- process variables -->
+    <property id="internalMessages" itemSubjectRef="_internalMessagesItem"/>
+    <property id="internalTag" itemSubjectRef="_internalTagItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_1" name="Start" />
+    <endEvent id="_3" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_4" name="Apply Tag" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Child-process id = "+kcontext.getProcessInstance().getId());
+java.util.List&lt;String&gt; taggedMessages = new java.util.ArrayList&lt;String&gt;();
+for (Object message : internalMessages){
+    taggedMessages.add(((String)message)+" - "+internalTag);    
+}
+kcontext.setVariable("internalMessages",taggedMessages);</script>
+    </scriptTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_4-_3" sourceRef="_4" targetRef="_3" />
+    <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.reusablesubprocesschild" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="16" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="293" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="96" y="16" width="165" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_4-_3" >
+        <di:waypoint x="178" y="40" />
+        <di:waypoint x="317" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_4" >
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="178" y="40" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
