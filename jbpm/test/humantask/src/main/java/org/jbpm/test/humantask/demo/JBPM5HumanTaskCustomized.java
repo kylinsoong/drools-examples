@@ -19,8 +19,6 @@ import org.drools.runtime.Environment;
 import org.drools.runtime.EnvironmentName;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.process.ProcessInstance;
-import org.jbpm.process.audit.JPAWorkingMemoryDbLogger;
-import org.jbpm.process.workitem.wsht.SyncWSHumanTaskHandler;
 import org.jbpm.task.query.TaskSummary;
 import org.jbpm.task.service.DefaultUserGroupCallbackImpl;
 import org.jbpm.task.service.TaskService;
@@ -30,7 +28,7 @@ import org.jbpm.test.JBPMHelper;
 
 import bitronix.tm.TransactionManagerServices;
 
-public class JBPM5HumanTaskBasic {
+public class JBPM5HumanTaskCustomized {
 
 	private static final String JBPM5_BASIC_NAME = "sample.bpmn";
 
@@ -43,7 +41,6 @@ public class JBPM5HumanTaskBasic {
 		KnowledgeBase kbase = readKnowledgeBase(JBPM5_BASIC_NAME);
 		
 		StatefulKnowledgeSession ksession = newStatefulKnowledgeSession(kbase);
-//		new JPAWorkingMemoryDbLogger(ksession);
 		
 		LocalTaskService localTaskService = getTaskServiceAndRegisterHumanTaskHandler(ksession);
 		
@@ -68,7 +65,7 @@ public class JBPM5HumanTaskBasic {
         TaskService taskService = new TaskService(emf, SystemEventListenerFactory.getSystemEventListener());
         LocalTaskService localTaskService = new LocalTaskService(taskService);
 
-        SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(localTaskService, ksession);
+        CustomizedSyncWSHumanTaskHandler humanTaskHandler = new CustomizedSyncWSHumanTaskHandler(localTaskService, ksession);
         humanTaskHandler.setLocal(true);
         humanTaskHandler.connect();
         ksession.getWorkItemManager().registerWorkItemHandler("Human Task", humanTaskHandler);
