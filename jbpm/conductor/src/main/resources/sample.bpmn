@@ -25,14 +25,6 @@
         <terminateEventDefinition />
     </endEvent>
     <userTask id="_4" name="Task 1" >
-      <extensionElements>
-        <tns:onEntry-script scriptFormat="http://www.java.com/java">
-          <tns:script>System.out.println("Task1 Entry");</tns:script>
-        </tns:onEntry-script>
-        <tns:onExit-script scriptFormat="http://www.java.com/java">
-          <tns:script>System.out.println("Task1 Exit");</tns:script>
-        </tns:onExit-script>
-      </extensionElements>
       <ioSpecification>
         <dataInput id="_4_CommentInput" name="Comment" />
         <dataInput id="_4_SkippableInput" name="Skippable" />
