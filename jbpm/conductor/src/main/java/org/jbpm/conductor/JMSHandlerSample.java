@@ -1,6 +1,5 @@
 package org.jbpm.conductor;
 
-import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -16,10 +15,7 @@ import org.drools.builder.ResourceType;
 import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.process.ProcessInstance;
-import org.jbpm.process.workitem.wsht.AsyncWSHumanTaskHandler;
-import org.jbpm.task.Status;
-import org.jbpm.task.query.TaskSummary;
-import org.jbpm.task.service.AsyncTaskServiceWrapper;
+import org.jbpm.process.workitem.wsht.CommandBasedWSHumanTaskHandler;
 import org.jbpm.task.service.TaskClient;
 import org.jbpm.task.service.jms.JMSTaskClientConnector;
 import org.jbpm.task.service.jms.JMSTaskClientHandler;
@@ -33,29 +29,27 @@ public class JMSHandlerSample {
 		KnowledgeBase kbase = readKnowledgeBase();
         StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
         
-        TaskClient client = getTaskClientInstance();
-        boolean success = client.connect();
-        System.out.println("Connecting to human task service, success: " + success);
+        TaskClient clientForHumanTaskHandler = getTaskClientInstance();
+        clientForHumanTaskHandler.connect();
         
-//        Thread.sleep(3000);
-        
-        AsyncWSHumanTaskHandler handler = new AsyncWSHumanTaskHandler(client, ksession);
+        CommandBasedWSHumanTaskHandler handler = new CommandBasedWSHumanTaskHandler();
+        handler.configureClient(clientForHumanTaskHandler);
         
         ksession.getWorkItemManager().registerWorkItemHandler("Human Task", handler);
         
         ProcessInstance pi = ksession.startProcess("com.sample.bpmn.hello");
         System.out.println("Process started ... : pid = " + pi.getId());
         
-        AsyncTaskServiceWrapper taskService = new AsyncTaskServiceWrapper(client);
-        List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
-        for (TaskSummary task : list){
-        	System.out.println("task.getId() = " + task.getId());
-			if (task.getStatus() == Status.Reserved) {
-				System.out.println("John is starting and completing task, id = " + task.getId() + ", name = " + task.getName());
-				taskService.start(task.getId(), "john");
-				taskService.complete(task.getId(), "john", null);
-			}
-        }
+//        AsyncTaskServiceWrapper taskService = new AsyncTaskServiceWrapper(client);
+//        List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
+//        for (TaskSummary task : list){
+//        	System.out.println("task.getId() = " + task.getId());
+//			if (task.getStatus() == Status.Reserved) {
+//				System.out.println("John is starting and completing task, id = " + task.getId() + ", name = " + task.getName());
+//				taskService.start(task.getId(), "john");
+//				taskService.complete(task.getId(), "john", null);
+//			}
+//        }
         
 //        Thread.sleep(3000);
         
