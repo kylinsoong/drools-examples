@@ -1,6 +1,7 @@
 package org.jbpm.demo.approve.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,9 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jbpm.demo.approve.audit.Audit;
-import org.jbpm.demo.approve.audit.AuditDAOFactory;
-import org.jbpm.demo.approve.test.AuditTest;
+import org.jbpm.demo.approval.audit.Audit;
+import org.jbpm.demo.approval.audit.AuditDAOFactory;
 
 @WebServlet("/audit")
 public class AuditServlet extends HttpServlet {
@@ -40,6 +40,7 @@ public class AuditServlet extends HttpServlet {
 		
 		// This for test, will use DAO replace
 		List<Audit>  audits = AuditDAOFactory.defaultDAO().getAudits(pageNum, pageSize);
+//		List<Audit>  audits = new ArrayList<Audit>();
 		
 		req.setAttribute("auditList", audits);
 		req.setAttribute("pagenum", pageNum);

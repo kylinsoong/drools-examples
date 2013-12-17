@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jbpm.demo.approve.audit.AuditDAOFactory;
-import org.jbpm.demo.approve.ejb.ProcessOperationException;
-import org.jbpm.demo.approve.ejb.TaskExecuteService;
-import org.jbpm.task.query.TaskSummary;
+import org.jbpm.demo.approval.audit.AuditDAOFactory;
+import org.jbpm.demo.approval.ejb.ProcessOperationException;
+import org.jbpm.demo.approval.ejb.TaskExecuteServiceLocal;
+import org.kie.api.task.model.TaskSummary;
 
 @WebServlet("/task")
 public class TaskServlet extends HttpServlet {
@@ -23,7 +23,7 @@ public class TaskServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private TaskExecuteService taskService;
+    private TaskExecuteServiceLocal taskService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

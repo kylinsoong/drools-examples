@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jbpm.demo.approve.audit.AuditDAOFactory;
-import org.jbpm.demo.approve.ejb.ProcessService;
+import org.jbpm.demo.approval.audit.AuditDAOFactory;
+import org.jbpm.demo.approval.ejb.ProcessServiceLocal;
 
 @WebServlet("/process")
 public class ProcessServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class ProcessServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private ProcessService processService;
+    private ProcessServiceLocal processService;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

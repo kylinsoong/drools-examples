@@ -5,7 +5,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.apache.log4j.Logger;
-import org.jbpm.demo.approve.audit.AuditDAOFactory;
+import org.jbpm.demo.approval.audit.AuditDAOFactory;
  
 @WebListener
 public class AppServletContextListener implements ServletContextListener {
