@@ -24,7 +24,7 @@ public class TaskComplete {
         ContentData content = new ContentData();
         
         BlockingTaskOperationResponseHandler responseHandler = new BlockingTaskOperationResponseHandler();
-        client.complete(2, "kylin", content, responseHandler);
+        client.complete(1, "kylin", content, responseHandler);
         responseHandler.waitTillDone(1000);
         System.out.println("kylin completing Task ");
         

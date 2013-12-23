@@ -91,10 +91,14 @@
         </resourceAssignmentExpression>
       </potentialOwner>
     </userTask>
+    <scriptTask id="_5" name="DONE" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("DONE");</script>
+    </scriptTask>
 
     <!-- connections -->
-    <sequenceFlow id="_4-_3" sourceRef="_4" targetRef="_3" />
+    <sequenceFlow id="_5-_3" sourceRef="_5" targetRef="_3" />
     <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+    <sequenceFlow id="_4-_5" sourceRef="_4" targetRef="_5" />
 
   </process>
 
@@ -104,18 +108,25 @@
         <dc:Bounds x="16" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_3" >
-        <dc:Bounds x="279" y="17" width="48" height="48" />
+        <dc:Bounds x="361" y="16" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="_4" >
         <dc:Bounds x="96" y="16" width="100" height="48" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="_4-_3" >
-        <di:waypoint x="146" y="40" />
-        <di:waypoint x="303" y="41" />
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="253" y="16" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_5-_3" >
+        <di:waypoint x="293" y="40" />
+        <di:waypoint x="385" y="40" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="_1-_4" >
         <di:waypoint x="40" y="40" />
         <di:waypoint x="146" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4-_5" >
+        <di:waypoint x="146" y="40" />
+        <di:waypoint x="293" y="40" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -1,5 +1,6 @@
 package org.jbpm.conductor;
 
+import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -16,9 +17,14 @@ import org.drools.io.ResourceFactory;
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.drools.runtime.process.ProcessInstance;
 import org.jbpm.process.workitem.wsht.CommandBasedWSHumanTaskHandler;
+import org.jbpm.task.Status;
+import org.jbpm.task.query.TaskSummary;
+import org.jbpm.task.service.AsyncTaskServiceWrapper;
 import org.jbpm.task.service.TaskClient;
 import org.jbpm.task.service.jms.JMSTaskClientConnector;
 import org.jbpm.task.service.jms.JMSTaskClientHandler;
+import org.jbpm.task.service.responsehandlers.BlockingTaskOperationResponseHandler;
+import org.jbpm.task.service.responsehandlers.BlockingTaskSummaryResponseHandler;
 
 
 
@@ -40,16 +46,28 @@ public class JMSHandlerSample {
         ProcessInstance pi = ksession.startProcess("com.sample.bpmn.hello");
         System.out.println("Process started ... : pid = " + pi.getId());
         
-//        AsyncTaskServiceWrapper taskService = new AsyncTaskServiceWrapper(client);
-//        List<TaskSummary> list = taskService.getTasksAssignedAsPotentialOwner("john", "en-UK");
-//        for (TaskSummary task : list){
-//        	System.out.println("task.getId() = " + task.getId());
-//			if (task.getStatus() == Status.Reserved) {
-//				System.out.println("John is starting and completing task, id = " + task.getId() + ", name = " + task.getName());
-//				taskService.start(task.getId(), "john");
-//				taskService.complete(task.getId(), "john", null);
-//			}
-//        }
+        TaskClient client = getTaskClientInstance();
+        client.connect();
+        
+        BlockingTaskSummaryResponseHandler taskSummaryResponseHandler = new BlockingTaskSummaryResponseHandler();
+        client.getTasksAssignedAsPotentialOwner("john", "en-UK", taskSummaryResponseHandler);
+        List<TaskSummary> tasks = taskSummaryResponseHandler.getResults();
+        System.out.println("Getting tasks for human task service via user john, tasks size: " + tasks.size()); 
+        for (TaskSummary task : tasks){
+        	if (task.getStatus() == Status.Reserved) {
+                System.out.println("John is starting and completing task " + task.getName());
+                BlockingTaskOperationResponseHandler responseHandler = new BlockingTaskOperationResponseHandler();
+                client.start(task.getId(), "john", responseHandler);
+                responseHandler.waitTillDone(1000);
+                
+                responseHandler = new BlockingTaskOperationResponseHandler();
+                client.complete(task.getId(), "john", null, responseHandler);
+                responseHandler.waitTillDone(1000);
+            }
+        }
+        
+//        client.disconnect();
+        
         
 //        Thread.sleep(3000);
         

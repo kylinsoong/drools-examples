@@ -21,7 +21,7 @@ public class TaskStart {
         client.connect();
         
         BlockingTaskOperationResponseHandler responseHandler = new BlockingTaskOperationResponseHandler();
-        client.start(2, "kylin", responseHandler);
+        client.start(1, "kylin", responseHandler);
         responseHandler.waitTillDone(1000);
         System.out.println("kylin starting Task ");
         
