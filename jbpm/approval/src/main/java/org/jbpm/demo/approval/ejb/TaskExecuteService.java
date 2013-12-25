@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
-import javax.inject.Inject;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.OptimisticLockException;
 import javax.persistence.PersistenceUnit;
@@ -15,30 +14,51 @@ import javax.transaction.Status;
 import javax.transaction.UserTransaction;
 
 import org.apache.log4j.Logger;
-import org.jbpm.services.task.exception.PermissionDeniedException;
-import org.kie.api.task.TaskService;
-import org.kie.api.task.model.TaskSummary;
+import org.drools.KnowledgeBase;
+import org.drools.KnowledgeBaseFactory;
+import org.drools.SystemEventListenerFactory;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
+import org.drools.io.ResourceFactory;
+import org.drools.persistence.jpa.JPAKnowledgeService;
+import org.drools.runtime.Environment;
+import org.drools.runtime.EnvironmentName;
+import org.drools.runtime.StatefulKnowledgeSession;
+import org.jbpm.process.audit.JPAWorkingMemoryDbLogger;
+import org.jbpm.process.workitem.wsht.SyncWSHumanTaskHandler;
+import org.jbpm.task.TaskService;
+import org.jbpm.task.query.TaskSummary;
+import org.jbpm.task.service.PermissionDeniedException;
+import org.jbpm.task.service.local.LocalTaskService;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
-public class TaskExecuteService implements TaskExecuteServiceLocal{
+public class TaskExecuteService {
 	
 	private static final Logger logger = Logger.getLogger(TaskExecuteService.class);
+
+	private static KnowledgeBase kbase;
+
+	@PersistenceUnit(unitName = "org.jbpm.persistence.jpa")
+	private EntityManagerFactory emf;
 
 	@Resource
 	private UserTransaction ut;
 	
-	@Inject
-    TaskService taskService;
-	
 	public void approveTask(String actorId, long taskId) throws Exception {
 		
-		ut.begin();
+		kbase = readKnowledgeBase();
 
+        StatefulKnowledgeSession ksession = createKnowledgeSession();
+        TaskService localTaskService = getTaskService(ksession);
+
+        ut.begin();
+        
         try {
-            System.out.println("approveTask (taskId = " + taskId + ") by " + actorId);
-            taskService.start(taskId, actorId);
-            taskService.complete(taskId, actorId, null);
+        	logger.info("approveTask (taskId = " + taskId + ") by " + actorId);
+            localTaskService.start(taskId, actorId);
+            localTaskService.complete(taskId, actorId, null);
 
             //Thread.sleep(10000); // To test OptimisticLockException
 
@@ -58,37 +78,74 @@ public class TaskExecuteService implements TaskExecuteServiceLocal{
                 ut.rollback();
             }
             // Probably the task has already been started by other users
-            throw new ProcessOperationException("The task (id = " + taskId + ") has likely been started by other users ", e);
+            throw new ProcessOperationException("The task (id = " + taskId  + ") has likely been started by other users ", e);
         } catch (Exception e) {
-            e.printStackTrace();
             // Transaction might be already rolled back by TaskServiceSession
             if (ut.getStatus() == Status.STATUS_ACTIVE) {
                 ut.rollback();
             }
             throw new RuntimeException(e);
-        } 
+        } finally {
+            ksession.dispose();
+        }
+
+        return;
 	}
 
 	public List<TaskSummary> retrieveTaskList(String actorId) throws Exception {
+
+		kbase = readKnowledgeBase();
+
+        StatefulKnowledgeSession ksession = createKnowledgeSession();
+        TaskService localTaskService = getTaskService(ksession);
+        
+        List<TaskSummary> list = localTaskService.getTasksAssignedAsPotentialOwner(actorId, "en-UK");
+        
+        logger.info("retrieveTaskList by " + actorId);
+        for (TaskSummary task : list) {
+        	logger.info(" task.getId() = " + task.getId());
+        }
+
+        ksession.dispose();
+        
+        return list;
+	}
+	
+	private TaskService getTaskService(StatefulKnowledgeSession ksession) {
+
+        org.jbpm.task.service.TaskService taskService = new org.jbpm.task.service.TaskService(emf, SystemEventListenerFactory.getSystemEventListener());
+
+        LocalTaskService localTaskService = new LocalTaskService(taskService);
+
+        SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(localTaskService, ksession);
+        humanTaskHandler.setLocal(true);
+        humanTaskHandler.connect();
+        ksession.getWorkItemManager().registerWorkItemHandler("Human Task", humanTaskHandler);
+
+        return localTaskService;
+    }
+	
+	private StatefulKnowledgeSession createKnowledgeSession() {
 		
-		 ut.begin();
-	        
-	        List<TaskSummary> list;
-	        
-	        try {
-	            list = taskService.getTasksAssignedAsPotentialOwner(actorId, "en-UK");
-	            ut.commit();
-	        } catch (RollbackException e) {
-	            e.printStackTrace();
-	            throw new RuntimeException(e);
-	        }
+		Environment env = KnowledgeBaseFactory.newEnvironment();
+		env.set(EnvironmentName.ENTITY_MANAGER_FACTORY, emf);
 
-	        logger.info("retrieveTaskList by " + actorId);
-	        for (TaskSummary task : list) {
-	        	logger.info(" task.getId() = " + task.getId());
-	        }
+		StatefulKnowledgeSession ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase, null, env);
 
-	        return list;
+		new JPAWorkingMemoryDbLogger(ksession);
+
+		return ksession;
+	}
+
+	private KnowledgeBase readKnowledgeBase() throws Exception {
+
+		if (kbase != null) {
+			return kbase;
+		}
+
+		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+		kbuilder.add(ResourceFactory.newClassPathResource("approval-demo.bpmn"), ResourceType.BPMN2);
+		return kbuilder.newKnowledgeBase();
 	}
 
 }

@@ -3,53 +3,59 @@ package org.jbpm.demo.approval.ejb;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.Startup;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
-import javax.inject.Inject;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.transaction.Status;
 import javax.transaction.UserTransaction;
 
 import org.apache.log4j.Logger;
-import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.manager.RuntimeEngine;
-import org.kie.api.runtime.manager.RuntimeManager;
-import org.kie.api.runtime.process.ProcessInstance;
-import org.kie.internal.runtime.manager.cdi.qualifier.Singleton;
-import org.kie.internal.runtime.manager.context.EmptyContext;
+import org.drools.KnowledgeBase;
+import org.drools.KnowledgeBaseFactory;
+import org.drools.SystemEventListenerFactory;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
+import org.drools.io.ResourceFactory;
+import org.drools.persistence.jpa.JPAKnowledgeService;
+import org.drools.runtime.Environment;
+import org.drools.runtime.EnvironmentName;
+import org.drools.runtime.StatefulKnowledgeSession;
+import org.drools.runtime.process.ProcessInstance;
+import org.jbpm.process.audit.JPAWorkingMemoryDbLogger;
+import org.jbpm.process.workitem.wsht.SyncWSHumanTaskHandler;
+import org.jbpm.task.service.DefaultUserGroupCallbackImpl;
+import org.jbpm.task.service.UserGroupCallbackManager;
+import org.jbpm.task.service.local.LocalTaskService;
 
-@Startup
-@javax.ejb.Singleton
+@Stateless
 @TransactionManagement(TransactionManagementType.BEAN)
-public class ProcessService implements ProcessServiceLocal{
+public class ProcessService {
 	
 	private static final Logger logger = Logger.getLogger(ProcessService.class);
+	
+	private static KnowledgeBase kbase;
+	
+	@PersistenceUnit(unitName = "org.jbpm.persistence.jpa")
+    private EntityManagerFactory emf;
 	
 	@Resource
     private UserTransaction ut;
 	
-	@Inject
-    @Singleton
-    private RuntimeManager singletonManager;
-	
-	@PostConstruct
-    public void configure() {
-        // use toString to make sure CDI initializes the bean
-        // this makes sure that RuntimeManager is started asap,
-        // otherwise after server restart complete task won't move process forward 
-        singletonManager.toString();
-    }
-	
 	public long startProcess(String recipient, String ticketname) throws Exception {
 		
-		RuntimeEngine runtime = singletonManager.getRuntimeEngine(EmptyContext.get());
-		
-		KieSession ksession = runtime.getKieSession();
-		
-		long processInstanceId = -1;
-
+		// Use this when you want to ignore user existence issues
+        UserGroupCallbackManager.getInstance().setCallback(new DefaultUserGroupCallbackImpl());
+        
+        kbase = readKnowledgeBase();
+        
+        StatefulKnowledgeSession ksession = createKnowledgeSession();
+        
+        long processInstanceId = -1;
+        
         ut.begin();
         
         try {
@@ -77,4 +83,37 @@ public class ProcessService implements ProcessServiceLocal{
         return processInstanceId;
 	}
 	
+	private StatefulKnowledgeSession createKnowledgeSession() {
+		
+		Environment env = KnowledgeBaseFactory.newEnvironment();
+        env.set(EnvironmentName.ENTITY_MANAGER_FACTORY, emf);
+        
+        StatefulKnowledgeSession ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase, null, env);
+        
+        new JPAWorkingMemoryDbLogger(ksession);
+        
+        org.jbpm.task.service.TaskService taskService = new org.jbpm.task.service.TaskService(emf, SystemEventListenerFactory.getSystemEventListener());
+		
+        LocalTaskService localTaskService = new LocalTaskService(taskService);
+        
+        SyncWSHumanTaskHandler humanTaskHandler = new SyncWSHumanTaskHandler(localTaskService, ksession);
+        humanTaskHandler.setLocal(true);
+        humanTaskHandler.connect();
+        
+        ksession.getWorkItemManager().registerWorkItemHandler("Human Task", humanTaskHandler);
+        
+        return ksession;
+	}
+
+	private static KnowledgeBase readKnowledgeBase() throws Exception {
+
+		if (kbase != null) {
+			return kbase;
+		}
+
+		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+		kbuilder.add(ResourceFactory.newClassPathResource("approval-demo.bpmn"), ResourceType.BPMN2);
+		return kbuilder.newKnowledgeBase();
+	}
+
 }

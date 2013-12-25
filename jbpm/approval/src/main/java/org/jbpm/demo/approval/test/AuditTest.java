@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.jbpm.demo.approval.audit.Audit;
 import org.jbpm.demo.approval.audit.AuditDAO;
+import org.jbpm.demo.approval.audit.AuditDAOFactory;
 import org.jbpm.demo.approval.audit.Util;
 
 public class AuditTest {
@@ -13,7 +14,7 @@ public class AuditTest {
 		System.out.println(Util.timestamp());
 		
 		Audit audit = null;
-		AuditDAO dao =null;
+		AuditDAO dao = AuditDAOFactory.defaultDAO();
 		
 		audit = new Audit();
 		audit.setId(1L);
