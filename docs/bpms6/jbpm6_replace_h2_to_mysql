@@ -1,0 +1,9 @@
+CREATE DATABASE jbpm6;
+create user 'jbpm6_user'@'localhost' identified by 'jbpm6_pass';
+grant all on jbpm6.* to jbpm6_user@'localhost';
+FLUSH PRIVILEGES;
+
+
+打开 jbpm-console.war/WEB-INF/classes/META-INF/persistence.xml，修改<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />为<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> 
+
+
