@@ -20,6 +20,7 @@
     <modules>
 	<module>helloworld</module>
 	<module>samples</module>
+	<module>parameters</module>
     </modules>
 
 </project>
