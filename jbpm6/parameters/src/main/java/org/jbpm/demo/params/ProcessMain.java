@@ -51,7 +51,10 @@ public class ProcessMain {
 		Task userTask = taskService.getTaskById(task.getId());
 		TaskData taskData = userTask.getTaskData();
 		Content content = taskService.getContentById(taskData.getDocumentContentId());
-		System.out.println(content);
+		System.out.println(content.getContent().length);
+		
+		// we have 3 Input Parameter Mapping variables: input_name, input_age, input_content, now I want to how to get 3 variables from content
+		
 		
 		Map<String, Object> results = new HashMap<String, Object>();
 		results.put("output_name", "Kylin");
