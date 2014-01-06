@@ -3,3 +3,35 @@ http://www.youtube.com/watch?feature=player_embedded&v=TM9cuL_Mfnk
 http://www.youtube.com/watch?feature=player_embedded&v=VebltONoB5g
 http://www.youtube.com/watch?feature=player_embedded&v=D8EMUgBqSHQ
 
+The simples process
+First process is illustrating how you move around in KIE workbench web application. Where to:
+
+    create repository
+    create project
+    configure Knowledge Base, KnowledgeSession
+    create process
+    build and deploy
+    execute process and work with user task
+
+
+Custom data and forms
+Next let's explore more and start with bit advanced features like:
+
+    building custom data model that will be used as process variable
+    make use of process variables in user task
+    define custom forms for process and tasks
+    edit and adjust your process and task forms
+
+
+Make use of business rules and decisions in your process
+At the end let's make the process be more efficient by applying business rules in the process and then use gateways as deception points. This example introduces:
+
+    use of business rule task
+    define business rules with Drools
+    use XOR gateway to split between different paths in the process
+
+Important to note that business rule task can automatically insert and retract process variables using data input and output of business rule task. When defining them make sure that both data input and output are named exactly the same to allow engine to properly retract the facts on business rule task completion.
+
+That would be all for the first steps with jBPM 6. Stay tuned for more examples and videos!
+
+As usual comments more than welcome.
