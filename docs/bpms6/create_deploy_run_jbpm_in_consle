@@ -1,0 +1,103 @@
+1 安装jBPM6，添加用户kylin到jBPM 6用户如下，并启动jBPM 6
+安装jBPM6请参照jBPM 6 发布，快速安装，新功能介绍。
+编辑../standalone/configuration/users.properties，添加kylin=kylin到用户列表末尾：
+---
+admin=admin
+krisv=krisv
+john=john
+mary=mary
+sales-rep=sales-rep
+katy=katy
+jack=jack
+salaboy=salaboy
+kylin=kylin
+---
+编辑../standalone/configuration/roles.properties，添加kylin=admin,analyst到角色末尾：
+---
+admin=admin,analyst
+krisv=admin,analyst
+john=analyst,Accounting,PM
+mary=analyst,HR
+sales-rep=analyst,sales
+jack=analyst,IT
+katy=analyst,HR
+salaboy=admin,analyst,IT,HR,Accounting
+kylin=admin,analyst
+---
+启动jBPM 6使用如下命令：
+---
+./standalone.sh -c standalone-full.xml
+---
+注意，我们使用如上命令启动jBPM6是因为我们使用 Mysql 替换默认的 H2 数据库。
+使用kylin/kylin登录http://localhost:8080/jbpm-console，我们将会看到jBPM 6欢迎页面。
+
+2. 创建一个Organizational Unit
+jBPM 6中两个新特性，基于Git的开发生命周期，基于Maven的管理模式，这使得流程等的管理引入Organizational Units，Repositories，Projects，我们首先需要创建一个Organizational Unit。
+在欢迎页面选择Authoring -> Administration -> Organizational Units -> Manage Organizational Units，点击Add Organizational Unit，在弹出的窗口上添加test为名字，kylin为拥有者，如下图：
+80_add_organizational_units.png
+点击Create完成创建Organizational Unit。
+
+3. 创建一个Repository
+如上在Organizational Units右边选择 Repositories -> New Repository，在弹出的输入框中输入Repository Name为myTestRepo，Organizational Unit选择test，如下图：
+80_add_repository.png
+点击Create完成创建Repository
+
+4. 创建一个Project
+Project就相当于Maven Project，创建Project选择Authoring -> Project Authoring，在Project Explorer中选择rganizational Unit 为 test，选择 Repository 为 myTestRepo。选择New Item -> Project，在弹出输入框中输入Resource Name为humantaskTest如下：
+80_add_project.png
+点击Ok按钮完成创建Project，在弹出的Project General Settings中输入如下基本信息：
+80_add_project_basic_setting.png
+点击Finish完成。
+
+5. 创建Knowleage Base 和 session
+在Project General Settings下拉菜单中选择 Knowleage bases and sessions，在Knowleage bases and sessions页面中点击Add按钮创建kbase，并Make Default添加Packages为org.jbpm.test，添加ksession，选择Default为true，state为Stateful，如下：
+80_add_kbases_ksession.png
+
+6. 创建BPMN流程
+点击New Item -> Business Process，在流程编辑器中创建Test Process如下图：
+80_add_process.png
+在流程右边属性输入中添加On Entry Action为执行Java 代码System.out.println("Test Process on Entry");添加On Exit Action为执行Java 代码System.out.println("Test Process on Exit");保存流程完成创建BPMN流程。
+
+7. 运行流程
+如jBPM 6 示例之 Evaluation 在jBPM console中运行Evaluation 示例部分描述的内容，选择Tools -> Project Edit，点击最右边Build & Deploy可以部署Test Process；选择Process Management -> Process Definitions会列出所有定义部署的流程，选择TestProcess，在最右端点击开始按钮，开始执行流程，选择Task -> Task List，在列表右边点击Start图标，Start图标会变化为Complete图标，点击Complete图标完成执行流程，我们在jBPM 后台发现如下输出：
+---
+15:29:16,234 INFO  [stdout] (http--127.0.0.1-8080-3) Test Process on Entry
+15:35:40,887 INFO  [stdout] (http--127.0.0.1-8080-4) Test Process on Exit
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
