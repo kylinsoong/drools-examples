@@ -1,0 +1,8 @@
+package org.drools.examples;
+
+rule "hello world"
+when
+	eval(true)
+then
+	System.out.println("Hello World");
+end
