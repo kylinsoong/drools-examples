@@ -1,0 +1,46 @@
+00. Overview
+------------
+
+* The Apache Jackrabbit content repository is a fully conforming implementation of the Content Repository for Java Technology API (JCR, specified in JSR 170 and 283)
+
+* A content repository is a hierarchical content store with support for structured and unstructured content, full text search, versioning, transactions, observation, and more.
+
+01. Getting Start
+-----------------
+
+* check out the jackrabbit code
+----
+svn checkout http://svn.apache.org/repos/asf/jackrabbit/trunk jackrabbit
+----
+
+* use maven 2(later version) build
+----
+mvn install
+----
+
+* import all code to eclipse(for convinent debug)
+
+* create 'Jackrabbit' project to start first hop
+
+* JCR API Outline:
+
+.JCR API
+[options="header,footer"]
+|=======================
+|Name 			|Description
+|javax.jcr.Repository   |The entry point into the content repository. Represents the entry point into the content repository.
+|javax.jcr.Session	|The Session object provides read and write access to the content of a particular workspace in the repository.   
+|=======================
+
+''''
+
+* Run 'com.kylin.jcr.jackrabbit.firsthops.FirstHop'
+** repository.xml generated
+** repository folder generated
+** derby.log generated
+
+
+
+
+
+
