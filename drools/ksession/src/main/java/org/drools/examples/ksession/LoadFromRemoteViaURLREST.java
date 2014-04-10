@@ -1,0 +1,30 @@
+package org.drools.examples.ksession;
+
+import org.drools.KnowledgeBase;
+import org.drools.builder.KnowledgeBuilder;
+import org.drools.builder.KnowledgeBuilderFactory;
+import org.drools.builder.ResourceType;
+import org.drools.io.ResourceFactory;
+import org.drools.io.impl.UrlResource;
+import org.drools.runtime.StatefulKnowledgeSession;
+
+public class LoadFromRemoteViaURLREST {
+
+	public static void main(String[] args) throws Exception {
+
+		StatefulKnowledgeSession ksession = newKnowledgeSession("http://localhost:8080/jboss-brms/rest/packages/org.drools.examples/binary");
+		ksession.fireAllRules();
+		ksession.dispose();
+	}
+	
+	private static StatefulKnowledgeSession newKnowledgeSession(String url) throws Exception {
+		UrlResource resource = (UrlResource) ResourceFactory.newUrlResource(url);
+		resource.setBasicAuthentication("enabled");
+        resource.setUsername("admin");
+        resource.setPassword("admin");
+        KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
+        kbuilder.add(resource, ResourceType.PKG);
+		KnowledgeBase kbase = kbuilder.newKnowledgeBase();
+		return kbase.newStatefulKnowledgeSession();
+	}
+}
