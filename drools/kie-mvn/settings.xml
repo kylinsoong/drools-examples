@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+ 
+<servers>
+    <server>
+      <id>guvnor-m2-repo</id>
+	  <username>admin</username>
+      <password>password1!</password>
+      <configuration>
+        <wagonProvider>httpclient</wagonProvider>
+        <httpConfiguration>
+          <all>
+            <usePreemptive>true</usePreemptive>
+          </all>
+        </httpConfiguration>
+      </configuration>
+    </server>
+  </servers>
+ 
+  <profiles>
+   
+<profile>
+      <id>guvnor-m2-repo</id>
+      <repositories>
+        <repository>
+          <id>guvnor-m2-repo</id>
+          <name>BRMS Repository</name>
+          <url>http://10.66.218.46:8080/business-central/maven2/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>guvnor-m2-repo</activeProfile>
+  </activeProfiles>
+
+</settings>

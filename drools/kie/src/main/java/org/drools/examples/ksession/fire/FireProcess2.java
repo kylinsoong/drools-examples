@@ -9,7 +9,7 @@ public class FireProcess2 {
 
 	public static void main(String[] args) {
 		KieServices ks = KieServices.Factory.get();
-		ReleaseId releaseId = ks.newReleaseId("org.brms", "HelloWorld","1.0.0");
+		ReleaseId releaseId = ks.newReleaseId("org.brms", "HelloWorld","1.0");
         KieContainer kContainer = ks.newKieContainer(releaseId);
         KieSession ksession = kContainer.newKieSession("defaultKieSession");
         ksession.fireAllRules();

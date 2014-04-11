@@ -23,6 +23,7 @@
 	<module>compiler-research</module>
 	<module>rest</module>
 	<module>kie</module>
+	<module>kie-mvn</module>
     </modules>
 
 </project>
