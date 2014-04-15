@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.drools.examples</groupId>
-    <artifactId>org.drools.examples-parent</artifactId>
+    <artifactId>org.drools6.examples-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>Parent for drools</name>
@@ -18,10 +18,8 @@
     </licenses>
     
     <modules>
-        <module>examples</module>
-	<module>ksession</module>
-	<module>compiler-research</module>
-	<module>rest</module>
+	<module>kie</module>
+	<module>kie-mvn</module>
     </modules>
 
 </project>

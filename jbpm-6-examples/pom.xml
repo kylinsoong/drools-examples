@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.drools.examples</groupId>
-    <artifactId>org.drools.examples-parent</artifactId>
+    <groupId>org.jbpm.demo</groupId>
+    <artifactId>demo-parent</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>Parent for drools</name>
+    <name>jBPM 6 Demo Parent</name>
 
     <licenses>
         <license>
@@ -18,9 +18,11 @@
     </licenses>
     
     <modules>
-        <module>examples</module>
-	<module>ksession</module>
-	<module>compiler-research</module>
+	<module>rewards</module>
+	<module>rewards-basic</module>
+	<module>evaluation</module>
+	<module>parameters</module>
+	<module>spring</module>
 	<module>rest</module>
     </modules>
 

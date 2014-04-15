@@ -1,5 +1,0 @@
-<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
-  
-  <kbase name="kbase-service" packages="org.jbpm.sample.service"/>
-
-</kmodule>
