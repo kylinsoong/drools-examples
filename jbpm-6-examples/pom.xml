@@ -24,6 +24,7 @@
 	<module>parameters</module>
 	<module>spring</module>
 	<module>rest</module>
+	<module>quickstarts</module>
     </modules>
 
 </project>
