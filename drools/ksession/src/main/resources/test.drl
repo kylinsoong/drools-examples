@@ -4,5 +4,5 @@ rule "print test"
 when
 	eval( true )
 then
-	System.out.println("print test");
+	System.out.println("This is kagent scanner test");
 end

@@ -41,10 +41,40 @@
         </repository>
       </repositories>
     </profile>
+<profile>
+      <id>jboss-ga-repository</id>
+      <repositories>
+        <repository>
+          <id>jboss-ga-repository</id>
+          <url>http://maven.repository.redhat.com/techpreview/all</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>jboss-ga-plugin-repository</id>
+          <url>http://maven.repository.redhat.com/techpreview/all</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+
   </profiles>
 
   <activeProfiles>
     <activeProfile>guvnor-m2-repo</activeProfile>
+    <activeProfile>jboss-ga-repository</activeProfile>
   </activeProfiles>
 
 </settings>
