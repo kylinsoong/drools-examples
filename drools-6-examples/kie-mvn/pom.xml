@@ -65,12 +65,14 @@
 		</dependency>
 		
 		-SNAPSHOT
--->
+
 		<dependency>
 			<groupId>org.kie.example</groupId>
 			<artifactId>project1</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		
+		-->
 
 		<!-- 
 		<dependency>

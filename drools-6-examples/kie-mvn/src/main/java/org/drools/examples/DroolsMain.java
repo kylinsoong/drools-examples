@@ -10,7 +10,7 @@ public class DroolsMain {
 	public static void main(String[] args) {
 		
 		KieServices kServices = KieServices.Factory.get();
-		ReleaseId releaseId = kServices.newReleaseId( "org.kie.example", "project1", "1.0.0-SNAPSHOT" );
+		ReleaseId releaseId = kServices.newReleaseId( "org.kie.example", "project1", "LATEST" );
 		KieContainer kContainer = kServices.newKieContainer( releaseId );
 		KieSession ksession = kContainer.newKieSession("defaultKieSession");
 		ksession.fireAllRules();

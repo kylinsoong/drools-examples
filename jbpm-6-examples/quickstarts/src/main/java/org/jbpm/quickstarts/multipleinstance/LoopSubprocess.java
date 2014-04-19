@@ -12,21 +12,20 @@ import org.kie.internal.builder.KnowledgeBuilderFactory;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.internal.runtime.StatefulKnowledgeSession;
 
-public class MultipleNodeInstanceProcessStart {
+public class LoopSubprocess {
 
 	public static final void main(String[] args) {
 		try {
 			KnowledgeBase kbase = readKnowledgeBase();
 			StatefulKnowledgeSession ksession = kbase.newStatefulKnowledgeSession();
 			
-			List<Person> list = new ArrayList<Person>();
+			List<String> list = new ArrayList<String>();
 			for(int i = 1 ; i < 6 ; i ++){
-				list.add(new Person("1000" + i));
+				list.add("1000" + i);
 			}
-	        Map<String, Object> param = new HashMap<String, Object>();
-	        param.put("list", list);
-	        param.put("localVar", new Person("00000"));
-	        ksession.startProcess("org.jbpm.quickstarts.multiplenodeinstanceprocess", param);
+	        Map<String, Object> parameters = new HashMap<String, Object>();
+	        parameters.put("list", list);
+	        ksession.startProcess("com.sample.bpmn", parameters);
 
 		} catch (Throwable t) {
 			t.printStackTrace();
@@ -35,7 +34,7 @@ public class MultipleNodeInstanceProcessStart {
 	
 	private static KnowledgeBase readKnowledgeBase() throws Exception {
 		KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-		kbuilder.add(ResourceFactory.newClassPathResource("multipleinstance/multipleNodeInstanceProcess.bpmn"), ResourceType.BPMN2);
+		kbuilder.add(ResourceFactory.newClassPathResource("multipleinstance/loopprocess.bpmn"), ResourceType.BPMN2);
 		return kbuilder.newKnowledgeBase();
 	}
 }

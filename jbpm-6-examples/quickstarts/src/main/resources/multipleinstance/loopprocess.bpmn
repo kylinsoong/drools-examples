@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="Definition" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.jboss.org/drools" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="ItemDefinition_1" structureRef="java.util.List"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_2" structureRef="java.lang.Integer"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_3" structureRef="java.lang.Boolean"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_5" structureRef="java.lang.Character"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_12" structureRef="java.io.UnsupportedEncodingException"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_14" structureRef="java.nio.charset.Charset"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_16" structureRef="java.lang.Object"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_19" structureRef="java.lang.StringBuffer"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_22" structureRef="java.lang.CharSequence"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_53" structureRef="java.util.Locale"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_71" structureRef="java.lang.Long"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_73" structureRef="java.lang.Float"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_75" structureRef="java.lang.Double"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_85" structureRef="java.util.Iterator"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_90" structureRef="java.util.Collection"/>
+  <bpmn2:itemDefinition id="_ItemDefinition_108" structureRef="java.util.ListIterator"/>
+  <bpmn2:itemDefinition id="_String" structureRef="String"/>
+  <bpmn2:error id="_Error_2" name="UnsupportedEncodingException" structureRef="_ItemDefinition_12"/>
+  <bpmn2:message id="_Message_2" itemRef="_ItemDefinition_2" name="String_length_Result"/>
+  <bpmn2:message id="_Message_3" itemRef="_ItemDefinition_3" name="String_isEmpty_Result"/>
+  <bpmn2:message id="_Message_4" itemRef="_ItemDefinition_2" name="String_charAt_index"/>
+  <bpmn2:message id="_Message_5" itemRef="_ItemDefinition_5" name="String_charAt_Result"/>
+  <bpmn2:message id="_Message_6" itemRef="_ItemDefinition_2" name="String_codePointAt_index"/>
+  <bpmn2:message id="_Message_7" itemRef="_ItemDefinition_2" name="String_codePointAt_Result"/>
+  <bpmn2:message id="_Message_8" itemRef="_ItemDefinition_2" name="String_codePointBefore_index"/>
+  <bpmn2:message id="_Message_9" itemRef="_ItemDefinition_2" name="String_codePointBefore_Result"/>
+  <bpmn2:message id="_Message_10" itemRef="ItemDefinition_1" name="String_getBytes_charsetName"/>
+  <bpmn2:message id="_Message_11" itemRef="_ItemDefinition_14" name="String_getBytes_charset"/>
+  <bpmn2:message id="_Message_12" itemRef="_ItemDefinition_16" name="String_equals_anObject"/>
+  <bpmn2:message id="_Message_13" itemRef="_ItemDefinition_3" name="String_equals_Result"/>
+  <bpmn2:message id="_Message_14" itemRef="_ItemDefinition_19" name="String_contentEquals_sb"/>
+  <bpmn2:message id="_Message_15" itemRef="_ItemDefinition_3" name="String_contentEquals_Result"/>
+  <bpmn2:message id="_Message_16" itemRef="_ItemDefinition_22" name="String_contentEquals_cs"/>
+  <bpmn2:message id="_Message_17" itemRef="_ItemDefinition_3" name="String_contentEquals_Result"/>
+  <bpmn2:message id="_Message_18" itemRef="ItemDefinition_1" name="String_equalsIgnoreCase_anotherString"/>
+  <bpmn2:message id="_Message_19" itemRef="_ItemDefinition_3" name="String_equalsIgnoreCase_Result"/>
+  <bpmn2:message id="_Message_20" itemRef="ItemDefinition_1" name="String_compareTo_anotherString"/>
+  <bpmn2:message id="_Message_21" itemRef="_ItemDefinition_2" name="String_compareTo_Result"/>
+  <bpmn2:message id="_Message_22" itemRef="ItemDefinition_1" name="String_compareToIgnoreCase_str"/>
+  <bpmn2:message id="_Message_23" itemRef="_ItemDefinition_2" name="String_compareToIgnoreCase_Result"/>
+  <bpmn2:message id="_Message_24" itemRef="ItemDefinition_1" name="String_startsWith_prefix"/>
+  <bpmn2:message id="_Message_25" itemRef="_ItemDefinition_3" name="String_startsWith_Result"/>
+  <bpmn2:message id="_Message_26" itemRef="ItemDefinition_1" name="String_endsWith_suffix"/>
+  <bpmn2:message id="_Message_27" itemRef="_ItemDefinition_3" name="String_endsWith_Result"/>
+  <bpmn2:message id="_Message_28" itemRef="_ItemDefinition_2" name="String_hashCode_Result"/>
+  <bpmn2:message id="_Message_29" itemRef="_ItemDefinition_2" name="String_indexOf_ch"/>
+  <bpmn2:message id="_Message_30" itemRef="_ItemDefinition_2" name="String_indexOf_Result"/>
+  <bpmn2:message id="_Message_31" itemRef="_ItemDefinition_2" name="String_lastIndexOf_ch"/>
+  <bpmn2:message id="_Message_32" itemRef="_ItemDefinition_2" name="String_lastIndexOf_Result"/>
+  <bpmn2:message id="_Message_33" itemRef="ItemDefinition_1" name="String_indexOf_str"/>
+  <bpmn2:message id="_Message_34" itemRef="_ItemDefinition_2" name="String_indexOf_Result"/>
+  <bpmn2:message id="_Message_35" itemRef="ItemDefinition_1" name="String_lastIndexOf_str"/>
+  <bpmn2:message id="_Message_36" itemRef="_ItemDefinition_2" name="String_lastIndexOf_Result"/>
+  <bpmn2:message id="_Message_37" itemRef="_ItemDefinition_2" name="String_substring_beginIndex"/>
+  <bpmn2:message id="_Message_38" itemRef="ItemDefinition_1" name="String_substring_Result"/>
+  <bpmn2:message id="_Message_39" itemRef="ItemDefinition_1" name="String_concat_str"/>
+  <bpmn2:message id="_Message_40" itemRef="ItemDefinition_1" name="String_concat_Result"/>
+  <bpmn2:message id="_Message_41" itemRef="ItemDefinition_1" name="String_matches_regex"/>
+  <bpmn2:message id="_Message_42" itemRef="_ItemDefinition_3" name="String_matches_Result"/>
+  <bpmn2:message id="_Message_43" itemRef="_ItemDefinition_22" name="String_contains_s"/>
+  <bpmn2:message id="_Message_44" itemRef="_ItemDefinition_3" name="String_contains_Result"/>
+  <bpmn2:message id="_Message_45" itemRef="ItemDefinition_1" name="String_split_regex"/>
+  <bpmn2:message id="_Message_46" itemRef="_ItemDefinition_53" name="String_toLowerCase_locale"/>
+  <bpmn2:message id="_Message_47" itemRef="ItemDefinition_1" name="String_toLowerCase_Result"/>
+  <bpmn2:message id="_Message_49" itemRef="_ItemDefinition_53" name="String_toUpperCase_locale"/>
+  <bpmn2:message id="_Message_50" itemRef="ItemDefinition_1" name="String_toUpperCase_Result"/>
+  <bpmn2:message id="_Message_52" itemRef="ItemDefinition_1" name="String_trim_Result"/>
+  <bpmn2:message id="_Message_53" itemRef="ItemDefinition_1" name="String_toString_Result"/>
+  <bpmn2:message id="_Message_54" itemRef="_ItemDefinition_16" name="String_valueOf_obj"/>
+  <bpmn2:message id="_Message_55" itemRef="ItemDefinition_1" name="String_valueOf_Result"/>
+  <bpmn2:message id="_Message_56" name="String_valueOf_data"/>
+  <bpmn2:message id="_Message_58" name="String_copyValueOf_data"/>
+  <bpmn2:message id="_Message_59" itemRef="ItemDefinition_1" name="String_copyValueOf_Result"/>
+  <bpmn2:message id="_Message_60" itemRef="_ItemDefinition_3" name="String_valueOf_b"/>
+  <bpmn2:message id="_Message_62" itemRef="_ItemDefinition_5" name="String_valueOf_c"/>
+  <bpmn2:message id="_Message_64" itemRef="_ItemDefinition_2" name="String_valueOf_i"/>
+  <bpmn2:message id="_Message_66" itemRef="_ItemDefinition_71" name="String_valueOf_l"/>
+  <bpmn2:message id="_Message_68" itemRef="_ItemDefinition_73" name="String_valueOf_f"/>
+  <bpmn2:message id="_Message_70" itemRef="_ItemDefinition_75" name="String_valueOf_d"/>
+  <bpmn2:message id="_Message_72" itemRef="ItemDefinition_1" name="String_intern_Result"/>
+  <bpmn2:message id="_Message_73" itemRef="_ItemDefinition_16" name="String_compareTo_arg0"/>
+  <bpmn2:message id="_Message_74" itemRef="_ItemDefinition_2" name="String_compareTo_Result"/>
+  <bpmn2:message id="_Message_75" itemRef="_ItemDefinition_2" name="List_size_Result"/>
+  <bpmn2:message id="_Message_76" itemRef="_ItemDefinition_3" name="List_isEmpty_Result"/>
+  <bpmn2:message id="_Message_77" itemRef="_ItemDefinition_16" name="List_contains_o"/>
+  <bpmn2:message id="_Message_78" itemRef="_ItemDefinition_3" name="List_contains_Result"/>
+  <bpmn2:message id="_Message_79" itemRef="_ItemDefinition_85" name="List_iterator_Result"/>
+  <bpmn2:message id="_Message_80" name="List_toArray_a"/>
+  <bpmn2:message id="_Message_81" name="List_add_e"/>
+  <bpmn2:message id="_Message_82" itemRef="_ItemDefinition_3" name="List_add_Result"/>
+  <bpmn2:message id="_Message_83" itemRef="_ItemDefinition_16" name="List_remove_o"/>
+  <bpmn2:message id="_Message_84" itemRef="_ItemDefinition_3" name="List_remove_Result"/>
+  <bpmn2:message id="_Message_85" itemRef="_ItemDefinition_90" name="List_containsAll_c"/>
+  <bpmn2:message id="_Message_86" itemRef="_ItemDefinition_3" name="List_containsAll_Result"/>
+  <bpmn2:message id="_Message_87" itemRef="_ItemDefinition_90" name="List_addAll_c"/>
+  <bpmn2:message id="_Message_88" itemRef="_ItemDefinition_3" name="List_addAll_Result"/>
+  <bpmn2:message id="_Message_89" itemRef="_ItemDefinition_90" name="List_removeAll_c"/>
+  <bpmn2:message id="_Message_90" itemRef="_ItemDefinition_3" name="List_removeAll_Result"/>
+  <bpmn2:message id="_Message_91" itemRef="_ItemDefinition_90" name="List_retainAll_c"/>
+  <bpmn2:message id="_Message_92" itemRef="_ItemDefinition_3" name="List_retainAll_Result"/>
+  <bpmn2:message id="_Message_93" itemRef="_ItemDefinition_16" name="List_equals_o"/>
+  <bpmn2:message id="_Message_94" itemRef="_ItemDefinition_3" name="List_equals_Result"/>
+  <bpmn2:message id="_Message_95" itemRef="_ItemDefinition_2" name="List_hashCode_Result"/>
+  <bpmn2:message id="_Message_96" itemRef="_ItemDefinition_2" name="List_get_index"/>
+  <bpmn2:message id="_Message_97" itemRef="_ItemDefinition_2" name="List_remove_index"/>
+  <bpmn2:message id="_Message_98" itemRef="_ItemDefinition_16" name="List_indexOf_o"/>
+  <bpmn2:message id="_Message_99" itemRef="_ItemDefinition_2" name="List_indexOf_Result"/>
+  <bpmn2:message id="_Message_100" itemRef="_ItemDefinition_16" name="List_lastIndexOf_o"/>
+  <bpmn2:message id="_Message_101" itemRef="_ItemDefinition_2" name="List_lastIndexOf_Result"/>
+  <bpmn2:message id="_Message_102" itemRef="_ItemDefinition_108" name="List_listIterator_Result"/>
+  <bpmn2:message id="_Message_103" itemRef="_ItemDefinition_2" name="List_listIterator_index"/>
+  <bpmn2:interface id="_Interface_2" implementationRef="java.lang.String" name="String">
+    <bpmn2:operation id="_Operation_2" implementationRef="length" name="length">
+      <bpmn2:outMessageRef>_Message_2</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_3" implementationRef="isEmpty" name="isEmpty">
+      <bpmn2:outMessageRef>_Message_3</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_4" implementationRef="charAt" name="charAt">
+      <bpmn2:inMessageRef>_Message_4</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_5</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_5" implementationRef="codePointAt" name="codePointAt">
+      <bpmn2:inMessageRef>_Message_6</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_7</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_6" implementationRef="codePointBefore" name="codePointBefore">
+      <bpmn2:inMessageRef>_Message_8</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_9</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_11" implementationRef="getBytes" name="getBytes">
+      <bpmn2:inMessageRef>_Message_10</bpmn2:inMessageRef>
+      <bpmn2:errorRef>_Error_2</bpmn2:errorRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_12" implementationRef="getBytes" name="getBytes">
+      <bpmn2:inMessageRef>_Message_11</bpmn2:inMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_13" implementationRef="getBytes" name="getBytes"/>
+    <bpmn2:operation id="_Operation_14" implementationRef="equals" name="equals">
+      <bpmn2:inMessageRef>_Message_12</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_13</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_15" implementationRef="contentEquals" name="contentEquals">
+      <bpmn2:inMessageRef>_Message_14</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_15</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_16" implementationRef="contentEquals" name="contentEquals">
+      <bpmn2:inMessageRef>_Message_16</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_17</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_17" implementationRef="equalsIgnoreCase" name="equalsIgnoreCase">
+      <bpmn2:inMessageRef>_Message_18</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_19</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_18" implementationRef="compareTo" name="compareTo">
+      <bpmn2:inMessageRef>_Message_20</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_21</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_19" implementationRef="compareToIgnoreCase" name="compareToIgnoreCase">
+      <bpmn2:inMessageRef>_Message_22</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_23</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_23" implementationRef="startsWith" name="startsWith">
+      <bpmn2:inMessageRef>_Message_24</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_25</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_24" implementationRef="endsWith" name="endsWith">
+      <bpmn2:inMessageRef>_Message_26</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_27</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_25" implementationRef="hashCode" name="hashCode">
+      <bpmn2:outMessageRef>_Message_28</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_26" implementationRef="indexOf" name="indexOf">
+      <bpmn2:inMessageRef>_Message_29</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_30</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_28" implementationRef="lastIndexOf" name="lastIndexOf">
+      <bpmn2:inMessageRef>_Message_31</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_32</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_30" implementationRef="indexOf" name="indexOf">
+      <bpmn2:inMessageRef>_Message_33</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_34</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_32" implementationRef="lastIndexOf" name="lastIndexOf">
+      <bpmn2:inMessageRef>_Message_35</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_36</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_34" implementationRef="substring" name="substring">
+      <bpmn2:inMessageRef>_Message_37</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_38</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_37" implementationRef="concat" name="concat">
+      <bpmn2:inMessageRef>_Message_39</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_40</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_39" implementationRef="matches" name="matches">
+      <bpmn2:inMessageRef>_Message_41</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_42</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_40" implementationRef="contains" name="contains">
+      <bpmn2:inMessageRef>_Message_43</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_44</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_45" implementationRef="split" name="split">
+      <bpmn2:inMessageRef>_Message_45</bpmn2:inMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_46" implementationRef="toLowerCase" name="toLowerCase">
+      <bpmn2:inMessageRef>_Message_46</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_47</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_47" implementationRef="toLowerCase" name="toLowerCase">
+      <bpmn2:outMessageRef>_Message_47</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_48" implementationRef="toUpperCase" name="toUpperCase">
+      <bpmn2:inMessageRef>_Message_49</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_50</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_49" implementationRef="toUpperCase" name="toUpperCase">
+      <bpmn2:outMessageRef>_Message_50</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_50" implementationRef="trim" name="trim">
+      <bpmn2:outMessageRef>_Message_52</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_51" implementationRef="toString" name="toString">
+      <bpmn2:outMessageRef>_Message_53</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_52" implementationRef="toCharArray" name="toCharArray"/>
+    <bpmn2:operation id="_Operation_55" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_54</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_56" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_56</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_59" implementationRef="copyValueOf" name="copyValueOf">
+      <bpmn2:inMessageRef>_Message_58</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_59</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_60" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_60</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_61" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_62</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_62" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_64</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_63" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_66</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_64" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_68</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_65" implementationRef="valueOf" name="valueOf">
+      <bpmn2:inMessageRef>_Message_70</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_55</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_66" implementationRef="intern" name="intern">
+      <bpmn2:outMessageRef>_Message_72</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_67" implementationRef="compareTo" name="compareTo">
+      <bpmn2:inMessageRef>_Message_73</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_74</bpmn2:outMessageRef>
+    </bpmn2:operation>
+  </bpmn2:interface>
+  <bpmn2:interface id="_Interface_3" implementationRef="java.util.List" name="List">
+    <bpmn2:operation id="_Operation_68" implementationRef="size" name="size">
+      <bpmn2:outMessageRef>_Message_75</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_69" implementationRef="isEmpty" name="isEmpty">
+      <bpmn2:outMessageRef>_Message_76</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_70" implementationRef="contains" name="contains">
+      <bpmn2:inMessageRef>_Message_77</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_78</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_71" implementationRef="iterator" name="iterator">
+      <bpmn2:outMessageRef>_Message_79</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_72" implementationRef="toArray" name="toArray"/>
+    <bpmn2:operation id="_Operation_73" implementationRef="toArray" name="toArray">
+      <bpmn2:inMessageRef>_Message_80</bpmn2:inMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_74" implementationRef="add" name="add">
+      <bpmn2:inMessageRef>_Message_81</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_82</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_75" implementationRef="remove" name="remove">
+      <bpmn2:inMessageRef>_Message_83</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_84</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_76" implementationRef="containsAll" name="containsAll">
+      <bpmn2:inMessageRef>_Message_85</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_86</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_77" implementationRef="addAll" name="addAll">
+      <bpmn2:inMessageRef>_Message_87</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_88</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_79" implementationRef="removeAll" name="removeAll">
+      <bpmn2:inMessageRef>_Message_89</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_90</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_80" implementationRef="retainAll" name="retainAll">
+      <bpmn2:inMessageRef>_Message_91</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_92</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_81" implementationRef="clear" name="clear"/>
+    <bpmn2:operation id="_Operation_82" implementationRef="equals" name="equals">
+      <bpmn2:inMessageRef>_Message_93</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_94</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_83" implementationRef="hashCode" name="hashCode">
+      <bpmn2:outMessageRef>_Message_95</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_84" implementationRef="get" name="get">
+      <bpmn2:inMessageRef>_Message_96</bpmn2:inMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_87" implementationRef="remove" name="remove">
+      <bpmn2:inMessageRef>_Message_97</bpmn2:inMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_88" implementationRef="indexOf" name="indexOf">
+      <bpmn2:inMessageRef>_Message_98</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_99</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_89" implementationRef="lastIndexOf" name="lastIndexOf">
+      <bpmn2:inMessageRef>_Message_100</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_101</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_90" implementationRef="listIterator" name="listIterator">
+      <bpmn2:outMessageRef>_Message_102</bpmn2:outMessageRef>
+    </bpmn2:operation>
+    <bpmn2:operation id="_Operation_91" implementationRef="listIterator" name="listIterator">
+      <bpmn2:inMessageRef>_Message_103</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>_Message_102</bpmn2:outMessageRef>
+    </bpmn2:operation>
+  </bpmn2:interface>
+  <bpmn2:process id="com.sample.bpmn" tns:version="1" tns:packageName="defaultPackage" tns:adHoc="false" name="Sample Process" isExecutable="true" processType="Private">
+    <bpmn2:extensionElements>
+      <tns:import name="java.lang.String"/>
+      <tns:import name="java.io.UnsupportedEncodingException"/>
+      <tns:import name="java.nio.charset.Charset"/>
+      <tns:import name="java.lang.Object"/>
+      <tns:import name="java.lang.StringBuffer"/>
+      <tns:import name="java.lang.CharSequence"/>
+      <tns:import name="java.util.Locale"/>
+      <tns:import name="java.util.List"/>
+      <tns:import name="java.util.Iterator"/>
+      <tns:import name="java.util.Collection"/>
+      <tns:import name="java.util.ListIterator"/>
+    </bpmn2:extensionElements>
+    <bpmn2:property id="list" itemSubjectRef="ItemDefinition_1"/>
+    <bpmn2:startEvent id="_1" name="">
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" tns:priority="1" sourceRef="_1" targetRef="ScriptTask_1"/>
+    <bpmn2:scriptTask id="ScriptTask_1" name="Start" scriptFormat="http://www.java.com/java">
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;Start&quot;);</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" tns:priority="1" sourceRef="ScriptTask_1" targetRef="SubProcess_1"/>
+    <bpmn2:subProcess id="SubProcess_1" name="Sub Process">
+      <bpmn2:extensionElements>
+        <tns:onEntry-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onEntry-script>
+        <tns:onExit-script scriptFormat="http://www.java.com/java">
+          <tns:script></tns:script>
+        </tns:onExit-script>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_3</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="InputOutputSpecification_1">
+        <bpmn2:dataInput id="DataInput_1" itemSubjectRef="ItemDefinition_1" name="Data Input 1"/>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="DataInputAssociation_1">
+        <bpmn2:sourceRef>list</bpmn2:sourceRef>
+        <bpmn2:targetRef>DataInput_1</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:multiInstanceLoopCharacteristics id="MultiInstanceLoopCharacteristics_1">
+        <bpmn2:loopDataInputRef>DataInput_1</bpmn2:loopDataInputRef>
+        <bpmn2:inputDataItem xsi:type="bpmn2:tDataInput" id="DataInput_2" itemSubjectRef="_String" name="Data Input 2"/>
+      </bpmn2:multiInstanceLoopCharacteristics>
+      <bpmn2:startEvent id="StartEvent_1" name="">
+        <bpmn2:outgoing>SequenceFlow_7</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="StartEvent_1" targetRef="ScriptTask_3"/>
+      <bpmn2:scriptTask id="ScriptTask_3" name="Script" scriptFormat="http://www.java.com/java">
+        <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
+        <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
+        <bpmn2:script>System.out.println(&quot;Script&quot;);</bpmn2:script>
+      </bpmn2:scriptTask>
+      <bpmn2:endEvent id="EndEvent_3" name="">
+        <bpmn2:incoming>SequenceFlow_8</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ScriptTask_3" targetRef="EndEvent_3"/>
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="SequenceFlow_3" tns:priority="1" sourceRef="SubProcess_1" targetRef="EndEvent_1"/>
+    <bpmn2:endEvent id="EndEvent_1" name="">
+      <bpmn2:incoming>SequenceFlow_3</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_1" bpmnElement="com.sample.bpmn">
+      <bpmndi:BPMNShape id="BPMNShape_SubProcess_1" bpmnElement="SubProcess_1" isExpanded="true">
+        <dc:Bounds height="300.0" width="344.0" x="360.0" y="40.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_1" bpmnElement="_1">
+        <dc:Bounds height="36.0" width="36.0" x="40.0" y="100.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_1">
+        <dc:Bounds height="50.0" width="110.0" x="140.0" y="86.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="743.0" y="172.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds height="36.0" width="36.0" x="380.0" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_3" bpmnElement="ScriptTask_3">
+        <dc:Bounds height="50.0" width="110.0" x="470.0" y="148.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_EndEvent_3" bpmnElement="EndEvent_3">
+        <dc:Bounds height="36.0" width="36.0" x="648.0" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_StartEvent_1" targetElement="BPMNShape_ScriptTask_1">
+        <di:waypoint xsi:type="dc:Point" x="76.0" y="118.0"/>
+        <di:waypoint xsi:type="dc:Point" x="104.0" y="118.0"/>
+        <di:waypoint xsi:type="dc:Point" x="104.0" y="111.0"/>
+        <di:waypoint xsi:type="dc:Point" x="140.0" y="111.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ScriptTask_1" targetElement="BPMNShape_SubProcess_1">
+        <di:waypoint xsi:type="dc:Point" x="250.0" y="111.0"/>
+        <di:waypoint xsi:type="dc:Point" x="299.0" y="111.0"/>
+        <di:waypoint xsi:type="dc:Point" x="299.0" y="190.0"/>
+        <di:waypoint xsi:type="dc:Point" x="360.0" y="190.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_SubProcess_1" targetElement="BPMNShape_EndEvent_1">
+        <di:waypoint xsi:type="dc:Point" x="704.0" y="190.0"/>
+        <di:waypoint xsi:type="dc:Point" x="721.0" y="190.0"/>
+        <di:waypoint xsi:type="dc:Point" x="721.0" y="190.0"/>
+        <di:waypoint xsi:type="dc:Point" x="743.0" y="190.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_7" bpmnElement="SequenceFlow_7" sourceElement="BPMNShape_StartEvent_2" targetElement="BPMNShape_ScriptTask_3">
+        <di:waypoint xsi:type="dc:Point" x="416.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="440.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="440.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="470.0" y="173.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_8" bpmnElement="SequenceFlow_8" sourceElement="BPMNShape_ScriptTask_3" targetElement="BPMNShape_EndEvent_3">
+        <di:waypoint xsi:type="dc:Point" x="580.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="610.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="610.0" y="173.0"/>
+        <di:waypoint xsi:type="dc:Point" x="648.0" y="173.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
