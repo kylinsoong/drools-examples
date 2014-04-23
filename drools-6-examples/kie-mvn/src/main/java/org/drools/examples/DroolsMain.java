@@ -11,7 +11,7 @@ public class DroolsMain {
 	public static void main(String[] args) throws InterruptedException {
 		
 		KieServices kServices = KieServices.Factory.get();
-		ReleaseId releaseId = kServices.newReleaseId( "org.kie.example", "project1", "1.2.0-SNAPSHOT" );
+		ReleaseId releaseId = kServices.newReleaseId( "org.kie.example", "project1", "1.0.0-SNAPSHOT" );
 		KieContainer kContainer = kServices.newKieContainer( releaseId );
 //		KieScanner kScanner = kServices.newKieScanner( kContainer );
 //		kScanner.start( 1000 * 10);
