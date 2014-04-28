@@ -49,6 +49,13 @@
 			<artifactId>jbpm-test</artifactId>
 			<version>${jbpm.version}</version>
 		</dependency>
+
+	<dependency>
+		<groupId>com.redhat.gss</groupId>
+		<artifactId>01081954</artifactId>
+		<version>1.0</version>
+	</dependency>
+		
 		<!--  
 		
 		<dependency>

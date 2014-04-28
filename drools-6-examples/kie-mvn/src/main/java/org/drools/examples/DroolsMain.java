@@ -13,16 +13,16 @@ public class DroolsMain {
 		KieServices kServices = KieServices.Factory.get();
 		ReleaseId releaseId = kServices.newReleaseId( "org.kie.example", "project1", "1.0.0-SNAPSHOT" );
 		KieContainer kContainer = kServices.newKieContainer( releaseId );
-//		KieScanner kScanner = kServices.newKieScanner( kContainer );
-//		kScanner.start( 1000 * 10);
-//		
-//		
-//		while(true) {
-//			KieSession ksession = kContainer.newKieSession();
-//            ksession.fireAllRules();
-//
-//            Thread.sleep(10000);
-//		}
+		KieScanner kScanner = kServices.newKieScanner( kContainer );
+		kScanner.start( 1000 * 10);
+		
+		
+		while(true) {
+			KieSession ksession = kContainer.newKieSession();
+            ksession.fireAllRules();
+
+            Thread.sleep(10000);
+		}
 	}
 
 }
