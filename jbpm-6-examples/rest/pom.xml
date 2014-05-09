@@ -16,10 +16,13 @@
 
 	<dependencies>
 		<!-- <dependency> <groupId>org.jbpm</groupId> <artifactId>jbpm-test</artifactId> 
-			<version>${jbpm.version}</version> </dependency> <dependency> <groupId>org.kie.remote</groupId> 
-			<artifactId>kie-services-remote</artifactId> <version>${jbpm.version}</version> 
-			</dependency> -->
+			<version>${jbpm.version}</version> </dependency> -->
 
+		<dependency>
+			<groupId>org.kie.remote</groupId>
+			<artifactId>kie-services-remote</artifactId>
+			<version>${jbpm.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.kie.remote</groupId>
 			<artifactId>kie-services-client</artifactId>
