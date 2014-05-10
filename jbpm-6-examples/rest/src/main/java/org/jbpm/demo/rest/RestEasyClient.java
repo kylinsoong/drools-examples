@@ -34,20 +34,25 @@ public class RestEasyClient {
 		ClientRequestFactory requestFactory = RestRequestHelper.createRequestFactory(restBaseUrl, user, password);
 		
 		// TODO -- not success
-		execute(requestFactory);
+//		execute(requestFactory);
 		
-		startProcess(requestFactory, "org.kie.example.rest");
+//		startProcess(requestFactory, "org.kie.example.rest");
 		
-//		String process_instance_procInstId = url + root + "/process/instance/1";
-//		
-//		System.out.println(process_instance_procInstId);
-//		ClientRequest restRequest = requestFactory.createRequest(process_instance_procInstId);
-//		
-//		ClientResponse<?> responseObj = checkResponse(restRequest.get());
-//	
-//		System.out.println(responseObj);
+		getProcessInstance(requestFactory, 4);
+			
 	}
 	
+	void getProcessInstance(ClientRequestFactory requestFactory, int processInstanceId) throws Exception {
+		
+		String process_instance_procInstId = url + root + "/process/instance/" + processInstanceId;
+		
+		System.out.println("get ProcessInstance via " + process_instance_procInstId);
+		
+		ClientRequest restRequest = requestFactory.createRequest(process_instance_procInstId);
+		ClientResponse<?> responseObj = checkResponse(restRequest.get());
+		System.out.println(responseObj.getEntity());
+	}
+
 	void execute(ClientRequestFactory requestFactory) throws Exception {
 		
 		String execute = url + root + "/execute";
