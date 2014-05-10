@@ -10,8 +10,12 @@ FLUSH PRIVILEGES;
 ### Start a Process
 
 ~~~
+//Process
 select id, duration, start_date, end_date, processId, processInstanceId, processName, status from ProcessInstanceLog;
 select id, connection, log_date, nodeId, nodeInstanceId, nodeName, nodeType, processId, processInstanceId from NodeInstanceLog;
 select workItemId, creationDate, name, processInstanceId, state, OPTLOCK from WorkItemInfo;
 select DTYPE, id from OrganizationalEntity;
+
+//Task
+select id, createdOn, deploymentId, processInstanceId, processId, status, OPTLOCK, createdBy_id from Task;
 ~~~

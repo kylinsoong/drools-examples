@@ -10,14 +10,14 @@ import org.kie.services.client.serialization.jaxb.impl.JaxbCommandsRequest;
 
 public class RestEasyClient {
 	
-	static String deploymentId = "org.kie.example:project1:1.0";
+	static String deploymentId = "org.kie.example:project1:1.0.0-SNAPSHOT";
 	
 	static String url = "http://localhost:8080/business-central/rest";
 	
 	static String root = "/runtime/" + deploymentId;
 	
 	
-	static String user = "admin";
+	static String user = "kylin";
 	static String password = "password1!";
 
 	public static void main(String[] args) throws Exception {
@@ -32,13 +32,10 @@ public class RestEasyClient {
 		URL restBaseUrl = new URL(url);
 		
 		ClientRequestFactory requestFactory = RestRequestHelper.createRequestFactory(restBaseUrl, user, password);
+			
+		startProcess(requestFactory, "org.brms.test");
 		
-		// TODO -- not success
-//		execute(requestFactory);
-		
-//		startProcess(requestFactory, "org.kie.example.rest");
-		
-		getProcessInstance(requestFactory, 4);
+//		getProcessInstance(requestFactory, 4);
 			
 	}
 	
