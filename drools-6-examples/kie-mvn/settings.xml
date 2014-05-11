@@ -32,11 +32,11 @@
           <layout>default</layout>
           <releases>
             <enabled>true</enabled>
-            <updatePolicy>never</updatePolicy>
+            <updatePolicy>always</updatePolicy>
           </releases>
           <snapshots>
-            <enabled>false</enabled>
-            <updatePolicy>never</updatePolicy>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
           </snapshots>
         </repository>
       </repositories>

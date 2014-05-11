@@ -1,4 +1,4 @@
-package org.jbpm.demo.rest;
+package org.jbpm.demo.rest.tmp;
 
 import java.net.MalformedURLException;
 import java.net.URL;

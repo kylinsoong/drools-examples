@@ -8,7 +8,7 @@ public class RestEasyClientGetProcessInstance extends RestEasyClientBase {
 
 	public void execute() throws Exception {
 		
-		int processInstanceId = 7;
+		int processInstanceId = 1;
 
 		String process_instance_procInstId = url + root + "/process/instance/" + processInstanceId;
 		
