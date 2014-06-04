@@ -20,6 +20,7 @@
     <modules>
 	<module>kie</module>
 	<module>kie-mvn</module>
+	<module>kie-build</module>
 	<module>guvnor</module>
     </modules>
 
