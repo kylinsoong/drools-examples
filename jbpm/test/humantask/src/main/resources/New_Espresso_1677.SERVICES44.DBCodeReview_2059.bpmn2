@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_dbenvironmentItem" structureRef="String" />
+  <itemDefinition id="_InitiatorItem" structureRef="String" />
+  <itemDefinition id="_Application_OwnerItem" structureRef="String" />
+
+  <process processType="Private" isExecutable="true" id="New_Espresso_1677.SERVICES44.DBCodeReview_2059" name="New_Espresso_1677.SERVICES44.DBCodeReview_2059" tns:packageName="New_Espresso_1677.SERVICES44" >
+
+    <!-- process variables -->
+    <property id="dbenvironment" itemSubjectRef="_dbenvironmentItem"/>
+    <property id="Initiator" itemSubjectRef="_InitiatorItem"/>
+    <property id="Application_Owner" itemSubjectRef="_Application_OwnerItem"/>
+
+    <!-- nodes -->
+    <userTask id="_29C14685-1D80-470F-9FDC-938715CF3167_" name="Verify" >
+      <ioSpecification>
+        <dataInput id="_29C14685-1D80-470F-9FDC-938715CF3167__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_29C14685-1D80-470F-9FDC-938715CF3167__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_29C14685-1D80-470F-9FDC-938715CF3167__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_29C14685-1D80-470F-9FDC-938715CF3167__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_29C14685-1D80-470F-9FDC-938715CF3167__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_29C14685-1D80-470F-9FDC-938715CF3167__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_29C14685-1D80-470F-9FDC-938715CF3167__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[0d]</from>
+          <to xsi:type="tFormalExpression">_29C14685-1D80-470F-9FDC-938715CF3167__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_29C14685-1D80-470F-9FDC-938715CF3167__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"periodic":"false","expiresAt":"0","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"}</from>
+          <to xsi:type="tFormalExpression">_29C14685-1D80-470F-9FDC-938715CF3167__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"ROLE","roleType":"CSD","roleCode":"Initiator","actor":"Initiator","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"Y","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_29C14685-1D80-470F-9FDC-938715CF3167__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_29C14685-1D80-470F-9FDC-938715CF3167__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">1111111__4208A92C-CCB0-452F-8EF4-F3B573EC9320_</from>
+          <to xsi:type="tFormalExpression">_29C14685-1D80-470F-9FDC-938715CF3167__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Initiator</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_44E9EA21-8E98-44CE-8F62-51B20C36E213_" name="Approval" >
+      <ioSpecification>
+        <dataInput id="_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_44E9EA21-8E98-44CE-8F62-51B20C36E213__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_44E9EA21-8E98-44CE-8F62-51B20C36E213__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[2d]^[from:Escalate before|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[1d]</from>
+          <to xsi:type="tFormalExpression">_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[{"periodic":"false","expiresAt":"2","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"},{"periodic":"false","expiresAt":"1","eventTitle":"Escalate before","when":"Not-Completed","timeunit":"d"}]</from>
+          <to xsi:type="tFormalExpression">_44E9EA21-8E98-44CE-8F62-51B20C36E213__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"ROLE","roleType":"CSD","roleCode":"Application_Owner","actor":"Application owner","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"N","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_44E9EA21-8E98-44CE-8F62-51B20C36E213__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_44E9EA21-8E98-44CE-8F62-51B20C36E213__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">9223372036854775807__12FA5794-FA12-44CB-BC91-2FFF12231DBD_</from>
+          <to xsi:type="tFormalExpression">_44E9EA21-8E98-44CE-8F62-51B20C36E213__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>Application_Owner</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" name="Code Review" >
+      <ioSpecification>
+        <dataInput id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[2d]^[from:Escalate before|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[1d]</from>
+          <to xsi:type="tFormalExpression">_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[{"periodic":"false","expiresAt":"2","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"},{"periodic":"false","expiresAt":"1","eventTitle":"Escalate before","when":"Not-Completed","timeunit":"d"}]</from>
+          <to xsi:type="tFormalExpression">_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"WORKGROUP","roleApproverID":30392,"grpNm":"gcsdba Team","oEmailInternetAddr":"(null)","grpId":"-1","actor":"30392","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"N","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">20942__614909F3-2C22-44C1-9ABD-C854E9A0D6D2_</from>
+          <to xsi:type="tFormalExpression">_D7E9174B-0A76-45D1-8148-0C8D1F7940BC__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>30392</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_E8093502-7921-463D-A357-3E6C379A6978_" name="Approval" >
+      <ioSpecification>
+        <dataInput id="_E8093502-7921-463D-A357-3E6C379A6978__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_E8093502-7921-463D-A357-3E6C379A6978__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_E8093502-7921-463D-A357-3E6C379A6978__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_E8093502-7921-463D-A357-3E6C379A6978__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_E8093502-7921-463D-A357-3E6C379A6978__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_E8093502-7921-463D-A357-3E6C379A6978__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_E8093502-7921-463D-A357-3E6C379A6978__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[2d]^[from:Escalate before|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:true]@[1d]</from>
+          <to xsi:type="tFormalExpression">_E8093502-7921-463D-A357-3E6C379A6978__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_E8093502-7921-463D-A357-3E6C379A6978__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[{"periodic":"false","expiresAt":"2","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"},{"periodic":"true","expiresAt":"1","eventTitle":"Escalate before","when":"Not-Completed","timeunit":"d"}]</from>
+          <to xsi:type="tFormalExpression">_E8093502-7921-463D-A357-3E6C379A6978__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"WORKGROUP","roleApproverID":563019,"grpNm":"gcsdba","oEmailInternetAddr":"(null)","grpId":"563019","actor":"563019","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"N","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_E8093502-7921-463D-A357-3E6C379A6978__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_E8093502-7921-463D-A357-3E6C379A6978__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">9223372036854775807__477DC7EF-1E21-410D-B1F3-9D59E32D47B9_</from>
+          <to xsi:type="tFormalExpression">_E8093502-7921-463D-A357-3E6C379A6978__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>563019</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_8B1C45E6-5EC6-4785-B15C-536F555AD115_" name="Change Management" >
+      <ioSpecification>
+        <dataInput id="_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_8B1C45E6-5EC6-4785-B15C-536F555AD115__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_8B1C45E6-5EC6-4785-B15C-536F555AD115__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[3d]^[from:Escalate before|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[2d]</from>
+          <to xsi:type="tFormalExpression">_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[{"periodic":"false","expiresAt":"3","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"},{"periodic":"false","expiresAt":"2","eventTitle":"Escalate before","when":"Not-Completed","timeunit":"d"}]</from>
+          <to xsi:type="tFormalExpression">_8B1C45E6-5EC6-4785-B15C-536F555AD115__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"WORKGROUP","roleApproverID":30392,"grpNm":"gcsdba Team","oEmailInternetAddr":"(null)","grpId":"-1","actor":"30392","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"N","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_8B1C45E6-5EC6-4785-B15C-536F555AD115__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_8B1C45E6-5EC6-4785-B15C-536F555AD115__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">7119__5AAEDAEE-DD95-4ED2-944F-5A72235407C5_</from>
+          <to xsi:type="tFormalExpression">_8B1C45E6-5EC6-4785-B15C-536F555AD115__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>30392</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <userTask id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" name="Verify DB Code Review Requirements" >
+      <ioSpecification>
+        <dataInput id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotCompletedNotifyInput" name="NotCompletedNotify" />
+        <dataInput id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotificationEventInput" name="NotificationEvent" />
+        <dataInput id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskRoleDTOInput" name="HumanTaskRoleDTO" />
+        <dataInput id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskGeneralAttributesDTOInput" name="HumanTaskGeneralAttributesDTO" />
+        <dataInput id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__TaskNameInput" name="TaskName" />
+        <inputSet>
+          <dataInputRefs>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotCompletedNotifyInput</dataInputRefs>
+          <dataInputRefs>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotificationEventInput</dataInputRefs>
+          <dataInputRefs>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskRoleDTOInput</dataInputRefs>
+          <dataInputRefs>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskGeneralAttributesDTOInput</dataInputRefs>
+          <dataInputRefs>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotCompletedNotifyInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[from:TLA|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[1d]^[from:Escalate before|tousers:AddEmptyTousers|togroups:AddEmptyToGroups|replyTo:AddEmptyReplyTo|subject:AddEmptySubj|body:AddEmptyBody|periodic:false]@[20h]</from>
+          <to xsi:type="tFormalExpression">_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotCompletedNotifyInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotificationEventInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">[{"periodic":"false","expiresAt":"1","eventTitle":"TLA","when":"Not-Completed","timeunit":"d"},{"periodic":"false","expiresAt":"20","eventTitle":"Escalate before","when":"Not-Completed","timeunit":"h"}]</from>
+          <to xsi:type="tFormalExpression">_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__NotificationEventInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskRoleDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"roleApproverType":"WORKGROUP","roleApproverID":30392,"grpNm":"gcsdba Team","oEmailInternetAddr":"(null)","grpId":"-1","actor":"30392","canAddNode":"Y","canDeleteNode":"Y","canReassignNode":"Y","permissionLevel":"ROUTE"}</from>
+          <to xsi:type="tFormalExpression">_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskRoleDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskGeneralAttributesDTOInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">{"canBeExtended":"N","canHaveDescendants":"Y","actionRequired":"Y","defaultEntryNotificationRequired":"Y","defaultExitNotificationRequired":"Y"}</from>
+          <to xsi:type="tFormalExpression">_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__HumanTaskGeneralAttributesDTOInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">20943__AAF86EE6-4C5C-484B-A07E-76535BDDF0DA_</from>
+          <to xsi:type="tFormalExpression">_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D__TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>30392</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <exclusiveGateway id="_C206DE06-D923-4C3C-A87B-E620A5597396_" name="exclusiveGateway" gatewayDirection="Diverging" />
+    <exclusiveGateway id="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" name="exclusiveGateway" gatewayDirection="Converging" />
+    <endEvent id="_11F956E7-0796-4114-8063-1F7CEE7FCC56_" name="" />
+    <startEvent id="_FEDE542C-9164-46BB-8750-7BDF565F17CC_" name="" />
+
+    <!-- connections -->
+    <sequenceFlow id="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_-_29C14685-1D80-470F-9FDC-938715CF3167_" sourceRef="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" targetRef="_29C14685-1D80-470F-9FDC-938715CF3167_" />
+    <sequenceFlow id="_FEDE542C-9164-46BB-8750-7BDF565F17CC_-_44E9EA21-8E98-44CE-8F62-51B20C36E213_" sourceRef="_FEDE542C-9164-46BB-8750-7BDF565F17CC_" targetRef="_44E9EA21-8E98-44CE-8F62-51B20C36E213_" />
+    <sequenceFlow id="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_-_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" sourceRef="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" targetRef="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" />
+    <sequenceFlow id="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_-_E8093502-7921-463D-A357-3E6C379A6978_" sourceRef="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" targetRef="_E8093502-7921-463D-A357-3E6C379A6978_" />
+    <sequenceFlow id="_C206DE06-D923-4C3C-A87B-E620A5597396_-_8B1C45E6-5EC6-4785-B15C-536F555AD115_" sourceRef="_C206DE06-D923-4C3C-A87B-E620A5597396_" targetRef="_8B1C45E6-5EC6-4785-B15C-536F555AD115_" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return "Production".equals(dbenvironment);</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_44E9EA21-8E98-44CE-8F62-51B20C36E213_-_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" sourceRef="_44E9EA21-8E98-44CE-8F62-51B20C36E213_" targetRef="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" />
+    <sequenceFlow id="_E8093502-7921-463D-A357-3E6C379A6978_-_C206DE06-D923-4C3C-A87B-E620A5597396_" sourceRef="_E8093502-7921-463D-A357-3E6C379A6978_" targetRef="_C206DE06-D923-4C3C-A87B-E620A5597396_" />
+    <sequenceFlow id="_C206DE06-D923-4C3C-A87B-E620A5597396_-_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" sourceRef="_C206DE06-D923-4C3C-A87B-E620A5597396_" targetRef="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" name="Else" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return !("Production".equals(dbenvironment));</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_8B1C45E6-5EC6-4785-B15C-536F555AD115_-_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" sourceRef="_8B1C45E6-5EC6-4785-B15C-536F555AD115_" targetRef="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" />
+    <sequenceFlow id="_29C14685-1D80-470F-9FDC-938715CF3167_-_11F956E7-0796-4114-8063-1F7CEE7FCC56_" sourceRef="_29C14685-1D80-470F-9FDC-938715CF3167_" targetRef="_11F956E7-0796-4114-8063-1F7CEE7FCC56_" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="New_Espresso_1677.SERVICES44.DBCodeReview_2059" >
+      <bpmndi:BPMNShape bpmnElement="_29C14685-1D80-470F-9FDC-938715CF3167_" >
+        <dc:Bounds x="785" y="163" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_44E9EA21-8E98-44CE-8F62-51B20C36E213_" >
+        <dc:Bounds x="1" y="62" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" >
+        <dc:Bounds x="217" y="171" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_E8093502-7921-463D-A357-3E6C379A6978_" >
+        <dc:Bounds x="427" y="165" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8B1C45E6-5EC6-4785-B15C-536F555AD115_" >
+        <dc:Bounds x="644" y="32" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" >
+        <dc:Bounds x="-1" y="175" width="194" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_C206DE06-D923-4C3C-A87B-E620A5597396_" >
+        <dc:Bounds x="626" y="196" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" >
+        <dc:Bounds x="704" y="197" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11F956E7-0796-4114-8063-1F7CEE7FCC56_" >
+        <dc:Bounds x="982" y="176" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_FEDE542C-9164-46BB-8750-7BDF565F17CC_" >
+        <dc:Bounds x="67" y="5" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_7EB856BB-C5A8-49B6-8960-2716D8C1972B_-_29C14685-1D80-470F-9FDC-938715CF3167_" >
+        <di:waypoint x="728" y="221" />
+        <di:waypoint x="875" y="213" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_FEDE542C-9164-46BB-8750-7BDF565F17CC_-_44E9EA21-8E98-44CE-8F62-51B20C36E213_" >
+        <di:waypoint x="91" y="29" />
+        <di:waypoint x="91" y="112" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_-_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_" >
+        <di:waypoint x="96" y="225" />
+        <di:waypoint x="307" y="221" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_D7E9174B-0A76-45D1-8148-0C8D1F7940BC_-_E8093502-7921-463D-A357-3E6C379A6978_" >
+        <di:waypoint x="307" y="221" />
+        <di:waypoint x="517" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_C206DE06-D923-4C3C-A87B-E620A5597396_-_8B1C45E6-5EC6-4785-B15C-536F555AD115_" >
+        <di:waypoint x="650" y="220" />
+        <di:waypoint x="734" y="82" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_44E9EA21-8E98-44CE-8F62-51B20C36E213_-_458B46EE-8D46-49BA-B9BA-CD8811DB9D6D_" >
+        <di:waypoint x="91" y="112" />
+        <di:waypoint x="96" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_E8093502-7921-463D-A357-3E6C379A6978_-_C206DE06-D923-4C3C-A87B-E620A5597396_" >
+        <di:waypoint x="517" y="215" />
+        <di:waypoint x="650" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_C206DE06-D923-4C3C-A87B-E620A5597396_-_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" >
+        <di:waypoint x="650" y="220" />
+        <di:waypoint x="728" y="221" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_8B1C45E6-5EC6-4785-B15C-536F555AD115_-_7EB856BB-C5A8-49B6-8960-2716D8C1972B_" >
+        <di:waypoint x="734" y="82" />
+        <di:waypoint x="728" y="221" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_29C14685-1D80-470F-9FDC-938715CF3167_-_11F956E7-0796-4114-8063-1F7CEE7FCC56_" >
+        <di:waypoint x="875" y="213" />
+        <di:waypoint x="1006" y="200" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>
