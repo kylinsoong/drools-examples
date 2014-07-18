@@ -12,10 +12,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!--  
 		<drools.version>6.0.2-redhat-6</drools.version>
-		<drools.version>6.0.2-SNAPSHOT</drools.version>
-		-->
+		<kie-api.version>6.0.2-redhat-6</kie-api.version>
+		<!-- <drools.version>6.0.2-redhat-6</drools.version> <drools.version>6.0.2-SNAPSHOT</drools.version> -->
 	</properties>
 
 	<dependencies>
@@ -26,6 +25,24 @@
 			<version>6.0.2-redhat-6</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<version>${kie-api.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<version>${drools.version}</version>
+			<scope>${scope.value}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-compiler</artifactId>
+			<version>${drools.version}</version>
+		</dependency>
 
 	</dependencies>
 
@@ -40,14 +57,8 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-<!--  
-			<plugin>
-				<groupId>org.kie</groupId>
-				<artifactId>kie-maven-plugin</artifactId>
-				<version>6.0.2-redhat-6</version>
-				<extensions>true</extensions>
-			</plugin>
--->
+			<!-- <plugin> <groupId>org.kie</groupId> <artifactId>kie-maven-plugin</artifactId> 
+				<version>6.0.2-redhat-6</version> <extensions>true</extensions> </plugin> -->
 		</plugins>
 	</build>
 

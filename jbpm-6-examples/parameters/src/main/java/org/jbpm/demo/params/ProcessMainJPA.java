@@ -49,7 +49,7 @@ public class ProcessMainJPA {
         ProcessInstance pi = ksession.startProcess("com.sample.bpmn.hello", params);
         System.out.println("A process instance started : pid = " + pi.getId());
 
-        TaskSer	vice taskService = runtime.getTaskService();
+        TaskService taskService = runtime.getTaskService();
         System.out.println(taskService.getClass());
 
         // ------------

@@ -17,7 +17,7 @@
     <!-- nodes -->
     <startEvent id="_1" name="Start" />
     <parallelGateway id="_2" name="Gateway" gatewayDirection="Diverging" />
-    <parallelGateway id="_3" name="Gateway" gatewayDirection="Converging" />
+    <exclusiveGateway id="_3" name="Gateway" gatewayDirection="Converging" />
     <scriptTask id="_4" name="Execute 3 tasks in parallel" >
       <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
     </scriptTask>

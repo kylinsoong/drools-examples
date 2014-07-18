@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
-	<kbase name="kbase1">
-		<ksession name="ksession1" />
-	</kbase>
+	<kbase name="kbase" packages="xsd" />
+		
 
-	<kbase name="kbase2" includes="kbase1">
-		<ksession name="ksession2" />
-	</kbase>
 
 </kmodule>
