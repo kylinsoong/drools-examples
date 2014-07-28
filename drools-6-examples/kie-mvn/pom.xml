@@ -7,7 +7,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jbpm.version>6.0.2-redhat-6</jbpm.version>
+		<jbpm.version>6.0.3-redhat-4</jbpm.version>
 	</properties>
 
 	<dependencies>
@@ -49,14 +49,14 @@
 			<artifactId>jbpm-test</artifactId>
 			<version>${jbpm.version}</version>
 		</dependency>
-
+<!--  
 	<dependency>
 		<groupId>com.redhat.gss</groupId>
 		<artifactId>01081954</artifactId>
 		<version>1.0</version>
 	</dependency>
 		
-		<!--  
+		
 		
 		<dependency>
 			<groupId>junit</groupId>
