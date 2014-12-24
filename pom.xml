@@ -21,7 +21,6 @@
         <module>drools</module>
 	<module>drools-6-examples</module>
 	<module>jbpm</module>
-	<module>jbpm-6-examples</module>
     </modules>
 
 </project>
