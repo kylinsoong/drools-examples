@@ -1,3 +1,5 @@
+### [jBPM 6 Examples be move to separate repository](https://github.com/kylinsoong/jbpm-6-examples)
+
 ### jBPM ###
 
 [jBPM quickstart](https://github.com/kylinsoong/jBPM-Drools-Example/blob/master/docs/jbpm-quickstarts.asciidoc)
