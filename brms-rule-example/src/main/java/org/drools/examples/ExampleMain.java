@@ -28,10 +28,10 @@ public class ExampleMain {
         p1.setWage(20);
 
         
-        String url = "http://localhost:8080/kie-server/services/rest/server";
+        String url = "http://10.66.192.120:8080/kie-server/services/rest/server";
         String username = "kylin";
-        String password = "passowrd1!";
-        String container = "myContainer";
+        String password = "password1!";
+        String container = "testContainer";
         String session = "mySession";
         
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(url, username, password);
@@ -49,9 +49,6 @@ public class ExampleMain {
         BatchExecutionCommand batchCommand = KieServices.Factory.get().getCommands().newBatchExecution(commands,session);
         ServiceResponse<ExecutionResults> response = ruleClient.executeCommandsWithResults(container, batchCommand);
         System.out.println(response.getResult().getValue("fire-identifier"));
-
-        
-        System.out.println("DONE");
     }
 
 }
