@@ -1,0 +1,10 @@
+package org.drools.examples.globals;
+
+global java.util.List myGlobalList;
+
+rule "Using a global"
+  when
+    eval(true)
+  then
+    myGlobalList.add( "Hello World" );
+end

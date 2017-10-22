@@ -1,0 +1,8 @@
+package org.drools.examples.errors;
+
+rule one
+  when
+    exists Foo()
+    exits Bar() 
+  then
+end

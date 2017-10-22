@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.droolsjbpm</groupId>
-    <artifactId>org.droolsjbpm</artifactId>
+    <groupId>org.drools</groupId>
+    <artifactId>drools-examples</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
     <name>Parent for droolsjbpm</name>
@@ -18,7 +18,7 @@
     </licenses>
     
     <modules>
-        <module>drools</module>
+        <module>reference</module>
 	<module>drools-6-examples</module>
 	<module>jbpm</module>
     </modules>

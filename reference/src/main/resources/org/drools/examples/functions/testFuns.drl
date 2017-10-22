@@ -1,0 +1,10 @@
+package org.drools.examples.functions;
+
+import function org.drools.examples.functions.Foo.sayHello;
+
+rule "using a static function"
+  when
+    eval(true)
+  then
+    System.out.println(sayHello("TEST"));
+end

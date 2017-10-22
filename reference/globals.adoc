@@ -1,0 +1,31 @@
+
+= Gloabls
+
+[source, text]
+----
+package org.drools.examples.globals;
+
+global java.util.List myGlobalList;
+
+rule "Using a global"
+  when
+    eval(true)
+  then
+    myGlobalList.add( "Hello World" );
+end
+----
+
+link:src/main/resources/org/drools/examples/globals/globalTest.drl[globalTest.drl]
+
+[source, java]
+----
+KieServices ks = KieServices.Factory.get();
+KieContainer kContainer = ks.getKieClasspathContainer();
+KieSession kSession = kContainer.newKieSession("ksession-rules-globals");
+List<String> list = new ArrayList<>();
+kSession.setGlobal( "myGlobalList", list );
+kSession.fireAllRules();
+kSession.dispose();
+----
+
+link:src/main/java/org/drools/examples/Example_Globals.java[Example_Globals.java]
