@@ -2,3 +2,6 @@
 
 . link:reference/README.adoc[Reference]
 .. link:reference/globals.adoc[Globals]
+.. link:reference/functions.adoc[Functions]
+.. link:reference/type-declaration.adoc[Type Declaration]
+

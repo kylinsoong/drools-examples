@@ -1,0 +1,51 @@
+package org.drools.examples.metadata;
+
+import java.util.Date
+import org.drools.examples.model.Customer;
+
+declare Address
+  @author( Kylin )
+  @dateOfCreation( 23-Oct-2017 )
+  
+  number : int @key @position(0)
+  streetName : String @key @position(1)
+  city : String @key @position(2)
+end
+
+declare Person
+  @author( Kylin )
+  @dateOfCreation( 23-Oct-2017 )
+
+  name : String @key @maxLength( 30 ) @position(0)
+  dateOfBirth : Date @key @position(1)
+  address : Address 
+end
+
+declare Customer
+  @author( Kylin )
+  @dateOfCreation( 23-Oct-2017 )
+end
+
+declare GoldenCustomer extends Customer
+  @author( Kylin )
+  @dateOfCreation( 23-Oct-2017 )
+  
+  priority : int
+end
+
+rule "Declaring Metadata"
+  when
+    eval(true)
+  then
+    Person person = new Person("Bob", new Date());
+    Customer customer = new Customer();
+    System.out.println(person);
+    System.out.println(customer);
+end
+
+rule "Accessing Declared Types from the Application Code"
+  when
+    $c : GoldenCustomer(id == 101)
+  then
+    System.out.println($c);
+end

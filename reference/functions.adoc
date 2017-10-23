@@ -1,0 +1,40 @@
+= Functions
+
+== 语法
+
+image::src/img/drools-reference-functions.png[]
+
+== 示例
+
+[source, java]
+.*testFunctions.drl*
+----
+package org.drools.examples.functions;
+
+function String sayHello(String msg) {
+  return "Hello " + msg + "!";
+}
+
+rule "using a function"
+  when
+    eval(true)
+  then
+    System.out.println(sayHello("TEST"));
+end
+----
+
+link:src/main/resources/org/drools/examples/functions/testFunctions.drl[link]
+
+[source, java]
+.*Example_Functions.java*
+----
+KieServices ks = KieServices.Factory.get();
+KieContainer kContainer = ks.getKieClasspathContainer();
+KieSession kSession = kContainer.newKieSession("ksession-rules-functions");
+kSession.fireAllRules();
+kSession.dispose();
+----
+
+link:src/main/java/org/drools/examples/Example_Functions.java[link]
+
+

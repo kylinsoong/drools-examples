@@ -1,7 +1,14 @@
 
 = Gloabls
 
-[source, text]
+== 语法
+
+image::src/img/drools-reference-global.png[]
+
+== 示例
+
+[source, java]
+.*globalTest.drl*
 ----
 package org.drools.examples.globals;
 
@@ -15,9 +22,10 @@ rule "Using a global"
 end
 ----
 
-link:src/main/resources/org/drools/examples/globals/globalTest.drl[globalTest.drl]
+link:src/main/resources/org/drools/examples/globals/globalTest.drl[link]
 
 [source, java]
+.*Example_Globals.java*
 ----
 KieServices ks = KieServices.Factory.get();
 KieContainer kContainer = ks.getKieClasspathContainer();
@@ -28,4 +36,4 @@ kSession.fireAllRules();
 kSession.dispose();
 ----
 
-link:src/main/java/org/drools/examples/Example_Globals.java[Example_Globals.java]
+link:src/main/java/org/drools/examples/Example_Globals.java[link]

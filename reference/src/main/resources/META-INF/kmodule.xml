@@ -6,4 +6,10 @@
     <kbase name="rules-functions" packages="org.drools.examples.functions">
         <ksession name="ksession-rules-functions"/>
     </kbase>
+    <kbase name="rules-newTypes" packages="org.drools.examples.newTypes">
+        <ksession name="ksession-rules-newTypes"/>
+    </kbase>
+    <kbase name="rules-metadata" packages="org.drools.examples.metadata">
+        <ksession name="ksession-rules-metadata"/>
+    </kbase>
 </kmodule>
