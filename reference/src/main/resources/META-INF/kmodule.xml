@@ -12,4 +12,16 @@
     <kbase name="rules-metadata" packages="org.drools.examples.metadata">
         <ksession name="ksession-rules-metadata"/>
     </kbase>
+    <kbase name="rules-banking" packages="org.drools.examples.banking">
+        <ksession name="ksession-rules-banking"/>
+    </kbase>
+    <kbase name="rules-no-loop" packages="org.drools.examples.loop">
+        <ksession name="ksession-rules-no-loop"/>
+    </kbase>
+    <kbase name="rules-saliences" packages="org.drools.examples.saliences">
+        <ksession name="ksession-rules-saliences"/>
+    </kbase>
+    <kbase name="rules-partition" packages="org.drools.examples.partition">
+        <ksession name="ksession-rules-partition"/>
+    </kbase>
 </kmodule>

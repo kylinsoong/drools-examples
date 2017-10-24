@@ -1,0 +1,13 @@
+package org.drools.examples.loop;
+
+import org.drools.examples.model.Cursor;
+
+rule "no-loop testing"
+  no-loop true // will skip loop
+  when
+    c : Cursor(cur < 10, tmpCur : cur)
+  then
+    System.out.println(tmpCur);
+    c.setCur(c.getCur() + 1);
+    update(c);
+end

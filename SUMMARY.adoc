@@ -4,4 +4,6 @@
 .. link:reference/globals.adoc[Globals]
 .. link:reference/functions.adoc[Functions]
 .. link:reference/type-declaration.adoc[Type Declaration]
+.. link:reference/rules.adoc[Rules]
+.. link:reference/attributes.adoc[Attributes]
 

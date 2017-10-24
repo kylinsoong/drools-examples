@@ -1,0 +1,8 @@
+package org.drools.examples.banking;
+
+rule "Rule 03"   
+    when
+        Number( $intValue : intValue )
+    then
+        System.out.println("Number found with value: " + $intValue); 
+end
