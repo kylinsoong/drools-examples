@@ -1,2 +1,14 @@
 node_modules
 _book
+.settings
+target
+.project
+.classpath
+.svn
+bin
+build.xml
+.DS_Store
+node_modules
+_book
+*~
+

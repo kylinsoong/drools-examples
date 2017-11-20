@@ -13,11 +13,13 @@ import org.kie.server.client.KieServicesClient;
 import org.kie.server.client.KieServicesConfiguration;
 import org.kie.server.client.KieServicesFactory;
 import org.kie.server.client.RuleServicesClient;
+
+import com.redhat.service.Person;
+
 import org.kie.api.runtime.ExecutionResults;
 
-import com.redhat.myproject.Person;
 
-public class ExampleMain {
+public class Example_FireRule_KieServer {
 
     public static void main(String[] args) {
         
@@ -28,11 +30,11 @@ public class ExampleMain {
         p1.setWage(20);
 
         
-        String url = "http://10.66.192.120:8080/kie-server/services/rest/server";
-        String username = "kylin";
+        String url = "http://localhost:8080/kie-server/services/rest/server";
+        String username = "kieserver";
         String password = "password1!";
         String container = "testContainer";
-        String session = "mySession";
+        String session = "testSession";
         
         KieServicesConfiguration config = KieServicesFactory.newRestConfiguration(url, username, password);
         Set<Class<?>> allClasses = new HashSet<Class<?>>();

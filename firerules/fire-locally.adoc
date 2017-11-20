@@ -1,0 +1,29 @@
+= 本地执行规则
+
+确保规则添加到本地，执行如下代码
+
+[source, java]
+----
+Person person = new Person();
+person.setFirstName("Anton");
+person.setLastName("RedHat");
+person.setHourlyRate(11);
+person.setWage(20);
+        
+KieServices kieServices = KieServices.Factory.get();
+KieContainer kContainer = kieServices.getKieClasspathContainer();
+KieBase kbase = kContainer.getKieBase("testBase");
+KieSession ksession = kbase.newKieSession();
+ksession.insert(person);
+ksession.fireAllRules();
+ksession.dispose();
+----
+
+规则会在本地执行，输出如下日志
+
+[source, java]
+----
+Hello Anton RedHat!
+You are rich!
+----
+

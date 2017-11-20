@@ -1,5 +1,9 @@
 = Summary
 
+. link:firerules/README.adoc[Fire Rules]
+.. link:firerules/maven-setting.adoc[Maven 配置]
+.. link:firerules/fire-kieserver.adoc[客户端 API 调运 KIE 服务器]
+.. link:firerules/fire-locally.adoc[本地执行规则]
 . link:reference/README.adoc[Reference]
 .. link:reference/globals.adoc[Globals]
 .. link:reference/functions.adoc[Functions]

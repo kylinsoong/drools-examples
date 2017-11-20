@@ -1,0 +1,74 @@
+
+= Maven 配置设置
+:toc: manual
+:toc-placement: preamble
+
+
+本部分说明如何配置 Maven.
+
+== 添加 profile
+
+[source,xml]
+----
+<profile>
+    <id>guvnor-m2-repo</id>
+    <repositories>
+        <repository>
+          <id>guvnor-m2-repo</id>
+          <name>BRMS Repository</name>
+          <url>http://localhost:8080/business-central/maven2/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+    </repositories>
+</profile>
+----
+
+NOTE: The `updatePolicy` can be always", "daily" (default), "interval:XXX" (in minutes) or "never" (only if it doesn't exist locally).
+
+== 配置 server
+
+It is either needed to turn on pre-emptive authentication for the repository server by
+
+[source,xml]
+----
+<server>
+    <id>guvnor-m2-repo</id>
+    <username>kylin</username>
+    <password>password1!</password>
+    <configuration>
+      <wagonProvider>httpclient</wagonProvider>
+      <httpConfiguration>
+        <all>
+          <usePreemptive>true</usePreemptive>
+        </all>
+      </httpConfiguration>
+    </configuration>
+</server>
+----
+
+or set Authorization HTTP header with Base64 encoded credentials
+
+[source,xml]
+----
+<server>
+    <id>guvnor-m2-repo</id>
+    <configuration>
+      <httpHeaders>
+        <property>
+          <name>Authorization</name>
+          <!-- Base64-encoded "kylin:password1!" -->
+          <value>Basic a3lsaW46cGFzc3dvcmQxIQ==</value>
+        </property>
+      </httpHeaders>
+    </configuration>
+</server>
+----
+

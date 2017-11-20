@@ -1,5 +1,24 @@
 
-= What's this
+= Fire Rules
+
+This section contains the different ways to fire rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 This is the example for ** Firing Rules Using KIE Server Java Client API** which depicted in https://access.redhat.com/documentation/en-us/red_hat_jboss_brms/6.4/html-single/getting_started_guide/#firing_rules_using_maven and basic develop things related with BRMS.
 
