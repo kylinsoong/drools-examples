@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="dtables" packages="helloworld">
+        <ksession name="ksession-dtables"/>
+    </kbase>
+    <kbase name="loantables" packages="loan">
+        <ksession name="ksession-loantables"/>
+    </kbase>
+</kmodule>
