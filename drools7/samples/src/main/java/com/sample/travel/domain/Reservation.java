@@ -1,5 +1,7 @@
 package com.sample.travel.domain;
 
+import java.math.BigDecimal;
+
 public class Reservation {
 
     private Boolean mealUpgrade;
@@ -15,6 +17,8 @@ public class Reservation {
     private Boolean flightInsurance;
     
     private Integer bagsChecked;
+    
+    private BigDecimal mealFees = new BigDecimal(0.00);
 
     public Boolean getMealUpgrade() {
         return mealUpgrade;
@@ -70,6 +74,14 @@ public class Reservation {
 
     public void setBagsChecked(Integer bagsChecked) {
         this.bagsChecked = bagsChecked;
+    }
+
+    public BigDecimal getMealFees() {
+        return mealFees;
+    }
+
+    public void setMealFees(BigDecimal mealFees) {
+        this.mealFees = mealFees;
     }
 
     @Override

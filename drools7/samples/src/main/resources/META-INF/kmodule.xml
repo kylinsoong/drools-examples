@@ -13,4 +13,8 @@
         <ksession name="TravelsSession" />
     </kbase>
     
+    <kbase name="meals" packages="meals" >
+        <ksession name="MealsSession" />
+    </kbase>
+    
 </kmodule>
