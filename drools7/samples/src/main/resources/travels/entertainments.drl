@@ -1,0 +1,45 @@
+package travels;
+
+import com.sample.travel.domain.Reservation;
+import com.sample.travel.domain.Customer;
+import com.sample.travel.domain.EntertainmentFee;
+
+rule "GoldEntertainmentUpgrade"
+    dialect "mvel"
+    when
+        Reservation(entertainmentUpgrade == true)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new EntertainmentFee(8.00));
+end
+
+rule "SilverEntertainmentUpgrade"
+    dialect "mvel"
+    when
+        Reservation(entertainmentUpgrade == true)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new EntertainmentFee(12.00));
+end
+
+rule "BronzeEntertainmentUpgrade"
+    dialect "mvel"
+    when
+        Reservation(entertainmentUpgrade == true)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new EntertainmentFee(16.00));
+end
+
+rule "NoneEntertainmentUpgrade"
+    dialect "mvel"
+    when
+        Reservation(entertainmentUpgrade == true)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new EntertainmentFee(18.00));
+end
+
+query "getEntertainmentFees"
+    Fee: EntertainmentFee();
+end

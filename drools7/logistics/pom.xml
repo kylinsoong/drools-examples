@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.drools.examples</groupId>
-    <artifactId>drools-examples-kie</artifactId>
+    <artifactId>logistics</artifactId>
     <version>1.0</version>
     <packaging>kjar</packaging>
 

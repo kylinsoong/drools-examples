@@ -1,0 +1,45 @@
+package travels;
+
+import com.sample.travel.domain.Reservation;
+import com.sample.travel.domain.Customer;
+import com.sample.travel.domain.ComfortUpgradeFee;
+
+rule "GoldComfortUpgrade"
+    dialect "mvel"
+    when
+        Reservation(comfortUpgrade == true)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new ComfortUpgradeFee(10.00));
+end
+
+rule "SilverComfortUpgrade"
+    dialect "mvel"
+    when
+        Reservation(comfortUpgrade == true)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new ComfortUpgradeFee(15.00));
+end
+
+rule "BronzeComfortUpgrade"
+    dialect "mvel"
+    when
+        Reservation(comfortUpgrade == true)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new ComfortUpgradeFee(20.00));
+end
+
+rule "NoneComfortUpgrade"
+    dialect "mvel"
+    when
+        Reservation(comfortUpgrade == true)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new ComfortUpgradeFee(25.00));
+end
+
+query "getComfortFees"
+    Fee: ComfortUpgradeFee();
+end

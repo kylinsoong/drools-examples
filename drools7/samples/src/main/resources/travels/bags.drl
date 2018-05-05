@@ -1,0 +1,119 @@
+package travels;
+
+import com.sample.travel.domain.Reservation;
+import com.sample.travel.domain.Customer;
+import com.sample.travel.domain.BagFee;
+
+
+rule "GoldBagCheckRule1"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 1)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new BagFee(0.00));
+end
+
+rule "GoldBagCheckRule2"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 2)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new BagFee(0.00 + 10.00));
+end
+
+rule "GoldBagCheckRule3"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 3)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new BagFee(0.00 + 10.00 + 15.00));
+end
+
+rule "SilverBagCheckRule1"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 1)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new BagFee(15.00));
+end
+
+rule "SilverBagCheckRule2"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 2)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new BagFee(15.00 + 25.00));
+end
+
+rule "SilverBagCheckRule3"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 3)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new BagFee(15.00 + 25.00 + 35.00));
+end
+
+rule "BronzeBagCheckRule1"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 1)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new BagFee(25.00));
+end
+
+rule "BronzeBagCheckRule2"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 2)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new BagFee(25.00 + 35.00));
+end
+
+rule "BronzeBagCheckRule3"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 3)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new BagFee(25.00 + 35.00 + 45.00));
+end
+
+rule "NonFilterBagCheckRule1"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 1)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new BagFee(30.00));
+end
+
+rule "NonFilterBagCheckRule2"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 2)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new BagFee(30.00 + 40.00));
+end
+
+rule "NonFilterBagCheckRule3"
+    dialect "mvel"
+    when
+        Reservation(bagsChecked == 3)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new BagFee(30.00 + 40.00 + 50.00));
+        System.out.println(drools.getRule().getName());
+end
+
+query "getBagFees"
+    Fee: BagFee();
+end

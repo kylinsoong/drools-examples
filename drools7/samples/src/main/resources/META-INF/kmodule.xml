@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
-        <kbase name="kbase" packages="xsd" />
-
-
-
+    <kbase name="seats" packages="seats" >
+        <ksession name="SeatSession" />
+    </kbase>
+    
+    <kbase name="travel" packages="travel" >
+        <ksession name="MealSession" />
+    </kbase>
+    
+    <kbase name="travels" packages="travels" >
+        <ksession name="TravelsSession" />
+    </kbase>
+    
 </kmodule>

@@ -1,0 +1,16 @@
+package seats
+
+import com.sample.domain.User;
+import com.sample.domain.Reservation;
+
+
+rule "SimpleBagRule"
+
+    when
+        User($loyaltylevel: loyaltylevel != null)
+        $reservation: Reservation()
+    then
+        System.out.println("Customer loyalty level: " + $loyaltylevel + ", bags checked: " + $reservation.getBags());
+
+end
+

@@ -1,0 +1,18 @@
+package travel
+
+import com.sample.domain.User;
+import com.sample.domain.Reservation;
+import com.sample.domain.MealFee;
+import java.math.BigDecimal;
+
+
+rule "NonFlyerMealRule"
+
+    when
+        User(loyaltylevel == "None")
+        Reservation(upgrademeal == true)
+    then
+        MealFee fee = new MealFee();
+        fee.setAmount(new BigDecimal("10.00"));
+        insertLogical(fee);
+end
