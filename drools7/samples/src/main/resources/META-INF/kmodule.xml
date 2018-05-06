@@ -14,7 +14,11 @@
     </kbase>
     
     <kbase name="meals" packages="meals" >
-        <ksession name="MealsSession" />
+        <ksession name="ksession-dtables" />
+    </kbase>
+    
+    <kbase name="dsl_travels" packages="dsl_travels" >
+        <ksession name="ksession-dsl-classupgrade" />
     </kbase>
     
 </kmodule>

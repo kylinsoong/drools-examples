@@ -19,6 +19,7 @@ public class Reservation {
     private Integer bagsChecked;
     
     private BigDecimal mealFees = new BigDecimal(0.00);
+    private BigDecimal classUpgradeFees = new BigDecimal(0.00);
 
     public Boolean getMealUpgrade() {
         return mealUpgrade;
@@ -82,6 +83,14 @@ public class Reservation {
 
     public void setMealFees(BigDecimal mealFees) {
         this.mealFees = mealFees;
+    }
+
+    public BigDecimal getClassUpgradeFees() {
+        return classUpgradeFees;
+    }
+
+    public void setClassUpgradeFees(BigDecimal classUpgradeFees) {
+        this.classUpgradeFees = classUpgradeFees;
     }
 
     @Override

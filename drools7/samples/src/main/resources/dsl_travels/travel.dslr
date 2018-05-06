@@ -1,0 +1,39 @@
+package dsl_travels
+
+import com.sample.travel.domain.Customer
+import com.sample.travel.domain.Reservation
+import java.math.BigDecimal
+
+expander travel.dsl 
+
+rule "黄金会员升舱"
+    when
+        客户是 Gold 会员
+        客户想升舱
+    then
+        收取 100.00 的升舱费用
+end
+
+rule "白银会员升舱"
+    when
+        客户是 Silver 会员
+        客户想升舱
+    then
+        收取 200.00 的升舱费用
+end
+
+rule "青铜会员升舱"
+    when
+        客户是 Bronze 会员
+        客户想升舱
+    then
+        收取 300.00 的升舱费用
+end
+
+rule "普通会员升舱"
+    when
+        客户是 None 会员
+        客户想升舱
+    then
+        收取 400.00 的升舱费用
+end

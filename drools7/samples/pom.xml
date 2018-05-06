@@ -44,6 +44,11 @@
             <artifactId>drools-persistence-jpa</artifactId>
         </dependency>
         
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-decisiontables</artifactId>
+        </dependency>
+        
         <!-- Dependency for loading KJARs from a Maven repository using KieScanner. -->
         <dependency>
             <groupId>org.kie</groupId>
