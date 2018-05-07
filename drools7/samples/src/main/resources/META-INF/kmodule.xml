@@ -21,4 +21,8 @@
         <ksession name="ksession-dsl-classupgrade" />
     </kbase>
     
+    <kbase name="complex_rules" packages="complex_rules" >
+        <ksession name="ksession-complexrules" />
+    </kbase>
+    
 </kmodule>

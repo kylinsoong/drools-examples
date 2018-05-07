@@ -1,13 +1,13 @@
 package com.sample.rules;
 
+import static com.sample.rules.utils.RulesUtils.checkErrors;
+
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
 import com.sample.domain.Reservation;
 import com.sample.domain.User;
-
-import static com.sample.rules.RulesUtils.checkErrors;
 
 public class SeatFires {
 

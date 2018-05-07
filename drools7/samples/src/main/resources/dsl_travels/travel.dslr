@@ -1,7 +1,7 @@
 package dsl_travels
 
-import com.sample.travel.domain.Customer
-import com.sample.travel.domain.Reservation
+import com.sample.domain.travel.Customer
+import com.sample.domain.travel.Reservation
 import java.math.BigDecimal
 
 expander travel.dsl 

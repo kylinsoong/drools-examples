@@ -1,0 +1,129 @@
+= Drools 入门
+:toc: manual
+
+本部分通过一个`航空订单核算`的案例，通过几个不同的侧面(规则引擎，CEP，DecisionTables，DSL，REST 集成等)介绍 Drools 技术。
+
+== TODO
+
+== TODO
+
+== 复杂规则编写
+
+.*条件元素*
+[cols="2,5a"]
+|===
+|元素 |说明
+
+|and
+|LHS 有多个 Fact 且所有条件都满足，如果 LHS 只包含 and，则 and 可以省略.
+[source, java]
+----
+rule "Using the and conditional"
+    when
+        Cheese(cheeseType : type) and 
+        Person(favoriteCheese == cheeseType)
+    then
+----
+
+|or
+|LHS 有多个 Fact，只需任意一个条件满足.
+[source, java]
+----
+rule "Using the or conditional"
+    when
+        Person(favoriteCheese == "Swiss") or
+        (Person(favoriteCheese == "Cheddar") and Mouse(favoriteCheese == "Swiss"))
+    then
+----
+
+|eval	
+|语义元素，用来包装布尔型变量，例如 `eval(true)`.
+[source, java]
+----
+rule "Using the eval element"
+    when
+        ob1 : Observation()
+        ob2 : Observation(this != ob1)
+        eval(weightedAverage(ob1.getVal(),ob2.getVal(),ob1.getPer(),ob2.getPer()) < .1)
+    then
+----
+
+|exists
+|判断特定 Fact 是否存在.
+[source, java]
+----
+rule "Using the exists conditional"
+    when
+        customer : Customer()
+        order: Order(customerId == customer.customerId)
+        exists OrderItem(orderId == order.orderId, itemStatus == "out_of_stock")
+    then
+----
+
+|not
+|特定 Fact 不存在存在
+[source, java]
+----
+rule "Using the exists conditional"
+    when
+        customer : Customer()
+        order: Order(customerId == customer.customerId)
+        not OrderItem(orderId == order.orderId, itemStatus == "out_of_stock")
+    then
+----
+
+|from
+|用于 Fact 之间的关联。
+[source, java]
+----
+rule "Using the from element for integration"
+    when
+        order : Order()
+        item : OrderItem( value > 100 ) from order.items
+    then
+        item.setValue(item.getValue() * 0.8);
+end
+----
+
+|forall 
+|是否所有 Fact 满足判断条件
+[source, java]
+----
+rule "Using the forall element"
+    when
+    not (
+        forall( emp : Employee() HealthCare( employee == emp ) DentalCare( employee == emp ) )
+    )
+    then
+----
+
+|collect
+|处理集合，支持的集成类型包括: ArrayList, LinkedList, HashSet
+[source, java]
+----
+rule "Using the collect conditional element"
+when
+    company : Company( name == 'Red Hat' )
+    mothers : LinkedList()
+               from collect( Person( gender == 'F', children > 0 )
+                             from company.getPeople()
+                           )
+then
+----
+
+|accumulate
+|对 <<collect, collect>> 的加强，增加遍历，反转等功能
+[source, java]
+----
+rule "Using the accumulate element"
+when
+    $order : Order()
+    total : Number( doubleValue > 100 )
+             from accumulate( OrderItem( order == $order,
+                                         $value : value ),
+                              sum( $value ) )
+then
+----
+|===
+
+

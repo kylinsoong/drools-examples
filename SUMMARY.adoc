@@ -1,5 +1,6 @@
 = Summary
 
+. link:tech/README.adoc[Drools 入门]
 . link:firerules/README.adoc[Fire Rules]
 .. link:firerules/maven-setting.adoc[Maven 配置]
 .. link:firerules/fire-kieserver.adoc[客户端 API 调运 KIE 服务器]
