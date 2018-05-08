@@ -25,4 +25,12 @@
         <ksession name="ksession-complexrules" />
     </kbase>
     
+    <kbase name="calendars" packages="calendars" >
+        <ksession name="ksession-calendars" />
+    </kbase>
+    
+    <kbase name="bc" packages="bc" >
+        <ksession name="ksession-bc" />
+    </kbase>
+    
 </kmodule>

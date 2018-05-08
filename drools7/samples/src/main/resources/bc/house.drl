@@ -1,0 +1,28 @@
+package bc
+
+import com.sample.domain.bc.*;
+
+dialect "mvel"
+
+query isContainedIn(String object, String place)
+    Location(object,place;)
+    or
+    (Location(x, place;) and isContainedIn(object, x;) )
+end
+
+
+rule "key"
+when
+  isContainedIn("key","house";)
+then
+  System.out.println("The key IS in the house");
+end
+
+rule "apple"
+when
+  isContainedIn("apple","desk";)
+then
+  System.out.println("The apple IS in the desk");
+end
+
+

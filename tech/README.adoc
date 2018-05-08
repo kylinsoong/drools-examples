@@ -9,7 +9,8 @@
 
 == 复杂规则编写
 
-.*条件元素*
+=== 条件元素
+
 [cols="2,5a"]
 |===
 |元素 |说明
@@ -126,4 +127,100 @@ then
 ----
 |===
 
+=== 比较运算符
 
+[cols="2,5a"]
+|===
+|名称 |说明
+
+|<, <=, >, >=, ==, =, !=
+|数学比较运算符
+[source, java]
+----
+Person( age > 30 && < 40 )
+----
+
+|matches
+|规则中引用正则表达式
+[source, java]
+----
+Cheese( type matches "(Buffalo)?\\S*Mozarella" )
+----
+
+|soundslike
+|类似于 ==
+[source, java]
+----
+Cheese( name soundslike 'swish')
+----
+
+|contains
+|集合或数组中是否存在某元素
+[source, java]
+----
+CheeseCounter( cheeses contains "stilton" )
+CheeseCounter( cheeses contains $var )
+----
+
+|in
+|某元素是否在某元素集中
+[source, java]
+----
+Person( $cheese : favoriteCheese )
+Cheese( type in ( "stilton", "cheddar", $cheese ) )
+----
+
+|memberOf
+|是否是集合或数组中的元素
+[source, java]
+----
+CheeseCounter( cheese memberOf $matureCheeses )
+----
+|===
+
+=== 两种 dialect 的比较
+
+[cols="2, 5a,5a"]
+|===
+|比较项 |Java |MVEL
+
+|Property access
+|
+[source, java]
+----
+user.getManager().getName()
+----
+|
+[source, java]
+----
+user.manager.name
+----
+
+|Collection and map access
+|
+[source, java]
+----
+user.get(5)
+user.get("foobar")
+----
+|
+[source, java]
+----
+user[5]
+user["foobar"]/user.foobar
+----
+
+|Property assignment
+|
+[source, java]
+----
+user.getManager().setName("name")
+user.add("foo", "bar")
+----
+|
+[source, java]
+----
+user.manager.name = "name"
+user["foo"] = "bar"
+----
+|===
