@@ -12,7 +12,7 @@
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <drools.version>6.5.0.Final-redhat-2</drools.version>
+      <drools.version>7.5.0.Final-redhat-4</drools.version>
    </properties>
 
     <dependencies>

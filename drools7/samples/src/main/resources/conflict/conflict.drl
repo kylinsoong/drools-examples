@@ -1,0 +1,24 @@
+package conflict
+
+import com.sample.domain.conflict.*
+import java.util.LinkedList
+
+rule "OverAgeReservation"
+    when
+        $customer : Customer( age > 65 );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());//retrieve the first available room
+        update($customer.getRoom());
+end
+
+
+rule "DisabilitiesReservation"
+salience 10
+    when
+        $customer : Customer( disabilities == true );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());//retrieve the first available room
+        update($customer.getRoom());
+end

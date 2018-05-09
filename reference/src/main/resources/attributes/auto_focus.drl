@@ -1,0 +1,12 @@
+package attributes
+
+rule "auto-focus set to 'true'"
+agenda-group "TEST"
+auto-focus true
+    when
+        eval(true)
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+

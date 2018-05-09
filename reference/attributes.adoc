@@ -1,8 +1,5 @@
 = Attribute
 :toc: manual
-:toc-placement: preamble
-
-.
 
 == 语法
 
@@ -19,12 +16,7 @@ image::src/img/drools-reference-attributes.png[]
 |ruleflow-group
 |null
 |String
-|
-
-|lock-on-active
-|false
-|Boolean
-|
+|用来关联规则流与规则而实现规则的顺序执行。在某种层面上是对规则的分区执行。
 
 |salience
 |0
@@ -34,49 +26,35 @@ image::src/img/drools-reference-attributes.png[]
 |agenda-group
 |MAIN
 |String
-|
+|分区执行规则, 不能与 <<ruleflow-group,ruleflow-group>> 同时存在。
 
 |auto-focus
 |false
 |Boolean
-|
+|控制在执行 MAIN agenda-group 之前执行其它 agenda-group 中的规则
 
+|lock-on-active
+|false
+|Boolean
+|控制 agenda-group 与 ruleflow-group 中规则是否同时存在
 
-|
-|
-|
-|
+|date-effective
+|null
+|String
+|规则在一段事件之后才可以被执行
 
-|
-|
-|
-|
-
-|
-|
-|
-|
-
-|
-|
-|
-|
-
-|
-|
-|
-|
-
-|
-|
-|
-|
+|date-expires
+|null
+|String
+|规则在一段事件之内可以被执行
 |===
 
-== no-loop 示例
+== 示例
+
+=== no-loop
 
 [source, java]
-.*testLoop.drl*
+.*规则 - link:src/main/resources/org/drools/examples/loop/testLoop.drl[testLoop.drl]*
 ----
 package org.drools.examples.loop;
 
@@ -93,10 +71,8 @@ rule "no-loop testing"
 end
 ----
 
-link:src/main/resources/org/drools/examples/loop/testLoop.drl[link]
-
 [source, java]
-.*Example_Loop.java*
+.*执行代码 - link:src/main/java/org/drools/examples/Example_Loop.java[Example_Loop.java]*
 ----
 KieServices ks = KieServices.Factory.get();
 KieContainer kContainer = ks.getKieClasspathContainer();
@@ -108,12 +84,10 @@ kSession.fireAllRules();
 kSession.dispose();
 ----
 
-link:src/main/java/org/drools/examples/Example_Loop.java[link]
-
-== salience 示例
+=== salience
 
 [source, java]
-.*testSalience.drl*
+.*规则 - link:src/main/resources/org/drools/examples/saliences/testSalience.drl[testSalience.drl]*
 ----
 package org.drools.examples.saliences;
 
@@ -141,10 +115,8 @@ rule "Rule 03"
 end
 ----
 
-link:src/main/resources/org/drools/examples/saliences/testSalience.drl[link]
-
 [source, java]
-.*Example_Salience.java*
+.*执行代码 - link:src/main/java/org/drools/examples/Example_Salience.java[Example_Salience.java]*
 ----
 KieServices ks = KieServices.Factory.get();
 KieContainer kContainer = ks.getKieClasspathContainer();
@@ -153,12 +125,10 @@ kSession.fireAllRules();
 kSession.dispose();
 ----
 
-link:src/main/java/org/drools/examples/Example_Salience.java[link]
-
-== Partition 示例
+=== agenda-group
 
 [source, java]
-.*testPartition.drl*
+.*规则 - link:src/main/resources/org/drools/examples/partition/testPartition.drl[testPartition.drl]*
 ----
 package org.drools.examples.partition;
 
@@ -179,10 +149,8 @@ rule "Rule 02"
 end
 ----
 
-link:src/main/resources/org/drools/examples/partition/testPartition.drl[link]
-
 [source, java]
-.*Example_Partition.java*
+.*执行代码 - link:src/main/java/org/drools/examples/Example_Partition.java[Example_Partition.java]*
 ----
 KieServices ks = KieServices.Factory.get();
 KieContainer kContainer = ks.getKieClasspathContainer();
@@ -194,4 +162,32 @@ kSession.fireAllRules();
 kSession.dispose();
 ----
 
-link:src/main/java/org/drools/examples/Example_Partition.java[link]
+=== auto-focus
+
+[source, java]
+.*规则 - link:src/main/resources/auto_focus.drl[auto_focus.drl]*
+----
+package attributes
+
+rule "auto-focus set to 'true'"
+agenda-group "TEST"
+auto-focus true
+    when
+        eval(true)
+    then
+        System.out.println(drools.getRule().getName());
+end
+----
+
+[source, java]
+.*执行代码 - link:src/main/java/org/drools/examples/Aattributes_auto_focus.java[Aattributes_auto_focus.java]*
+----
+KieServices ks = KieServices.Factory.get();
+KieContainer kContainer = ks.getKieClasspathContainer();
+KieSession kSession = kContainer.newKieSession("ksession-attributes");
+kSession.fireAllRules();
+kSession.dispose();
+----
+
+
+

@@ -33,4 +33,8 @@
         <ksession name="ksession-bc" />
     </kbase>
     
+    <kbase name="conflict" packages="conflict" >
+        <ksession name="ksession-conflict" />
+    </kbase>
+    
 </kmodule>

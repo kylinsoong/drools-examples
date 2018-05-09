@@ -224,3 +224,7 @@ user.manager.name = "name"
 user["foo"] = "bar"
 ----
 |===
+
+=== Complex Event Processing
+
+

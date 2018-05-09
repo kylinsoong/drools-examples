@@ -24,4 +24,11 @@
     <kbase name="rules-partition" packages="org.drools.examples.partition">
         <ksession name="ksession-rules-partition"/>
     </kbase>
+    <kbase name="attributes" packages="attributes">
+        <ksession name="ksession-attributes"/>
+    </kbase>
+    
+    <kbase name="lockOnActive" packages="lockOnActive">
+        <ksession name="ksession-lockOnActive"/>
+    </kbase>
 </kmodule>

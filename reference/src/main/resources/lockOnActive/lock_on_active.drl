@@ -1,0 +1,10 @@
+package lockOnActive
+
+rule "partitionA 01"
+lock-on-active true
+  when
+    eval (true)
+  then
+    System.out.println(drools.getRule().getName());
+end
+
