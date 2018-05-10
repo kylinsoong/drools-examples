@@ -1,0 +1,16 @@
+package stocks;
+
+import com.sample.domain.stocks.Tick;
+import java.math.BigDecimal;
+
+global BigDecimal sellTolerance
+global BigDecimal buyTolerance
+
+rule "Your First Rule"
+
+    when
+        //conditions
+    then
+        //actions
+
+end
