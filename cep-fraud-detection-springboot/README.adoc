@@ -1,0 +1,156 @@
+= Fraud Detection Example
+:toc: manual
+
+Fraud detection including(the list below be thought as a fraud transaction):
+
+|===
+|Name |Descrirption |Link
+
+|Max transactions per time interval
+|More than 3 transactions in less than 5 seconds
+|<<Max transactions per time interval, Max transactions per time interval>>
+
+|Larget amount suspect
+|Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions
+|<<Larget amount suspect, Larget amount suspect>>
+
+|Withdrawal new transaction
+|Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction
+|<<Withdrawal new transaction, Withdrawal new transaction>>
+
+|===
+
+== Rules
+
+[source, java]
+----
+package rules
+
+import com.sample.model.Transaction
+import com.sample.model.TransactionType
+
+declare Transaction
+    @role ( event )
+end
+
+rule "Transaction is suspect if more than 3 transactions occur in less than 5 seconds"
+    when
+        $transaction: Transaction(  )
+        Number( intValue  > 3) from accumulate (
+            $t: Transaction(  ) over window:time ( 5s ),
+            count($t)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! More than 3 transactions in less than 5 seconds");
+        System.out.println("Transaction Denied! More than 3 transactions in less than 5 seconds");
+end
+
+rule "Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions"
+    when
+        $transaction: Transaction( $transactionValue: value  ) from entry-point "Credit Card"
+        $average: Number( (intValue  * 2) < $transactionValue) from accumulate (
+            Transaction( $value: value   ) over window:length ( 4 ) from entry-point "Credit Card",
+            average($value)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
+        System.out.println("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
+end
+
+rule "Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction"
+    when
+        $creditCardTransaction: Transaction( ) from entry-point "Credit Card"
+        $withDrawTransaction: Transaction( this after [0s, 10s] $creditCardTransaction, type == TransactionType.WITHDRAW )
+    then
+        $withDrawTransaction.setDenied(true);
+        $withDrawTransaction.setDeniedCause("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+        System.out.println("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+end
+----
+
+== Run
+
+=== Run with Spring Boot
+
+[source, java]
+.*Build Project*
+----
+$ mvn clean package
+----
+
+[source, java]
+.*Run Uber jar*
+----
+$ java -jar target/cep-fraud-detection-0.1.0.jar
+----
+
+=== Run on OpenShift
+
+[source, java]
+.*Create new project*
+----
+$ oc new-project drools
+----
+
+[source, java]
+.*Build & Deploy*
+----
+$ mvn clean fabric8:deploy
+----
+
+[source, java]
+.*Expose Service*
+----
+$ oc expose svc/cep-fraud-detection
+----
+
+[source, java]
+.*Get Host*
+----
+$ oc get routes
+NAME                  HOST/PORT                                          PATH      SERVICES              PORT      TERMINATION   WILDCARD
+cep-fraud-detection   cep-fraud-detection-drools.192.168.42.102.nip.io             cep-fraud-detection   http                    None
+----
+
+== Demonstration
+
+=== Max transactions per time interval
+
+Request with below link 3 times in less than 5 seconds:
+
+[source, bash]
+----
+http://$HOST/rest/transaction?balance=10&type=CREDIT_CARD
+----
+
+* The first 2 times' response like `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
+* The 3rd time response is `{"value":10,"denied":true,"deniedCause":"Transaction Denied! More than 3 transactions in less than 5 seconds","type":"CREDIT_CARD"}`.
+
+=== Larget amount suspect
+
+Request with below link 5 times(make sure no 3 continue request in 5 seconds):
+
+[source, bash]
+----
+http://$HOST/rest/transaction?balance=$BALANCE&type=CREDIT_CARD
+----
+
+The *BALANCE* can be any number, but the 5th times balance should larger than twice the average of the last 4 Credit.
+
+* The first 4 times' response should like `{"value":40,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
+* The 5th times' response like `{"value":300,"denied":true,"deniedCause":"Transaction Denied! This Credit Card transaction amount of USD 300 is more than twice the average amount ( USD 122.5) of the last 4 Credit Card Transactions","type":"CREDIT_CARD"}`.
+
+=== Withdrawal new transaction
+
+Request with below 2 links in less than 10 seconds:
+
+[source, bash]
+----
+http://$HOST/rest/transaction?balance=10&type=CREDIT_CARD
+http://$HOST/rest/transaction?balance=10&type=WITHDRAW
+----
+
+* The first request response `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
+* The second request response `{"value":10,"denied":true,"deniedCause":"Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction","type":"WITHDRAW"}`.

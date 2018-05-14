@@ -1,9 +1,11 @@
-package com.sample.rules.stock;
+package com.sample.rules.stocks;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -37,7 +39,7 @@ public class StockFeeder {
         listeners.add(listener);
     }
     
-    public void start() {
+    public void start() throws IOException {
         readInstructions();
         stocks.clear();
         instructions.forEach(i -> fireInstruction(i));
@@ -80,13 +82,46 @@ public class StockFeeder {
         listeners.forEach(l -> l.onTick(tick));
     }
 
-    private void readInstructions()  {
+    private void readInstructions() throws IOException {
 
         this.instructions.clear();
-//        FileInputStream fis = new FileInputStream(this.instructionFile);
-//        try(BufferedReader br = new BufferedReader()) {
-//            
-//        }
+        
+        try (FileInputStream input = new FileInputStream(instructionFile);
+                BufferedReader br = new BufferedReader(new InputStreamReader(input, Charset.forName("UTF-8")));
+                ) {
+            
+            String line;
+            int lineNumber = 0;
+            while((line = br.readLine()) != null) {
+                ++ lineNumber ;
+                String[] tokens = line.split(",");
+                if(tokens.length < 1) {
+                    throw new IllegalArgumentException("Invalid format at line " + lineNumber);
+                }
+                
+                if(tokens[0].startsWith("#")) {
+                    // do nothing
+                } else if (tokens[0].startsWith("S")) {
+                    if(tokens.length != 3) {
+                        throw new IllegalArgumentException("Invalid instruction at line " + lineNumber + ". Set Price (S) must contain symbol and price");
+                    }
+                    instructions.add(new StockInstruction(StockInstructionType.SET_PRICE, tokens[1], new BigDecimal(tokens[2])));
+                } else if (tokens[0].startsWith("I") || tokens[0].startsWith("D")) {
+                    if(tokens.length != 5) {
+                        throw new IllegalArgumentException("Invalid instruction at line " + lineNumber + ". Change Price (I/D) must contain symbol, minutes, increment, and volume range");
+                    }
+                    instructions.add(new StockInstruction("D".equals(tokens[0]) ? StockInstructionType.DECREASE_PRICE : StockInstructionType.INCREASE_PRICE, tokens[1], new BigDecimal(tokens[3]), Integer.valueOf(tokens[2]), tokens[4]));
+                } else if("P".equals(tokens[0])) {
+                    if(tokens.length != 2) {
+                        throw new IllegalArgumentException("Invalid instruction at line " + lineNumber);
+                    }
+                    instructions.add(new StockInstruction(StockInstructionType.PAUSE, Integer.valueOf(tokens[1])));
+                } else {
+                    throw new IllegalArgumentException("Invalid instruction, " + tokens[0] + " received at line " + lineNumber);
+                }
+            }
+            
+        } 
         
     }
     

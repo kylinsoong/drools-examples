@@ -1,0 +1,44 @@
+package rules
+
+import com.sample.model.Transaction
+import com.sample.model.TransactionType
+
+declare Transaction
+    @role ( event )
+end
+
+rule "Transaction is suspect if more than 3 transactions occur in less than 5 seconds"
+    when
+        $transaction: Transaction(  )
+        Number( intValue  > 3) from accumulate (
+            $t: Transaction(  ) over window:time ( 5s ),
+            count($t)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! More than 3 transactions in less than 5 seconds");
+        System.out.println("Transaction Denied! More than 3 transactions in less than 5 seconds");
+end
+
+rule "Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions"
+    when
+        $transaction: Transaction( $transactionValue: value  ) from entry-point "Credit Card"
+        $average: Number( (intValue  * 2) < $transactionValue) from accumulate (
+            Transaction( $value: value   ) over window:length ( 4 ) from entry-point "Credit Card",
+            average($value)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
+        System.out.println("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
+end
+
+rule "Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction"
+    when
+        $creditCardTransaction: Transaction( ) from entry-point "Credit Card"
+        $withDrawTransaction: Transaction( this after [0s, 10s] $creditCardTransaction, type == TransactionType.WITHDRAW )
+    then
+        $withDrawTransaction.setDenied(true);
+        $withDrawTransaction.setDeniedCause("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+        System.out.println("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+end

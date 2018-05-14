@@ -1,4 +1,4 @@
-package com.sample.rules.stock;
+package com.sample.rules.stocks;
 
 import org.kie.api.runtime.rule.EntryPoint;
 
