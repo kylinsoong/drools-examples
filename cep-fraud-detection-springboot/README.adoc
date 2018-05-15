@@ -7,16 +7,24 @@ Fraud detection including(the list below be thought as a fraud transaction):
 |Name |Descrirption |Link
 
 |Max transactions per time interval
-|More than 3 transactions in less than 5 seconds
+|For a specific user, more than 3 transactions in less than 5 seconds
 |<<Max transactions per time interval, Max transactions per time interval>>
 
 |Larget amount suspect
-|Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions
+|For a specific user's transaction, it will be suspect if the amount is more than twice the average of the last 4 Credit Card transactions
 |<<Larget amount suspect, Larget amount suspect>>
 
 |Withdrawal new transaction
 |Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction
 |<<Withdrawal new transaction, Withdrawal new transaction>>
+
+|Total amount limitation in specific time
+|Maximum amount should less than 1 000 000 in the 10 seconds time interval
+|<<Total amount limitation, Total amount limitation>>
+
+|Total amount limitation per user in specific time
+|Maximum amount should less than 200 000 in the 10 seconds time interval for a specifc user
+|<<Total amount limitation per user, Total amount limitation per user>>
 
 |===
 
@@ -35,38 +43,62 @@ end
 
 rule "Transaction is suspect if more than 3 transactions occur in less than 5 seconds"
     when
-        $transaction: Transaction(  )
-        Number( intValue  > 3) from accumulate (
-            $t: Transaction(  ) over window:time ( 5s ),
+        $transaction: Transaction()
+        Number(intValue  > 3) from accumulate (
+            $t: Transaction(userID == $transaction.getUserID()) over window:time (5s),
             count($t)
         )
     then
         $transaction.setDenied(true);
         $transaction.setDeniedCause("Transaction Denied! More than 3 transactions in less than 5 seconds");
-        System.out.println("Transaction Denied! More than 3 transactions in less than 5 seconds");
+        //System.out.println("Transaction Denied! More than 3 transactions in less than 5 seconds");
 end
 
 rule "Transaction is suspect if the amount is more than twice the average of the last 4 Credit Card transactions"
     when
-        $transaction: Transaction( $transactionValue: value  ) from entry-point "Credit Card"
-        $average: Number( (intValue  * 2) < $transactionValue) from accumulate (
-            Transaction( $value: value   ) over window:length ( 4 ) from entry-point "Credit Card",
+        $transaction: Transaction($transactionValue: value, $transactionUserID: userID)
+        $average: Number((intValue  * 2) < $transactionValue) from accumulate (
+            Transaction($value: value) over window:length ( 4 ) from entry-point "Credit Card",
             average($value)
         )
     then
         $transaction.setDenied(true);
-        $transaction.setDeniedCause("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
-        System.out.println("Transaction Denied! This Credit Card transaction amount of USD " + $transaction.getValue() + " is more than twice the average amount ( USD " + $average + ") of the last 4 Credit Card Transactions");
+        $transaction.setDeniedCause("Transaction Denied! This Credit Card transaction amount of RMB " + $transaction.getValue() + " is more than twice the average amount ( RMB " + $average + ") of the last 4 Credit Card Transactions");
+        //System.out.println("$transactionUserID=" + $transactionUserID + ", $average=" + $average + ", $transactionValue="  + $transactionValue);
 end
 
 rule "Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction"
     when
         $creditCardTransaction: Transaction( ) from entry-point "Credit Card"
-        $withDrawTransaction: Transaction( this after [0s, 10s] $creditCardTransaction, type == TransactionType.WITHDRAW )
+        $withDrawTransaction: Transaction( this after [0s, 10s] $creditCardTransaction, userID == $creditCardTransaction.getUserID(), type == TransactionType.WITHDRAW )
     then
         $withDrawTransaction.setDenied(true);
         $withDrawTransaction.setDeniedCause("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
-        System.out.println("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+        //System.out.println("Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction");
+end
+
+rule "Maximum amount should less than 1 000 000 in the 10 seconds time interval"
+    when
+        $transaction: Transaction()
+        $total : Number(longValue > 1000000) from accumulate (
+            $t: Transaction($value : value ) over window:time (10s),
+            sum($value)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! Total amount ( RMB " + $total + ") larger than 1,000,000 in the 10 seconds");
+end
+
+rule "Maximum amount should less than 200 000 in the 10 seconds time interval for a specifc user"
+    when
+        $transaction: Transaction($transactionUserID: userID)
+        $total : Number(longValue > 200000) from accumulate (
+            $t: Transaction($value : value, userID == $transactionUserID) over window:time (10s),
+            sum($value)
+        )
+    then
+        $transaction.setDenied(true);
+        $transaction.setDeniedCause("Transaction Denied! Total amount ( RMB " + $total + ") larger than 200,000 in the 10 seconds for user[" + $transactionUserID + "]");
 end
 ----
 
@@ -122,11 +154,11 @@ Request with below link 3 times in less than 5 seconds:
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?balance=10&type=CREDIT_CARD
+http://$HOST/rest/transaction?userID=USE1001&balance=10&type=CREDIT
 ----
 
-* The first 2 times' response like `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
-* The 3rd time response is `{"value":10,"denied":true,"deniedCause":"Transaction Denied! More than 3 transactions in less than 5 seconds","type":"CREDIT_CARD"}`.
+* The first 2 times' response like `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
+* The 3rd time response is `{"value":10,"denied":true,"deniedCause":"Transaction Denied! More than 3 transactions in less than 5 seconds","type":"CREDIT"}`.
 
 === Larget amount suspect
 
@@ -134,13 +166,13 @@ Request with below link 5 times(make sure no 3 continue request in 5 seconds):
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?balance=$BALANCE&type=CREDIT_CARD
+http://$HOST/rest/transaction?userID=USE1001&balance=$BALANCE&type=CREDIT
 ----
 
 The *BALANCE* can be any number, but the 5th times balance should larger than twice the average of the last 4 Credit.
 
-* The first 4 times' response should like `{"value":40,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
-* The 5th times' response like `{"value":300,"denied":true,"deniedCause":"Transaction Denied! This Credit Card transaction amount of USD 300 is more than twice the average amount ( USD 122.5) of the last 4 Credit Card Transactions","type":"CREDIT_CARD"}`.
+* The first 4 times' response should like `{"value":40,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
+* The 5th times' response like `{"value":300,"denied":true,"deniedCause":"Transaction Denied! This Credit Card transaction amount of USD 300 is more than twice the average amount ( USD 122.5) of the last 4 Credit Card Transactions","type":"CREDIT"}`.
 
 === Withdrawal new transaction
 
@@ -148,9 +180,38 @@ Request with below 2 links in less than 10 seconds:
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?balance=10&type=CREDIT_CARD
-http://$HOST/rest/transaction?balance=10&type=WITHDRAW
+http://$HOST/rest/transaction?userID=USE1001&balance=10&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1001&balance=10&type=WITHDRAW
 ----
 
-* The first request response `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT_CARD"}`.
+* The first request response `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
 * The second request response `{"value":10,"denied":true,"deniedCause":"Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction","type":"WITHDRAW"}`.
+
+=== Total amount limitation
+
+Execute the below 6 requests
+
+[source, bash]
+----
+http://$HOST/rest/transaction?userID=USE1001&balance=200000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1002&balance=200000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1003&balance=200000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1004&balance=200000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1005&balance=200000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1006&balance=200000&type=CREDIT
+----
+
+NOTE: the *USE1006* credit requtest be denied.
+
+=== Total amount limitation per user
+
+Execute the below 2 requests
+
+[source, bash]
+----
+http://$HOST/rest/transaction?userID=USE1001&balance=150000&type=CREDIT
+http://$HOST/rest/transaction?userID=USE1001&balance=150000&type=CREDIT
+----
+
+NOTE: the *USE1001* credit requtest be denied with `{"userID":"USE1001","value":150000,"denied":true,"deniedCause":"Transaction Denied! Total amount ( RMB 300000) larger than 200,000 in the 10 seconds for user[USE1001]","type":"CREDIT"}` notification.
+

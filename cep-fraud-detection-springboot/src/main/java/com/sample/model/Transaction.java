@@ -24,6 +24,8 @@ import java.math.BigInteger;
  */
 public class Transaction {
 
+    private String userID;
+    
     private BigInteger value = new BigInteger("10");
 
     private boolean denied;
@@ -40,9 +42,18 @@ public class Transaction {
      * @param value
      * @param type
      */
-    public Transaction(BigInteger value, TransactionType type) {
+    public Transaction(String userID, BigInteger value, TransactionType type) {
+        this.userID = userID;
         this.value = value;
         this.type = type;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     /**
@@ -101,9 +112,11 @@ public class Transaction {
         this.type = type;
     }
 
-	@Override
-	public String toString() {
-		return "Transaction [value=" + value + ", type=" + type + "]";
-	}
+    @Override
+    public String toString() {
+        return "Transaction [userID=" + userID + ", value=" + value + ", type=" + type + "]";
+    }
+    
+    
 
 }

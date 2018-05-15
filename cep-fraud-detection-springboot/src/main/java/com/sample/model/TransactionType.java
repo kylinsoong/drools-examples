@@ -24,8 +24,8 @@ package com.sample.model;
  */
 public enum TransactionType {
 
-    CREDIT_CARD,
-    WITHDRAW,
+    CREDIT,
     DEPOSIT,
+    WITHDRAW
 
 }
