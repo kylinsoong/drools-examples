@@ -1,0 +1,19 @@
+//created on: May 18, 2018
+package airport
+
+import com.sample.domain.airport.BagScannedEvent;
+import com.sample.domain.airport.Location;
+
+declare BagScannedEvent
+    @role( event )
+    @timestamp( timestamp.getTime() )
+    @expires( 2d )
+end
+
+rule "BaggageLostAtSorting"
+when
+    $b1:BagScannedEvent( location == Location.CHECK_IN ) from entry-point AirportStream
+    not BagScannedEvent( bagTag.id == $b1.bagTag.id, location == Location.SORTING, this after[0s,10m] $b1 ) from entry-point AirportStream
+then
+	System.out.println("Baggage lost at sorting. BagTag ID: " + $b1.getBagTag().getId());
+end

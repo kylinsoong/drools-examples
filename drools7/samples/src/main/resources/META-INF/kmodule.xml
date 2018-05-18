@@ -41,4 +41,12 @@
         <ksession name="ksession-stocks" />
     </kbase>
     
+    <kbase name="cep" packages="cep" eventProcessingMode="stream">
+        <ksession name="ksession-cep" />
+    </kbase>
+    
+    <kbase name="airport" packages="airport" equalsBehavior="equality" eventProcessingMode="stream">
+        <ksession name="ksession-airport" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
 </kmodule>
