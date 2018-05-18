@@ -3,7 +3,7 @@ package conflict
 import com.sample.domain.conflict.*
 import java.util.LinkedList
 
-rule "OverAgeReservation"
+rule "Conflict OverAgeReservation"
     when
         $customer : Customer( age > 65 );
         $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
@@ -13,7 +13,7 @@ rule "OverAgeReservation"
 end
 
 
-rule "DisabilitiesReservation"
+rule "Conflict DisabilitiesReservation"
 salience 10
     when
         $customer : Customer( disabilities == true );

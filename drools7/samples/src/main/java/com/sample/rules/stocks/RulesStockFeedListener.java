@@ -14,7 +14,8 @@ public class RulesStockFeedListener implements StockFeedListener {
 
     @Override
     public void onTick(Tick tick) {
-        ep.insert(tick);
+        if(ep != null)
+            ep.insert(tick);
     }
 
 }

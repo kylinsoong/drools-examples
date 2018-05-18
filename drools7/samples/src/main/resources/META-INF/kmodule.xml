@@ -37,4 +37,8 @@
         <ksession name="ksession-conflict" />
     </kbase>
     
+    <kbase name="stocks" packages="stocks" eventProcessingMode="stream">
+        <ksession name="ksession-stocks" />
+    </kbase>
+    
 </kmodule>
