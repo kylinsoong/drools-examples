@@ -1,0 +1,56 @@
+//created on: May 20, 2018
+package org.sample.rules
+
+import org.sample.models.*
+import org.sample.util.LogisticsUtil
+
+
+//declare any global variables here
+
+
+rule "发通信息导入客户端后，每行不能超过35个字符"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(wfobcShipper.length() > 35) from $datumSummary
+    then
+        $summary.setWfobcShipper(LogisticsUtil.maxLength35($summary.getWfobcShipper()));
+end
+
+rule "收通信息导入客户端后，每行不能超过35个字符"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(wfobcConsignee.length() > 35) from $datumSummary
+    then
+        $summary.setWfobcConsignee(LogisticsUtil.maxLength35($summary.getWfobcConsignee()));
+end
+
+rule "HS code 置空"
+    when
+        $booking : Booking()
+        Datum($details : detail) from $booking.getValues().getData()
+        $detail : Detail() from $details
+    then
+        $detail.setWfobccHscode("");
+end
+
+rule "SHIPPER 开头是 KUEHNE，在【发货人代码】栏位内填入：N:SMTC-NV00299"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary($wfobcShipper : wfobcShipper) from $datumSummary
+        eval($wfobcShipper.startsWith("KUEHNE"))
+    then
+        $summary.setWfobcShipperCode("N:SMTC-NV00299");
+end
+
+rule "SHIPPER 开头不是 KUEHNE，在【发货人代码】栏位内填入：B"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary($wfobcShipper : wfobcShipper) from $datumSummary
+        eval(!$wfobcShipper.startsWith("KUEHNE"))
+    then
+        $summary.setWfobcShipperCode("B");
+end

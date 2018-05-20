@@ -1,7 +1,16 @@
-package org.sample.sinotrans.models;
+package org.sample.util;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.sample.models.Booking;
+import org.sample.models.Container;
+import org.sample.models.Datum;
+import org.sample.models.Detail;
+import org.sample.models.Pages;
+import org.sample.models.Params;
+import org.sample.models.Summary;
+import org.sample.models.Values;
 
 public class FactFactory {
 

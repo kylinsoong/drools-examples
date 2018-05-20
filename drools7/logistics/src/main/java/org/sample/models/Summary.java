@@ -1,4 +1,4 @@
-package org.sample.sinotrans.models;
+package org.sample.models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "org_id",
     "wfobc_vessel_name",
     "wfobc_shipper",
+    "wfobc_shipper_code",
     "wfobc_consignee",
     "order_id",
     "wfobc_custom_no",
@@ -78,6 +79,9 @@ public class Summary {
     
     @JsonProperty("wfobc_shipper")
     private String wfobcShipper;
+    
+    @JsonProperty("wfobc_shipper_code")
+    private String wfobcShipperCode;
     
     @JsonProperty("wfobc_consignee")
     private String wfobcConsignee;
@@ -245,6 +249,16 @@ public class Summary {
     @JsonProperty("wfobc_shipper")
     public void setWfobcShipper(String wfobcShipper) {
         this.wfobcShipper = wfobcShipper;
+    }
+
+    @JsonProperty("wfobc_shipper_code")
+    public String getWfobcShipperCode() {
+        return wfobcShipperCode;
+    }
+
+    @JsonProperty("wfobc_shipper_code")
+    public void setWfobcShipperCode(String wfobcShipperCode) {
+        this.wfobcShipperCode = wfobcShipperCode;
     }
 
     @JsonProperty("wfobc_consignee")
