@@ -54,3 +54,26 @@ rule "SHIPPER 开头不是 KUEHNE，在【发货人代码】栏位内填入：B"
     then
         $summary.setWfobcShipperCode("B");
 end
+
+rule "订舱托书中的付款方式是 FREIGHT COLLECT"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(wfobcPaymentMode.equals("FREIGHT COLLECT")) from $datumSummary
+    then
+        $summary.setWfobcPaymentPlace($summary.getWfobcDischargePort());
+        $summary.setWfobcTransportTerm($summary.getWfobcTransportTerm() + "\nFREIGT COLLECT AT " + $summary.getWfobcDischargePort());
+end
+
+rule "订舱托书中的付款方式是 FREIGT PREPAID"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(wfobcPaymentMode.equals("FREIGHT PREPAID")) from $datumSummary
+    then
+        $summary.setWfobcPaymentPlace($summary.getWfobcLoadPort());
+        $summary.setWfobcTransportTerm($summary.getWfobcTransportTerm() + "\nFREIGT PREPAID AT " + $summary.getWfobcLoadPort());
+end
+
+
+

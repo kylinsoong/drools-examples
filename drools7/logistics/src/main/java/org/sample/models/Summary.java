@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "wfobc_transport_term",
     "wfobc_etd",
     "wfobc_payment_mode",
+    "wfobc_payment_place",
     "wfobc_total_volumn",
     "wfobc_bok_contract_no",
     "wfobc_consign_department",
@@ -43,6 +44,9 @@ public class Summary {
     
     @JsonProperty("wfobc_payment_mode")
     private String wfobcPaymentMode;
+    
+    @JsonProperty("wfobc_payment_place")
+    private String wfobcPaymentPlace;
     
     @JsonProperty("wfobc_total_volumn")
     private String wfobcTotalVolumn;
@@ -129,6 +133,16 @@ public class Summary {
     @JsonProperty("wfobc_payment_mode")
     public void setWfobcPaymentMode(String wfobcPaymentMode) {
         this.wfobcPaymentMode = wfobcPaymentMode;
+    }
+
+    @JsonProperty("wfobc_payment_place")
+    public String getWfobcPaymentPlace() {
+        return wfobcPaymentPlace;
+    }
+
+    @JsonProperty("wfobc_payment_place")
+    public void setWfobcPaymentPlace(String wfobcPaymentPlace) {
+        this.wfobcPaymentPlace = wfobcPaymentPlace;
     }
 
     @JsonProperty("wfobc_total_volumn")

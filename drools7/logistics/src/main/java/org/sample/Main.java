@@ -33,19 +33,37 @@ public class Main {
 
     public static void main(String[] args) {
 
-    
+//    "testONE_43510158804118".equals("");
         
-//        testWHL_43510457804020();
-        
+//        testWHL_43510457804020();  
 //        testHasCode();
-               
 //        testONE_43510238804160();
         
         testONE_43510158804118();
         
     }
 
-    
+    static void testONE_43510158804118() {
+
+        KieSession ksession = newSession();
+        
+        Booking booking1 = FactFactory.ONE_43510158804118();
+        Booking booking2 = FactFactory.ONE_43510238804160();
+        ksession.insert(booking1);
+        ksession.insert(booking2);
+        ksession.fireAllRules();
+        
+        assertEqual(booking1.getValues().getData().get(0).getSummary().getWfobcLoadPort(), booking1.getValues().getData().get(0).getSummary().getWfobcPaymentPlace());
+        assertEqual(booking2.getValues().getData().get(0).getSummary().getWfobcDischargePort(), booking2.getValues().getData().get(0).getSummary().getWfobcPaymentPlace());
+        
+        String expectedTerm1 = "CY/CY\nFREIGT PREPAID AT SHANGHAI";
+        String expectedTerm2 = "CY/CY\nFREIGT COLLECT AT ROTTERDAM";
+        
+        assertEqual(expectedTerm1, booking1.getValues().getData().get(0).getSummary().getWfobcTransportTerm());
+        assertEqual(expectedTerm2, booking2.getValues().getData().get(0).getSummary().getWfobcTransportTerm());
+        
+        ksession.dispose();
+    }
 
     static void testWHL_43510457804020() {
 
@@ -98,13 +116,6 @@ public class Main {
         ksession.dispose();
     }
     
-    static void testONE_43510158804118() {
-
-        KieSession ksession = newSession();
-        
-        ksession.fireAllRules();
-        
-        ksession.dispose();
-    }
+    
 
 }
