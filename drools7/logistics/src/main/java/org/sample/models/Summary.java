@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "wfobc_discharge_port",
     "org_id",
     "wfobc_vessel_name",
+    "wfobc_vessel_company",
     "wfobc_shipper",
     "wfobc_shipper_code",
     "wfobc_consignee",
@@ -80,6 +81,9 @@ public class Summary {
     
     @JsonProperty("wfobc_vessel_name")
     private String wfobcVesselName;
+    
+    @JsonProperty("wfobc_vessel_company")
+    private String wfobcVesselCompany;
     
     @JsonProperty("wfobc_shipper")
     private String wfobcShipper;
@@ -253,6 +257,16 @@ public class Summary {
     @JsonProperty("wfobc_vessel_name")
     public void setWfobcVesselName(String wfobcVesselName) {
         this.wfobcVesselName = wfobcVesselName;
+    }
+
+    @JsonProperty("wfobc_vessel_company")
+    public String getWfobcVesselCompany() {
+        return wfobcVesselCompany;
+    }
+
+    @JsonProperty("wfobc_vessel_company")
+    public void setWfobcVesselCompany(String wfobcVesselCompany) {
+        this.wfobcVesselCompany = wfobcVesselCompany;
     }
 
     @JsonProperty("wfobc_shipper")

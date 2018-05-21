@@ -6,6 +6,7 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.sample.models.Booking;
+import org.sample.models.CountryCode;
 import org.sample.util.FactFactory;
 
 public class Main {
@@ -21,7 +22,7 @@ public class Main {
     
     static void assertEqual(Object obj1, Object obj2) {
         if(!obj1.equals(obj2)) {
-            throw new RuntimeException("assert failed");
+            throw new RuntimeException("assert failed, [" + obj1 + "] not equals [" + obj2 + "]");
         }
     }
     
@@ -33,13 +34,130 @@ public class Main {
 
     public static void main(String[] args) {
 
-//    "testONE_43510158804118".equals("");
+        System.out.println("POC TEST START...");
         
 //        testWHL_43510457804020();  
 //        testHasCode();
-//        testONE_43510238804160();
+//        testONE_43510238804160();       
+//        testONE_43510158804118();
+//        testONE_43519188804541();
+//        testPortMapping();
+//        testONE_43510375803063();
+//        testONE_43510375803063_2();
+//        testONE_43510375803063_3();
         
-        testONE_43510158804118();
+        testONE_43510238804160_2();
+        
+        System.out.println("POC TEST SUCCESS");
+    }
+
+    /**
+     * A.如果卸货港或目的港是美国、加拿大港口的，HS CODE必须是8位数字。若订舱托书中品名内的HS CODE超过8位，请系统自动截取前8位填写到指定栏位，若不满8未，则末尾自动以“0”补齐后填写到指定栏位
+     */
+    static void testONE_43510375803063_2() {
+
+        KieSession ksession = newSession();
+        
+        Booking b1 = FactFactory.ONE_43510375803063();
+        
+        ksession.insert(b1);
+        
+        ksession.fireAllRules();
+        
+        b1.getValues().getData().get(0).getDetail().forEach(d -> {
+            assertEqual(8, d.getWfobccHscode().length());
+//            System.out.println(d.getWfobccHscode());
+        });
+        
+     
+        
+        ksession.dispose();
+    }
+    
+    /**
+     * B.如果卸货港或目的港是非美国、加拿大港口的，HS CODE必须是6位数字。若订舱托书中品名内的HS CODE超过6位，请系统自动截取前6位填写到指定栏位，若不满6未，则末尾自动以“0”补齐后填写到指定栏位；
+     */
+    static void testONE_43510375803063_3() {
+
+        KieSession ksession = newSession();
+        
+        Booking b2 = FactFactory.IAL_43510139804040();
+        
+//        ksession.insert(b1);
+        ksession.insert(b2);
+        
+        ksession.fireAllRules();
+        
+      
+        
+        b2.getValues().getData().get(0).getDetail().forEach(d -> {
+           assertEqual(6, d.getWfobccHscode().length());
+//            System.out.println(d.getWfobccHscode());
+        });
+        
+        
+        ksession.dispose();
+    }
+
+    static void testPortMapping() {
+
+        KieSession ksession = newSession();
+        
+        CountryCode load = new CountryCode("SHANGHAI");
+        CountryCode discharge = new CountryCode("LONG BEACH,CA");
+        ksession.insert(load);
+        ksession.insert(discharge);
+        
+        ksession.fireAllRules();
+        
+        assertEqual("CHN", load.getCode());
+        assertEqual("USA", discharge.getCode());
+        
+        ksession.dispose();
+    }
+
+    /**
+     * 7.如果订舱的托书中，其卸货港或目的港是美国线、加拿大港口，且收发通开头都是“KUEHNE”，请在导入托书的同时，在备注里中添加：
+     *   SCAC CODE:BANQ
+     *   ACI CODE:8041
+     * 8.如果订舱的托书中，其卸货港或目的港是美国线、加拿大港口，但收发通开头都不是“KUEHNE”，请在导入托书的同时，在备注里中添加：
+     *   CARRIER FILLING  
+     */
+    static void testONE_43510375803063() {
+
+        KieSession ksession = newSession();
+        
+        Booking b1 = FactFactory.ONE_43510375803063();
+        Booking b2 = FactFactory.ONE_43519188804541();
+        
+        ksession.insert(b1);
+        ksession.insert(b2);
+        
+        ksession.fireAllRules();
+        
+        String expected1 = "CONTRACT NUMBER: FIX-RIC5076704_EC\\rOB/L NUMBER:\nSCAC CODE:BANQ\nACI CODE:8041";
+        String expected2 = "CONTRACT NUMBER: SC0119919\\rOB/L NUMBER:\\r4-27 ONE PS5\nCARRIER FILLING";
+        assertEqual(expected1, b1.getValues().getData().get(0).getSummary().getWfobcBookingRemark());
+        assertEqual(expected2, b2.getValues().getData().get(0).getSummary().getWfobcBookingRemark());
+
+        ksession.dispose();
+    }
+
+    static void testONE_43519188804541() {
+
+        KieSession ksession = newSession();
+        
+        Booking booking = FactFactory.ONE_43519188804541();
+        
+        ksession.insert(booking);
+        
+        ksession.fireAllRules();
+        
+        booking.getValues().getData().get(0).getDetail().forEach(d -> {
+            assertEqual("PACKAGE", d.getWfobccPcs());
+        });
+        
+        ksession.dispose();
         
     }
 
@@ -88,6 +206,8 @@ public class Main {
         KieSession ksession = newSession();
         
         Booking booking = FactFactory.ONE_43519188804541();
+        booking.getValues().getData().get(0).getSummary().setWfobcVesselCompany("MATSON");
+        
         ksession.insert(booking);
         
         ksession.fireAllRules();
@@ -102,6 +222,21 @@ public class Main {
     }
     
     static void testONE_43510238804160() {
+
+
+        KieSession ksession = newSession();
+        
+        Booking booking = FactFactory.ONE_43510238804160();
+        ksession.insert(booking);
+        
+        ksession.fireAllRules();
+        
+        assertEqual("N:SMTC-NV00299", booking.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+       
+        ksession.dispose();
+    }
+    
+    static void testONE_43510238804160_2() {
 
 
         KieSession ksession = newSession();

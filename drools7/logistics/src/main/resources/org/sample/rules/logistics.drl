@@ -4,9 +4,7 @@ package org.sample.rules
 import org.sample.models.*
 import org.sample.util.LogisticsUtil
 
-
 //declare any global variables here
-
 
 rule "发通信息导入客户端后，每行不能超过35个字符"
     when
@@ -27,10 +25,13 @@ rule "收通信息导入客户端后，每行不能超过35个字符"
 end
 
 rule "HS code 置空"
+    salience -100
     when
         $booking : Booking()
-        Datum($details : detail) from $booking.getValues().getData()
+        Datum($details : detail, $datumSummary : summary) from $booking.getValues().getData()
         $detail : Detail() from $details
+        $summary : Summary($wfobcVesselCompany : wfobcVesselCompany) from $datumSummary
+        eval($wfobcVesselCompany != null && $wfobcVesselCompany.equals("MATSON"))
     then
         $detail.setWfobccHscode("");
 end
@@ -75,5 +76,105 @@ rule "订舱托书中的付款方式是 FREIGT PREPAID"
         $summary.setWfobcTransportTerm($summary.getWfobcTransportTerm() + "\nFREIGT PREPAID AT " + $summary.getWfobcLoadPort());
 end
 
+rule "卸货港或目的港是美国、加拿大港口的，HS CODE必须是8位数字"
+    when
+        $booking : Booking()
+        Datum($details : detail, $datumSummary : summary) from $booking.getValues().getData()
+        $detail : Detail() from $details
+        $summary : Summary($wfobcDischargePort : wfobcDischargePort) from $datumSummary
+    then
+        CountryCode discharge = new CountryCode($wfobcDischargePort);
+        insert(discharge);
+        insert($detail);
+end
+
+rule "卸货港或目的港是美国、加拿大港口的，HS CODE必须是8位数字, 设置 HS CODE"
+    when
+        $detail : Detail($wfobccHscode : wfobccHscode)
+        $dischargeCC : CountryCode($discharge : code) 
+        eval($discharge.equals("USA") || $discharge.equals("CAN"))
+    then
+        retract($dischargeCC);
+        retract($detail);
+        $detail.setWfobccHscode(LogisticsUtil.hcCode8($wfobccHscode));
+end
+
+rule "卸货港或目的港非美国、加拿大港口的，HS CODE必须是6位数字"
+    when
+        $booking : Booking()
+        Datum($details : detail, $datumSummary : summary) from $booking.getValues().getData()
+        $detail : Detail() from $details
+        $summary : Summary($wfobcDischargePort : wfobcDischargePort) from $datumSummary
+    then
+        CountryCode discharge = new CountryCode($wfobcDischargePort);
+        insert(discharge);
+        insert($detail);
+end
+
+rule "卸货港或目的港非美国、加拿大港口的，HS CODE必须是8位数字, 设置 HS CODE"
+    when
+        $detail : Detail($wfobccHscode : wfobccHscode)
+        $dischargeCC : CountryCode($discharge : code) 
+        eval(!$discharge.equals("USA") && !$discharge.equals("CAN"))
+    then
+        retract($dischargeCC);
+        retract($detail);
+        $detail.setWfobccHscode(LogisticsUtil.hcCode6($wfobccHscode));
+end
+
+
+
+rule "订舱托书中的包装单位取单数"
+    when
+        $booking : Booking()
+        Datum($details : detail) from $booking.getValues().getData()
+        $detail : Detail(wfobccPcs.equals("PACKAGES")) from $details
+    then
+        $detail.setWfobccPcs("PACKAGE");
+end
+
+rule "订舱的托书中，其卸货港或目的港是美国线、加拿大港口，且收发通开头都是 KUEHNE"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(wfobcShipper.startsWith("KUEHNE"), wfobcConsignee.startsWith("KUEHNE")) from $datumSummary
+    then
+        CountryCode discharge = new CountryCode($summary.getWfobcDischargePort());
+        insert(discharge);
+        insert($summary);
+end
+
+rule "订舱的托书中，其卸货港或目的港是美国线、加拿大港口，且收发通开头都是 KUEHNE, 设定备注"
+    when
+        $summary : Summary(wfobcShipper.startsWith("KUEHNE"), wfobcConsignee.startsWith("KUEHNE"))
+        $dischargeCC : CountryCode($discharge : code) 
+        eval($discharge.equals("USA") || $discharge.equals("CAN"))
+    then
+        retract($dischargeCC);
+        retract($summary);
+        $summary.setWfobcBookingRemark($summary.getWfobcBookingRemark() + "\nSCAC CODE:BANQ\nACI CODE:8041");
+end
+
+rule "订舱的托书中，其卸货港或目的港是美国线、加拿大港口，且收发通开头都不是 KUEHNE"
+    when
+        $booking : Booking()
+        Datum($datumSummary : summary) from $booking.getValues().getData()
+        $summary : Summary(!wfobcShipper.startsWith("KUEHNE"), !wfobcConsignee.startsWith("KUEHNE")) from $datumSummary
+    then
+        CountryCode discharge = new CountryCode($summary.getWfobcDischargePort());
+        insert(discharge);
+        insert($summary);
+end
+
+rule "订舱的托书中，其卸货港或目的港是美国线、加拿大港口，且收发通开头都不是 KUEHNE, 设定备注"
+    when
+        $summary : Summary(!wfobcShipper.startsWith("KUEHNE"), !wfobcConsignee.startsWith("KUEHNE"))
+        $dischargeCC : CountryCode($discharge : code) 
+        eval($discharge.equals("USA") || $discharge.equals("CAN"))
+    then
+        retract($dischargeCC);
+        retract($summary);
+        $summary.setWfobcBookingRemark($summary.getWfobcBookingRemark() + "\nCARRIER FILLING");
+end
 
 
