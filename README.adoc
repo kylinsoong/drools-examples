@@ -20,20 +20,33 @@
 
 == 案例索引
 
+[cols="2,5a"]
 |===
 |行业 |案例
 
 |金融
-|link:cep-fraud-detection-springboot/README.adoc[欺骗侦测], link:README.adoc[核保理赔], link:README.adoc[风控管理]
+|
+* link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
+* link:README.adoc[核保理赔]
+* link:README.adoc[风控管理]
 
 |物流
-|link:README.adoc[智能定价], link:README.adoc[运单管理], link:README.adoc[运费核算]
+|
+* link:logistics-freight-management/README.adoc[运单管理]
+* link:README.adoc[智能定价]
+* link:README.adoc[运费核算]
 
 |医疗
-|link:README.adoc[智能诊断], link:README.adoc[智能医院]
+|
+* link:README.adoc[智能诊断]
+* link:README.adoc[智能医院]
 
 |制造
-|link:README.adoc[智能排产], link:README.adoc[智能工厂], link:README.adoc[智能定价], link:README.adoc[分销核算]
+|
+* link:README.adoc[智能排产]
+* link:README.adoc[智能工厂]
+* link:README.adoc[智能定价]
+* link:README.adoc[分销核算]
 |===
 
 == 目录

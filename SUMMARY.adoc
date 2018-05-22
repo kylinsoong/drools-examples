@@ -13,4 +13,5 @@
 .. link:reference/attributes.adoc[Attributes]
 . link:usecase.adoc[案例]
 .. link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
+.. link:logistics-freight-management/README.adoc[运单管理]
 

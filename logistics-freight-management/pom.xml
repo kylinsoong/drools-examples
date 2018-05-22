@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.drools.examples</groupId>
-    <artifactId>logistics</artifactId>
+    <artifactId>logistics-freight-management</artifactId>
     <version>1.0</version>
     <packaging>kjar</packaging>
 
-    <name>Drools ksession initial</name>
-    <description>Drools Example ksession</description>
+    <name>Drools logistics freight management</name>
+    <description>Drools logistics freight management</description>
 
     <properties>
         <dm.version>7.0.0.GA-redhat-2</dm.version>
