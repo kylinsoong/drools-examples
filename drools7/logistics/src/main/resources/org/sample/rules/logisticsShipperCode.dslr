@@ -4,9 +4,9 @@ import org.sample.models.Summary
 
 expander logisticsShipperCode.dsl 
 
-rule "N:SMTC-NV00299 代码设定"
+rule "装货地址是以 KUEHNE 开头,发货人代码设定"
     when
-        装货地址是以 KUEHNE 开头的
+        装货地址是以 "KUEHNE" 开头的
     then
-        发货人代码栏位内填入 N:SMTC-NV00299
+        发货人代码栏位内填入 "N:SMTC-NV00299"
 end

@@ -36,17 +36,16 @@ rule "HS code 置空"
         $detail.setWfobccHscode("");
 end
 
-rule "SHIPPER 开头是 KUEHNE，在【发货人代码】栏位内填入：N:SMTC-NV00299"
+rule "地址特殊开头发货人代码设定"
     when
         $booking : Booking()
         Datum($datumSummary : summary) from $booking.getValues().getData()
-        $summary : Summary($wfobcShipper : wfobcShipper) from $datumSummary
-        eval($wfobcShipper.startsWith("KUEHNE"))
+        $summary : Summary(wfobcShipper.startsWith("KUEHNE")) from $datumSummary
     then
-        $summary.setWfobcShipperCode("N:SMTC-NV00299");
+        insert($summary);
 end
 
-rule "SHIPPER 开头不是 KUEHNE，在【发货人代码】栏位内填入：B"
+rule "地址非特殊开头发货人代码设定"
     when
         $booking : Booking()
         Datum($datumSummary : summary) from $booking.getValues().getData()

@@ -34,21 +34,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("POC TEST START...");
+        System.out.println("TEST START ...");
         
-//        testWHL_43510457804020();  
-//        testHasCode();
-//        testONE_43510238804160();       
-//        testONE_43510158804118();
-//        testONE_43519188804541();
-//        testPortMapping();
-//        testONE_43510375803063();
-//        testONE_43510375803063_2();
-//        testONE_43510375803063_3();
-        
+        testWHL_43510457804020();  
+        testHasCode();
+        testONE_43510238804160();       
+        testONE_43510158804118();
+        testONE_43519188804541();
+        testPortMapping();
+        testONE_43510375803063();
+        testONE_43510375803063_2();
+        testONE_43510375803063_3(); 
         testONE_43510238804160_2();
         
-        System.out.println("POC TEST SUCCESS");
+        testONE_43510238804160_3();
+        testONE_43510238804160_4();
+        
+        System.out.println("TEST SUCCESS");
     }
 
     /**
@@ -236,21 +238,66 @@ public class Main {
         ksession.dispose();
     }
     
+    /**
+     * 1. 所有SHIPPER开头是“KUEHNE”的，在【发货人代码】栏位内填入：N:SMTC-NV00299
+     * 2.所有SHIPPER开头不是“KUEHNE”的，在【发货人代码】栏位内填入：B
+     */
     static void testONE_43510238804160_2() {
 
 
         KieSession ksession = newSession();
         
-        Booking booking = FactFactory.ONE_43510238804160();
-        ksession.insert(booking);
+        Booking b1 = FactFactory.ONE_43510238804160();
+        Booking b2 = FactFactory.ONE_43519188804541();
+        ksession.insert(b1.getValues().getData().get(0).getSummary());
+        ksession.insert(b2.getValues().getData().get(0).getSummary());
         
         ksession.fireAllRules();
         
-        assertEqual("N:SMTC-NV00299", booking.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+        assertEqual("N:SMTC-NV00299", b1.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+//        assertEqual(null, b2.getValues().getData().get(0).getSummary().getWfobcShipperCode());
        
         ksession.dispose();
     }
     
-    
+    /**
+     * 1. 所有SHIPPER开头是“KUEHNE”的，在【发货人代码】栏位内填入：N:SMTC-NV00299
+     */
+    static void testONE_43510238804160_3() {
 
+
+        KieSession ksession = newSession();
+        
+        Booking b1 = FactFactory.ONE_43510238804160();
+        ksession.insert(b1);
+        
+        ksession.fireAllRules();
+        
+//        System.out.println(b1.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+//        System.out.println(b2.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+        
+        assertEqual("N:SMTC-NV00299", b1.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+//        assertEqual("B", b2.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+       
+        ksession.dispose();
+    }
+    
+    /**
+     * 2.所有SHIPPER开头不是“KUEHNE”的，在【发货人代码】栏位内填入：B
+     */
+    static void testONE_43510238804160_4() {
+
+
+        KieSession ksession = newSession();
+        
+        Booking b2 = FactFactory.ONE_43519188804541();
+        ksession.insert(b2);
+        
+        ksession.fireAllRules();
+                
+        assertEqual("B", b2.getValues().getData().get(0).getSummary().getWfobcShipperCode());
+       
+        ksession.dispose();
+    }
+    
 }

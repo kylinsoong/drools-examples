@@ -21,6 +21,10 @@
         <ksession name="ksession-dsl-classupgrade" />
     </kbase>
     
+    <kbase name="dsl_troubleticket" packages="dsl_troubleticket" >
+        <ksession name="ksession-dsl-troubleticket" />
+    </kbase>
+    
     <kbase name="complex_rules" packages="complex_rules" >
         <ksession name="ksession-complexrules" />
     </kbase>
