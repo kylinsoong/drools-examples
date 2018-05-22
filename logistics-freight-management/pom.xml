@@ -37,25 +37,32 @@
             <groupId>org.drools</groupId>
             <artifactId>drools-compiler</artifactId>
         </dependency>
-
-        <!-- Dependency for persistence support. -->
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-persistence-jpa</artifactId>
-        </dependency>
         
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
         </dependency>
         
-        <!-- Dependency for loading KJARs from a Maven repository using KieScanner. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
+
+        <!-- Dependency for persistence support. 
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-persistence-jpa</artifactId>
+        </dependency>
+        -->
+        
+        <!-- Dependency for loading KJARs from a Maven repository using KieScanner. 
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
         </dependency>
+        -->
         
-         <!-- Client Application Decision Server Dependencies -->  
+         <!-- Client Application Decision Server Dependencies 
         <dependency>
             <groupId>org.kie.server</groupId>
             <artifactId>kie-server-client</artifactId>
@@ -64,8 +71,9 @@
             <groupId>org.kie.server</groupId>
             <artifactId>kie-server-api</artifactId>
         </dependency>
-
-        <!-- Dependency for Red Hat JBoss BRMS functionality. -->
+       -->
+        
+        <!-- Dependency for Red Hat JBoss BRMS functionality. 
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
@@ -75,11 +83,8 @@
             <groupId>org.uberfire</groupId>
             <artifactId>uberfire-rest-client</artifactId>
         </dependency>
+        -->
         
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
         
        
     </dependencies>
