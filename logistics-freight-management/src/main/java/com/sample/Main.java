@@ -45,15 +45,15 @@ public class Main {
         testHasCode();
         testONE_43510238804160();       
         testONE_43510158804118();
-        testONE_43519188804541();
-        testPortMapping();
-        testPortMapping_1();
-        testONE_43510375803063();
-        testONE_43510375803063_2();
-        testONE_43510375803063_3(); 
-        testONE_43510238804160_2();     
-        testONE_43510238804160_3();
-        testONE_43510238804160_4();
+//        testONE_43519188804541();
+//        testPortMapping();
+//        testPortMapping_1();
+//        testONE_43510375803063();
+//        testONE_43510375803063_2();
+//        testONE_43510375803063_3(); 
+//        testONE_43510238804160_2();     
+//        testONE_43510238804160_3();
+//        testONE_43510238804160_4();
         
         System.out.println("TEST SUCCESS");
     }

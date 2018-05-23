@@ -39,7 +39,7 @@ public class Params implements Serializable {
     @JsonProperty("appSecret")
     private String appSecret;
     @JsonProperty("echoStr")
-    private Object echoStr;
+    private String echoStr;
     @JsonProperty("reqUuid")
     private String reqUuid;
     @JsonProperty("ifNeedOcr")
@@ -51,9 +51,9 @@ public class Params implements Serializable {
     @JsonProperty("ifNeedCallback")
     private String ifNeedCallback;
     @JsonProperty("callbackUrl")
-    private Object callbackUrl;
+    private String callbackUrl;
     @JsonProperty("pathCode")
-    private Object pathCode;
+    private String pathCode;
     @JsonProperty("fieldStyle")
     private String fieldStyle;
     @JsonIgnore
@@ -100,12 +100,12 @@ public class Params implements Serializable {
     }
 
     @JsonProperty("echoStr")
-    public Object getEchoStr() {
+    public String getEchoStr() {
         return echoStr;
     }
 
     @JsonProperty("echoStr")
-    public void setEchoStr(Object echoStr) {
+    public void setEchoStr(String echoStr) {
         this.echoStr = echoStr;
     }
 
@@ -165,17 +165,17 @@ public class Params implements Serializable {
     }
 
     @JsonProperty("callbackUrl")
-    public void setCallbackUrl(Object callbackUrl) {
+    public void setCallbackUrl(String callbackUrl) {
         this.callbackUrl = callbackUrl;
     }
 
     @JsonProperty("pathCode")
-    public Object getPathCode() {
+    public String getPathCode() {
         return pathCode;
     }
 
     @JsonProperty("pathCode")
-    public void setPathCode(Object pathCode) {
+    public void setPathCode(String pathCode) {
         this.pathCode = pathCode;
     }
 
