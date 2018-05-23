@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -15,8 +16,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "startpage",
     "fileName"
 })
-public class Pages {
+public class Pages implements Serializable {
 
+    private static final long serialVersionUID = -6476175199567423629L;
+    
     @JsonProperty("endpage")
     private Integer endpage;
     @JsonProperty("startpage")

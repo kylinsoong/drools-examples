@@ -1,6 +1,7 @@
 
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +17,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "data",
     "params"
 })
-public class Values {
+public class Values implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 2323283147585123458L;
+    
     @JsonProperty("data")
     private List<Datum> data = null;
     @JsonProperty("params")

@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -35,7 +36,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "wfobc_total_gross_weight",
     "ext_company"
 })
-public class Summary {
+public class Summary implements Serializable{
+
+    private static final long serialVersionUID = -1641376376232192933L;
 
     @JsonProperty("wfobc_transport_term")
     private String wfobcTransportTerm;

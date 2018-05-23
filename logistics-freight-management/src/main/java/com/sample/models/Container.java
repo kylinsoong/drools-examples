@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -14,8 +15,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "wfobcc_container_type",
     "wfobcc_container_num"
 })
-public class Container {
+public class Container implements Serializable {
 
+    private static final long serialVersionUID = 8370496908521348810L;
+    
     @JsonProperty("wfobcc_container_type")
     private String wfobccContainerType;
     @JsonProperty("wfobcc_container_num")

@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -25,8 +26,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "pathCode",
     "fieldStyle"
 })
-public class Params {
+public class Params implements Serializable {
 
+    private static final long serialVersionUID = -946949010165481447L;
+    
     @JsonProperty("docType")
     private String docType;
     @JsonProperty("appId")

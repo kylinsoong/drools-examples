@@ -1,4 +1,4 @@
-package org.sample.util;
+package com.sample.utils;
 
 public class LogisticsUtil {
     

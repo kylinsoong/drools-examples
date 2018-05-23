@@ -1,8 +1,8 @@
 //created on: May 20, 2018
-package org.sample.rules
+package com.sample.rules
 
-import org.sample.models.*
-import org.sample.util.LogisticsUtil
+import com.sample.models.*
+import com.sample.utils.LogisticsUtil
 
 //declare any global variables here
 
@@ -83,6 +83,7 @@ rule "卸货港或目的港是美国、加拿大港口的，HS CODE必须是8位
         $summary : Summary($wfobcDischargePort : wfobcDischargePort) from $datumSummary
     then
         CountryCode discharge = new CountryCode($wfobcDischargePort);
+        //System.out.println("==== " + discharge);
         insert(discharge);
         insert($detail);
 end
@@ -93,6 +94,7 @@ rule "卸货港或目的港是美国、加拿大港口的，HS CODE必须是8位
         $dischargeCC : CountryCode($discharge : code) 
         eval($discharge.equals("USA") || $discharge.equals("CAN"))
     then
+        //System.out.println("---- " + $dischargeCC);
         retract($dischargeCC);
         retract($detail);
         $detail.setWfobccHscode(LogisticsUtil.hcCode8($wfobccHscode));

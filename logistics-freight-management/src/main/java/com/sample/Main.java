@@ -1,15 +1,20 @@
-package org.sample;
+package com.sample;
 
-import static org.sample.util.RulesUtils.checkErrors;
+import static com.sample.utils.RulesUtils.checkErrors;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.sample.models.Booking;
-import org.sample.models.CountryCode;
-import org.sample.util.FactFactory;
+
+import com.sample.models.Booking;
+import com.sample.models.CountryCode;
+import com.sample.utils.FactFactory;
 
 public class Main {
+    
+    static {
+        System.setProperty("drools.dump.dir", "/home/kylin/tmp/drools-dump");
+    }
     
     static KieSession newSession() {
         KieContainer container = KieServices.Factory.get().getKieClasspathContainer();
@@ -42,11 +47,11 @@ public class Main {
         testONE_43510158804118();
         testONE_43519188804541();
         testPortMapping();
+        testPortMapping_1();
         testONE_43510375803063();
         testONE_43510375803063_2();
         testONE_43510375803063_3(); 
-        testONE_43510238804160_2();
-        
+        testONE_43510238804160_2();     
         testONE_43510238804160_3();
         testONE_43510238804160_4();
         
@@ -114,6 +119,20 @@ public class Main {
         
         assertEqual("CHN", load.getCode());
         assertEqual("USA", discharge.getCode());
+        
+        ksession.dispose();
+    }
+    
+    static void testPortMapping_1() {
+
+        KieSession ksession = newSession();
+        
+        CountryCode discharge = new CountryCode("BUENAVENTURA");
+        ksession.insert(discharge);
+        
+        ksession.fireAllRules();
+        
+        assertEqual("COL", discharge.getCode());
         
         ksession.dispose();
     }

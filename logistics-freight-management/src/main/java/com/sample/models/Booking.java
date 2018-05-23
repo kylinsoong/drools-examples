@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -21,8 +22,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "resultCode",
     "resultMessage"
 })
-public class Booking {
+public class Booking implements Serializable {
 
+    private static final long serialVersionUID = 2014846771787559418L;
+    
     @JsonProperty("values")
     private Values values;
     @JsonProperty("resultCode")

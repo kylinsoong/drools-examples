@@ -1,4 +1,4 @@
-package org.sample.util;
+package com.sample.utils;
 
 import org.kie.api.builder.Message;
 import org.kie.api.builder.Results;

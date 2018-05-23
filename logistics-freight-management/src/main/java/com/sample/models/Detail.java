@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -21,8 +22,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "wfobcc_gross_weight",
     "wfobcc_gross_weight_unit"
 })
-public class Detail {
+public class Detail implements Serializable {
 
+    private static final long serialVersionUID = -3280511420729933230L;
+    
     @JsonProperty("wfobcc_description")
     private String wfobccDescription;
     @JsonProperty("wfobcc_volumn_unit")

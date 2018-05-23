@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
-    <kbase name="logistics-kbase" packages="org.sample.rules" >
+    <kbase name="logistics-kbase" packages="com.sample.rules" >
         <ksession name="logistics-ksession" />
     </kbase>
 

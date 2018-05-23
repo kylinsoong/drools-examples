@@ -1,6 +1,6 @@
-package org.sample.rules
+package com.sample.rules
 
-import org.sample.models.Summary
+import com.sample.models.Summary
 
 expander logisticsShipperCode.dsl 
 

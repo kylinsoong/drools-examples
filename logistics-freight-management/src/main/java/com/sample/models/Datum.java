@@ -1,5 +1,6 @@
-package org.sample.models;
+package com.sample.models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,8 +18,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "pages",
     "Detail"
 })
-public class Datum {
+public class Datum implements Serializable {
 
+    private static final long serialVersionUID = 9035828373172353364L;
+    
     @JsonProperty("Summary")
     private Summary summary;
     @JsonProperty("Container")
