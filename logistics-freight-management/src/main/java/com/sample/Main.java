@@ -8,6 +8,7 @@ import org.kie.api.runtime.KieSession;
 
 import com.sample.models.Booking;
 import com.sample.models.CountryCode;
+import com.sample.models.Order;
 import com.sample.utils.FactFactory;
 
 public class Main {
@@ -45,17 +46,46 @@ public class Main {
         testHasCode();
         testONE_43510238804160();       
         testONE_43510158804118();
-//        testONE_43519188804541();
-//        testPortMapping();
-//        testPortMapping_1();
-//        testONE_43510375803063();
-//        testONE_43510375803063_2();
-//        testONE_43510375803063_3(); 
-//        testONE_43510238804160_2();     
-//        testONE_43510238804160_3();
-//        testONE_43510238804160_4();
+        testONE_43519188804541();
+        testPortMapping();
+        testPortMapping_1();
+        testONE_43510375803063();
+        testONE_43510375803063_2();
+        testONE_43510375803063_3(); 
+        testONE_43510238804160_2();     
+        testONE_43510238804160_3();
+        testONE_43510238804160_4();
+        testDSLOrder();
         
         System.out.println("TEST SUCCESS");
+    }
+
+    private static void testDSLOrder() {
+
+        KieSession ksession = newSession();
+        
+        Order order1 = new Order();
+        order1.setLevel("S1");
+        Order order2 = new Order();
+        order2.setLevel("S2");
+        Order order3 = new Order();
+        order3.setLevel("S3");
+        Order order = new Order();
+        order.setIsSpecial(true);
+        
+        ksession.insert(order);
+        ksession.insert(order1);
+        ksession.insert(order2);
+        ksession.insert(order3);
+        
+        ksession.fireAllRules();
+        
+        assertEqual(300, order.getFee());
+        assertEqual(200, order1.getFee());
+        assertEqual(100, order2.getFee());
+        assertEqual(50, order3.getFee());
+        
+        ksession.dispose();
     }
 
     /**

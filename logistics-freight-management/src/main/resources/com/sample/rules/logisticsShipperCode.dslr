@@ -1,6 +1,7 @@
 package com.sample.rules
 
 import com.sample.models.Summary
+import com.sample.models.Order
 
 expander logisticsShipperCode.dsl 
 
@@ -9,4 +10,32 @@ rule "装货地址是以 KUEHNE 开头,发货人代码设定"
         装货地址是以 "KUEHNE" 开头的
     then
         发货人代码栏位内填入 "N:SMTC-NV00299"
+end
+
+rule "特殊订单费用"
+    when
+        订单是特殊订单
+    then
+        订单的费用是 300 
+end
+
+rule "一级订单费用"
+    when
+        订单的级别是 "S1"
+    then
+        订单的费用是 200
+end
+
+rule "二级订单费用"
+    when
+        订单的级别是 "S2"
+    then
+        订单的费用是 100
+end
+
+rule "三级订单费用"
+    when
+        订单的级别是 "S3"
+    then
+        订单的费用是 50
 end
