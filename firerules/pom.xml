@@ -8,26 +8,41 @@
    <name>brms-rule-example</name>
    <description>brms-rule-example</description>
 
-   <url>https://github.com/kylinsoong</url>
-
    <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <drools.version>6.5.0.Final-redhat-2</drools.version>
-   </properties>
-   
-   <dependencyManagement>
-     <dependencies>
-       <dependency>
-         <groupId>org.jboss.bom.brms</groupId>
-         <artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
-         <version>6.4.0.GA-redhat-2</version>
-         <type>pom</type>
-         <scope>import</scope>
-       </dependency>
-     </dependencies>
-   </dependencyManagement>
+        <dm.version>7.0.0.GA-redhat-2</dm.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.bom.rhdm</groupId>
+                <artifactId>rhdm-platform-bom</artifactId>
+                <version>${dm.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 	<dependencies>
+	
+	  <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+        </dependency>
+        
+        <!-- Dependency for loading KJARs from a Maven repository using KieScanner. -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-ci</artifactId>
+        </dependency>
+        
 	  <dependency>
 	    <groupId>org.kie.server</groupId>
 	    <artifactId>kie-server-client</artifactId>
@@ -46,9 +61,9 @@
 	  </dependency>
 	  
 	  <dependency>
-	    <groupId>com.redhat.service</groupId>
+	    <groupId>com.sample</groupId>
 	    <artifactId>helloworld</artifactId>
-	    <version>1.0.0</version>
+	    <version>1.0.1</version>
 	  </dependency>
 	  
 	  

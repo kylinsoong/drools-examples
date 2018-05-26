@@ -33,7 +33,7 @@ NOTE: 安装过程创建的登录用户和密码为 `rhdmAdmin`/`password1!`。
 [source, java]
 .*创建用户*
 ----
-$ ./bin/add-user.sh -a --user kylin --password password1! --role kie-server,admin
+$ ./bin/add-user.sh -a -u kylin -p password1! -g admin,kie-server,rest-all
 ----
 
 NOTE: 这个用户用来远程调运 BRM 服务。

@@ -38,11 +38,7 @@
             <artifactId>drools-compiler</artifactId>
         </dependency>
 
-        <!-- Dependency for persistence support. -->
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-persistence-jpa</artifactId>
-        </dependency>
+
         
         <dependency>
             <groupId>org.drools</groupId>
@@ -75,11 +71,7 @@
             <groupId>org.uberfire</groupId>
             <artifactId>uberfire-rest-client</artifactId>
         </dependency>
-        
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
+   
         
         <dependency>
             <groupId>junit</groupId>

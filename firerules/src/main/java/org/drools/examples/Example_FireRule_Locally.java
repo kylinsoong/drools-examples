@@ -1,11 +1,10 @@
 package org.drools.examples;
 
-import org.kie.api.KieBase;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import com.redhat.service.Person;
+import com.sample.helloworld.Person;
 
 
 public class Example_FireRule_Locally {
@@ -20,8 +19,7 @@ public class Example_FireRule_Locally {
         
         KieServices kieServices = KieServices.Factory.get();
         KieContainer kContainer = kieServices.getKieClasspathContainer();
-        KieBase kbase = kContainer.getKieBase("testBase");
-        KieSession ksession = kbase.newKieSession();
+        KieSession ksession = kContainer.newKieSession("test-ksession");
         ksession.insert(person);
         ksession.fireAllRules();
         ksession.dispose();

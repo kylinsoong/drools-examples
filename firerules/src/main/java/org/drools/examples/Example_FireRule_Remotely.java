@@ -7,7 +7,8 @@ import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import com.redhat.service.Person;
+import com.sample.helloworld.Person;
+
 
 public class Example_FireRule_Remotely {
 
