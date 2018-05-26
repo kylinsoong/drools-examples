@@ -1,7 +1,7 @@
-= Drools 入门
+= Drools 介绍
 :toc: manual
 
-本部分通过一个`航空订单核算`的案例，通过几个不同的侧面(规则引擎，CEP，DecisionTables，DSL，REST 集成等)介绍 Drools 技术。
+本部分通过几个不同的侧面(规则引擎，CEP，DecisionTables，DSL，REST 集成等)介绍 Drools 技术。
 
 == TODO
 
@@ -225,6 +225,6 @@ user["foo"] = "bar"
 ----
 |===
 
-=== Complex Event Processing
+== Complex Event Processing
 
 

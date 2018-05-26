@@ -1,0 +1,102 @@
+= RHDM 7 安装
+:toc: manual
+
+== 准备
+
+[source, java]
+.*安装介质*
+----
+/home/test/upload/
+├── apache-maven-3.5.0-bin.zip
+├── jboss-eap-7.1.0.zip
+├── jdk-8u144-linux-x64.tar.gz
+└── rhdm-installer-7.0.0.GA.jar
+----
+
+[source, java]
+.*安装介质 - 可选*
+----
+/home/test/upload/
+└── jboss-fuse-karaf-6.3.0.redhat-262.zip
+----
+
+== 安装
+
+[source, java]
+----
+$ unzip jboss-eap-7.1.0.zip -d ../rhdm/
+$ java -jar rhdm-installer-7.0.0.GA.jar -console
+----
+
+NOTE: 安装过程创建的登录用户和密码为 `rhdmAdmin`/`password1!`。
+
+[source, java]
+.*创建用户*
+----
+$ ./bin/add-user.sh -a --user kylin --password password1! --role kie-server,admin
+----
+
+NOTE: 这个用户用来远程调运 BRM 服务。
+
+[source, xml]
+.*配置 standalone/configuration/standalone.xml*
+----
+<property name="org.kie.example" value="false"/>
+<property name="org.kie.server.location" value="http://0.0.0.0:8080/kie-server/services/rest/server"/>
+<property name="org.kie.server.controller" value="http://0.0.0.0:8080/decision-central/rest/controller"/>
+----
+
+[source, xml]
+.*编辑 decision-central.war/WEB-INF/classes/ErraiService.properties，添加*
+----
+errai.bus.enable_sse_support=false
+----
+
+== 启动
+
+[source, java]
+----
+./bin/standalone.sh -b 0.0.0.0 -bmanagement=0.0.0.0 2>&1 > ./console-$(date "+%Y%m%d%H%M").log &
+----
+
+启动后通过:
+
+* http://127.0.0.1:8080/decision-central/ - 登录 decision-central(设计规则，用户名密码为 `rhdmAdmin`/`password1!`)
+* http://127.0.0.1:8080/kie-server/docs/ -  登录规则测试页面(运行规则，用户名密码为 `kylin`/`password1!`)
+
+== Fuse 安装（可选）
+
+[source, java]
+.*安装*
+----
+$ unzip jboss-fuse-karaf-6.3.0.redhat-187.zip && cd jboss-fuse-6.3.0.redhat-187
+----
+
+[source, java]
+.*便捷 etc/users.properties, 添加*
+----
+admin=admin,admin,manager,viewer,Monitor, Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
+----
+
+[source, java]
+.*编辑 etc/system.properties, 修改 AMQ 邦定的主机*
+----
+activemq.host = 0.0.0.0
+----
+
+[source, java]
+.*启动*
+----
+./bin/start
+----
+
+登录 http://localhost:8181/ ( `admin`/`admin`) 进行简单管理配置与运行时状态查看。
+
+[source, java]
+.*启动 http Feature*
+----
+./bin/client
+features:install camel-http
+----
+
+

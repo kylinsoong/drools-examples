@@ -27,6 +27,7 @@
 |金融
 |
 * link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
+* link:dt-loan-approve/README.adoc[贷款审批]
 * link:README.adoc[核保理赔]
 * link:README.adoc[风控管理]
 
