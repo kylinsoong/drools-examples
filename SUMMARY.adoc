@@ -12,6 +12,7 @@
 .. link:reference/type-declaration.adoc[Type Declaration]
 .. link:reference/rules.adoc[Rules]
 .. link:reference/attributes.adoc[Attributes]
+. link:benchmark/README.adoc[PHREAK vs. RETEOO]
 . link:usecase.adoc[案例]
 .. link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
 .. link:dt-loan-approve/README.adoc[贷款审批]

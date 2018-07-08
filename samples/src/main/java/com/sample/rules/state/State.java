@@ -2,11 +2,9 @@ package com.sample.rules.state;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import static com.sample.rules.state.StateType.*;
 
 public class State {
-    
-    public static final int NOTRUN   = 0;
-    public static final int FINISHED = 1;
     
     private final PropertyChangeSupport changes = new PropertyChangeSupport(this);
     
@@ -20,7 +18,7 @@ public class State {
     
     public State(final String name) {
         this.name = name;
-        this.state = NOTRUN ;   
+        this.state = NOTRUN;   
     }
     
     public String getName() {

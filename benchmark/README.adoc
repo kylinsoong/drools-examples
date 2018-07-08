@@ -1,0 +1,20 @@
+= benchmark
+:toc: manual
+
+The origin benchmark come from https://github.com/winklerm/phreak-examples[winklerm/phreak-examples], thanks to Mr Mark Winkler's great idea, primary purpose of this project is to add more documnetation to make the benchmark are more easy to understand.
+
+== 环境说明
+
+|===
+|类型 | 版本
+
+|Java
+|1.8.0_144
+
+|Drools
+|6.5.0.Final-redhat-9
+
+|OS
+|Red Hat Enterprise Linux Server release 7.4 (Maipo)
+|===
+

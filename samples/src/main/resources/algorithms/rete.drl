@@ -1,0 +1,25 @@
+//created on: Jul 8, 2018
+package algorithms
+
+import com.sample.rules.algorithms.Cheese;
+import com.sample.rules.algorithms.Person;
+
+
+rule "Person likes cheddar"
+    when
+        Cheese($cheddar : name == "cheddar" )
+        $person : Person( favouriteCheese == $cheddar )
+    then
+        System.out.println( $person.getName() + " likes cheddar" );
+end
+
+rule "Person dislikes cheddar"
+    when
+        Cheese($cheddar : name == "cheddar" )
+        $person : Person( favouriteCheese != $cheddar )
+    then
+        System.out.println( $person.getName() + " does not like cheddar" );
+end
+
+
+

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
+
+
+    <kbase name="algorithms" packages="algorithms" >
+        <ksession name="ksession-algorithms" />
+    </kbase>
+
+    <kbase name="backwardchaining" packages="backwardchaining" >
+        <ksession name="ksession-backwardchaining" />
+    </kbase>
+
     <kbase name="state-agendagroup" packages="state.agendagroup" >
         <ksession name="ksession-state-agendagroup" />
     </kbase>
