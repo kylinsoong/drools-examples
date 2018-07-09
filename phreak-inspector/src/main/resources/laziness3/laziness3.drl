@@ -1,0 +1,36 @@
+package laziness3
+
+import org.kie.examples.phreak.domain.Account
+import org.kie.examples.phreak.domain.Transaction
+
+dialect "mvel"
+
+rule gold_account
+salience 200
+when
+  account: Account()
+  Number(this >= 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  System.out.println("Gold account: " + account);
+end
+
+rule silver_account
+salience 100
+when
+  account: Account()
+  Number(this >= 25000 && this < 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 25000 && this < 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  System.out.println("Silver account: " + account);
+end
+
+rule bronze_account
+salience 50
+when
+  account: Account()
+  Number(this >= 10000 && this < 25000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 10000 && this < 25000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  System.out.println("Bronze account: " + account);
+end
