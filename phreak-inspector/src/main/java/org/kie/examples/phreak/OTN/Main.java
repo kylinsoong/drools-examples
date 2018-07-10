@@ -1,4 +1,4 @@
-package org.kie.examples.phreak;
+package org.kie.examples.phreak.OTN;
 
 import static org.kie.examples.phreak.RulesUtils.checkErrors;
 
@@ -22,21 +22,24 @@ public class Main {
             throw new IllegalArgumentException("Rule Errors.");
         }
         
-        KieBase kieBase = container.getKieBase("laziness3KBase");
+        KieBase kieBase = container.getKieBase("OTNKBase");
         PhreakInspector inspector = new PhreakInspector();
         InputStream in = inspector.fromKieBase(kieBase);
         System.out.println(IOUtils.toString(in));
         
+        KieSession ksession = kieBase.newKieSession();
         
-//        KieSession ksession = container.newKieSession("laziness3KSession");
-//        
-//        DataGenerator generator = new DataGenerator(3);
-//        generator.fillWithTestFacts();
-//        generator.insertInto(ksession);
-//        
-//        ksession.fireAllRules();
-//        
-//        ksession.dispose();
+        Customer c = new Customer();
+        Order o = new Order();
+        
+        ksession.insert(c);
+        
+        ksession.insert(o);
+        
+        ksession.fireAllRules();
+        
+        ksession.dispose();
+        
     }
 
 }
