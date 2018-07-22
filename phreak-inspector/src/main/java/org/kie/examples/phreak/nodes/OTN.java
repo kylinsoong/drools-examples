@@ -1,4 +1,4 @@
-package org.kie.examples.phreak.OTN;
+package org.kie.examples.phreak.nodes;
 
 import static org.kie.examples.phreak.RulesUtils.checkErrors;
 
@@ -12,7 +12,7 @@ import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-public class Main {
+public class OTN {
 
     public static void main(String[] args) throws IOException {
 

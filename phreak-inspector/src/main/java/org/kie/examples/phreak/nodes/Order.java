@@ -1,10 +1,10 @@
-package org.kie.examples.phreak.OTN;
+package org.kie.examples.phreak.nodes;
 
-public class Customer {
+public class Order {
+
+    private String id = "000";
     
-    private String id  = "000";
-    
-    private String name = "customer";
+    private String name = "order";
 
     public String getId() {
         return id;
@@ -24,7 +24,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", name=" + name + "]";
+        return "Order    [id=" + id + ", name=" + name + "]";
     }
-
 }
