@@ -1,0 +1,23 @@
+//created on: Jul 26, 2018
+package Beta
+
+import org.kie.examples.phreak.nodes.Provider;
+import org.kie.examples.phreak.nodes.ProviderRequest;
+import org.kie.examples.phreak.nodes.Order;
+
+rule "Sample Rule 1"
+    when
+        $p: Provider(rating > 50)
+        $pr: ProviderRequest(provider == $p)
+    then
+        System.out.println("Y");
+end
+
+rule "Sample Rule 2"
+    when
+        $p: Provider(rating > 50)
+        $pr: ProviderRequest(provider == $p)
+        $o: Order()
+    then
+        System.out.println("Y");
+end

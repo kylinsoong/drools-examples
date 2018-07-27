@@ -5,6 +5,10 @@ public class Order {
     private String id = "000";
     
     private String name = "order";
+    
+    private int total;
+    
+    private Customer customer;
 
     public String getId() {
         return id;
@@ -20,6 +24,22 @@ public class Order {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
