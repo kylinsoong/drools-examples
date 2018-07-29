@@ -1,6 +1,7 @@
 = Summary
 
-. link:tech/README.adoc[DROOLS 介绍]
+. link:docs/intro.adoc[DROOLS 介绍]
+. link:docs/cep.adoc[CEP]
 . link:docs/rhdm.adoc[RHDM 安装]
 . link:firerules/README.adoc[Fire Rules]
 .. link:firerules/maven-setting.adoc[Maven 配置]

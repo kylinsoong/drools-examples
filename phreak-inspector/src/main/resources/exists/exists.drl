@@ -1,0 +1,15 @@
+//created on: Jul 28, 2018
+package exists
+
+import org.kie.examples.phreak.nodes.Customer;
+import org.kie.examples.phreak.nodes.SuspiciousOperation;
+
+
+
+rule "Sample Rule 1"
+when
+    $c: Customer()
+    exists SuspiciousOperation(customer == $c)
+then
+    System.out.println("");
+end

@@ -225,6 +225,5 @@ user["foo"] = "bar"
 ----
 |===
 
-== Complex Event Processing
 
 

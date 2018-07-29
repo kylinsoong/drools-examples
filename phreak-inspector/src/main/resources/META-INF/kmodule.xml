@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
+  <kbase name="accumulateKBase" packages="accumulate">
+    <ksession name="accumulateSession"/>
+  </kbase>
+
   <kbase name="BetaKBase" packages="Beta">
     <ksession name="BetaSession"/>
   </kbase>
