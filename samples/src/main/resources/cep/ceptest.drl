@@ -23,7 +23,7 @@ end
 rule "Sound the alarm"
     when
         $f : FireDetected() from entry-point "fireDetectionStream"
-        not(SprinklerActivated( ))
+        not(SprinklerActivated(this after[0s,10s] $f) from entry-point "fireDetectionStream")
     then
         fireAlarm.setActivated(true);
         fireAlarm.setTimestamp(new Date());

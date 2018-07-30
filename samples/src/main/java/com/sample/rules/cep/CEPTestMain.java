@@ -22,14 +22,14 @@ public class CEPTestMain {
         KieSession ksession = kContainer.newKieSession("ksession-cep");
         ksession.setGlobal( "fireAlarm", new FireAlarm() );
         EntryPoint fireDetectionStream = ksession.getEntryPoint("fireDetectionStream");
-        EntryPoint sprinklerDetectionStream = ksession.getEntryPoint("sprinklerDetectionStream");
+//        EntryPoint sprinklerDetectionStream = ksession.getEntryPoint("sprinklerDetectionStream");
         
         fireDetectionStream.insert(new FireDetected());
         
-        ksession.fireAllRules();
+        ksession.fireUntilHalt();
         
         System.out.println(fireDetectionStream);
-        System.out.println(sprinklerDetectionStream);
+//        System.out.println(sprinklerDetectionStream);
         
         System.out.println(ksession.getGlobal("fireAlarm"));
         
