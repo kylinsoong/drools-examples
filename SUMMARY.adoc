@@ -2,7 +2,6 @@
 
 . link:docs/intro.adoc[DROOLS 介绍]
 . link:docs/cep.adoc[CEP]
-. link:docs/rhdm.adoc[RHDM 安装]
 . link:firerules/README.adoc[Fire Rules]
 .. link:firerules/maven-setting.adoc[Maven 配置]
 .. link:firerules/fire-kieserver.adoc[客户端 API 调运 KIE 服务器]
@@ -14,6 +13,7 @@
 .. link:reference/rules.adoc[Rules]
 .. link:reference/attributes.adoc[Attributes]
 . link:benchmark/README.adoc[PHREAK vs. RETEOO]
+. link:docs/rhdm.adoc[LABS]
 . link:usecase.adoc[案例]
 .. link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
 .. link:intelligent-transportation/README.adoc[智能交通]

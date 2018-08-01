@@ -1,7 +1,9 @@
 = RHDM 7 安装
 :toc: manual
 
-== 准备
+== RHDM 7 安装
+
+=== 准备
 
 [source, java]
 .*安装介质*
@@ -13,6 +15,12 @@
 └── rhdm-installer-7.0.0.GA.jar
 ----
 
+* Java 下载      -  http://www.oracle.com/technetwork/java/javase/downloads/index.html
+* Maven 下载     -  http://maven.apache.org/download.cgi
+* JBoss EAP 下载 -  https://developers.redhat.com/products/eap/download/
+* RHDM 7 下载    -  https://developers.redhat.com/products/red-hat-decision-manager/download/
+
+
 [source, java]
 .*安装介质 - 可选*
 ----
@@ -20,7 +28,7 @@
 └── jboss-fuse-karaf-6.3.0.redhat-262.zip
 ----
 
-== 安装
+=== 安装
 
 [source, java]
 ----
@@ -52,7 +60,7 @@ NOTE: 这个用户用来远程调运 BRM 服务。
 errai.bus.enable_sse_support=false
 ----
 
-== 启动
+=== 启动
 
 [source, java]
 ----
@@ -63,6 +71,174 @@ errai.bus.enable_sse_support=false
 
 * http://127.0.0.1:8080/decision-central/ - 登录 decision-central(设计规则，用户名密码为 `rhdmAdmin`/`password1!`)
 * http://127.0.0.1:8080/kie-server/docs/ -  登录规则测试页面(运行规则，用户名密码为 `kylin`/`password1!`)
+
+== 物流转运示例
+
+物流转运示例规则非常简单，根据 Order 中的重量属性将 Order 投递到不同从仓库
+
+image:img/rhdm-order-rule.png[]
+
+* 当重量超过 50 千克则将 Order 投递到仓库 A
+* 当重量没有超过 50 千克则将 Order 投递到仓库 B
+
+=== 1 - 创建一个 Project
+
+在浏览器中输入 http://localhost:8080/decision-central 登录规则管理控制台（使用用户名为 `rhdmAdmin`，密码为`password1!`），在欢迎页面点击 *Design*
+
+image:img/rhdm-design.png[]
+
+在规则设计页面默认 myteam 空间下，点击蓝色按钮 `Add Project`，在弹出的添加 Project 对话框中填写 Project 的名字为 `logistics`
+
+image:img/rhdm-add-project.png[]
+
+继续在添加 Project 对话框中点击蓝色按钮 `Add` 创建一个 Project.
+
+=== 2- 创建 Data Object Order
+
+创建 Order 对象，有如下属性：
+
+1. merchant
+2. weight
+3. expedited
+4. destination
+
+image:img/rhdm-create-data-obj.png[]
+
+=== 3 - 创建规则
+
+创建规则 DRL 文件，添加内容如下：
+
+[source, java]
+----
+rule "Select warehouse A"
+when
+    $order : Order(weight > 50)
+then
+    modify($order){setDestination("仓库 A")}
+end
+
+rule "Select warehouse B"
+when
+    $order : Order(weight <= 50)
+then
+    modify($order){setDestination("仓库 B")}
+end
+----
+
+image:img/rhdm-create-drl.png[]
+
+=== 4 - 部署构建
+
+创建默认 KBase 和 KSession 后点击开始构建部署
+
+image:img/rhdm-build-deploy.png[]
+
+=== 5 - 运行
+
+部署成功后选择 `Menu` -> `Deploy` -> `Execution Servers`，选择 logistics_1.0.0，查看 KIE Server 状态
+
+image:img/rhdm-kie-status.png[]
+
+点击 Status 链接(http://localhost:8080/kie-server/services/rest/server/containers/logistics_1.0.0)，并在弹出的安全输入框中输入用户名 `rhdmAdmin`，密码 `password1!`，显示 Container logistics_1.0.0 状态如下：
+
+[source, xml]
+----
+<response type="SUCCESS" msg="Info for container logistics_1.0.0">
+  <kie-container container-alias="logistics" container-id="logistics_1.0.0" status="STARTED">
+    <messages>
+      <content>
+      Container logistics_1.0.0 successfully created with module com.myteam:logistics:1.0.0.
+      </content>
+      <severity>INFO</severity>
+      <timestamp>2018-08-01T23:04:06.108+08:00</timestamp>
+    </messages>
+    <release-id>
+      <artifact-id>logistics</artifact-id>
+      <group-id>com.myteam</group-id>
+      <version>1.0.0</version>
+    </release-id>
+    <resolved-release-id>
+      <artifact-id>logistics</artifact-id>
+      <group-id>com.myteam</group-id>
+      <version>1.0.0</version>
+    </resolved-release-id>
+    <scanner status="DISPOSED"/>
+  </kie-container>
+</response>
+----
+
+在浏览器中输入 http://localhost:8080/kie-server/docs/ 进入 Swagger 测试界面，选择 *Rules evaluation :: BRM*，使用 `/server/containers/instances/{id}` 进行测试，输入
+
+[source, json]
+.*id*
+----
+logistics_1.0.0
+----
+
+[source, json]
+.*body*
+----
+{
+    "lookup":"logistics",
+    "commands":[
+        {
+            "insert":{
+                "object":{
+                    "com.myteam.logistics.Order":{
+                        "weight":68.64,
+                        "destination":""
+                    }
+                },
+                "out-identifier":"order"
+            }
+        },
+        {
+            "fire-all-rules":{
+            }
+        }
+    ]
+}
+----
+
+image:img/rhdm-swagger-test.png[]
+
+Swagger 测试返回如下
+
+[source, json]
+----
+{
+  "type": "SUCCESS",
+  "msg": "Container logistics_1.0.0 successfully called.",
+  "result": {
+    "execution-results": {
+      "results": [
+        {
+          "value": {
+            "com.myteam.logistics.Order": {
+              "merchant": null,
+              "weight": 68.64,
+              "expedited": null,
+              "destination": "仓库 A"
+            }
+          },
+          "key": "order"
+        }
+      ],
+      "facts": [
+        {
+          "value": {
+            "org.drools.core.common.DefaultFactHandle": {
+              "external-form": "0:1:1121833382:1121833382:2:DEFAULT:NON_TRAIT:com.myteam.logistics.Order"
+            }
+          },
+          "key": "order"
+        }
+      ]
+    }
+  }
+}
+----
+
 
 == Fuse 安装（可选）
 
@@ -98,5 +274,6 @@ activemq.host = 0.0.0.0
 ./bin/client
 features:install camel-http
 ----
+
 
 
