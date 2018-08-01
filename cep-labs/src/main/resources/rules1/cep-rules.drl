@@ -1,0 +1,23 @@
+//created on: Aug 1, 2018
+package rules1
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+
+//declare BagScannedEvent
+// Lab1-a: Implement this declaration so that:
+//                      * BagScannedEvent is a Drools Event typ
+//                      * The BagScannedEvent#timestamp field is used as the event's timestamp by the engine
+//                      * The BagScannedEvent expires after 1 day.
+//end
+
+rule "BagLostBeforeSorting"
+when
+        $event1:BagScannedEvent(location == Location.CHECK_IN)
+        // Lab1-b: Implement this rule in such a way that it detects a bag being lost, if a BagScannedEvent @ SORTING
+        //              has not happened within now and 10 minutes after the previous BagScannedEvent at CHECK_IN.
+then
+        System.out.println("Bag lost before sorting: " + $event1.getBagTag().getId());
+end
+
