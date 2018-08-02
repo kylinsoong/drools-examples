@@ -1,0 +1,226 @@
+= CEP 实验
+:toc: manual
+
+== 实验目的及场景
+
+通过实验去验证 Drools CEP 的基本概念及原理，包括： 时钟、比较运算符、事件、滑动窗口。实验场景是基于 CEP 构建机场包裹扫描系统。使用规则的目的是：
+
+* 丢失包裹检测
+* 托运行里时计算行里的重量
+* 计算包裹平均的处理时间
+
+==  Event/Fact 模型
+
+image:src/img/cep-lab-events.png[]
+
+* `BagTag` - 包裹的标记，在系统中唯一表识一个包裹
+* `Location` - 包裹的位置，系统中包裹可能的位置有四个：CHECK_IN、SORTING、STAGING 和 LOADING
+* `BagScannedEvent` - 包裹扫描事件，当包裹扫描时事件被执行，关联一个 `BagTag` 和一个 `Location`
+
+[source, java]
+.*BagTag.java*
+----
+public class BagTag implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private final String id;
+	
+	public BagTag() {
+		this(UUID.randomUUID().toString());
+	}
+	
+	
+	public BagTag(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	@Override
+	public String toString() {
+		return this.id;
+	}
+}
+----
+
+[source, java]
+.*Location.java*
+----
+public enum Location implements Serializable {
+
+	CHECK_IN("check-in"), SORTING("sorting"), STAGING("staging"), LOADING("loading");
+	
+	private String location;
+	
+	private Location(String location) {
+		this.setLocation(location);
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+}
+----
+
+[source, java]
+.*BagScannedEvent.java*
+----
+public class BagScannedEvent implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	private final String id;
+
+	private Date timestamp;
+	
+	private final BagTag bagTag;
+	
+	private final Location location;
+	
+	private final double weight;
+	
+	public BagScannedEvent(BagTag bagTag, Location location, double weight) {
+		this(bagTag, location, weight, new Date());
+	}
+
+	public BagScannedEvent(BagTag bagTag, Location location, double weight, Date eventTimestamp) {
+		this(UUID.randomUUID().toString(), bagTag, location, weight, eventTimestamp);
+	}
+
+	public BagScannedEvent(String id, BagTag bagTag, Location location, double weight, Date eventTimestamp) {
+		this.id = id;
+		this.bagTag = bagTag;
+		this.location = location;
+		this.weight = weight;
+		this.timestamp = eventTimestamp;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public String getId() {
+        return id;
+    }
+
+    public BagTag getBagTag() {
+		return bagTag;
+	}
+	
+	public double getWeight() {
+		return weight;
+	}
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date eventTimestamp) {
+		this.timestamp = eventTimestamp;
+	}
+
+	@Override
+	public String toString() {
+		return new StringBuilder().append("Event:{").append("id: " + id).append("， bagTag: " + bagTag).append(", timestamp: " + timestamp).append(", location: " + location).append("}").toString();
+	}
+
+}
+----
+
+== 一：丢失包裹检测
+
+*规则设计要求：* 设计规则检测如果一个包裹在通过 *CHECK_IN* 位置 10 分钟以后是否通过 *SORTING* 位置，如果否则说明规则丢失。
+
+=== 定义事件
+
+将 BagScannedEvent 定义为一个事件，可以通过多种方法去完成，例如在类 BagScannedEvent 上面添加标记：
+
+[source, java]
+----
+import org.kie.api.definition.type.Expires;
+import org.kie.api.definition.type.Role;
+import org.kie.api.definition.type.Role.Type;
+import org.kie.api.definition.type.Timestamp;
+
+@Role(Type.EVENT)
+@Timestamp("timestamp")
+@Expires("1d")
+public class BagScannedEvent implements Serializable {
+----
+
+link:src/main/resources/events.csv[src/main/resources/events.csv] 文件中定义了测试数据，共有 7 个 Event
+
+[source, java]
+----
+Event:{id: 1， bagTag: 1, timestamp: Thu Jan 18 09:00:00 CST 2018, location: CHECK_IN}
+Event:{id: 2， bagTag: 2, timestamp: Thu Jan 18 09:03:00 CST 2018, location: CHECK_IN}
+Event:{id: 3， bagTag: 2, timestamp: Thu Jan 18 09:09:00 CST 2018, location: SORTING }
+Event:{id: 4， bagTag: 3, timestamp: Thu Jan 18 09:11:00 CST 2018, location: CHECK_IN}
+Event:{id: 5， bagTag: 3, timestamp: Thu Jan 18 09:14:00 CST 2018, location: SORTING }
+Event:{id: 6， bagTag: 4, timestamp: Thu Jan 18 10:12:00 CST 2018, location: CHECK_IN}
+Event:{id: 7， bagTag: 4, timestamp: Thu Jan 18 10:13:00 CST 2018, location: SORTING }
+----
+
+=== 规则编写
+
+在机场包裹扫描系统中，如果一个包裹经过了 CHECK_IN，则 10 分钟后会在 SORTING 位置，否则系统认为包裹丢失，基于测试数据。规则判断的结果是 *包裹 1 丢失*。
+
+[source, java]
+----
+rule "包裹在分类前丢失"
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    // TODO-- 如果一个包裹经过了 CHECK_IN，则 10 分钟后会在 SORTING 位置，否则系统认为包裹丢失
+then
+    System.out.println("分类前丢失包裹: " + $event1.getBagTag().getId());
+end
+----
+
+NOTE: 完成如上规则中 `TODO` 部分。
+
+=== 规则执行
+
+运行 link:src/main/java/com/sample/Rule1Main.java[Rule1Main.java] 可执行规则，规则运行输出：
+
+[source, java]
+----
+分类前丢失包裹: 1
+----
+
+== 包裹数统计
+
+编写规则统计最近一小时内经过 SORTING 位置的包裹总数。
+
+=== 编写规则
+
+使用 CEP 的一些概念编写规则，统计最近一小时内经过 SORTING 位置的包裹总数。
+
+[source, java]
+----
+rule "最近一个小时通过 SORTING 的包裹总数"
+when
+    // TODO-- 使用 CEP 的一些概念编写规则，统计最近一小时内经过 SORTING 位置的包裹总数
+then
+    System.out.println("系统当前时间: " + drools.getWorkingMemory().getSessionClock().getCurrentTime() + "， 过去一个小时通过 SORTING 的包裹总数: " + $number );
+end
+----
+
+NOTE: 完成如上规则中 `TODO` 部分。
+
+运行 link:src/main/java/com/sample/Rule2Main.java[Rule2Main.java] 可执行规则，规则运行输出：
+
+[source, java]
+----
+系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 0
+系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 1
+系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 2
+系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 3
+----

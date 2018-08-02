@@ -5,19 +5,13 @@ import com.sample.model.BagScannedEvent;
 import com.sample.model.Location;
 
 
-//declare BagScannedEvent
-// Lab1-a: Implement this declaration so that:
-//                      * BagScannedEvent is a Drools Event typ
-//                      * The BagScannedEvent#timestamp field is used as the event's timestamp by the engine
-//                      * The BagScannedEvent expires after 1 day.
-//end
 
-rule "BagLostBeforeSorting"
+rule "包裹在分类前丢失"
 when
-        $event1:BagScannedEvent(location == Location.CHECK_IN)
-        // Lab1-b: Implement this rule in such a way that it detects a bag being lost, if a BagScannedEvent @ SORTING
-        //              has not happened within now and 10 minutes after the previous BagScannedEvent at CHECK_IN.
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    // TODO-- 如果一个包裹经过了 CHECK_IN，则 10 分钟后会在 SORTING 位置，否则系统认为包裹丢失
+    not($event2:BagScannedEvent(location == Location.SORTING, this != $event1, this.bagTag.id == $event1.bagTag.id, this after[0, 10m] $event1))
 then
-        System.out.println("Bag lost before sorting: " + $event1.getBagTag().getId());
+    System.out.println("分类前丢失包裹: " + $event1.getBagTag().getId());
 end
 

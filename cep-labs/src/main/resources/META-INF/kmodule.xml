@@ -4,6 +4,10 @@
     <kbase name="rules1" equalsBehavior="equality" eventProcessingMode="stream" packages="rules1">
         <ksession name="ksession-rules1" default="true" type="stateful" clockType="pseudo"/>
     </kbase>
+    
+    <kbase name="rules2" equalsBehavior="equality" eventProcessingMode="stream" packages="rules2">
+        <ksession name="ksession-rules2" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
 
    
 </kmodule>

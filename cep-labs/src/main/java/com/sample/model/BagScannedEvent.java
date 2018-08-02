@@ -1,9 +1,9 @@
 package com.sample.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.kie.api.definition.type.Expires;
 import org.kie.api.definition.type.Role;
 import org.kie.api.definition.type.Role.Type;
@@ -12,18 +12,17 @@ import org.kie.api.definition.type.Timestamp;
 /**
  * Event fired when a bag is scanned.
  * 
- * @author <a href="mailto:duncan.doyle@redhat.com">Duncan Doyle</a>
+ * @author Kylin Soong
  */
 
 @Role(Type.EVENT)
 @Timestamp("timestamp")
-@Expires("5d")
-public class BagScannedEvent extends AbstractFact implements Event {
+@Expires("1d")
+public class BagScannedEvent implements Serializable {
 
-	/**
-	 * SerialVersionUID.
-	 */
 	private static final long serialVersionUID = 1L;
+	
+	private final String id;
 
 	private Date timestamp;
 	
@@ -42,7 +41,7 @@ public class BagScannedEvent extends AbstractFact implements Event {
 	}
 
 	public BagScannedEvent(String id, BagTag bagTag, Location location, double weight, Date eventTimestamp) {
-		super(id);
+		this.id = id;
 		this.bagTag = bagTag;
 		this.location = location;
 		this.weight = weight;
@@ -53,7 +52,11 @@ public class BagScannedEvent extends AbstractFact implements Event {
 		return location;
 	}
 
-	public BagTag getBagTag() {
+	public String getId() {
+        return id;
+    }
+
+    public BagTag getBagTag() {
 		return bagTag;
 	}
 	
@@ -61,7 +64,6 @@ public class BagScannedEvent extends AbstractFact implements Event {
 		return weight;
 	}
 
-	@Override
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -72,7 +74,7 @@ public class BagScannedEvent extends AbstractFact implements Event {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("bagTag", bagTag).append("location", location).append("timestamp", timestamp).toString();
+		return new StringBuilder().append("Event:{").append("id: " + id).append("， bagTag: " + bagTag).append(", timestamp: " + timestamp).append(", location: " + location).append("}").toString();
 	}
 
 }

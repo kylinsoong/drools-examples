@@ -3,8 +3,6 @@ package com.sample.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
 /**
  * Tag of a Bag. Uniquely identifies the bag within the system.
  * 
@@ -12,9 +10,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 public class BagTag implements Serializable {
 
-	/**
-	 * SerialVersionUID. 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private final String id;
@@ -34,8 +29,7 @@ public class BagTag implements Serializable {
 	
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("id", id).toString();
+		return this.id;
 	}
-	
 }
 

@@ -1,4 +1,4 @@
-package com.sample.domain;
+package com.sample.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,23 +17,26 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.sample.Rule1Main;
 import com.sample.model.BagScannedEvent;
 import com.sample.model.BagTag;
-import com.sample.model.Event;
 import com.sample.model.Location;
 
 /**
  * Loads {@link Fact objects from the given (CSV) file. 
  * 
  * @author <a href="mailto:duncan.doyle@redhat.com">Duncan Doyle</a>
+ * @author <a href="mailto:kylinsoong.1214@gmail.com">Kylin Soong</a>
  */
 public class FactsLoader {
+    
+    private static final String EVENTS_FILE_NAME = "events.csv";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(FactsLoader.class);
 
 	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyyMMdd:HHmmssSSS");
 	
-	public static List<Event> loadEvents(File eventsFile) {
+	public static List<BagScannedEvent> loadEvents(File eventsFile) {
 
 		BufferedReader br;
 		try {
@@ -47,19 +50,38 @@ public class FactsLoader {
 		
 	}
 	
-	public static List<Event> loadEvents(InputStream eventsInputStream) {
+	public static List<BagScannedEvent> loadEvents() {
+	    return loadEvents(EVENTS_FILE_NAME);
+	}
+	
+	public static List<BagScannedEvent> loadEvents(String eventFileName) {
+	    List<BagScannedEvent> events;
+        try(InputStream eventFileInputStream = Rule1Main.class.getClassLoader().getResourceAsStream(eventFileName)) {
+                events = FactsLoader.loadEvents(eventFileInputStream);
+        } catch (IOException ioe) {
+                throw new RuntimeException("I/O problem loading event file. Not much we can do in this lab.", ioe);
+        }
+        
+        if(events == null) {
+            events = new ArrayList<>();
+        }
+        
+        return events;
+	}
+	
+	public static List<BagScannedEvent> loadEvents(InputStream eventsInputStream) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(eventsInputStream));
 		return loadEvents(br);
 		
 	}
 	
-	private static List<Event> loadEvents(BufferedReader reader) {
-		List<Event> eventList = new ArrayList<Event>();
+	private static List<BagScannedEvent> loadEvents(BufferedReader reader) {
+		List<BagScannedEvent> eventList = new ArrayList<BagScannedEvent>();
 		try {
 			String nextLine;
 			while ((nextLine = reader.readLine()) != null) {
 				if (!nextLine.startsWith("#") && !("").equals(nextLine)) {
-					Event bagScanEvent = readEvent(nextLine);
+				    BagScannedEvent bagScanEvent = readEvent(nextLine);
 					if (bagScanEvent != null) {
 						eventList.add(bagScanEvent);
 					}
@@ -87,12 +109,12 @@ public class FactsLoader {
 	 *            the line to parse.
 	 * @return the {@link Fact}
 	 */
-	private static Event readEvent(String line) {
+	private static BagScannedEvent readEvent(String line) {
 		String[] eventData = line.split(",");
 		if (eventData.length != 5) {
 			LOGGER.error("Unable to parse string: " + line);
 		}
-		Event event = null;
+		BagScannedEvent event = null;
 		try {
 			BagTag tag = new BagTag(eventData[1].trim());
 			event = new BagScannedEvent(eventData[0], tag, Location.valueOf(eventData[2].trim()), Double.parseDouble(eventData[3]), DATE_FORMAT.parse(eventData[4].trim()));
