@@ -1,9 +1,5 @@
-
-= Drools Reference
+= Drools 语法
 :toc: manual
-:toc-placement: preamble
-
-Reference
 
 == Rules file structure
 

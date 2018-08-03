@@ -1,15 +1,7 @@
-= Drools 介绍
+= 复杂规则编写
 :toc: manual
 
-本部分通过几个不同的侧面(规则引擎，CEP，DecisionTables，DSL，REST 集成等)介绍 Drools 技术。
-
-== TODO
-
-== TODO
-
-== 复杂规则编写
-
-=== 条件元素
+== 条件元素
 
 [cols="2,5a"]
 |===
@@ -127,7 +119,7 @@ then
 ----
 |===
 
-=== 比较运算符
+== 比较运算符
 
 [cols="2,5a"]
 |===
@@ -178,7 +170,7 @@ CheeseCounter( cheese memberOf $matureCheeses )
 ----
 |===
 
-=== 两种 dialect 的比较
+== 两种 dialect 的比较
 
 [cols="2, 5a,5a"]
 |===

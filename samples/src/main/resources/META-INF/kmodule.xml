@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
+    <kbase name="queries" packages="queries" >
+        <ksession name="ksession-queries" />
+    </kbase>
 
 
     <kbase name="algorithms" packages="algorithms" >

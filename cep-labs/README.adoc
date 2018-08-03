@@ -275,4 +275,23 @@ NOTE: 完成如上规则中 `TODO` 部分。
 
 === 编写规则
 
+[source, java]
+----
+rule "5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间"
+when
+    // TODO--
+then
+    System.out.println("个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间: " + $number);
+end
+----
+
+NOTE: 完成如上规则中 `TODO` 部分。
+
 === 执行规则
+
+运行 link:src/main/java/com/sample/Rule4Main.java[Rule4Main.java] 可执行规则，规则运行输出：
+
+[source, java]
+----
+5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间: 200000.0
+----

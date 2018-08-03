@@ -1,0 +1,12 @@
+package queries;
+
+import com.sample.queries.model.Cheese;
+
+query "simple query"
+    cheese: Cheese(type == "stinky")
+end
+
+query cheeses
+    stilton : Cheese(type == 'stilton')
+    cheddar : Cheese(type == 'cheddar', price == stilton.price)
+end

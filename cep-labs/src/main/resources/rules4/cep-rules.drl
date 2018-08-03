@@ -1,0 +1,39 @@
+//created on: Aug 3, 2018
+package rules2
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+rule "包裹在分类前丢失"
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    not($event2:BagScannedEvent(location == Location.SORTING, this != $event1, this.bagTag.id == $event1.bagTag.id, this after[0, 10m] $event1))
+then
+    System.out.println("分类前丢失包裹: " + $event1.getBagTag().getId());
+end
+
+
+rule "最近一个小时通过 SORTING 的包裹总数"
+when
+    $number: Number() from accumulate ($b:BagScannedEvent(location == Location.SORTING) over window:time(60m), count($b))
+then
+    System.out.println("系统当前时间: " + drools.getWorkingMemory().getSessionClock().getCurrentTime() + "， 过去一个小时通过 SORTING 的包裹总数: " + $number );
+end
+
+rule "通过 CHECK_IN 的连续 5 个包裹的平均重量"
+when
+    $number: Number() from accumulate ($b:BagScannedEvent(location == Location.SORTING) over window:length(5), average($b.getWeight()))
+then
+    System.out.println("系统当前时间: " + drools.getWorkingMemory().getSessionClock().getCurrentTime() + "， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: " + $number );
+end
+
+rule "5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间"
+when
+    // TODO--
+    $number: Number() from accumulate ($eventSorting: BagScannedEvent(location == Location.SORTING) over window:length(5) and
+                                       $eventCheckIn: BagScannedEvent(location == Location.CHECK_IN, bagTag.id == $eventSorting.bagTag.id),
+                                       average ($eventSorting.getTimestamp().getTime() - $eventCheckIn.getTimestamp().getTime()))
+    
+then
+    System.out.println("5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间: " + $number);
+end

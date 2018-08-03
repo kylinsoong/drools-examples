@@ -13,6 +13,10 @@
         <ksession name="ksession-rules3" default="true" type="stateful" clockType="pseudo"/>
     </kbase>
     
+    <kbase name="rules4" equalsBehavior="equality" eventProcessingMode="stream" packages="rules4">
+        <ksession name="ksession-rules4" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
 
    
 </kmodule>

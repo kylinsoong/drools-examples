@@ -4,7 +4,7 @@
     <groupId>org.drools.examples</groupId>
     <artifactId>drools-examples</artifactId>
     <version>1.0</version>
-    <packaging>kjar</packaging>
+    <packaging>jar</packaging>
 
     <name>Drools ksession initial</name>
     <description>Drools Example ksession</description>
@@ -98,13 +98,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.kie</groupId>
-                <artifactId>kie-maven-plugin</artifactId>
-                <version>7.5.0.Final-redhat-4</version>
-                <extensions>true</extensions>
-            </plugin>		
+            </plugin>	
         </plugins>
     </build>
 
