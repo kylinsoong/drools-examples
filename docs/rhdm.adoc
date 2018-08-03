@@ -33,8 +33,10 @@
 [source, java]
 ----
 $ unzip jboss-eap-7.1.0.zip -d ../rhdm/
-$ java -jar rhdm-installer-7.0.0.GA.jar -console
+$ java -jar rhdm-installer-7.0.0.GA.jar
 ----
+
+NOTE: 如果服务器安装可以使用 console 方式安装：`java -jar rhdm-installer-7.0.0.GA.jar -console`。
 
 NOTE: 安装过程创建的登录用户和密码为 `rhdmAdmin`/`password1!`。
 
@@ -71,6 +73,41 @@ errai.bus.enable_sse_support=false
 
 * http://127.0.0.1:8080/decision-central/ - 登录 decision-central(设计规则，用户名密码为 `rhdmAdmin`/`password1!`)
 * http://127.0.0.1:8080/kie-server/docs/ -  登录规则测试页面(运行规则，用户名密码为 `kylin`/`password1!`)
+
+=== Fuse 安装（可选）
+
+[source, java]
+.*安装*
+----
+$ unzip jboss-fuse-karaf-6.3.0.redhat-187.zip && cd jboss-fuse-6.3.0.redhat-187
+----
+
+[source, java]
+.*便捷 etc/users.properties, 添加*
+----
+admin=admin,admin,manager,viewer,Monitor, Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
+----
+
+[source, java]
+.*编辑 etc/system.properties, 修改 AMQ 邦定的主机*
+----
+activemq.host = 0.0.0.0
+----
+
+[source, java]
+.*启动*
+----
+./bin/start
+----
+
+登录 http://localhost:8181/ ( `admin`/`admin`) 进行简单管理配置与运行时状态查看。
+
+[source, java]
+.*启动 http Feature*
+----
+./bin/client
+features:install camel-http
+----
 
 == 物流转运示例
 
@@ -239,41 +276,346 @@ Swagger 测试返回如下
 }
 ----
 
+== RHDM 新功能
 
-== Fuse 安装（可选）
+本部分通过示例验证 RHDM 新功能，包括如下示例：
 
-[source, java]
-.*安装*
+|===
+|名称 |说明
+
+|<<贷款审批, 贷款审批>>
+|规则表格语法
+
+|<<保险定价, 保险定价>>
+|DMN 标准定义规则
+
+|<<流程驱动贷款审批, 流程驱动贷款审批>>
+|流程驱动规则
+|===
+
+=== 贷款审批
+
+本示例说明 RHDM 7 规则表格语法。
+
+在 Decision Central 中导入 
+    https://github.com/jbossdemocentral/rhdm7-loan-demo-repo.git
+Loan Demo 只包括两个数据模型(Loan & Applicant) 和一个 decision table (loan-application)：
+
+image:img/dm-loan-demo.png[dm-loan-demo]
+
+image:img/dm-loan-demo-decision.png[dm-loan-demo-decision]
+
+点击 `Build & deploy` 按钮进行构建示例工程，`Menu` -> `Deploy` -> `Execution Servers` *loan-application_1.0.0* 已经部署到 Decision Server。点击 http://localhost:8080/kie-server/docs/ 进入 DM Swagger UI 界面，通过 API 描述可以进行集成或测试。
+
+使用 /server/containers/instances/{id} POST API 进行 Fire Rules 测试:
+
+[source, json]
+.*POST 请求参数示例*
 ----
-$ unzip jboss-fuse-karaf-6.3.0.redhat-187.zip && cd jboss-fuse-6.3.0.redhat-187
+{
+    "lookup":"default-stateless-ksession",
+    "commands":[
+        {
+            "insert":{
+                "object":{
+                    "com.redhat.demos.dm.loan.model.Applicant":{
+                        "creditScore":230,
+                        "name":"Fire Tester"
+                    }
+                },
+                "out-identifier":"applicant"
+            }
+        },
+        {
+            "insert":{
+                "object":{
+                    "com.redhat.demos.dm.loan.model.Loan":{
+                        "amount":2500,
+                        "approved":false,
+                        "duration":24,
+                        "interestRate":1.5
+                    }
+                },
+                "out-identifier":"loan"
+            }
+        },
+        {
+            "fire-all-rules":{
+            }
+        }
+    ]
+}
 ----
 
-[source, java]
-.*便捷 etc/users.properties, 添加*
+[source, json]
+.*请求执行返回示例*
 ----
-admin=admin,admin,manager,viewer,Monitor, Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser
+{
+  "type": "SUCCESS",
+  "msg": "Container loan-application_1.0.0 successfully called.",
+  "result": {
+    "execution-results": {
+      "results": [
+        {
+          "value": {
+            "com.redhat.demos.dm.loan.model.Loan": {
+              "amount": 2500,
+              "duration": 24,
+              "interestRate": 1.5,
+              "approved": true
+            }
+          },
+          "key": "loan"
+        },
+        {
+          "value": {
+            "com.redhat.demos.dm.loan.model.Applicant": {
+              "name": "Fire Tester",
+              "creditScore": 230
+            }
+          },
+          "key": "applicant"
+        }
+      ],
+      "facts": [
+        {
+          "value": {
+            "org.drools.core.common.DefaultFactHandle": {
+              "external-form": "0:2:1013116106:1013116106:2:DEFAULT:NON_TRAIT:com.redhat.demos.dm.loan.model.Loan"
+            }
+          },
+          "key": "loan"
+        },
+        {
+          "value": {
+            "org.drools.core.common.DefaultFactHandle": {
+              "external-form": "0:1:197872233:197872233:1:DEFAULT:NON_TRAIT:com.redhat.demos.dm.loan.model.Applicant"
+            }
+          },
+          "key": "applicant"
+        }
+      ]
+    }
+  }
+}
 ----
 
-[source, java]
-.*编辑 etc/system.properties, 修改 AMQ 邦定的主机*
+基于以上示例进行如下几次测试:
+
+|===
+|申请人的信用度 Credit |申请人申请借贷的总数 Amount |审核结果 Approved 
+
+|200
+|100
+|false
+
+|300
+|3000
+|true
+
+|300
+|4500
+|false
+
+|500
+|4500
+|true
+|===
+
+=== 保险定价
+
+本示例说明通过 RHDM 7 DMN 标准定义规则。
+
+在 Decision Central 中导入
+    https://github.com/jbossdemocentral/rhdm7-insurance-pricing-dmn-demo-repo.git 
+保险定价使用如下逻辑
+
+image:img/decision-table.png[decision-table.png]
+
+点击 `Build & deploy` 按钮进行构建示例工程，`Menu` -> `Deploy` -> `Execution Servers` *insurance-pricing-dmn_1.0.0* 已经部署到 Decision Server。点击 http://localhost:8080/kie-server/docs/ 进入 DM Swagger UI 界面，通>过 API 描述可以进行集成或测试。
+
+使用 /server/containers/instances/{id}/dmn POST API 进行 Fire Rules 测试:
+
+[source, json]
+.*POST 请求参数示例*
 ----
-activemq.host = 0.0.0.0
+{
+    "model-namespace":"http://www.trisotech.com/definitions/_bb8b9304-b29f-462e-9f88-03d0d868aec5",
+    "model-name":"Insurance Pricing",
+    "decision-name":null,
+    "decision-id":null,
+    "dmn-context":{
+       "had previous incidents":false,
+       "Age":23
+    }
+}
 ----
 
-[source, java]
-.*启动*
+[source, json]
+.*请求执行返回示例*
 ----
-./bin/start
+{
+  "type": "SUCCESS",
+  "msg": "OK from container 'insurance-pricing-dmn_1.0.0'",
+  "result": {
+    "dmn-evaluation-result": {
+      "messages": [],
+      "model-namespace": "http://www.trisotech.com/definitions/_bb8b9304-b29f-462e-9f88-03d0d868aec5",
+      "model-name": "Insurance Pricing",
+      "decision-name": null,
+      "dmn-context": {
+        "had previous incidents": false,
+        "Age": 23,
+        "Insurance Total Price": 2000
+      },
+      "decision-results": {
+        "_7c68efef-3b20-4807-8d15-7f55995cc8fd": {
+          "messages": [],
+          "decision-id": "_7c68efef-3b20-4807-8d15-7f55995cc8fd",
+          "decision-name": "Insurance Total Price",
+          "result": 2000,
+          "status": "SUCCEEDED"
+        }
+      }
+    }
+  }
+}
 ----
 
-登录 http://localhost:8181/ ( `admin`/`admin`) 进行简单管理配置与运行时状态查看。
+基于以上示例进行如下几次测试:
 
-[source, java]
-.*启动 http Feature*
+|===
+|had previous incidents |Age |Insurance Total Price
+
+|false
+|23
+|2000
+
+|true
+|23
+|3000
+
+|false
+|30
+|1000
+
+|true
+|30
+|1250
+
+|===
+
+=== 流程驱动贷款审批
+
+本示例演示流程驱动贷款审批。
+
+在 Decision Central 中导入
+  https://github.com/jbossdemocentral/rhdm7-qlb-loan-demo-repo.git
+计算审批流程如下
+
+image:img/dm-loan-process.png[dm-loan-process.png]
+
+点击 `Build & deploy` 按钮进行构建示例工程，`Menu` -> `Deploy` -> `Execution Servers` *loan-application_1.0* 已经部署到 Decision Server。点击 http://localhost:8080/kie-server/docs/ 进入 DM Swagger UI 界面
+，通>过 API 描述可以进行集成或测试。
+
+使用 /server/containers/instances/{id} POST API 进行 Fire Rules 测试:
+
+[source, json]
+.*POST 请求参数示例*
 ----
-./bin/client
-features:install camel-http
+{
+  "lookup": "default-stateless-ksession",
+  "commands": [
+    {
+      "insert": {
+        "object": {
+          "com.redhat.demo.qlb.loan_application.model.Applicant": {
+            "creditScore":410,
+            "name":"Lucien Bramard",
+            "age":40,
+            "yearlyIncome":90000
+          }
+        },
+        "out-identifier":"applicant"
+      }
+    },
+    {
+      "insert": {
+        "object": {
+          "com.redhat.demo.qlb.loan_application.model.Loan": {
+            "amount":250000,
+            "duration":10
+          }
+        },
+        "out-identifier":"loan"
+      }
+    },
+    {
+      "start-process" : {
+        "processId" : "loan-application.loan-application-decision-flow",
+        "parameter" : [ ],
+        "out-identifier" : null
+      }
+    }
+  ]
+}
 ----
 
-
-
+[source, json]
+.*返回结果示例*
+----
+{
+  "type": "SUCCESS",
+  "msg": "Container loan-application_1.0 successfully called.",
+  "result": {
+    "execution-results": {
+      "results": [
+        {
+          "value": {
+            "com.redhat.demo.qlb.loan_application.model.Loan": {
+              "amount": 250000,
+              "duration": 10,
+              "interestRate": 0.72,
+              "approved": true,
+              "comment": "sufficient credit score",
+              "monthlyRepayment": 2098.3333333333335
+            }
+          },
+          "key": "loan"
+        },
+        {
+          "value": {
+            "com.redhat.demo.qlb.loan_application.model.Applicant": {
+              "name": "Lucien Bramard",
+              "creditScore": 410,
+              "age": 40,
+              "eligible": true,
+              "yearlyIncome": 90000,
+              "monthlyIncome": 7500
+            }
+          },
+          "key": "applicant"
+        }
+      ],
+      "facts": [
+        {
+          "value": {
+            "org.drools.core.common.DefaultFactHandle": {
+              "external-form": "0:2:1748584180:1748584180:2:DEFAULT:NON_TRAIT:com.redhat.demo.qlb.loan_application.model.Loan"
+            }
+          },
+          "key": "loan"
+        },
+        {
+          "value": {
+            "org.drools.core.common.DefaultFactHandle": {
+              "external-form": "0:1:1107194867:1107194867:1:DEFAULT:NON_TRAIT:com.redhat.demo.qlb.loan_application.model.Applicant"
+            }
+          },
+          "key": "applicant"
+        }
+      ]
+    }
+  }
+}
+----

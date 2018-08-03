@@ -1,0 +1,165 @@
+= PHREAK 算法
+:toc: manual
+
+== Drools 集成开发环境安装
+
+*1 - 下载*
+
+点击 https://developers.redhat.com/download-manager/file/devstudio-12.0.0.GA-installer-standalone.jar 下载 JBDS。
+
+*2 - java -jar <JAR> 安装*
+
+[source, java]
+----
+$ java -jar devstudio-11.3.0.GA-installer-standalone.jar 
+----
+
+运行如上命令在安装 Wizard 中接收软件安装许可证，以及选择安装路径，其余所有选项采用默认安装。
+
+*3 - 安装 Drools 集成开发环境*
+
+JDBS 启动后，在 `Red Hat Centrl` 底部选择 `Software/Update`，在新页面中选择 `JBoss Business Process and Rule Development` 后点击 *Install/Update*
+
+image:img/rhdm-drools-plugin.png[]
+
+安装完成后需要重启 JBDS。
+
+== PHREAK 语法树
+
+=== Alpha 节点
+
+判断如下规则的语法树形状。
+
+[source, java]
+----
+rule "Sample Rule 1"
+    when
+        $c: Customer(age > 30, category == Category.GOLD)
+    then
+        System.out.println($c);
+end
+
+rule "Sample Rule 2"
+    when
+        $c: Customer(age > 30, category == Category.SILVER)
+    then
+        System.out.println($c);
+end
+----
+
+如果调整 `Sample Rule 2` 中 Pattern 为 `$c: Customer(category == Category.SILVER, age > 30)` 语法树是否有变化？
+
+=== Beta 节点
+
+判断如下规则的语法树形状。
+
+[source, java]
+----
+rule "Sample Rule 1"
+    when
+        $p: Provider(rating > 50)
+        $pr: ProviderRequest(provider == $p)
+    then
+        System.out.println("Y");
+end
+
+rule "Sample Rule 2"
+    when
+        $p: Provider(rating > 50)
+        $pr: ProviderRequest(provider == $p)
+        $o: Order()
+    then
+        System.out.println("Y");
+end
+----
+
+如果将 `Sample Rule 2` 中 Pattern 变换位置为如下，则语法树是否有变化？
+
+[source, java]
+----
+$p: Provider(rating > 50)
+$o: Order()
+$pr: ProviderRequest(provider == $p)
+----
+
+=== 会员等级规则语法树构建
+
+分析如下规则，构建语法树。
+
+[source, java]
+----
+rule gold_account
+salience 200
+when
+  account: Account()
+  Number(this >= 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Gold account: " + account);
+end
+
+rule silver_account
+salience 100
+when
+  account: Account()
+  Number(this >= 25000 && this < 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 25000 && this < 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Silver account: " + account);
+end
+
+rule bronze_account
+salience 50
+when
+  account: Account()
+  Number(this >= 10000 && this < 25000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 10000 && this < 25000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Bronze account: " + account);
+end
+----
+
+== PHREAK Vs RateOO
+
+本部分通过实验验证 PHREAK 和 RateOO 算法的执行速率。
+
+*性能测试工具*
+
+http://openjdk.java.net/projects/code-tools/jmh/[OpenJdk： jmh]
+
+*测试代码*
+
+https://github.com/kylinsoong/drools-examples/tree/master/benchmark[点击下载测试代码]
+
+*测试规则*
+
+* grouping.drl     -  面向集合的传播(Set-oriented propagation)
+* laziness3.drl    -  延迟规则评估
+* laziness6.drl    -  延迟规则评估
+* modification.drl -  规则执行控制
+
+每个规则使用不同的算法执行，执行模拟处理不同数量的 Transaction：
+
+* 10 个 Transaction - 大于 10 000 个 Fact
+* 100 个 Transaction - 大于 100 000 个 Fact 
+* 1000 个 Transaction - 大于 1 000 000 个 Fact
+
+*运行性能测试对比程序*
+
+[source, java]
+----
+$ mvn clean install
+$ java -jar target/benchmark.jar
+----
+
+为了节省执行时间，可以注释掉 Insert 1 000 000 个 Fact 的测试，具体编辑 Benchmark.java，修改 numOfTransactions 的 @Param 为 `@Param({ "10", "100"})`。
+
+
+*执行结果*
+
+执行结束会有如下统计数据：
+
+[source, java]
+----
+
+----
