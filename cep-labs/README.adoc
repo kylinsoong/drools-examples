@@ -295,3 +295,170 @@ NOTE: 完成如上规则中 `TODO` 部分。
 ----
 5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间: 200000.0
 ----
+
+== 五：平均时间统计进一步完善
+
+5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间实现比较负责，例如在 SORTING 中存在的包裹则需要确保 CHECK_IN 也存在次包裹。本部分进一步完善此规则。
+
+== 六：Entry Point 插入事件
+
+编辑规则可以获取不同位置的包裹。
+
+=== 编写规则
+
+[source, java]
+----
+rule "CheckIn 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "CheckIn"
+then
+        System.out.println("CheckIn 的包裹: " + $event);
+end
+
+rule "Sorting 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "Sorting"
+then
+        System.out.println("Sorting 的包裹: " + $event);
+end
+
+
+rule "Staging 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "Staging"
+then
+        System.out.println("Staging 的包裹: " + $event);
+end
+----
+
+=== 执行规则
+
+运行 link:src/main/java/com/sample/Rule6Main.java[Rule6Main.java] 可执行规则，规则执行过程中 Event insert 逻辑如下：
+
+[source, java]
+----
+        switch(location) {
+        case CHECK_IN :
+            kieSession.getEntryPoint("CheckIn").insert(event);
+            break;
+        case SORTING :
+            kieSession.getEntryPoint("Sorting").insert(event);
+            break;
+        case STAGING :
+            kieSession.getEntryPoint("Staging").insert(event);
+            break;
+        case LOADING :
+            kieSession.getEntryPoint("Loading").insert(event);
+            break; 
+        default:
+            throw new IllegalArgumentException("Unexpected location.");
+        }
+----
+
+== 七：包裹匹配
+
+编写规则是实现包裹匹配，包裹事件来自不同的流。
+
+=== 编写规则
+
+[source, java]
+----
+rule "包裹匹配"
+when
+    //TODO--
+then
+    System.out.println("发现了一个包裹经过 CHECK_IN 和 SORTING: " + $event1.getBagTag().getId());
+end
+----
+
+NOTE： 补充 TODO-- 部分。
+
+=== 执行规则
+
+运行 link:src/main/java/com/sample/Rule7Main.java[Rule7Main.java] 可执行规则，执行输出结果如下：
+
+[source, java]
+----
+All events:
+    Event:{id: 1， bagTag: 1, timestamp: Thu Jan 18 09:00:00 CST 2018, location: CHECK_IN}
+    Event:{id: 2， bagTag: 2, timestamp: Thu Jan 18 09:01:00 CST 2018, location: CHECK_IN}
+    Event:{id: 3， bagTag: 3, timestamp: Thu Jan 18 09:03:00 CST 2018, location: CHECK_IN}
+    Event:{id: 4， bagTag: 2, timestamp: Thu Jan 18 09:04:00 CST 2018, location: SORTING}
+    Event:{id: 5， bagTag: 1, timestamp: Thu Jan 18 09:11:00 CST 2018, location: SORTING}
+    Event:{id: 6， bagTag: 3, timestamp: Thu Jan 18 09:12:00 CST 2018, location: SORTING}
+    Event:{id: 7， bagTag: 4, timestamp: Thu Jan 18 09:33:00 CST 2018, location: CHECK_IN}
+    Event:{id: 8， bagTag: 5, timestamp: Thu Jan 18 09:35:00 CST 2018, location: CHECK_IN}
+    Event:{id: 9， bagTag: 4, timestamp: Thu Jan 18 09:44:00 CST 2018, location: SORTING}
+    Event:{id: 10， bagTag: 5, timestamp: Thu Jan 18 09:44:30 CST 2018, location: SORTING}
+发现了一个包裹经过 CHECK_IN 和 SORTING: 2
+发现了一个包裹经过 CHECK_IN 和 SORTING: 1
+发现了一个包裹经过 CHECK_IN 和 SORTING: 3
+发现了一个包裹经过 CHECK_IN 和 SORTING: 4
+发现了一个包裹经过 CHECK_IN 和 SORTING: 5
+----
+
+== 八：事件过期
+
+本部分测试 CEP 中事件过期属性。
+
+
+[source, java]
+.*设定 BagScannedEvent 事件过期事件为 10 分钟*
+----
+@Role(Type.EVENT)
+@Timestamp("timestamp")
+@Expires("10m") // "1d"
+public class BagScannedEvent implements Serializable {
+----
+
+[source, java]
+.*实现 DefaultRuleRuntimeEventListener，当事件删除后打印输出*
+----
+public class LoggingRuleRuntimeEventListener extends DefaultRuleRuntimeEventListener {
+
+    @Override
+    public void objectDeleted(ObjectDeletedEvent event) {
+        System.out.println("Event deleted from WorkingMemory: " + event.getOldObject());
+        System.out.println("Number of facts in session: " + event.getKieRuntime().getFactCount());
+    }
+
+}
+----
+
+运行 link:src/main/java/com/sample/Rule8Main.java[Rule8Main.java] 可执行规则，执行输出结果如下：
+
+[source, java]
+----
+Event deleted from WorkingMemory: Event:{id: 1， bagTag: 1, timestamp: Thu Jan 18 09:00:00 CST 2018, location: CHECK_IN}
+Number of facts in session: 3
+----
+
+== 九：时间运算符丢失包裹检测
+
+在 <<一：丢失包裹检测, 一：丢失包裹检测>> 部分我们设计规则进行了丢失包裹检测，本部分通过时间运算符重新设计规则。
+
+=== 编写规则
+
+[source, java]
+----
+rule "丢失包裹检测"
+when
+    //TODO--
+then
+    System.out.println("丢失包裹: " + $event1.getBagTag().getId());
+end
+----
+
+NOTE： 补充 TODO-- 部分。
+
+=== 规则执行
+
+运行 link:src/main/java/com/sample/Rule9Main.java[Rule9Main.java] 可执行规则.
+
+使用如下步骤调示：
+
+* To inspect the behaviour of Drools, set a breakpoint on line 519 of the ObjectTypeNode class. Expiration offsets are defined on the ObjectTypeNode of a given object. This is especially interesting to know when using subclassing in your events. I.e. when you have an event that matches 2 ObjectTypeNodes, one for its superclass and one for its subclass, 2 expiry actions are scheduled, one per OTN.
+* To further inspect the behaviour, also set a breakpoint on line 92 of the PropagationEntry interface. This is the line of the Insert PropagationEntry that gets executed when a fact/event is inserted into the engine.
+* When we now run the Main class in debug-mode, we can see that the expiration-offset on the OTN gets set when the network is created.
+
+

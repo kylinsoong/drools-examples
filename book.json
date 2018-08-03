@@ -1,7 +1,36 @@
 {
     "variables" : {
-        "copyrightYear" :  "2017",
+        "copyrightYear" :  "2018",
         "copyrightHolder" :  "Kylin Soong"
     },
-    "plugins": ["collapsible-menu"]
+    "styles": {
+        "website": "styles/website.css"
+    },
+    "plugins": ["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],
+    "pluginsConfig": {
+        "donate": {
+          "wechat": "http://ksoong.org/cloud-labs/content/images/wechat.png",
+          "alipay": "http://ksoong.org/cloud-labs/content/images/alipay.png",
+          "title": "",
+          "button": "赞赏",
+          "alipayText": "支付宝捐赠",
+          "wechatText": "微信捐赠"
+        },
+        "sharing": {
+          "weibo": true,
+          "linkedin": true,
+          "google": true,
+          "facebook": true,
+          "all": ["facebook", "google", "linkedin","weibo"]
+        },
+        "tbfed-pagefooter": {
+          "copyright":"Copyright &copy Kylin Soong 2018",
+          "modify_label": "该文件修订时间：",
+          "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "edit-link": {
+          "base": "https://github.com/kylinsoong/cloud-labs/blob/gh-pages",
+          "label": "Edit This Page"
+        }
+    }
 }

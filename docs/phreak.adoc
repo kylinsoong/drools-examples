@@ -119,7 +119,9 @@ then
 end
 ----
 
-== PHREAK Vs RateOO
+== 规则执行
+
+=== PHREAK Vs RateOO
 
 本部分通过实验验证 PHREAK 和 RateOO 算法的执行速率。
 
@@ -190,7 +192,7 @@ o.k.e.p.Benchmark.modification                  1000       phreak   avgt       2
 o.k.e.p.Benchmark.modification                  1000       reteoo   avgt       200       93.808        4.409    ms/op
 ----
 
-== 正向推理（Forward chaining）
+=== 正向推理（Forward chaining）
 
 本部分规则执行顺如下图所描述
 
@@ -249,7 +251,7 @@ D finished
 
 借助 Drools 集成开发环境（参照<<Drools 集成开发环境安装, Drools 集成开发环境安装>>）进行规则执行调试，体验正向推理（Forward chaining）过程。
 
-== 反向推理（Backward chaining）
+=== 反向推理（Backward chaining）
 
 本部分通过规则模拟如下图场景：
 

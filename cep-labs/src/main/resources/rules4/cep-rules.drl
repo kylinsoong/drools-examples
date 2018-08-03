@@ -1,5 +1,5 @@
 //created on: Aug 3, 2018
-package rules2
+package rules4
 
 import com.sample.model.BagScannedEvent;
 import com.sample.model.Location;

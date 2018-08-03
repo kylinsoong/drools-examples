@@ -1,0 +1,9 @@
+#Event ID, BagTag UUID, Location(check-in, sorting, staging, loading), Bag Weight, Date
+# Let's start simple, just a single bag.
+# 3 bags, one gets lost.
+1, 1, CHECK_IN, 18.9, 20180118:090000000
+2, 2, CHECK_IN, 17.8, 20180118:090100000
+3, 3, CHECK_IN, 15.4, 20180118:090300000
+4, 2, SORTING, 17.8, 20180118:090400000
+5, 1, SORTING, 18.9, 20180118:091100000
+6, 3, SORTING, 15.4, 20180118:091200000

@@ -17,7 +17,7 @@ import org.kie.api.definition.type.Timestamp;
 
 @Role(Type.EVENT)
 @Timestamp("timestamp")
-@Expires("1d")
+@Expires("1d") // "1d"
 public class BagScannedEvent implements Serializable {
 
 	private static final long serialVersionUID = 1L;
