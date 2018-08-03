@@ -169,7 +169,7 @@ Event:{id: 6， bagTag: 4, timestamp: Thu Jan 18 10:12:00 CST 2018, location: CH
 Event:{id: 7， bagTag: 4, timestamp: Thu Jan 18 10:13:00 CST 2018, location: SORTING }
 ----
 
-=== 规则编写
+=== 编写规则
 
 在机场包裹扫描系统中，如果一个包裹经过了 CHECK_IN，则 10 分钟后会在 SORTING 位置，否则系统认为包裹丢失，基于测试数据。规则判断的结果是 *包裹 1 丢失*。
 
@@ -186,7 +186,7 @@ end
 
 NOTE: 完成如上规则中 `TODO` 部分。
 
-=== 规则执行
+=== 执行规则
 
 运行 link:src/main/java/com/sample/Rule1Main.java[Rule1Main.java] 可执行规则，规则运行输出：
 
@@ -195,7 +195,7 @@ NOTE: 完成如上规则中 `TODO` 部分。
 分类前丢失包裹: 1
 ----
 
-== 包裹数统计
+== 二：包裹数统计
 
 编写规则统计最近一小时内经过 SORTING 位置的包裹总数。
 
@@ -215,6 +215,8 @@ end
 
 NOTE: 完成如上规则中 `TODO` 部分。
 
+=== 执行规则
+
 运行 link:src/main/java/com/sample/Rule2Main.java[Rule2Main.java] 可执行规则，规则运行输出：
 
 [source, java]
@@ -224,3 +226,53 @@ NOTE: 完成如上规则中 `TODO` 部分。
 系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 2
 系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 3
 ----
+
+== 三：包裹重量统计
+
+编写规则统计统计过去通过 CHECK_IN 的 5 个包裹的平均重量。
+
+=== 编写规则
+
+使用滑动窗口设计统计过去通过 CHECK_IN 的5 个包裹的平均重量。
+
+[source, java]
+----
+rule "通过 CHECK_IN 的连续 5 个包裹的平均重量"
+when
+    // TODO--
+then
+    System.out.println("系统当前时间: " + drools.getWorkingMemory().getSessionClock().getCurrentTime() + "， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: " + $number );
+end
+----
+
+NOTE: 完成如上规则中 `TODO` 部分。
+
+=== 执行规则
+
+运行 link:src/main/java/com/sample/Rule3Main.java[Rule3Main.java] 可执行规则，规则运行输出：
+
+[source, java]
+----
+系统当前时间: 1516237200000， 过去一个小时通过 SORTING 的包裹总数: 0
+系统当前时间: 1516237200000， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: 0.0
+系统当前时间: 1516237740000， 过去一个小时通过 SORTING 的包裹总数: 1
+系统当前时间: 1516237740000， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: 17.2
+分类前丢失包裹: 1
+系统当前时间: 1516238040000， 过去一个小时通过 SORTING 的包裹总数: 2
+系统当前时间: 1516238040000， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: 15.899999999999999
+系统当前时间: 1516241520000， 过去一个小时通过 SORTING 的包裹总数: 1
+系统当前时间: 1516241580000， 过去一个小时通过 SORTING 的包裹总数: 2
+系统当前时间: 1516241580000， 过去通过 CHECK_IN 的连续 5 个包裹的平均重量: 17.2
+----
+
+=== KieSession EventListener
+
+添加 EventListener 记录规则执行 Agenda 及 Runtime 状态。
+
+== 四：统计包裹从 CHECK_IN 到 SORTING 的平均时间
+
+包裹扫描系统需要统计过去 5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间。
+
+=== 编写规则
+
+=== 执行规则

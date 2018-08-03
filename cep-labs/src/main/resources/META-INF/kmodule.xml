@@ -8,6 +8,11 @@
     <kbase name="rules2" equalsBehavior="equality" eventProcessingMode="stream" packages="rules2">
         <ksession name="ksession-rules2" default="true" type="stateful" clockType="pseudo"/>
     </kbase>
+    
+    <kbase name="rules3" equalsBehavior="equality" eventProcessingMode="stream" packages="rules3">
+        <ksession name="ksession-rules3" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
 
    
 </kmodule>
