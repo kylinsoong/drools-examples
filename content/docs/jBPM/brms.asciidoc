@@ -1,0 +1,129 @@
+00. OVERVIEW
+------------
+* JBoss Enterprise BRMS Platform is a business rules management system for the management, storage, creation, modification, and deployment of business rules and business processes. 
+* A web-based user interface is provided, and integration with JBoss Developer Studio provides multiple users with different skill levels and areas of domain expertise: business analysts, rules experts, developers, and rule administrators, with an environment suited to their needs.
+
+
+
+01. Getting Started
+-------------------
+
+1. Installation
++++++++++++++++
+
+The JBoss Enterprise BRMS Platform can be installed as a standalone server with BRMS already deployed to an application server (BRMS 5.3 comes already deployed inside JBoss Enterprise Application Platform 5.1.2) or as a web archive that can be deployed to an existing application server.
+  
+1.1. Installing the Standalone Package
+++++++++++++++++++++++++++++++++++++
+
+The standalone package contains JBoss Enterprise Application Platform 5.1.2 with JBoss Enterprise BRMS Platform already deployed as an exploded archive.
+
+IMPORTANT: Earlier versions of the standalone package (BRMS 5.2 and BRMS 5.1) come with BRMS deployed to JBoss Enterprise Web Platform 5.1.
+
+*Procedure For Installing the Standalone Package:*
+
+1 - Download the standalone package zip file
+
+2 - Extract the contents of the standalone zip archive to install the server.
+
+3 - Enable Users. The default configuration uses the BRMS JAAS application profile. This profile stores user names and passwords in the brms-standalone-5.3.0/jboss-as/server/default/conf/props/brms-users.properties file.
+
+4 - Add the security domain property to jboss-web.xml which is located in server/default/deploy/business-central/WEB-INF/, for instance:
+----
+<security-domain>java:/jaas/brms</security-domain>
+----
+
+5 - The default configurations use embedded databases that are not suitable or supported for production environments. Before deploying into a production environment this configuration must be changed to a supported database.
+
+6 - Start the server from the command line with the run.sh command on a UNIX or Linux system, or run.bat on a Microsoft Windows system.
+
+1.2 Clustering the Business Central Console
++++++++++++++++++++++++++++++++++++++++++++
+
+The Business Central Console can be clustered so that multiple instances of the console and the process engine attached to the console, can share the same data in a persisted database. Clustering the console makes it possible to spread the available processes across the cluster, and also ensures failover if a node in the cluster fails.
+The JBoss BRMS rule engine, repository, user interface, and process designer are installed on one host, and instances of the business central Console and the process engine are installed on one or more other hosts.
+
+*Procedure For Installing the Business Central Console as a Cluster:*
+
+1. Download the standalone package zip file
+2. 
+3.
+
+1.3 Logging On
+++++++++++++++
+
+Log into the BRMS web user interface and Business Central Console after the server has successfully started.
+
+. Log on to the BRMS user interface by pointing a web browser to http://localhost:8080/jboss-brms and entering the user credentials created when enabling users.
+. Log on to Business Central Console by pointing a web browser to http://localhost:8080/business-central and entering the user credentials created when enabling users.
+
+2. User Authorization
++++++++++++++++++++++
+    BRMS uses role-based authorization to assign user permissions. Role-based authorization is disabled by default and all users have full administrative permissions.
+
+* More details about user authorization: http://docs.redhat.com/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html/BRMS_Getting_Started_Guide/chapter-Users.html
+
+
+3 JBoss Developer Studio
+++++++++++++++++++++++++
+
+JBoss Developer Studio provides tools and interfaces for developers working with JBoss Enterprise BRMS.
+
+NOTE: The JBoss BRMS plug-ins for JBoss Developer Studio are known by the names of the open-source projects they are based on. *Guvnor* is the project the BRMS user interface and repository are based on, and *Drools* is the project the rules engine is based on.
+
+3.1 How to install the jBPM and Drools plug-ins to eclipse?
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Use droolsjbpm-tools-5.4.0.Final as example
+
+. download 'Drools and jBPM tools' from http://www.jboss.org/drools/downloads, unzip to local disk
+. Start eclipse
+. Open the menu "Help", menu item "Install new software..."
+. Click on the button "Add..." to add a new software site.
+. Click on the button "Local..." and select "./droolsjbpm-tools-distribution-5.4.0.Final/binaries/org.drools.updatesite"
+. Select all the plugins. Click the buttons "Next" and "Finish".
+
+NOTE: We also can manually copy all plug-ins and features to eclipse home folder's same folder, or altomatic url update.
+
+3.2 How to install Drools and jBPM Runtimes library?
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*Drools:*
+
+. From the Eclipse menu select *Preferences*.
+. Select *Drools → installed Drools Runtimes*.
+. Click *Add...*, provide a name for the new runtime, and click *Browse* to navigate to the directory where the drools runtime is located. For instance, in the BRMS 5.3 standalone installation the drools runtime is located *brms-standalone-5.3.0/jboss-as/client/drools/*.
+. Click *OK* and select the new runtime.
+
+*jBPM:*
+
+. From the Eclipse menu select *Preferences*.
+. Select *jBPM → installed jBPM Runtimes*.
+. Click *Add...*, provide a name for the new runtime, and click *Browse* to navigate to the directory where the drools runtime is located. For instance, in the BRMS 5.3 standalone installation the drools runtime is located *brms-standalone-5.3.0/jboss-as/client/jbpm/*.
+. Click *OK* and select the new runtime.
+
+
+3.3 How to connect to the BRMS Repository from eclipse?
+
+. Open the Guvnor repository by selecting *Window → Show View → Other*.
+. Select *Guvnor → Guvnor* Repository and click OK.
+. Add the Guvnor connection by selecting Add a Guvnor repository connection icon from the Guvnor Repository view.
+. Confirm the repository details displayed are correct. Enter the Guvnor username and password and click Finish.
+
+NOTE: repositoty shuould point to /jboss-brms/org.drools.guvnor.Guvnor/webdav/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

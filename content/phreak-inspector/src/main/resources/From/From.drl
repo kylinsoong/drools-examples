@@ -1,0 +1,14 @@
+//created on: Jul 28, 2018
+package From
+
+import org.kie.examples.phreak.nodes.Order;
+import org.kie.examples.phreak.nodes.OrderLine;
+import org.kie.examples.phreak.nodes.Category;
+
+rule "Sample Rule 1"
+when
+    $o: Order()
+    $ol: OrderLine(item.category == Category.HIGH_RANGE, quantity > 10) from $o.getOrderLines()
+then
+    System.out.println($ol);
+end

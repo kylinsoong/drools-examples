@@ -1,0 +1,9 @@
+package org.drools.compiler.research;
+
+rule "Unique Rule Name"
+dialect "java"
+when
+	model : Model()
+then
+	model.add("Unique Rule Name", "From RuleOne");
+end

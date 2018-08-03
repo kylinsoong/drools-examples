@@ -1,0 +1,19 @@
+Build master
+------------
+
+The branch `master` is for demo run on JBoss EAP 6, JBoss AS 7.
+
+----
+git clone git@github.com:kylinsoong/jBPM-Drools-Example.git
+mvn clean install
+----
+
+Build branch eap5
+-----------------
+
+The branch `eap5` is for demo run on JBoss EAP 5, JBoss AS 5, JBoss AS 6, simply use the following mvn commands build
+
+----
+git clone -b eap5 git@github.com:kylinsoong/jBPM-Drools-Example.git
+mvn clean install
+----

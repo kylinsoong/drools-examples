@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jbpm.test</groupId>
+    <artifactId>jbpm-test-restclient</artifactId> 
+    <name>jBPM Test Rest Client</name>
+    <packaging>jar</packaging>
+    <version>1.0</version>
+
+    <url>https://github.com/kylinsoong</url>
+    
+    <repositories>
+        <!-- Bootstrap repository to locate the parent pom when the parent pom has not been build locally. -->
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <drools.version>5.3.5.Final</drools.version>
+      <jbpm.version>5.2.5.Final</jbpm.version>	
+      <commons.httpclient.version>3.1</commons.httpclient.version>
+   </properties>
+
+    <dependencies>
+    	<dependency>
+        	<groupId>org.jboss.bpm</groupId>
+    		<artifactId>gwt-console-rpc</artifactId>
+    		<version>2.3.8.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+     		<artifactId>commons-httpclient</artifactId>
+      		<version>${commons.httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2</version>
+			<scope>compile</scope>
+		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+	    <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

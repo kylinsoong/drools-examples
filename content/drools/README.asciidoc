@@ -1,0 +1,105 @@
+Drools Basic Knowledge Getting Start
+------------------------------------
+
+* This Section cover a series of quick start for BRMS Drools
+
+* Install JBDS 5.0.0 GA, Open a empty workspace, create helloworld project via File -> New -> Other -> Drools -> Drools Project, then click next Button file a project name "helloworld", select all sample select
+ions , click Finish. This will Generate: DecisionTableTest.java, ProcessTest.java, DecisionTableTest.java, ruleflow.rf, Sample.drl, Sample.xls
+
+
+Create Drools Hello World example with JBDS
++++++++++++++++++++++++++++++++++++++++++++
+
+* Sample.drl content like below
+----
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+ 
+rule "Hello World"
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMessage( "Goodbye cruel world" );
+        m.setStatus( Message.GOODBYE );
+        update( m );
+end
+
+rule "GoodBye"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+----
+Run com.sample.DroolsTest will prompt run result.
+
+* open the test.log with "Audit" View (JBDS->[Window]->[Show View]->[Others] -> [Drools] -> [Audit]. Tehn click "Open Log" icon on the right-top of the Audit view window
+
+KnowledgeAgent to get PKG from Guvnor
++++++++++++++++++++++++++++++++++++++
+
+* make changes to the `helloworld` project and then export as a jar (using JBDS)
+
+* Synchronize resources in Guvnor with JBDS Guvnor Repository Explorer
+
+* go to JBoss BRMS and point to the updated JAR file
+** Click on Model in JBoss BRMS (Knowledge Bases > Packages > {your package} > Model)
+** Double click on model jar to be updated
+** Then upload the new version of jar file updated
+** Save and Close
+
+* Build package in BRMS UI Guvnor
+
+* Create changeset.xml in classpath with the following content
+----
+<change-set xmlns='http://drools.org/drools-5.0/change-set'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+    xs:schemaLocation='http://drools.org/drools-5.0/change-set drools-change-set-5.0.xsd' >
+    <add>
+        <resource source='http://localhost:8080/jboss-brms/org.drools.guvnor.Guvnor/package/com.sample/LATEST' type='PKG' 
+          basicAuthentication="enabled"  username="admin" password="admin" />
+    </add> 
+</change-set>
+----
+
+* Use the following code create KnowledgeBase
+----
+final KnowledgeAgent kagent = KnowledgeAgentFactory.newKnowledgeAgent("kagent");    
+ResourceFactory.getResourceChangeNotifierService().start();
+ResourceFactory.getResourceChangeScannerService().start();
+kagent.setSystemEventListener(new PrintStreamSystemEventListener());
+kagent.applyChangeSet(ResourceFactory.newClassPathResource("changeset.xml"));       
+KnowledgeBase kbase = kagent.getKnowledgeBase();
+----
+
+* Run `com.sample.agent.DroolsKnowledgeAgentTest` will run Sample.drl.
+
+Test Rule Attribute Entries 
++++++++++++++++++++++++++++
+
+* NO-LOOP - NoLoop.drl: "no-loop" will block loop when update() is invoked within the same rule. Please comment out "no-loop" and see what's happen.
+
+* LOCK-ON-ACTIVE - LockOnActive.drl: If you comment out "lock-on-active true", and uncomment "no-loop", infinit loop occurs. Because no-loop is affect only when update() is invoked within the same rule. For that situation, "lock-on-active" is useful.
+
+* Dialect - Dialect.drl: Using "dialect", you can write a rule with java style or mvel style. for more information about mvel, please visit http://mvel.codehaus.org/Language+Guide+for+2.0
+
+* Declare - Declare.drl: to declare a new type, Type declarations have two main goals in the rules engine: to allow the declaration of new types, and to allow the declaration of metadata for types. JBoss Rules 5 Reference Guide  13.5. Type Declarations, https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/JBoss_Rules_5_Reference_Guide/index.html#Type_Declarations
+
+* From - From.drl: JBoss Rules 5 Reference Guide  16.24. The Conditional Element From https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/JBoss_Rules_5_Reference_Guide/index.html#The_Conditional_Element_from
+
+
+* MemberOf - MemberOf.drl: Boss Rules 5 Reference Guide  16.13. Options and Operators in JBoss Rules https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/JBoss_Rules_5_Reference_Guide/index.html#Options_and_Operators_in_JBoss_Rules
+
+`com.sample.attributes.AttributesTest` is the entry of all above test.
+
+twitterCBR demo 
++++++++++++++++
+
+* git clone git://github.com/droolsjbpm/droolsjbpm-contributed-experiments.git
+* cd droolsjbpm-contributed-experiments/twittercbr
+* Read README.txt to start
+* Try to understand what rules are doing
+* https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_BRMS_Platform/5/html-single/BRMS_Complex_Event_Processing_Guide/index.html
+

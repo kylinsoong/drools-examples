@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="rules" packages="org.drools.examples.globals">
+        <ksession name="ksession-rules-globals"/>
+    </kbase>
+    <kbase name="rules-functions" packages="org.drools.examples.functions">
+        <ksession name="ksession-rules-functions"/>
+    </kbase>
+    <kbase name="rules-newTypes" packages="org.drools.examples.newTypes">
+        <ksession name="ksession-rules-newTypes"/>
+    </kbase>
+    <kbase name="rules-metadata" packages="org.drools.examples.metadata">
+        <ksession name="ksession-rules-metadata"/>
+    </kbase>
+    <kbase name="rules-banking" packages="org.drools.examples.banking">
+        <ksession name="ksession-rules-banking"/>
+    </kbase>
+    <kbase name="rules-no-loop" packages="org.drools.examples.loop">
+        <ksession name="ksession-rules-no-loop"/>
+    </kbase>
+    <kbase name="rules-saliences" packages="org.drools.examples.saliences">
+        <ksession name="ksession-rules-saliences"/>
+    </kbase>
+    <kbase name="rules-partition" packages="org.drools.examples.partition">
+        <ksession name="ksession-rules-partition"/>
+    </kbase>
+    <kbase name="attributes" packages="attributes">
+        <ksession name="ksession-attributes"/>
+    </kbase>
+    
+    <kbase name="lockOnActive" packages="lockOnActive">
+        <ksession name="ksession-lockOnActive"/>
+    </kbase>
+</kmodule>

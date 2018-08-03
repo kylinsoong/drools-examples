@@ -1,0 +1,51 @@
+1，BPMS6是BRMS的新版本，学习BPMS6之前我们假设您具备如下知识：
+   DRL 语法
+   规则流程
+   企业流程
+   情节测试
+
+2， BPMS6中引入的新知识点
+   开发工作台
+   基于Git的开发生命周期
+   数据模型化
+   表格模型化
+   任务和流程管理
+   服务任务
+   执行服务器
+   模拟
+   BAM
+
+3， KIE
+BPMS6 提供了一个相比较之前有很大提高的开发桌面叫做KIE Drools Workbeanch，KIE的意思是Knowledge is Everything 
+
+创建一个项目实验
+1) install BPMS 6
+2) add user/role like via below command
+   ---
+   ./add-user.sh -a --user admin --password password1! --role admin,analyst
+   ---
+3） start the server
+   ---
+   ./bin/standalone.sh
+   ---
+4) Open a browser, and go to the address http://localhost:8080/business-central. A login screen appears, longin with admin/password1!
+5) Add a New Organizational Unit
+   a. Click on the Administration link on the home page (or on the menu, select Authoring -> Administration)
+   b. Next, click on the Organizational Units link, and than on Manage Organizational Units.
+   c. On the Organizational Unit Manager window, click on the blue Add Organizational Unit button
+   d. In the popup window, type demo as Name, and admin as owner
+   e. Click OK
+6) Create a new repository
+   a. Click on the Repositories link (next to Organizational Units on the administration page) and select New Repository
+   b. In the popup window, enter the following: 
+      Repository name: insurancepolicy
+      Organizational Unit: select demo
+   c. Click create, and on the next window
+   d. Click on OK.
+7) Create a new Project
+   a. select Authoring -> Project Authoring from the main menu
+   b. Select New Item -> Project on the menu.
+   c. In the popup window, type policyquote as Resource name, and make sure that Project is selected in the radio button list. 
+   d. Click OK
+   e. Use org.acme.insurance as Group ID, and 1.0.0 as version
+   f. Click Finish

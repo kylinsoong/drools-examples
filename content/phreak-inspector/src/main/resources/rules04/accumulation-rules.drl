@@ -1,0 +1,22 @@
+package org.drools.workshop;
+
+import org.drools.workshop.model.*;
+import org.drools.workshop.model.Person.*;
+import java.util.List;
+
+
+rule "overcrowded room"
+    when
+        $r: Room()
+        List($amount: size > $r.getCapacity()) from collect (Person())
+    then
+        System.out.println(">>> The room is over crowded by "+ ($amount - $r.getCapacity())  +" people");
+end
+
+
+rule "calculate avg age"
+    when  
+        $avg: Double(doubleValue > 50) from accumulate (Person($age: age), average($age))
+    then
+        System.out.println(">>> The average age is "+ $avg);
+end

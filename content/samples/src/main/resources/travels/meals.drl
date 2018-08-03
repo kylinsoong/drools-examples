@@ -1,0 +1,45 @@
+package travels;
+
+import com.sample.domain.travel.Reservation;
+import com.sample.domain.travel.Customer;
+import com.sample.domain.travel.MealsFee;
+
+rule "GoldMealsUpgrade"
+    dialect "mvel"
+    when
+        Reservation(mealUpgrade == true)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(new MealsFee(0.00));
+end
+
+rule "SilverMealsUpgrade"
+    dialect "mvel"
+    when
+        Reservation(mealUpgrade == true)
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(new MealsFee(5.00));
+end
+
+rule "BronzeMealsUpgrade"
+    dialect "mvel"
+    when
+        Reservation(mealUpgrade == true)
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(new MealsFee(8.00));
+end
+
+rule "NoneMealsUpgrade"
+    dialect "mvel"
+    when
+        Reservation(mealUpgrade == true)
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(new MealsFee(10.00));
+end
+
+query "getMealsFees"
+    Fee: MealsFee();
+end

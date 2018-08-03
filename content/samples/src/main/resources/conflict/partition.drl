@@ -1,0 +1,47 @@
+package conflict
+
+import com.sample.domain.conflict.*
+import java.util.LinkedList
+
+rule "OverAgeReservation"
+agenda-group "age"
+    when
+        $customer : Customer( age > 65 );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());//retrieve the first available room
+        update($customer.getRoom());
+end
+
+rule "UnderAgeReservation"
+agenda-group "age"
+    when
+        $customer : Customer( age <= 65 );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());
+        update($customer.getRoom());
+end
+
+rule "DisabilitiesReservation"
+agenda-group "disabilities"
+    when
+        $customer : Customer( disabilities == true );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());//retrieve the first available room
+        update($customer.getRoom());
+end
+
+rule "OrinaryReservation"
+agenda-group "disabilities"
+    when
+        $customer : Customer( disabilities == true );
+        $rooms : LinkedList(size > 0) from collect (Room(accessible == true, reserved == false))
+    then
+        $customer.setRoom((Room)$rooms.pollFirst());//retrieve the first available room
+        update($customer.getRoom());
+end
+
+
+

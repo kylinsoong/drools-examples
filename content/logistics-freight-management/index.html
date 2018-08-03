@@ -1,0 +1,896 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>运单管理 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../dt-loan-approve/" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../reference/">
+            
+                <a href="../reference/">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../reference/globals.html">
+            
+                <a href="../reference/globals.html">
+            
+                    
+                    Globals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../reference/functions.html">
+            
+                <a href="../reference/functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../reference/type-declaration.html">
+            
+                <a href="../reference/type-declaration.html">
+            
+                    
+                    Type Declaration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../reference/rules.html">
+            
+                <a href="../reference/rules.html">
+            
+                    
+                    Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../reference/attributes.html">
+            
+                <a href="../reference/attributes.html">
+            
+                    
+                    Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../docs/intro.html">
+            
+                <a href="../docs/intro.html">
+            
+                    
+                    规则高级语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docs/cep.html">
+            
+                <a href="../docs/cep.html">
+            
+                    
+                    CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../firerules/">
+            
+                <a href="../firerules/">
+            
+                    
+                    规则整合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../firerules/maven-setting.html">
+            
+                <a href="../firerules/maven-setting.html">
+            
+                    
+                    Maven 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../firerules/fire-kieserver.html">
+            
+                <a href="../firerules/fire-kieserver.html">
+            
+                    
+                    客户端 API 调运 KIE 服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../firerules/fire-locally.html">
+            
+                <a href="../firerules/fire-locally.html">
+            
+                    
+                    本地执行规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../docs/labs.html">
+            
+                <a href="../docs/labs.html">
+            
+                    
+                    LABS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../docs/rhdm.html">
+            
+                <a href="../docs/rhdm.html">
+            
+                    
+                    RHDM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../docs/phreak.html">
+            
+                <a href="../docs/phreak.html">
+            
+                    
+                    PHREAK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../cep-labs/">
+            
+                <a href="../cep-labs/">
+            
+                    
+                    CEP 规则编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../usecase.html">
+            
+                <a href="../usecase.html">
+            
+                    
+                    案例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../cep-fraud-detection-springboot/">
+            
+                <a href="../cep-fraud-detection-springboot/">
+            
+                    
+                    欺骗侦测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../intelligent-transportation/">
+            
+                <a href="../intelligent-transportation/">
+            
+                    
+                    智能交通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../dt-loan-approve/">
+            
+                <a href="../dt-loan-approve/">
+            
+                    
+                    贷款审批
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    运单管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >运单管理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7269;&#x6D41;&#x8FD0;&#x5355;&#x7BA1;&#x7406;">&#x7269;&#x6D41;&#x8FD0;&#x5355;&#x7BA1;&#x7406;</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#__">&#x9700;&#x6C42;&#x5206;&#x6790;</a></li>
+<li><a href="#___2">&#x67B6;&#x6784;&#x56FE;</a></li>
+<li><a href="#___3">&#x8FD0;&#x884C;</a>
+<ul class="sectlevel2">
+<li><a href="#__fact_rules_rhdm">&#x5BFC;&#x5165; Fact &#x548C; Rules &#x5230; RHDM</a></li>
+<li><a href="#_brm_rest_api">BRM REST API &#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x89C4;&#x5219;</a></li>
+<li><a href="#___4">&#x672C;&#x5730;&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+<li><a href="#_cxf_rest">CXF REST &#x5BA2;&#x6237;&#x7AEF;&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#__dt">&#x89C4;&#x5219;&#x8868;&#x683C; DT &#x4F7F;&#x7528;&#x5206;&#x6790;</a></li>
+<li><a href="#__dsl">&#x9886;&#x57DF;&#x4E13;&#x5BB6;&#x8BED;&#x8A00; DSL &#x4F7F;&#x7528;&#x5206;&#x6790;</a>
+<ul class="sectlevel2">
+<li><a href="#__it">&#x90BB;&#x57DF;&#x4E13;&#x5BB6;&#x548C; IT &#x5B9A;&#x4E49;&#x89C4;&#x5219;&#x6620;&#x5C04;</a></li>
+<li><a href="#__guided_rule">&#x521B;&#x5EFA; Guided Rule</a></li>
+<li><a href="#__lhs">&#x7F16;&#x8F91; LHS</a></li>
+<li><a href="#__rhs">&#x7F16;&#x8F91; RHS</a></li>
+<li><a href="#___5">&#x6700;&#x7EC8;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#_fuse">Fuse &#x96C6;&#x6210;</a></li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="__">&#x9700;&#x6C42;&#x5206;&#x6790;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x67D0;&#x8DE8;&#x56FD;&#x7269;&#x6D41;&#x516C;&#x53F8; IT &#x4FE1;&#x606F;&#x4E8B;&#x4E1A;&#x90E8;&#x9700;&#x8981;&#x5904;&#x7406;&#x8BA2;&#x5355;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8BA2;&#x5355;&#xFF08;&#x4E00;&#x4E2A;&#x8BA2;&#x5355;&#x5904;&#x7406;&#x4E1A;&#x52A1;&#xFF09;&#x6A21;&#x578B;&#x7ED3;&#x6784;&#x5982;&#x4E0B;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/booking-model.png" alt="booking model.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x5BF9;&#x8BA2;&#x5355;&#x5904;&#x7406;&#x7684;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>&#x63A5;&#x6536;&#x5730;&#x5740;&#x548C;&#x53D1;&#x9001;&#x5730;&#x5740;&#x6BCF;&#x884C;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7; 35 &#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x8D85;&#x8FC7;&#x5219;&#x81EA;&#x52A8;&#x6362;&#x884C;&#xFF0C;&#x6CE8;&#x610F;&#xFF1A;&#x4E0D;&#x80FD;&#x5C06;&#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x5206;&#x88C2;&#x4E3A;&#x4E24;&#x884C;</p>
+</li>
+<li>
+<p>&#x6240;&#x6709;&#x53D1;&#x9001;&#x5730;&#x5740;&#x5F00;&#x5934;&#x662F;&#x201C;KUEHNE&#x201D;&#x7684;&#xFF0C;&#x5728;&#x53D1;&#x8D27;&#x4EBA;&#x4EE3;&#x7801;&#x680F;&#x4F4D;&#x5185;&#x586B;&#x5165;&#xFF1A;N:SMTC</p>
+</li>
+<li>
+<p>&#x6240;&#x6709;&#x53D1;&#x9001;&#x5730;&#x5740;&#x5F00;&#x5934;&#x4E0D;&#x662F;&#x201C;KUEHNE&#x201D;&#x7684;&#xFF0C;&#x5728;&#x53D1;&#x8D27;&#x4EBA;&#x4EE3;&#x7801;&#x680F;&#x4F4D;&#x5185;&#x586B;&#x5165;&#xFF1A;B</p>
+</li>
+<li>
+<p>&#x5F53;&#x8BA2;&#x5355;&#x7684;&#x4ED8;&#x6B3E;&#x65B9;&#x5F0F;&#x662F;&#x201C;FREIGT COLLECT&#x201D;&#xFF0C;&#x5C06;<code>&#x4EA4;&#x8D27;&#x5730;</code>&#x5185;&#x5BB9;&#x590D;&#x5236;&#x540E;&#x586B;&#x5199;&#x5728;&#x5BA2;&#x6237;&#x7AEF;<code>&#x4ED8;&#x6B3E;&#x5730;&#x70B9;</code>&#x680F;&#x4F4D;&#xFF0C;&#x5E76;&#x5728;<code>&#x8FD0;&#x8D39;&#x6761;&#x6B3E;&#x8BF4;&#x660E;</code>&#x91CC;&#x8F93;&#x5165;&#x201C;FREIGT COLLECT AT &#x4EA4;&#x8D27;&#x5730;&#x7684;&#x503C;&#x201D;</p>
+</li>
+<li>
+<p>&#x5F53;&#x8BA2;&#x5355;&#x7684;&#x4ED8;&#x6B3E;&#x65B9;&#x5F0F;&#x662F;&#x201C;FREIGT PREPAID&#x201D;&#xFF0C;&#x5C06;<code>&#x88C5;&#x8D27;&#x5730;</code>&#x5185;&#x5BB9;&#x590D;&#x5236;&#x540E;&#x586B;&#x5199;&#x5728;<code>&#x4ED8;&#x6B3E;&#x5730;&#x70B9;</code>&#x680F;&#x4F4D;&#xFF0C;&#x5E76;&#x5728;<code>&#x8FD0;&#x8D39;&#x6761;&#x6B3E;&#x8BF4;&#x660E;</code>&#x91CC;&#x8F93;&#x5165;&#x201C;FREIGT PREPAID AT &#x88C5;&#x8D27;&#x6E2F;&#x7684;&#x503C;&#x201D;&#x3002;</p>
+</li>
+<li>
+<p>&#x5982;&#x679C;&#x76EE;&#x7684;&#x5730;&#x662F;&#x7F8E;&#x56FD;&#x6216;&#x52A0;&#x62FF;&#x5927;&#x7684;&#xFF0C;HS CODE&#x5FC5;&#x987B;&#x662F;8&#x4F4D;&#x6570;&#x5B57;&#x3002;&#x82E5;&#x8BA2;&#x5355;&#x4E2D;&#x7684; HS CODE &#x8D85;&#x8FC7;8&#x4F4D;&#xFF0C;&#x8BF7;&#x81EA;&#x52A8;&#x622A;&#x53D6;&#x524D;8&#x4F4D;&#x586B;&#x5199;&#x5230;&#x6307;&#x5B9A;&#x680F;&#x4F4D;&#xFF0C;&#x82E5;&#x4E0D;&#x6EE1;8&#x672A;&#xFF0C;&#x5219;&#x672B;&#x5C3E;&#x81EA;&#x52A8;&#x4EE5;&#x201C;0&#x201D;&#x8865;&#x9F50;&#x540E;&#x586B;&#x5199;&#x5230;&#x6307;&#x5B9A;&#x680F;&#x4F4D;</p>
+</li>
+<li>
+<p>&#x5982;&#x679C;&#x76EE;&#x7684;&#x5730;&#x4E0D;&#x662F;&#x7F8E;&#x56FD;&#x6216;&#x52A0;&#x62FF;&#x5927;&#x7684;&#xFF0C;HS CODE&#x5FC5;&#x987B;&#x662F;6&#x4F4D;&#x6570;&#x5B57;&#x3002;&#x82E5;&#x8BA2;&#x5355;&#x4E2D;&#x7684; HS CODE&#x8D85;&#x8FC7;6&#x4F4D;&#xFF0C;&#x8BF7;&#x81EA;&#x52A8;&#x622A;&#x53D6;&#x524D;6&#x4F4D;&#x586B;&#x5199;&#x5230;&#x6307;&#x5B9A;&#x680F;&#x4F4D;&#xFF0C;&#x82E5;&#x4E0D;&#x6EE1;6&#x672A;&#xFF0C;&#x5219;&#x672B;&#x5C3E;&#x81EA;&#x52A8;&#x4EE5;&#x201C;0&#x201D;&#x8865;&#x9F50;&#x540E;&#x586B;&#x5199;&#x5230;&#x6307;&#x5B9A;&#x680F;&#x4F4D;</p>
+</li>
+<li>
+<p>&#x6240;&#x6709;&#x8BA2;&#x5355;&#x7684;&#x5305;&#x88C5;&#x5355;&#x4F4D;&#x90FD;&#x53D6;&#x5355;&#x6570;&#xFF0C;&#x4F8B;&#x5982;&#x8BA2;&#x5355;&#x4E0A;&#x663E;&#x793A;PACKAGES&#xFF0C;&#x5219;&#x4FEE;&#x6539;&#x4E3A;PACKAGE</p>
+</li>
+<li>
+<p>&#x5982;&#x679C;&#x8BA2;&#x5355;&#x4E2D;&#xFF0C;&#x5176;&#x76EE;&#x7684;&#x5730;&#x662F;&#x7F8E;&#x56FD;&#x3001;&#x52A0;&#x62FF;&#x5927;&#xFF0C;&#x4E14;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x5F00;&#x5934;&#x90FD;&#x662F;&#x201C;KUEHNE&#x201D;&#xFF0C;&#x5219;&#x5728;&#x5907;&#x6CE8;&#x91CC;&#x4E2D;&#x6DFB;&#x52A0;&#xFF1A;SCAC CODE&#xFF0C; ACI CODE&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x4EE5;&#x4E0A;&#x5185;&#x5BB9;&#x5206;&#x4E24;&#x884C;&#x663E;&#x793A;&#x5728;&#x5907;&#x6CE8;&#x4E2D;&#xFF0C;&#x4E5F;&#x4E0D;&#x8981;&#x8FDE;&#x63A5;&#x5728;&#x5176;&#x4ED6;&#x5907;&#x6CE8;&#x5185;&#x5BB9;&#x540E;</p>
+</li>
+<li>
+<p>&#x5982;&#x679C;&#x8BA2;&#x5355;&#x4E2D;&#xFF0C;&#x5176;&#x76EE;&#x7684;&#x5730;&#x662F;&#x7F8E;&#x56FD;&#x3001;&#x52A0;&#x62FF;&#x5927;&#xFF0C;&#x4E14;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x5F00;&#x5934;&#x90FD;&#x4E0D;&#x662F;&#x201C;KUEHNE&#x201D;&#xFF0C;&#x5219;&#x5728;&#x5907;&#x6CE8;&#x91CC;&#x4E2D;&#x6DFB;&#x52A0;&#xFF1A;CARRIER FILLING&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x4EE5;&#x4E0A;&#x5185;&#x5BB9;&#x4E0D;&#x8981;&#x548C;&#x5176;&#x4ED6;&#x5907;&#x6CE8;&#x5185;&#x5BB9;&#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x53E6;&#x8D77;&#x4E00;&#x884C;&#x663E;&#x793A;</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">&#x67B6;&#x6784;&#x56FE;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="src/img/architecture.png" alt="architecture.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x5982;&#x4E0A;&#x67B6;&#x6784;&#x56FE;&#x4E2D;&#x5305;&#x62EC;&#x4E24;&#x90E8;&#x5206;&#xFF1A;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5DE6;&#x8FB9;&#x662F; JBoss Fuse(Camel) &#x63D0;&#x4F9B;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x654F;&#x6377;&#x96C6;&#x6210;&#x5E73;&#x53F0;&#xFF0C;&#x901A;&#x8FC7; Queue &#x63D0;&#x4F9B;&#x63A5;&#x53E3;&#xFF0C;Queue &#x63A5;&#x6536;&#x65B0;&#x8BA2;&#x5355;&#xFF0C;Fuse &#x4ECE; Queue &#x53D6;&#x51FA;&#x8BA2;&#x5355;&#x5E76;&#x8C03;&#x8FD0; BRM &#x670D;&#x52A1;&#x5E76;&#x5C06;&#x8FD4;&#x56DE;&#x53D1;&#x9001;&#x7ED9; Queue;</p>
+</li>
+<li>
+<p>&#x53F3;&#x8FB9;&#x662F; RHDM(Drools) &#x63D0;&#x4F9B;&#x89C4;&#x5219;&#x8BBE;&#x8BA1;&#x3001;&#x8FD0;&#x884C;&#x3001;&#x4FDD;&#x5B58;&#x7684;&#x5E73;&#x53F0;&#x3002;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___3">&#x8FD0;&#x884C;</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__fact_rules_rhdm">&#x5BFC;&#x5165; Fact &#x548C; Rules &#x5230; RHDM</h3>
+<div class="paragraph">
+<p>&#x767B;&#x5F55; RHDM &#x63A7;&#x5236;&#x53F0;(<a href="http://localhost:8080/decision-central)&#xFF0C;&#x521B;&#x5EFA;" class="bare" target="_blank">http://localhost:8080/decision-central)&#xFF0C;&#x521B;&#x5EFA;</a> Space <code>sample</code>&#xFF0C;&#x521B;&#x5EFA; Project  <code>logistics-freight-management</code>&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x514B;&#x9686;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x9879;&#x76EE;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git <span class="hljs-built_in">clone</span> ~/work/rhdm/jboss-eap-7.1/.niogit/sample-myrepo.git/ &amp;&amp; <span class="hljs-built_in">cd</span> sample-myrepo/logistics-freight-management</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x7F16;&#x8F91; pom.xml&#xFF0C;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jackson-annotations<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.8.9<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x62F7;&#x8D1D;&#x89C4;&#x5219;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ rm -fr src/main/resources/
+$ cp -r ~/logistics-freight-management/src/main/resources/ src/main/</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x62F7;&#x8D1D; Fact</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ mkdir -p src/main/java/com/sample/models
+$ cp ~/src/drools-examples/logistics-freight-management/src/main/java/com/sample/models/*.java src/main/java/com/sample/models/
+$ mkdir -p src/main/java/com/sample/utils
+$ cp ~/src/drools-examples/logistics-freight-management/src/main/java/com/sample/utils/LogisticsUtil.java src/main/java/com/sample/utils/</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x63D0;&#x4EA4;&#x66F4;&#x65B0;&#x5230; RHDM git &#x4ED3;&#x5E93;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ git add --all
+$ git commit -m <span class="hljs-string">&quot;add facts and rules&quot;</span>
+$ git push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#x5BFC;&#x5165;&#x6210;&#x529F;&#x540E;&#x63A7;&#x5236;&#x53F0;&#x663E;&#x793A;&#x5982;&#x4E0B;:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/factsrules.png" alt="factsrules.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x70B9;&#x51FB; <code>Build &amp; Deploy</code>&#xFF0C;&#x90E8;&#x7F72;&#x6210;&#x529F;&#x540E;&#x4F7F;&#x7528; BRM API &#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x3002;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_brm_rest_api">BRM REST API &#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x70B9;&#x51FB; <a href="http://localhost:8080/kie-server/docs/" class="bare" target="_blank">http://localhost:8080/kie-server/docs/</a> &#x8FDB;&#x5165; DM Swagger UI &#x754C;&#x9762;&#xFF0C;&#x901A;&gt;&#x8FC7; API &#x63CF;&#x8FF0;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x96C6;&#x6210;&#x6216;&#x6D4B;&#x8BD5;&#x3002;</p>
+</div>
+<div class="paragraph">
+<p>&#x4F7F;&#x7528; /server/containers/instances/{id} POST API &#x8FDB;&#x884C; Fire Rules &#x6D4B;&#x8BD5;:</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Container id</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">logistics-freight-management_1<span class="hljs-number">.0</span><span class="hljs-number">.0</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x6D4B;&#x8BD5; body JSON &#x4E32;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;06/05/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT COLLECT&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;60.740&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;SINN00769A&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL N.V.\rLLOYDSTRAAT 35\rNL-3024 EA ROTTERDAM HAVEN NR 230\rNETHERLANDS&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;ONE FE4\rCONTRACT NUMBER: SINN00769A\rOB/L NUMBER:&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;005W&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;JENNY.J.LI&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;ROTTERDAM&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;LINAH&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR LINE\rKN REF. 4351-0238-804.160&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL N.V.\rLLOYDSTRAAT 35\rNL-3024 EA ROTTERDAM HAVEN NR 230\rNETHERLANDS\rAGENT OF BLUE ANCHOR LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0238-804.160&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;5280.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005565401-4351-0238-804.160+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;100% POLY WOMEN WOVEN\rJACKET\rKIDS JACKET\rDUFFLE COAT\rTTL:627 CTN\rHS-CODE(S):620213\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;620213&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;627&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;N/M&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;60.740&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;CTN&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;5280.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;b821d22e861a4dacbb05ed1a73d313cb&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;24/04/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT COLLECT&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;91.572&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;FAK-AEF171000-WC&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r4100 NORTH COMMERCE DRIVE\rEAST POINT, GA 30344\rUNITED STATES\rREF:1019-0707-440.000&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: FAK-AEF171000-WC\rOB/L NUMBER: SHSB8B485500\rFAK\r4/24 SML CPX&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;1803E&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;RYNA WU&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;LONG BEACH,CA&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;SM LONG BEACH&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR AMERICA LINE\rKN REF. 4351-0370-803.261&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r4100 NORTH COMMERCE DRIVE\rEAST POINT, GA 30344\rUNITED STATES\rAGENT OF BLUE ANCHOR AMERICA LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0370-803.261&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;23744.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005554020-4351-0370-803.261+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;18 PKGS\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;18&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;CCLU4685466\rSEAL 310120&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;30.132&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PKGS&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;7344.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;20 PKGS\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;20&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;SMCU4504715\rSEAL 310119&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;30.720&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PKGS&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;8200.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;20 PKGS\rHOT TOWEL DELTA BOX,\rGREY TONGS\rLINER, TRAY 1/3 ATLAS\rBE BAMBOO TEXTURE\rTABLECLOTH, WHITE\rOUTBOUND PO#:\r506107; 506358; 506360\rN.W.P.M\rHS-CODE:6307900000/\r4823909000/6302539090\r58 PKGS=58 PLTS\rTTL:58 PKGS\rSAY TOTAL FIFTY EIGHT\rPACKAGES ONLY\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;6307900000/&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;58&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;FSCU4701775\rSEAL 310118\rN/M&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;30.720&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PKGS&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;8200.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;14580828a23f4ace84472efd4cf5842b&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;06/05/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT COLLECT&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;60.740&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;SINN00769A&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL N.V.\rLLOYDSTRAAT 35\rNL-3024 EA ROTTERDAM HAVEN NR 230\rNETHERLANDS&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;ONE FE4\rCONTRACT NUMBER: SINN00769A\rOB/L NUMBER:&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;005W&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;JENNY.J.LI&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;ROTTERDAM&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;LINAH&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR LINE\rKN REF. 4351-0238-804.160&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL N.V.\rLLOYDSTRAAT 35\rNL-3024 EA ROTTERDAM HAVEN NR 230\rNETHERLANDS\rAGENT OF BLUE ANCHOR LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0238-804.160&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;5280.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005565401-4351-0238-804.160+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;100% POLY WOMEN WOVEN\rJACKET\rKIDS JACKET\rDUFFLE COAT\rTTL:627 CTN\rHS-CODE(S):620213\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;620213&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;627&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;N/M&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;60.740&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;CTN&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;5280.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;b821d22e861a4dacbb05ed1a73d313cb&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;27/04/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT COLLECT&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;159.149&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;SC0119919&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: SC0119919\rOB/L NUMBER:\r4-27 ONE PS5&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;092E&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;ACE ZHUANG&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;LOS ANGELES,CA&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;NYK AQUARIUS&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;HEALTH &amp; LIFE (SUZHOU) CO., LTD\rNO 1428 XIANGILANG ROAD\rSUZHOU 215129 CHINA\rKN REF. 4351-9188-804.541&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;HOMEDICS USA,LLC\r3000 PONTIAC TRAIL\rCOMMERCE TOWNSHIP MI 48390\rUNITED STATES&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-9188-804.541&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;25801.51&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40GE&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005546416-4351-9188-804.541+.pdf&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;WALG AUTO WRIST 2017\rWALG AUTO ARM 2017\r3417 PACKAGES\rHS-CODE(S):9018.19\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;9018.19&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;3417&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;54.538&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PACKAGES&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;9204.60&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;WALG AUTO WRIST 2017\rWALG AUTO ARM 2017\r2501 PACKAGES\rHS-CODE(S):9018.19\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;9018.19&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;2501&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;54.773&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PACKAGES&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;7927.54&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;WALGREENS DELUXE ARM 2016\rWALG AUTO ARM 2017\rSTANDARD SIZE CUFF\rLARGE SIZE CUFF\rNEW UNIVERSAL CUFF\rSTANDARD SIZE CUFF FOR BPA\r-040\rLARGE SIZE CUFF FOR BPA-04\r0\r2969 PACKAGES\rHS-CODE(S):9018.19\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;9018.19&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;2969&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;49.838&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;PACKAGES&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;8669.37&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;dfd1a8308a9242b791fc50d6d659f2db&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;30/04/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT PREPAID&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;60.000&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;SINN00769A&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL SPOL S R O\rPEKARSKA 7\r15500 PRAHA 5\rCZECH REPUBLIC&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: SINN00769A\rOB/L NUMBER:&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;004W&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;JANE XU&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;HAMBURG&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;MOL TRIBUTE&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR LINE\rKN REF. 4351-0158-804.118&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL SPOL S R O\rPEKARSKA 7\r15500 PRAHA 5\rCZECH REPUBLIC\rAGENT OF BLUE ANCHOR LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0158-804.118&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;15835.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005565383-4351-0158-804.118+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;PLASTIC\rNAC:\rBESTWAY INFLATABLES CORP\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;N/M&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;60.000&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;15835.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;bcf204b4e96245a7a19d8868582a7cf1&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;03/05/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT COLLECT&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;66.936&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;FIX-RIC5076704_EC&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r1001 BUSSE ROAD\rELK GROVE VILLAGE, IL 60007\rUSA\rREF:1018-6692-540.000&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: FIX-RIC5076704_EC\rOB/L NUMBER:&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;001E&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;PEILI JI&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;WILMINGTON, NC&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;NORTHERN JUSTICE&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR AMERICA LINE\rKN REF. 4351-0375-803.063&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r1001 BUSSE ROAD\rELK GROVE VILLAGE, IL 60007\rUSA\rAGENT OF BLUE ANCHOR AMERICA LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0375-803.063&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;7777.60&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005553909-4351-0375-803.063+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;OFFICE CHAIR\rNO S.W.P.M.\rS/C:FIX-RIC5076704_EC\rNAC:OFM\rA1 \rHS-CODE(S):940130\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;940130&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;OFM\r1503810&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;66.936&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;7777.60&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;8f862069ab2e4895b4e07cd80f84c06f&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;27/04/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT PREPAID&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;68.000&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;17-108TPC-126&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r11501 METRO AIRPORT CENTER DRIVE\rSUITE 100\rROMULUS, MI 48174,  U.S.A.&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: 17-108TPC-126\rOB/L NUMBER:\r4/27 MSC JAGUAR FM SHA TO DET VIA LGB\r1*40HQ\rA/C YANFENG\rMSC CODE: US003858&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;FX816N&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;CHERRY LI&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;LONG BEACH,CA&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;MSC LAUREN&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR AMERICA LINE\rKN REF. 4351-0382-804.029&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL, INC.\r11501 METRO AIRPORT CENTER DRIVE\rSUITE 100\rROMULUS, MI 48174,  U.S.A.\rAGENT OF BLUE ANCHOR AMERICA LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0382-804.029&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;3960.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005521975-4351-0382-804.029+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;AUTO PARTS\r(DOOR&apos;S TRIM)\rNO S.W.P.M.\rA/C YANFENG\rNO MSC CHASSIS REQUIRED\rDESTINATION\rHS-CODE(S):870829\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_hscode&quot;</span>:<span class="hljs-string">&quot;870829&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;N/M&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;68.000&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;3960.00&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;c243f942ea714e24ba3a643afcfab207&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}
+{<span class="hljs-string">&quot;lookup&quot;</span>:<span class="hljs-string">&quot;logistics-ksession&quot;</span>,<span class="hljs-string">&quot;commands&quot;</span>:[{<span class="hljs-string">&quot;insert&quot;</span>:{<span class="hljs-string">&quot;object&quot;</span>:{<span class="hljs-string">&quot;com.sample.models.Booking&quot;</span>:{<span class="hljs-string">&quot;values&quot;</span>:{<span class="hljs-string">&quot;data&quot;</span>:[{<span class="hljs-string">&quot;Summary&quot;</span>:{<span class="hljs-string">&quot;wfobc_transport_term&quot;</span>:<span class="hljs-string">&quot;CY/CY&quot;</span>,<span class="hljs-string">&quot;wfobc_etd&quot;</span>:<span class="hljs-string">&quot;02/05/2018&quot;</span>,<span class="hljs-string">&quot;wfobc_payment_mode&quot;</span>:<span class="hljs-string">&quot;FREIGHT PREPAID&quot;</span>,<span class="hljs-string">&quot;wfobc_total_volumn&quot;</span>:<span class="hljs-string">&quot;45.000&quot;</span>,<span class="hljs-string">&quot;wfobc_bok_contract_no&quot;</span>:<span class="hljs-string">&quot;KONE&quot;</span>,<span class="hljs-string">&quot;wfobc_consign_department&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_load_port&quot;</span>:<span class="hljs-string">&quot;SHANGHAI&quot;</span>,<span class="hljs-string">&quot;wfobc_notify&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL SDN. BHD.\r1 JALAN BUMBUNG U8/90 SEKSYEN U8\rPERINDUSTRIAN BUKIT JELUTONG\r40150 SHAN ALAM, SELANGOR, MALAYSIA&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_remark&quot;</span>:<span class="hljs-string">&quot;CONTRACT NUMBER: KONE\rOB/L NUMBER:&quot;</span>,<span class="hljs-string">&quot;wfobc_voyage&quot;</span>:<span class="hljs-string">&quot;TBA&quot;</span>,<span class="hljs-string">&quot;wfobc_booking_party&quot;</span>:<span class="hljs-string">&quot;SCOTT CHE&quot;</span>,<span class="hljs-string">&quot;wfobc_discharge_port&quot;</span>:<span class="hljs-string">&quot;PORT KLANG&quot;</span>,<span class="hljs-string">&quot;org_id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;wfobc_vessel_name&quot;</span>:<span class="hljs-string">&quot;TBN&quot;</span>,<span class="hljs-string">&quot;wfobc_shipper&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED\r11-16F, BLOCK 1, LIFE HUB AT DANING\rOFFICE TOWER, 1868, GONG HE XIN RD,\rZHABEI DISTRICT, SHANGHAI, CHINA\rAGENT OF BLUE ANCHOR LINE\rKN REF. 4351-0139-804.040&quot;</span>,<span class="hljs-string">&quot;wfobc_consignee&quot;</span>:<span class="hljs-string">&quot;KUEHNE + NAGEL SDN. BHD.\r1 JALAN BUMBUNG U8/90 SEKSYEN U8\rPERINDUSTRIAN BUKIT JELUTONG\r40150 SHAN ALAM, SELANGOR, MALAYSIA\rAGENT OF BLUE ANCHOR LINE&quot;</span>,<span class="hljs-string">&quot;order_id&quot;</span>:<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;wfobc_custom_no&quot;</span>:<span class="hljs-string">&quot;4351-0139-804.040&quot;</span>,<span class="hljs-string">&quot;wfobc_total_gross_weight&quot;</span>:<span class="hljs-string">&quot;45000.00&quot;</span>,<span class="hljs-string">&quot;ext_company&quot;</span>:<span class="hljs-string">&quot;KUEHNE &amp; NAGEL LIMITED&quot;</span>},<span class="hljs-string">&quot;Container&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>},{<span class="hljs-string">&quot;wfobcc_container_type&quot;</span>:<span class="hljs-string">&quot;40HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_container_num&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>}],<span class="hljs-string">&quot;pages&quot;</span>:{<span class="hljs-string">&quot;endpage&quot;</span>:<span class="hljs-number">2</span>,<span class="hljs-string">&quot;startpage&quot;</span>:<span class="hljs-number">1</span>,<span class="hljs-string">&quot;fileName&quot;</span>:<span class="hljs-string">&quot;MAPEMLCN0005560197-4351-0139-804.040+.PDF&quot;</span>},<span class="hljs-string">&quot;Detail&quot;</span>:[{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;TWO PIECES OF MAP\rESCALATOR\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;KONE\rES20180261&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;15.000&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;15000.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;TWO PIECES OF MAP00\rESCALATOR\rBKG NO:\rREL NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;KONE\rES20180261&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;15.000&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;15000.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>},{<span class="hljs-string">&quot;wfobcc_description&quot;</span>:<span class="hljs-string">&quot;TWO PIECES OF MAP\rESCALATOR\rBKG NO:&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn_unit&quot;</span>:<span class="hljs-string">&quot;M3&quot;</span>,<span class="hljs-string">&quot;wfobcc_quantity&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;wfobcc_marks&quot;</span>:<span class="hljs-string">&quot;KONE\rES20180261&quot;</span>,<span class="hljs-string">&quot;wfobcc_volumn&quot;</span>:<span class="hljs-string">&quot;15.000&quot;</span>,<span class="hljs-string">&quot;wfobcc_pcs&quot;</span>:<span class="hljs-string">&quot;40&apos; HC&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight&quot;</span>:<span class="hljs-string">&quot;15000.00&quot;</span>,<span class="hljs-string">&quot;wfobcc_gross_weight_unit&quot;</span>:<span class="hljs-string">&quot;KG&quot;</span>}]}],<span class="hljs-string">&quot;params&quot;</span>:{<span class="hljs-string">&quot;docType&quot;</span>:<span class="hljs-string">&quot;CONSIGN&quot;</span>,<span class="hljs-string">&quot;appId&quot;</span>:<span class="hljs-string">&quot;FFQ6ht26&quot;</span>,<span class="hljs-string">&quot;appKey&quot;</span>:<span class="hljs-string">&quot;uQ3FE10G&quot;</span>,<span class="hljs-string">&quot;appSecret&quot;</span>:<span class="hljs-string">&quot;d0cef53a5ccef0d564d9c391432c484b&quot;</span>,<span class="hljs-string">&quot;echoStr&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;reqUuid&quot;</span>:<span class="hljs-string">&quot;77d395ed575648059131026175c1a4d9&quot;</span>,<span class="hljs-string">&quot;ifNeedOcr&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;ocrType&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;billStyle&quot;</span>:<span class="hljs-string">&quot;&quot;</span>,<span class="hljs-string">&quot;ifNeedCallback&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<span class="hljs-string">&quot;callbackUrl&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;pathCode&quot;</span>:<span class="hljs-literal">null</span>,<span class="hljs-string">&quot;fieldStyle&quot;</span>:<span class="hljs-string">&quot;UNDERLINE&quot;</span>}},<span class="hljs-string">&quot;resultCode&quot;</span>:<span class="hljs-string">&quot;success&quot;</span>,<span class="hljs-string">&quot;resultMessage&quot;</span>:<span class="hljs-string">&quot;&#x8BC6;&#x522B;&#x6210;&#x529F;&quot;</span>}},<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;booking&quot;</span>}},{<span class="hljs-string">&quot;fire-all-rules&quot;</span>:{}},{<span class="hljs-string">&quot;get-objects&quot;</span>:{<span class="hljs-string">&quot;out-identifier&quot;</span>:<span class="hljs-string">&quot;objects&quot;</span>}},{<span class="hljs-string">&quot;dispose&quot;</span>:{}}]}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/bmr-rest-sample.png" alt="bmr rest sample.png"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___4">&#x672C;&#x5730;&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">KieContainer container = KieServices.Factory.get().getKieClasspathContainer();
+
+KieSession ksession = container.newKieSession(<span class="hljs-string">&quot;logistics-ksession&quot;</span>);
+
+ksession.insert(booking);
+
+ksession.fireAllRules();
+
+ksession.dispose()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cxf_rest">CXF REST &#x5BA2;&#x6237;&#x7AEF;&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Command&lt;?&gt;[] commands = {
+           	CommandFactory.newInsert(<span class="hljs-keyword">new</span> CountryCode(<span class="hljs-string">&quot;SHANGHAI&quot;</span>), <span class="hljs-string">&quot;contrycode&quot;</span>),
+           	CommandFactory.newFireAllRules(),
+           	CommandFactory.newGetObjects(<span class="hljs-string">&quot;objects&quot;</span>),
+           	CommandFactory.newDispose()
+    };
+
+Command&lt;?&gt; batchExecution = CommandFactory.newBatchExecution(Arrays.asList(commands), <span class="hljs-string">&quot;default-stateless-ksession&quot;</span>);
+
+WebClient wc = WebClient.create(URL_LOGISTICS_FREIGHT_MANAGEMENT_1_0_1);
+wc.header(<span class="hljs-string">&quot;Authorization&quot;</span>, authorizationHeader);
+wc.header(<span class="hljs-string">&quot;accept&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>);
+wc.header(<span class="hljs-string">&quot;content-type&quot;</span>, <span class="hljs-string">&quot;application/json&quot;</span>);
+
+Response resp = wc.post(booking);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__dt">&#x89C4;&#x5219;&#x8868;&#x683C; DT &#x4F7F;&#x7528;&#x5206;&#x6790;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="src/img/rules-dt.png" alt="rules dt.png"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__dsl">&#x9886;&#x57DF;&#x4E13;&#x5BB6;&#x8BED;&#x8A00; DSL &#x4F7F;&#x7528;&#x5206;&#x6790;</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__it">&#x90BB;&#x57DF;&#x4E13;&#x5BB6;&#x548C; IT &#x5B9A;&#x4E49;&#x89C4;&#x5219;&#x6620;&#x5C04;</h3>
+<div class="paragraph">
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <strong>Kie Workbench</strong> &#x6216; <strong>&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x5DE5;&#x5177;</strong> &#x5B9A;&#x4E49;&#x3002;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-definition.png" alt="dsl definition.png"></span></p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>DSL &#x5B9A;&#x4E49;&#x793A;&#x4F8B;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">[condition][]&#x88C5;&#x8D27;&#x5730;&#x5740;&#x662F;&#x4EE5; <span class="hljs-string">&quot;{value}&quot;</span> &#x5F00;&#x5934;&#x7684;=summary : Summary(wfobcShipper.startsWith(<span class="hljs-string">&quot;{value}&quot;</span>))
+[condition][]&#x8BA2;&#x5355;&#x662F;&#x7279;&#x6B8A;&#x8BA2;&#x5355;=order : Order(isSpecial == <span class="hljs-keyword">true</span>)
+[condition][]&#x8BA2;&#x5355;&#x7684;&#x7EA7;&#x522B;&#x662F; <span class="hljs-string">&quot;{value}&quot;</span>=order : Order(level == <span class="hljs-string">&quot;{value}&quot;</span>)
+[consequence][]&#x53D1;&#x8D27;&#x4EBA;&#x4EE3;&#x7801;&#x680F;&#x4F4D;&#x5185;&#x586B;&#x5165; <span class="hljs-string">&quot;{value}&quot;</span>=summary.setWfobcShipperCode(<span class="hljs-string">&quot;{value}&quot;</span>);
+[consequence][]&#x8BA2;&#x5355;&#x7684;&#x8D39;&#x7528;&#x662F; {value}=order.setFee({value});</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__guided_rule">&#x521B;&#x5EFA; Guided Rule</h3>
+<div class="paragraph">
+<p>&#x5728; Kie Workbench &#x4E2D;&#x9009;&#x4E2D; <code>Use Domain Specific Language(DSL)</code>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-create-new.png" alt="dsl create new.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x5728; Data Objects &#x680F;&#x70B9;&#x51FB; <code>+New items</code> &#x5173;&#x8054; DSL &#x76F8;&#x5173;&#x7684; Fact&#x3002;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-create-import.png" alt="dsl create import.png"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__lhs">&#x7F16;&#x8F91; LHS</h3>
+<div class="paragraph">
+<p>&#x70B9;&#x51FB; <strong>WHEN</strong> &#x884C;&#x5BF9;&#x5E94;&#x5728;&#x6700;&#x53F3;&#x4FA7;&#x7684;&#x7EFF;&#x8272;&#x52A0;&#x53F7;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E2A; condition&#xFF1A;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-create-lhs.png" alt="dsl create lhs.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x66FF;&#x6362; DSL &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x4E1A;&#x52A1;&#x53C2;&#x6570;&#x3002;</p>
+</div>
+<div class="paragraph">
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x53EF;&#x7EE7;&#x7EED;&#x70B9;&#x51FB;&#x7EFF;&#x8272;&#x52A0;&#x53F7;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684; condition&#x3002;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__rhs">&#x7F16;&#x8F91; RHS</h3>
+<div class="paragraph">
+<p>&#x70B9;&#x51FB; <strong>THEN</strong> &#x884C;&#x5BF9;&#x5E94;&#x5728;&#x6700;&#x53F3;&#x4FA7;&#x7684;&#x7EFF;&#x8272;&#x52A0;&#x53F7;&#xFF0C;&#x9009;&#x62E9;&#x4E00;&#x4E2A; consequence&#xFF1A;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-create-rhs.png" alt="dsl create rhs.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x8F93;&#x5165; DSL &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x3002;</p>
+</div>
+<div class="paragraph">
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x53EF;&#x7EE7;&#x7EED;&#x70B9;&#x51FB;&#x7EFF;&#x8272;&#x52A0;&#x53F7;&#x6DFB;&#x52A0;&#x66F4;&#x591A;&#x7684; consequence&#x3002;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___5">&#x6700;&#x7EC8;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x6700;&#x7EC8;&#x89C4;&#x5219; Source</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/dsl-create-rulesrc.png" alt="dsl create rulesrc.png"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fuse">Fuse &#x96C6;&#x6210;</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><strong>META-INF/spring/camel-context.xml</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span>
+    <span class="hljs-attr">xmlns:camel</span>=<span class="hljs-string">&quot;http://camel.apache.org/schema/spring&quot;</span>
+    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.apache.activemq.camel.component.ActiveMQComponent&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;activemq&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;brokerURL&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;#{systemProperties[&apos;AMQ_BROKER_URL&apos;] ?: &apos;tcp://127.0.0.1:61616&apos;}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;userName&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;#{systemProperties[&apos;AMQ_USER&apos;] ?: &apos;admin&apos;}&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;#{systemProperties[&apos;AMQ_PASSWORD&apos;] ?: &apos;admin&apos;}&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">camelContext</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queueTargetContext&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://camel.apache.org/schema/spring&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">route</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logisticsRoute&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">from</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_from1&quot;</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">&quot;activemq:queue:logistics.newFreight&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">log</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logger&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Receive a message from queue:[logistics.newFreight]&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">log</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logger&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;${body}&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">setHeader</span> <span class="hljs-attr">headerName</span>=<span class="hljs-string">&quot;CamelHttpMethod&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_setHeader1&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">constant</span>&gt;</span>POST<span class="hljs-tag">&lt;/<span class="hljs-name">constant</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">setHeader</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">setHeader</span> <span class="hljs-attr">headerName</span>=<span class="hljs-string">&quot;Authorization&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_setHeader2&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">constant</span>&gt;</span>Basic a3lsaW46cGFzc3dvcmQxIQ==<span class="hljs-tag">&lt;/<span class="hljs-name">constant</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">setHeader</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">setHeader</span> <span class="hljs-attr">headerName</span>=<span class="hljs-string">&quot;accept&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_setHeader3&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">constant</span>&gt;</span>application/json<span class="hljs-tag">&lt;/<span class="hljs-name">constant</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">setHeader</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">setHeader</span> <span class="hljs-attr">headerName</span>=<span class="hljs-string">&quot;content-type&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_setHeader4&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">constant</span>&gt;</span>application/json<span class="hljs-tag">&lt;/<span class="hljs-name">constant</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">setHeader</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">log</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logger&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Send newFreight to BRMS&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">to</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_to1&quot;</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">&quot;http://127.0.0.1:8080/kie-server/services/rest/server/containers/instances/logistics-freight-management_1.0.0&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">log</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logger&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;Response from BRMS Success&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">setBody</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;_setBody1&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">simple</span>&gt;</span>${body}<span class="hljs-tag">&lt;/<span class="hljs-name">simple</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">setBody</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">to</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;publishResultTo&quot;</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">&quot;activemq:queue:logistics.results&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">log</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;logger&quot;</span> <span class="hljs-attr">message</span>=<span class="hljs-string">&quot;BRMS response be sent to queue:[logistics.results]&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">route</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">camelContext</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="src/img/fuse-integration.png" alt="fuse integration.png"></span></p>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../dt-loan-approve/" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 贷款审批">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"运单管理","level":"1.6.4","depth":2,"previous":{"title":"贷款审批","level":"1.6.3","depth":2,"path":"dt-loan-approve/README.adoc","ref":"dt-loan-approve/README.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"wechat":"http://ksoong.org/cloud-labs/content/images/wechat.png","alipay":"http://ksoong.org/cloud-labs/content/images/alipay.png","title":"","button":"赞赏","alipayText":"支付宝捐赠","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/cloud-labs/blob/gh-pages"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"logistics-freight-management/README.adoc","mtime":"2018-05-25T16:44:11.231Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-08-03T13:04:30.083Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

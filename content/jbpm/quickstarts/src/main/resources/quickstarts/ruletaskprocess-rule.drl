@@ -1,0 +1,8 @@
+package org.jbpm.quickstarts
+
+rule "Hello World Rule" ruleflow-group "Print"
+when
+	eval( true )
+then
+	System.out.println("Hello World Rule");
+end

@@ -1,0 +1,24 @@
+package org.drools.examples.saliences;
+
+rule "Rule 01"
+  salience -100
+  when
+    eval (true)
+  then
+    System.out.println("Rule 01");
+end
+
+rule "Rule 02"
+  when
+    eval (true)
+  then
+    System.out.println("Rule 02");
+end
+
+rule "Rule 03"
+  salience 100
+  when
+    eval (true)
+  then
+    System.out.println("Rule 03");
+end

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_multiplierOperationItem" structureRef="org.jbpm.test.workitem.model.MultiplierOperation" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.simpleworkitemparameterprocess" name="SimpleWorkItemParameterProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- process variables -->
+    <property id="multiplierOperation" itemSubjectRef="_multiplierOperationItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_1" name="Start" />
+    <endEvent id="_8" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_9" name="Script" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Script 1: " +multiplierOperation);</script>
+    </scriptTask>
+    <scriptTask id="_10" name="Script" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Script 2: " +multiplierOperation);</script>
+    </scriptTask>
+    <task id="_11" name="Multiply" tns:taskName="multiplier_process" >
+      <ioSpecification>
+        <dataInput id="_11_internalMultiplierOperationInput" name="internalMultiplierOperation" />
+        <inputSet>
+          <dataInputRefs>_11_internalMultiplierOperationInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <sourceRef>multiplierOperation</sourceRef>
+        <targetRef>_11_internalMultiplierOperationInput</targetRef>
+      </dataInputAssociation>
+    </task>
+
+    <!-- connections -->
+    <sequenceFlow id="_10-_8" sourceRef="_10" targetRef="_8" />
+    <sequenceFlow id="_1-_9" sourceRef="_1" targetRef="_9" />
+    <sequenceFlow id="_11-_10" sourceRef="_11" targetRef="_10" />
+    <sequenceFlow id="_9-_11" sourceRef="_9" targetRef="_11" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.simpleworkitemparameterprocess" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="16" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" >
+        <dc:Bounds x="452" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" >
+        <dc:Bounds x="96" y="16" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_10" >
+        <dc:Bounds x="340" y="16" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11" >
+        <dc:Bounds x="208" y="16" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_10-_8" >
+        <di:waypoint x="380" y="40" />
+        <di:waypoint x="476" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_9" >
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="136" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_11-_10" >
+        <di:waypoint x="258" y="40" />
+        <di:waypoint x="380" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9-_11" >
+        <di:waypoint x="136" y="40" />
+        <di:waypoint x="258" y="40" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

@@ -1,0 +1,41 @@
+Quick Entrance
+--------------
+
+* jBPM Approval Demo on OpenShift
+
+http://jeedemo-ksoong.rhcloud.com/jbpm-approval/
+
+https://jeedemo-ksoong.rhcloud.com/jbpm-approval/
+
+NOTE: `https` used for penetrating through Chinese Firewall
+
+* jBPM Approval Demo Test
+
+link:jBPM-approval-test.asciidoc[Test Procedure]
+
+* jBPM Approval Demo Run
+
+link:jBPM-approval-run.asciidoc[Build and Run]
+
+
+About jBPM Approval Demo
+------------------------
+
+image::img/bpmn2_process.png[BPMN2 Process]
+
+As showed in above diagram:
+
+* A ticket should be approved by both PM and HR
+* A ticket should be first approved by PM, then approved by HR
+
+In jBPM Approval Demo, you can appy a ticket via click Apply Button, John play a role with PM who will first approve your ticket, Mary play a role with HR who will approve your ticket after John approve.
+
+image::img/jbpm-approval-architecture.png[jBPM Approval Demo Architecture]
+
+As showed in above diagram:
+
+* jBPM use RDBMS
+* Java EE App use jBPM load jBPM Process(approval-demo.bpmn)
+* Java EE App use Infinispan store data
+
+The jBPM Approval Demo is traditional Java EE App, which use jBPM expose business logic to jBPM BPMN process. Additionally, Infinispan(Open Source Data Grid) be used to store data.

@@ -1,0 +1,17 @@
+package org.drools.examples.partition;
+
+rule "Rule 01"
+  agenda-group "partitionA"
+  when
+    eval (true)
+  then
+    System.out.println("Rule 01");
+end
+
+rule "Rule 02"
+  agenda-group "partitionB"
+  when
+    eval (true)
+  then
+    System.out.println("Rule 02");
+end

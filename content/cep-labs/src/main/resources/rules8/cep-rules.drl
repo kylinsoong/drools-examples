@@ -1,0 +1,13 @@
+//created on: Aug 3, 2018
+package rules8
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+rule "包裹匹配"
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN) from entry-point "CheckIn"
+    $event2:BagScannedEvent(location == Location.SORTING, bagTag.id == $event1.bagTag.id, this != $event1) from entry-point "Sorting"
+then
+    //System.out.println("发现了一个包裹经过 CHECK_IN 和 SORTING: " + $event1.getBagTag().getId());
+end

@@ -1,0 +1,15 @@
+//created on: Jul 28, 2018
+package accumulate
+
+import org.kie.examples.phreak.nodes.Customer;
+import org.kie.examples.phreak.nodes.Order;
+
+
+
+rule "Sample Rule 1"
+when
+    $c: Customer()
+    accumulate( Order(customer == $c), $n: count(1))
+then
+    System.out.println($n);
+end

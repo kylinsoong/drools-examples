@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.sampleprocess" name="UserGroupsSampleProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- nodes -->
+    <startEvent id="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9" name="Start" />
+    <endEvent id="_5A8EEF38-7E0E-4579-A8B5-3FE05D647BB7" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <userTask id="_2CF47428-D368-48DC-8969-71BB65CBE9DF" name="Task A" >
+      <ioSpecification>
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput" name="Comment" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput" name="Skippable" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput" name="Content" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput" name="TaskName" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput" name="GroupId" />
+        <dataInput id="_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput" name="Priority" />
+        <inputSet>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput</dataInputRefs>
+          <dataInputRefs>_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task A</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_SkippableInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">A</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_ContentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Task A</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">GroupA</from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_GroupIdInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_2CF47428-D368-48DC-8969-71BB65CBE9DF_PriorityInput</to>
+        </assignment>
+      </dataInputAssociation>
+    </userTask>
+
+    <!-- connections -->
+    <sequenceFlow id="_2CF47428-D368-48DC-8969-71BB65CBE9DF-_5A8EEF38-7E0E-4579-A8B5-3FE05D647BB7" sourceRef="_2CF47428-D368-48DC-8969-71BB65CBE9DF" targetRef="_5A8EEF38-7E0E-4579-A8B5-3FE05D647BB7" />
+    <sequenceFlow id="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9-_2CF47428-D368-48DC-8969-71BB65CBE9DF" sourceRef="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9" targetRef="_2CF47428-D368-48DC-8969-71BB65CBE9DF" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.sampleprocess" >
+      <bpmndi:BPMNShape bpmnElement="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9" >
+        <dc:Bounds x="16" y="16" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5A8EEF38-7E0E-4579-A8B5-3FE05D647BB7" >
+        <dc:Bounds x="226" y="14" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2CF47428-D368-48DC-8969-71BB65CBE9DF" >
+        <dc:Bounds x="96" y="16" width="100" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_2CF47428-D368-48DC-8969-71BB65CBE9DF-_5A8EEF38-7E0E-4579-A8B5-3FE05D647BB7" >
+        <di:waypoint x="146" y="40" />
+        <di:waypoint x="250" y="38" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_BC5F2CC4-CD2D-48C1-BBD9-552C5ECB2FA9-_2CF47428-D368-48DC-8969-71BB65CBE9DF" >
+        <di:waypoint x="40" y="40" />
+        <di:waypoint x="146" y="40" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

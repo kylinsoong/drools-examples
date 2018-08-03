@@ -1,0 +1,56 @@
+package travels;
+
+import com.sample.domain.travel.Reservation;
+import com.sample.domain.travel.Customer;
+import com.sample.domain.travel.AvailableRows;
+import com.sample.rules.utils.RowPopulator;
+
+function AvailableRows addNonSequentialRows(int first, int second, int third, int fourth) {
+    AvailableRows rows = RowPopulator.populateRows(first, second);
+    return RowPopulator.addMoreRows(rows, third, fourth);
+}
+
+rule "GoldOver21SeatRule"
+
+    when
+        Customer(age >= 21)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(RowPopulator.populateRows(3, 38));
+end
+
+rule "GoldUnder21SeatRule"
+
+    when
+        Customer(age < 21)
+        Customer(loyaltyLevel == "Gold")
+    then
+        insertLogical(addNonSequentialRows(3, 21, 24, 38));
+end
+
+rule "SilverSeatRule"
+
+    when
+        Customer(loyaltyLevel == "Silver")
+    then
+        insertLogical(addNonSequentialRows(10, 21, 24, 38));
+end
+
+rule "BronzeSeatRule"
+
+    when
+        Customer(loyaltyLevel == "Bronze")
+    then
+        insertLogical(RowPopulator.populateRows(24, 38));
+end
+
+rule "MonFilterSeatRule"
+
+    when
+        Customer(loyaltyLevel == "None")
+    then
+        insertLogical(RowPopulator.populateRows(28, 38));
+end
+
+
+

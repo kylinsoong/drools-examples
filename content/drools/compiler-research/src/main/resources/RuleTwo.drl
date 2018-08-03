@@ -1,0 +1,9 @@
+package org.drools.compiler.research;
+
+rule "Duplicated Rule Name"
+dialect "java"
+when
+	model : Model()
+then
+	model.add("Duplicated Rule Name", "From RuleTwo");
+end

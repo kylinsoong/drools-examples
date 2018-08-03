@@ -1,0 +1,59 @@
+Original Project
+----------------
+
+https://github.com/eschabell/brms-rewards-demo
+
+Steps for install to BRMS 5.3.1
+-------------------------------
+
+* Edit $SERVER_DIR/conf/props/brms-users.properties, make sure the following content are included:
+----
+admin=admin
+erics=erics
+krisv=krisv
+mary=mary
+john=john
+----
+
+* Edit $SERVER_DIR/conf/props/brms-roles.properties, make sure the following content are included:
+----
+admin=JBossAdmin,HttpInvoker,user,admin
+mailman=JBossAdmin,readwrite
+krisv=admin,manager,user
+john=admin,manager,user,PM
+mary=admin,manager,user,HR
+erics=admin,manager,users,HR
+----
+
+* Edit $SERVER_DIR/deploy/jbpm-human-task.war/WEB-INF/web.xml, change the following 3 parameters' value as below:
+----
+      <init-param>
+        <param-name>user.group.callback.class</param-name>
+        <param-value>org.jbpm.task.service.DefaultUserGroupCallbackImpl</param-value>
+      </init-param>
+
+      <init-param>
+        <param-name>load.users</param-name>
+        <param-value>classpath:/org/jbpm/task/servlet/SampleUsers.mvel</param-value>
+      </init-param>
+
+      <init-param>
+        <param-name>load.groups</param-name>
+        <param-value>classpath:/org/jbpm/task/servlet/SampleGroups.mvel</param-value>
+      </init-param>
+----
+
+* Create `drools.session.conf` file under $SERVER_DIR/deploy/business-central-server.war/WEB-INF/classes/META-INF, the `drools.session.conf` content as below:
+----
+drools.workItemHandlers = CustomWorkItemHandlers.conf
+----
+
+* Create `CustomWorkItemHandlers.conf` file under $SERVER_DIR/deploy/business-central-server.war/WEB-INF/classes/META-INF, the `CustomWorkItemHandlers.conf` content as below:
+----
+[
+  "Log": new org.jbpm.process.instance.impl.demo.SystemOutWorkItemHandler(),
+  "Email": new org.jbpm.process.instance.impl.demo.SystemOutWorkItemHandler(),
+]
+----
+
+* Import `repository_export.zip` to BRMS 5.3.1 repository, build package, run process via jbpm-console 

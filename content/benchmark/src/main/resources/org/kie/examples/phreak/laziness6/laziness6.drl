@@ -1,0 +1,66 @@
+package org.kie.examples.phreak.laziness6
+
+import org.kie.examples.phreak.domain.Account
+import org.kie.examples.phreak.domain.Transaction
+
+dialect "mvel"
+
+rule gold_plus_account
+salience 250
+when
+  account: Account()
+  Number(this >= 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Gold Plus account: " + account);
+end
+
+rule gold_account
+salience 200
+when
+  account: Account()
+  Number(this >= 40000 && this < 50000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 40000 && this < 50000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Gold account: " + account);
+end
+
+rule silver_plus_account
+salience 150
+when
+  account: Account()
+  Number(this >= 30000 && this < 40000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 30000 && this < 40000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Silver plus account: " + account);
+end
+
+rule silver_account
+salience 100
+when
+  account: Account()
+  Number(this >= 20000 && this < 30000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 20000 && this < 30000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Silver account: " + account);
+end
+
+rule bronze_plus_account
+salience 50
+when
+  account: Account()
+  Number(this >= 10000 && this < 20000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 10000 && this < 20000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Bronze Plus account: " + account);
+end
+
+rule bronze_account
+salience 0
+when
+  account: Account()
+  Number(this >= 5000 && this < 10000) from accumulate(t: Transaction(source == account); sum(t.amount))
+  Number(this >= 5000 && this < 10000) from accumulate(t: Transaction(target == account); sum(t.amount))
+then
+  //System.out.println("Bronze account: " + account);
+end

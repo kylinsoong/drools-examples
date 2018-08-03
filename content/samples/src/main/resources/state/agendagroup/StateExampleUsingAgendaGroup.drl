@@ -1,0 +1,48 @@
+package state.agendagroup
+
+import com.sample.rules.state.State;
+import com.sample.rules.state.StateType;
+
+declare type State
+    @propertyChangeSupport
+end
+
+rule Bootstrap
+    when
+        a : State(name == "A", state == StateType.NOTRUN )
+    then
+        System.out.println(a.getName() + " finished" );
+        a.setState( StateType.FINISHED );
+end
+
+ 
+rule "A to B"
+    when
+        State(name == "A", state == StateType.FINISHED )
+        b : State(name == "B", state == StateType.NOTRUN )
+    then
+        System.out.println(b.getName() + " finished" );
+        b.setState( StateType.FINISHED );
+end
+
+rule "B to C"
+        agenda-group "B to C"
+        auto-focus true
+    when
+        State(name == "B", state == StateType.FINISHED )
+        c : State(name == "C", state == StateType.NOTRUN )
+    then
+        System.out.println(c.getName() + " finished" );
+        c.setState( StateType.FINISHED );
+        drools.getKnowledgeRuntime().getAgenda().getAgendaGroup( "B to D" ).setFocus();
+end
+
+rule "B to D"
+    agenda-group "B to D"
+    when
+        State(name == "B", state == StateType.FINISHED )
+        d : State(name == "D", state == StateType.NOTRUN )
+    then
+        System.out.println(d.getName() + " finished" );
+        d.setState( StateType.FINISHED );
+end

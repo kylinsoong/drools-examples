@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+    <kbase name="queries" packages="queries" >
+        <ksession name="ksession-queries" />
+    </kbase>
+
+
+    <kbase name="algorithms" packages="algorithms" >
+        <ksession name="ksession-algorithms" />
+    </kbase>
+
+    <kbase name="backwardchaining" packages="backwardchaining" >
+        <ksession name="ksession-backwardchaining" />
+    </kbase>
+
+    <kbase name="state-agendagroup" packages="state.agendagroup" >
+        <ksession name="ksession-state-agendagroup" />
+    </kbase>
+    
+    <kbase name="state-salience" packages="state.salience" >
+        <ksession name="ksession-state-salience" />
+    </kbase>
+
+    <kbase name="seats" packages="seats" >
+        <ksession name="SeatSession" />
+    </kbase>
+    
+    <kbase name="travel" packages="travel" >
+        <ksession name="MealSession" />
+    </kbase>
+    
+    <kbase name="travels" packages="travels" >
+        <ksession name="TravelsSession" />
+    </kbase>
+    
+    <kbase name="meals" packages="meals" >
+        <ksession name="ksession-dtables" />
+    </kbase>
+    
+    <kbase name="dsl_travels" packages="dsl_travels" >
+        <ksession name="ksession-dsl-classupgrade" />
+    </kbase>
+    
+    <kbase name="dsl_troubleticket" packages="dsl_troubleticket" >
+        <ksession name="ksession-dsl-troubleticket" />
+    </kbase>
+    
+    <kbase name="complex_rules" packages="complex_rules" >
+        <ksession name="ksession-complexrules" />
+    </kbase>
+    
+    <kbase name="calendars" packages="calendars" >
+        <ksession name="ksession-calendars" />
+    </kbase>
+    
+    <kbase name="bc" packages="bc" >
+        <ksession name="ksession-bc" />
+    </kbase>
+    
+    <kbase name="conflict" packages="conflict" >
+        <ksession name="ksession-conflict" />
+    </kbase>
+    
+    <kbase name="stocks" packages="stocks" eventProcessingMode="stream">
+        <ksession name="ksession-stocks" />
+    </kbase>
+    
+    <kbase name="cep" packages="cep" eventProcessingMode="stream">
+        <ksession name="ksession-cep" />
+    </kbase>
+    
+    <kbase name="airport" packages="airport" equalsBehavior="equality" eventProcessingMode="stream">
+        <ksession name="ksession-airport" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+</kmodule>

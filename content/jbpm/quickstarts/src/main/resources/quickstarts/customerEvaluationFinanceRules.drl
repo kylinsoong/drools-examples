@@ -1,0 +1,12 @@
+package org.jbpm.quickstarts;
+
+rule "Check Amount Customer" ruleflow-group "Validation"
+    when
+        r: Request();
+        Person(id == r.personId, r.amount < 1000);
+    then
+    	System.out.println("Under funded customer");
+        r.setInvalid("Poor customer");
+        System.out.println("Set Request invalid comment to: Poor customer.");
+        System.out.println("Customer request= " + r);
+end

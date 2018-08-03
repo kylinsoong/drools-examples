@@ -1,0 +1,9 @@
+package org.drools.expert.stu03;
+
+rule "cross product"
+when
+	$room : Room()
+	$sprinkler : Sprinkler(room == $room)
+then
+	System.out.println( "room:" + $room.getName() + " sprinkler:" + $sprinkler.getRoom().getName() );
+end

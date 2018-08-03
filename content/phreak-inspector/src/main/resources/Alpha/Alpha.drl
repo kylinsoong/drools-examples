@@ -1,0 +1,19 @@
+//created on: Jul 11, 2018
+package Alpha
+
+import org.kie.examples.phreak.nodes.Customer;
+import org.kie.examples.phreak.nodes.Category;
+
+rule "Sample Rule 1"
+    when
+        $c: Customer(age > 30, category == Category.GOLD)
+    then
+        System.out.println($c);
+end
+
+rule "Sample Rule 2"
+    when
+        $c: Customer(age > 30, category == Category.SILVER)
+    then
+        System.out.println($c);
+end

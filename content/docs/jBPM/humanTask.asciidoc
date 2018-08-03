@@ -1,0 +1,68 @@
+Human Tasks
+-----------
+
+* An important aspect of business processes is human task management. While some of the work performed in a process can be executed automatically, some tasks need to be executed by human actors.
+
+* jBPM supports a special human task node inside processes for modeling this interaction with human users. This human task node allows process designers to define the properties related to the task that the human actor needs to execute, like for example the type of task, the actor(s),
+or the data associated with the task.
+
+* jBPM also includes a so-called human task service, a back-end service that manages the life cycle of these tasks at runtime. The jBPM implementation is based on the WS-HumanTask specification. Note however that this implementation is fully pluggable, meaning that users can integrate their own human task solution if necessary.
+
+* In order to have human actors participate in your processes, you first need to
+** include human task nodes inside your process to model the interaction with human actors
+** integrate a task management component (like for example the WS-HumanTask based implementation provided by jBPM) 
+** have end users interact with a human task client to request their task list and claim and complete the tasks assigned to them.
+
+image::img/jbpm-humantask-1.png[human tasks inside processes using a special user task]
+
+* A user task node contains the following properties:
+** Id: The id of the node (which is unique within one node container).
+** Name: The display name of the node.
+** TaskName: The name of the human task.
+** Priority: An integer indicating the priority of the human task.
+** Comment: A comment associated with the human task.
+** ActorId: The actor id that is responsible for executing the human task. A list of actor id's can be specified using a comma (',') as separator.
+** GroupId: The group id that is responsible for executing the human task. A list of group id's can be specified using a comma (',') as separator.
+** Skippable: Specifies whether the human task can be skipped, i.e., whether the actor may decide not to execute the task.
+** Content: The data associated with this task.
+** Swimlane: The swimlane this human task node is part of. Swimlanes make it easy to assign multiple human tasks to the same actor.
+** On entry and on exit actions: Action scripts that are executed upon entry and exit of this node, respectively.
+** Parameter mapping: Allows copying the value of process variables to parameters of the human task. Upon creation of the human tasks, the values will be copied.
+** Result mapping: Allows copying the value of result parameters of the human task to a process variable. Upon completion of the human task, the values will be copied. A human task has a result variable "Result" that contains the data returned by the human actor. The variable "ActorId" contains the id of the actor that actually executed the task.
+
+
+Human task service
+++++++++++++++++++
+
+* As far as the jBPM engine is concerned, human tasks are similar to any other external service that needs to be invoked and are implemented as a domain-specific service.
+
+* Users can plug in any human task service implementation, such as the one that's provided by jBPM, or they may register their own implementation. In the next paragraphs, we will describe the human task servcie implementation provided by jBPM.
+
+image::img/jbpm-humantask-2.png[*The life cycle of the tasks:*]
+
+* *Created:* A newly created task starts in the "Created" stage
+* *Ready:* Hunman task status automatically become "Ready" after been created
+* *Reserved:* When a user then eventually claims the task, the status will change to "Reserved".
+* *InProgress:* When the user who has claimed the task starts executing it, the task status will change from "Reserved" to "InProgress".
+* *Completed:* once the user has performed and completed the task, the task status will change to "Completed".
+* *Failed:* if the task could not be completed, the task status would change to "Failed".
+
+* jBPM provides the UserGroupCallback interface which allows you to create your own implementation for user and group management
+
+* The human task service is a completely independent service that the process engine communicates with. We therefore recommend that you start it as a separate service as well.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

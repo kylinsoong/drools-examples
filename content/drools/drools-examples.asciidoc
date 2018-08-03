@@ -1,0 +1,75 @@
+Drools function and declare example
+-----------------------------------
+
+static function example
++++++++++++++++++++++++
+
+This is a simple drools contain a function `hello`, which is a simple hello world example.
+
+----
+function String hello(String name) {
+	return "Hello "+name+"!";
+}
+
+rule "Using a static function"
+when
+	eval( true )
+then
+	System.out.println("using a static function: " + hello("Kylin Soong"));
+end
+----
+
+Run `org.drools.examples.function.FunctionExample` as application will fire the rule
+
+declared Type example
++++++++++++++++++++++
+
+This is simple declared type usage example.
+
+----
+declare Person
+	name : String
+	age : int
+end
+
+rule "Using a declared Type"
+when
+	eval( true )
+then
+	Person p = new Person();
+	p.setName("Kylin");
+	p.setAge(27);
+	System.out.println("Using a declared Type: " + p);
+end
+----
+
+Run `org.drools.examples.function.FunctionExample` as application will fire the rule
+
+declared Type in function example
++++++++++++++++++++++++++++++++++
+
+This is simple drools example to show use declared Type in function.
+
+----
+declare Person
+        name : String
+        age : int
+end
+
+
+function Person createPerson(String name, int age) {
+	Person p = new Person();
+	p.setName("Kylin");
+	p.setAge(27);
+	return p;
+}
+
+rule "Using a declared Type in function"
+when
+	eval( true )
+then
+	System.out.println("Using a declared Type in function: " + createPerson("Kylin Soong", 27));
+end
+----
+
+Run `org.drools.examples.function.FunctionExample` as application will fire the rule

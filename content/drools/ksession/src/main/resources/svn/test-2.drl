@@ -1,0 +1,8 @@
+package org.drools.examples
+
+rule "kagent scanner test 2"
+when
+	eval( true )
+then
+	System.out.println("This is kagent scanner test 2");
+end

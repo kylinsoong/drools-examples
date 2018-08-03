@@ -1,0 +1,19 @@
+package OTN
+
+import org.kie.examples.phreak.nodes.Customer;
+import org.kie.examples.phreak.nodes.Order;
+
+rule "Sample Rule 1"
+    when
+        $c: Customer()
+    then
+        System.out.println($c);
+end
+
+rule "Sample Rule 2"
+    when
+        $c: Order()
+    then
+        System.out.println($c);
+end
+

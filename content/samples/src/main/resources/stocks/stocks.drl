@@ -1,0 +1,40 @@
+package stocks;
+
+import com.sample.domain.stocks.Tick;
+import java.math.BigDecimal;
+
+global BigDecimal sellTolerance
+global BigDecimal buyTolerance
+
+declare Tick
+  @role(event)
+  @timestamp(timestamp)
+end
+
+rule "Sell"
+    when
+        $tick1 : Tick($price1 : price, $symbol : symbol) from entry-point "stock feed"
+        Tick(this after [0s,30s] $tick1, $price2 : price, $symbol == symbol) from entry-point "stock feed"
+        eval($price2.subtract($price1).compareTo(sellTolerance) >= 0)
+    then
+        System.out.println($symbol + " should be sold: " + $price1 + " => " + $price2);
+end
+
+rule "Buy"
+    when
+        $tick1 : Tick($price1 : price, $symbol : symbol) from entry-point "stock feed"
+        Tick(this after [0s,30s] $tick1, $price2 : price, $symbol == symbol) from entry-point "stock feed"
+        eval($price1.subtract($price2).compareTo(buyTolerance) >= 0)
+    then
+        System.out.println($symbol + " should be bought: " + $price1 + " => " + $price2);
+end
+
+rule "Hight Volume Trading on AAPL"
+    when
+        $volume : Number(longValue > 300) from accumulate (
+            Tick($shares : shares, symbol == 'AAPL') over window:time(30s) from entry-point "stock feed", 
+            sum($shares )
+        )
+    then
+        System.out.println("Hight Volume Trading on AAPL: " +  $volume);
+end

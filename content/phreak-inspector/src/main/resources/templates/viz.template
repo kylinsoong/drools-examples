@@ -1,0 +1,45 @@
+digraph G {
+        node [shape=record];
+        rankdir=LR
+        layout=dot
+
+/* for layout options goto
+ * http://www.graphviz.org/cgi-bin/man?dot
+ *
+ * dot - filter for drawing directed graphs
+ * neato - filter for drawing undirected graphs
+ * twopi - filter for radial layouts of graphs
+ * circo - filter for circular layout of graphs
+ * fdp - filter for drawing undirected graphs
+ * sfdp - filter for drawing large undirected graphs
+ * patchwork - filter for tree maps
+ * osage - filter for tree maps
+ */
+
+    $itemsByGroup.keys:{k | 
+        subgraph $k$ $\u007B$
+                rank=same;
+        $itemsByGroup.(k):{ it |
+            G$it.id$[shape=none
+                label=<<table border = "0" cellspacing="0">
+                        <tr><td port="port1" border="1" bgcolor="$it.type.color$">$it.type.label$</td></tr>
+                        <tr><td port="port2" border="1" bgcolor="white">$it.labelSafe$</td></tr>
+                </table>>
+            ];
+            $\n$
+        }$
+        $\u007D$
+        $\n$
+    }
+
+    $
+    $items:{it |
+        $it.targetNodesIds:{t |
+            G$it.id$ -> G$t$ 
+            $\n$
+        }
+        $
+    }
+    $
+
+}

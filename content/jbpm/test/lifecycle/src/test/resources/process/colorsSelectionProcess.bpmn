@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_createdColorsItem" structureRef="java.util.List" />
+  <itemDefinition id="_selectedColorsItem" structureRef="java.util.List" />
+  <itemDefinition id="_selectedAlphaItem" structureRef="Double" />
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.test.colorselectionprocess" name="SimpleWorkItemParameterProcess" tns:packageName="org.jbpm.test" >
+
+    <!-- process variables -->
+    <property id="createdColors" itemSubjectRef="_createdColorsItem"/>
+    <property id="selectedColors" itemSubjectRef="_selectedColorsItem"/>
+    <property id="selectedAlpha" itemSubjectRef="_selectedAlphaItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_39931FB7-590A-46AD-BFC2-D895A3CF4FC1" name="Start" />
+    <userTask id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" name="Choose Colors" >
+      <ioSpecification>
+        <dataInput id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_CommentInput" name="Comment" />
+        <dataInput id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_TaskNameInput" name="TaskName" />
+        <dataOutput id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedAlphaResultOutput" name="selectedAlphaResult" />
+        <dataOutput id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedColorsResultOutput" name="selectedColorsResult" />
+        <inputSet>
+          <dataInputRefs>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_CommentInput</dataInputRefs>
+          <dataInputRefs>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_TaskNameInput</dataInputRefs>
+        </inputSet>
+        <outputSet>
+          <dataOutputRefs>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedAlphaResultOutput</dataOutputRefs>
+          <dataOutputRefs>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedColorsResultOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation>
+        <targetRef>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_CommentInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression"></from>
+          <to xsi:type="tFormalExpression">_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_CommentInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation>
+        <targetRef>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_TaskNameInput</targetRef>
+        <assignment>
+          <from xsi:type="tFormalExpression">Choose Colors</from>
+          <to xsi:type="tFormalExpression">_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_TaskNameInput</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedAlphaResultOutput</sourceRef>
+        <targetRef>selectedAlpha</targetRef>
+      </dataOutputAssociation>
+      <dataOutputAssociation>
+        <sourceRef>_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E_selectedColorsResultOutput</sourceRef>
+        <targetRef>selectedColors</targetRef>
+      </dataOutputAssociation>
+      <potentialOwner>
+        <resourceAssignmentExpression>
+          <formalExpression>krisv</formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+    </userTask>
+    <scriptTask id="_77CE63E1-7810-480F-B58D-12E2A681651E" name="Red and Green" scriptFormat="http://www.java.com/java" >
+      <script>createdColors.add("yellow - "+selectedAlpha+"%");</script>
+    </scriptTask>
+    <scriptTask id="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" name="Red and Blue" scriptFormat="http://www.java.com/java" >
+      <script>createdColors.add("magenta - "+selectedAlpha+"%");</script>
+    </scriptTask>
+    <scriptTask id="_E6180771-92C7-4B4E-ABBB-200C421CF1C7" name="Green and Blue" scriptFormat="http://www.java.com/java" >
+      <script>createdColors.add("cyan - "+selectedAlpha+"%");</script>
+    </scriptTask>
+    <inclusiveGateway id="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" name="" gatewayDirection="Diverging" />
+    <endEvent id="_F1A78853-F1D3-4712-8290-F7C5E78B1200" name="" />
+    <endEvent id="_B4B39C37-5A96-499F-A243-A5294C2EE375" name="" />
+    <endEvent id="_DFF304EE-A80A-4E28-AEE5-68C93190EB38" name="" />
+    <scriptTask id="_8CB57A43-1F93-487B-9F10-CC20B4730AD2" name="No Color" scriptFormat="http://www.java.com/java" >
+      <script>createdColors.add("black");</script>
+    </scriptTask>
+    <endEvent id="_8DFE070D-4A5F-4649-9732-E2506B3EF6BC" name="" />
+
+    <!-- connections -->
+    <sequenceFlow id="_39931FB7-590A-46AD-BFC2-D895A3CF4FC1-_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" sourceRef="_39931FB7-590A-46AD-BFC2-D895A3CF4FC1" targetRef="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" />
+    <sequenceFlow id="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_77CE63E1-7810-480F-B58D-12E2A681651E" sourceRef="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" targetRef="_77CE63E1-7810-480F-B58D-12E2A681651E" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return selectedColors.contains("red") &amp;&amp; selectedColors.contains("green");</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" sourceRef="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" targetRef="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return selectedColors.contains("red") &amp;&amp; selectedColors.contains("blue");</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_E6180771-92C7-4B4E-ABBB-200C421CF1C7" sourceRef="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" targetRef="_E6180771-92C7-4B4E-ABBB-200C421CF1C7" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return selectedColors.contains("green") &amp;&amp; selectedColors.contains("blue");</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E-_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" sourceRef="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" targetRef="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" />
+    <sequenceFlow id="_77CE63E1-7810-480F-B58D-12E2A681651E-_F1A78853-F1D3-4712-8290-F7C5E78B1200" sourceRef="_77CE63E1-7810-480F-B58D-12E2A681651E" targetRef="_F1A78853-F1D3-4712-8290-F7C5E78B1200" />
+    <sequenceFlow id="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F-_B4B39C37-5A96-499F-A243-A5294C2EE375" sourceRef="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" targetRef="_B4B39C37-5A96-499F-A243-A5294C2EE375" />
+    <sequenceFlow id="_E6180771-92C7-4B4E-ABBB-200C421CF1C7-_DFF304EE-A80A-4E28-AEE5-68C93190EB38" sourceRef="_E6180771-92C7-4B4E-ABBB-200C421CF1C7" targetRef="_DFF304EE-A80A-4E28-AEE5-68C93190EB38" />
+    <sequenceFlow id="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_8CB57A43-1F93-487B-9F10-CC20B4730AD2" sourceRef="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" targetRef="_8CB57A43-1F93-487B-9F10-CC20B4730AD2" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return selectedColors.isEmpty();</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_8CB57A43-1F93-487B-9F10-CC20B4730AD2-_8DFE070D-4A5F-4649-9732-E2506B3EF6BC" sourceRef="_8CB57A43-1F93-487B-9F10-CC20B4730AD2" targetRef="_8DFE070D-4A5F-4649-9732-E2506B3EF6BC" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.test.colorselectionprocess" >
+      <bpmndi:BPMNShape bpmnElement="_39931FB7-590A-46AD-BFC2-D895A3CF4FC1" >
+        <dc:Bounds x="16" y="76" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" >
+        <dc:Bounds x="98" y="60" width="152" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_77CE63E1-7810-480F-B58D-12E2A681651E" >
+        <dc:Bounds x="380" y="60" width="137" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" >
+        <dc:Bounds x="380" y="210" width="152" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_E6180771-92C7-4B4E-ABBB-200C421CF1C7" >
+        <dc:Bounds x="380" y="360" width="153" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" >
+        <dc:Bounds x="291" y="76" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_F1A78853-F1D3-4712-8290-F7C5E78B1200" >
+        <dc:Bounds x="561" y="75" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_B4B39C37-5A96-499F-A243-A5294C2EE375" >
+        <dc:Bounds x="608" y="222" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_DFF304EE-A80A-4E28-AEE5-68C93190EB38" >
+        <dc:Bounds x="615" y="369" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8CB57A43-1F93-487B-9F10-CC20B4730AD2" >
+        <dc:Bounds x="380" y="495" width="144" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8DFE070D-4A5F-4649-9732-E2506B3EF6BC" >
+        <dc:Bounds x="582" y="511" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_39931FB7-590A-46AD-BFC2-D895A3CF4FC1-_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E" >
+        <di:waypoint x="40" y="100" />
+        <di:waypoint x="174" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_77CE63E1-7810-480F-B58D-12E2A681651E" >
+        <di:waypoint x="315" y="100" />
+        <di:waypoint x="448" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_7C8AC573-39F1-4953-9D8C-DB30B0059E4F" >
+        <di:waypoint x="315" y="100" />
+        <di:waypoint x="315" y="250" />
+        <di:waypoint x="456" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_E6180771-92C7-4B4E-ABBB-200C421CF1C7" >
+        <di:waypoint x="315" y="100" />
+        <di:waypoint x="315" y="400" />
+        <di:waypoint x="456" y="400" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_A7F6AEE9-C6D5-48BA-81FA-235070C5D66E-_774BE3CF-2271-4AC4-8849-6E3808BB0E6E" >
+        <di:waypoint x="174" y="100" />
+        <di:waypoint x="315" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_77CE63E1-7810-480F-B58D-12E2A681651E-_F1A78853-F1D3-4712-8290-F7C5E78B1200" >
+        <di:waypoint x="448" y="100" />
+        <di:waypoint x="585" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_7C8AC573-39F1-4953-9D8C-DB30B0059E4F-_B4B39C37-5A96-499F-A243-A5294C2EE375" >
+        <di:waypoint x="456" y="250" />
+        <di:waypoint x="632" y="246" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_E6180771-92C7-4B4E-ABBB-200C421CF1C7-_DFF304EE-A80A-4E28-AEE5-68C93190EB38" >
+        <di:waypoint x="456" y="400" />
+        <di:waypoint x="639" y="393" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_774BE3CF-2271-4AC4-8849-6E3808BB0E6E-_8CB57A43-1F93-487B-9F10-CC20B4730AD2" >
+        <di:waypoint x="315" y="100" />
+        <di:waypoint x="315" y="535" />
+        <di:waypoint x="452" y="535" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_8CB57A43-1F93-487B-9F10-CC20B4730AD2-_8DFE070D-4A5F-4649-9732-E2506B3EF6BC" >
+        <di:waypoint x="452" y="535" />
+        <di:waypoint x="606" y="535" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

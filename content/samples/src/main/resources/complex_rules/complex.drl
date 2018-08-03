@@ -1,0 +1,130 @@
+package complex_rules
+
+import com.sample.domain.complex.*
+import java.util.ArrayList
+import java.util.LinkedList
+
+global java.util.ArrayList results;
+
+function float weightedAverage(long num1, long num2, long div1, long div2) {
+    return (num1 + num2)/(div1 + div2);
+}
+
+rule "Using the and conditional"
+    when
+        Cheese(cheeseType : type) and 
+        Person(favoriteCheese == cheeseType)
+    then
+        System.out.println(drools.getRule().getName() + ": " + cheeseType);
+end
+
+rule "Using the or conditional"
+    when
+        Person(favoriteCheese == "Swiss") or
+        (Person(favoriteCheese == "Cheddar") and Mouse(favoriteCheese == "Swiss"))
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+rule "Using the eval element"
+    when
+        ob1 : Observation()
+        ob2 : Observation(this != ob1)
+        eval(weightedAverage(ob1.getVal(),ob2.getVal(),ob1.getPer(),ob2.getPer()) < .1)
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+rule "Using the exists conditional"
+    when
+        customer : Customer()
+        order: Order(customerId == customer.customerId)
+        exists OrderItem(orderId == order.orderId, itemStatus == "out_of_stock")
+    then
+        order.setStatus("out_of_stock");
+        System.out.println(drools.getRule().getName());
+end
+
+rule "Using the not conditional"
+    when
+        customer : Customer()
+        order: Order(customerId == customer.customerId)
+        not OrderItem(orderId == order.orderId, itemStatus == "out_of_stock")
+    then
+        order.setStatus("items in stock");
+        System.out.println(drools.getRule().getName());
+end
+
+rule "validate zipcode"
+    when
+        Person( $personAddress : address )
+        Address(zipcode == "100010") from $personAddress
+    then
+        System.out.println(drools.getRule().getName());
+end
+
+rule "Using the from element for integration"
+    when
+        order : Order()
+        item : OrderItem( value > 100 ) from order.items
+    then
+        item.setValue(item.getValue() * 0.8);
+end
+
+rule "All English buses are red"
+when
+    not (forall(bus : Bus(type == 'english') Bus(this == bus, color == 'red')))
+then
+    System.out.println(drools.getRule().getName());
+end
+
+rule "Using the forall element"
+    when
+    not (
+        forall( emp : Employee() HealthCare( employee == emp ) DentalCare( employee == emp ) )
+    )
+    then
+        System.out.println("not all employees have health and dental care");
+end
+
+rule "Collect Alpha Restriction"
+when
+  cheeseList : ArrayList(size > 0) 
+        from collect(Cheese(type == "stilton" ))
+then
+  results.add(cheeseList);
+  System.out.println(drools.getRule().getName());
+end
+
+rule "Collect Test"
+when
+    person : Person( name == "Bob", $likes : likes )
+    cheeseList : ArrayList(size > 2) from collect( Cheese( type memberOf $likes ) );
+then
+    System.out.println(person.getName() +" will buy " + cheeseList.size() + " pieces of cheese");
+    results.add(cheeseList);
+end
+
+rule "Using the collect conditional element"
+when
+    company : Company( name == 'Red Hat' )
+    mothers : LinkedList()
+               from collect( Person( gender == 'F', children > 0 )
+                             from company.getPeople()
+                           )
+then
+    System.out.println(mothers);
+    results.add(mothers);
+end
+
+rule "Using the accumulate element"
+when
+    $order : Order()
+    total : Number( doubleValue > 100 )
+             from accumulate( OrderItem( order == $order,
+                                         $value : value ),
+                              sum( $value ) )
+then
+    System.out.println(drools.getRule().getName() + ": " + total);
+end
+

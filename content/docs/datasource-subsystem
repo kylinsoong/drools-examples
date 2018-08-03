@@ -1,0 +1,29 @@
+<subsystem xmlns="urn:jboss:domain:datasources:1.1">
+            <datasources>
+                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/jbpmDS" pool-name="jbpmDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:oracle:thin:@10.66.129.154:1521:JBOSS</connection-url>
+                    <driver>oracle11gr2</driver>
+                    <security>
+                        <user-name>jbpm54</user-name>
+                        <password>redhat</password>
+                    </security>
+                </datasource>
+                <drivers>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="oracle11gr2" module="com.oracle">
+                        <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                   </driver>
+                </drivers>
+            </datasources>
+</subsystem>
+

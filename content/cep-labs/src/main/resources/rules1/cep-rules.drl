@@ -1,0 +1,17 @@
+//created on: Aug 1, 2018
+package rules1
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+
+
+rule "包裹在分类前丢失"
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    // TODO-- 如果一个包裹经过了 CHECK_IN，则 10 分钟后会在 SORTING 位置，否则系统认为包裹丢失
+    not($event2:BagScannedEvent(location == Location.SORTING, this != $event1, this.bagTag.id == $event1.bagTag.id, this after[0, 10m] $event1))
+then
+    System.out.println("分类前丢失包裹: " + $event1.getBagTag().getId());
+end
+

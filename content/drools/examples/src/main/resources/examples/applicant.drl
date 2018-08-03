@@ -1,0 +1,10 @@
+package org.drools.examples;
+
+import org.drools.examples.applicant.Applicant;
+
+rule "Is of valid age"
+when
+$a : Applicant( age < 18 )
+then
+$a.setValid( false );
+end

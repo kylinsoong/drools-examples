@@ -1,0 +1,16 @@
+//created on: Aug 3, 2018
+package rules5
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+rule "5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间"
+when
+    // TODO--
+    $number: Number() from accumulate ($eventSorting: BagScannedEvent(location == Location.SORTING) over window:length(5) and
+                                       $eventCheckIn: BagScannedEvent(location == Location.CHECK_IN, bagTag.id == $eventSorting.bagTag.id),
+                                       average ($eventSorting.getTimestamp().getTime() - $eventCheckIn.getTimestamp().getTime()))
+    
+then
+    System.out.println("5 个连续的包裹从 CHECK_IN 到 SORTING 的平均处理时间: " + $number);
+end

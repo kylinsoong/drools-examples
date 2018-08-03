@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.parallelExecuteProcess" name="SimpleProcess" tns:packageName="org.jbpm.quickstarts" >
+
+    <!-- nodes -->
+    <startEvent id="_1" name="Start" />
+    <parallelGateway id="_2" name="Gateway" gatewayDirection="Diverging" />
+    <exclusiveGateway id="_3" name="Gateway" gatewayDirection="Converging" />
+    <scriptTask id="_4" name="Execute 3 tasks in parallel" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <scriptTask id="_5" name="Task 1.1" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <scriptTask id="_6" name="Task 1.2" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <scriptTask id="_7" name="Task 1.3" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <endEvent id="_8" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <scriptTask id="_9" name="Execute 2 Tasks" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <scriptTask id="_10" name="Task 2.1" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <scriptTask id="_11" name="Task 2.2" >
+      <script>System.out.println(kcontext.getNodeInstance().getNodeName() ); </script>
+    </scriptTask>
+    <parallelGateway id="_12" name="Gateway" gatewayDirection="Converging" />
+    <parallelGateway id="_13" name="Gateway" gatewayDirection="Diverging" />
+
+    <!-- connections -->
+    <sequenceFlow id="_4-_2" sourceRef="_4" targetRef="_2" />
+    <sequenceFlow id="_5-_3" sourceRef="_5" targetRef="_3" />
+    <sequenceFlow id="_6-_3" sourceRef="_6" targetRef="_3" />
+    <sequenceFlow id="_7-_3" sourceRef="_7" targetRef="_3" />
+    <sequenceFlow id="_1-_4" sourceRef="_1" targetRef="_4" />
+    <sequenceFlow id="_2-_5" sourceRef="_2" targetRef="_5" />
+    <sequenceFlow id="_2-_6" sourceRef="_2" targetRef="_6" />
+    <sequenceFlow id="_2-_7" sourceRef="_2" targetRef="_7" />
+    <sequenceFlow id="_12-_8" sourceRef="_12" targetRef="_8" />
+    <sequenceFlow id="_3-_9" sourceRef="_3" targetRef="_9" />
+    <sequenceFlow id="_13-_10" sourceRef="_13" targetRef="_10" />
+    <sequenceFlow id="_13-_11" sourceRef="_13" targetRef="_11" />
+    <sequenceFlow id="_11-_12" sourceRef="_11" targetRef="_12" />
+    <sequenceFlow id="_10-_12" sourceRef="_10" targetRef="_12" />
+    <sequenceFlow id="_9-_13" sourceRef="_9" targetRef="_13" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.parallelExecuteProcess" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="16" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2" >
+        <dc:Bounds x="341" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="534" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="96" y="96" width="213" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="422" y="16" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_6" >
+        <dc:Bounds x="422" y="96" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_7" >
+        <dc:Bounds x="422" y="176" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" >
+        <dc:Bounds x="1072" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9" >
+        <dc:Bounds x="615" y="96" width="151" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_10" >
+        <dc:Bounds x="879" y="56" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11" >
+        <dc:Bounds x="879" y="136" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_12" >
+        <dc:Bounds x="991" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_13" >
+        <dc:Bounds x="798" y="96" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_4-_2" >
+        <di:waypoint x="202" y="120" />
+        <di:waypoint x="365" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_5-_3" >
+        <di:waypoint x="462" y="40" />
+        <di:waypoint x="558" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_6-_3" >
+        <di:waypoint x="462" y="120" />
+        <di:waypoint x="558" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_7-_3" >
+        <di:waypoint x="462" y="200" />
+        <di:waypoint x="558" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_1-_4" >
+        <di:waypoint x="40" y="120" />
+        <di:waypoint x="202" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_5" >
+        <di:waypoint x="365" y="120" />
+        <di:waypoint x="462" y="40" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_6" >
+        <di:waypoint x="365" y="120" />
+        <di:waypoint x="462" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_7" >
+        <di:waypoint x="365" y="120" />
+        <di:waypoint x="462" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_12-_8" >
+        <di:waypoint x="1015" y="120" />
+        <di:waypoint x="1096" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_3-_9" >
+        <di:waypoint x="558" y="120" />
+        <di:waypoint x="690" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_13-_10" >
+        <di:waypoint x="822" y="120" />
+        <di:waypoint x="919" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_13-_11" >
+        <di:waypoint x="822" y="120" />
+        <di:waypoint x="919" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_11-_12" >
+        <di:waypoint x="919" y="160" />
+        <di:waypoint x="1015" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_10-_12" >
+        <di:waypoint x="919" y="80" />
+        <di:waypoint x="1015" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9-_13" >
+        <di:waypoint x="690" y="120" />
+        <di:waypoint x="822" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

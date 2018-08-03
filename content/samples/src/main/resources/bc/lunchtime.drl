@@ -1,0 +1,55 @@
+package bc
+
+import com.sample.domain.bc.*;
+import java.util.List
+
+dialect "mvel"
+
+query foodContains( String food, String ingredient )
+    Food( food, ingredient; )
+    or
+    ( Food( mysteryFood, ingredient; ) and foodContains(food, mysteryFood; ) )
+end
+
+rule "menu"
+when
+    Question( questionType == QuestionType.MENU )
+    s : Sandwich()
+then
+    System.out.println(s.getName());
+end
+
+rule "contains what"
+when
+    Question( questionType == QuestionType.CONTAINS_WHAT, f : foodItem )
+    foodContains(f, i;)
+    not String(this == i)
+then
+    System.out.println(i);
+    insert ( i );
+end
+
+rule "what contains"
+when
+    Question( questionType == QuestionType.WHAT_CONTAINS, i : foodItem )
+    foodContains(f, i;)
+    not String( this == f )
+then
+    System.out.println(f);
+    insert( f );
+end
+
+rule "compact list"
+when
+    Question( questionType == QuestionType.COMPACT, f : foodItem)
+    foodContains(f,i;)
+    sub : List() from accumulate( Food(i,si;), collectList(si))
+    not String( this == i)
+then
+    System.out.print(i);
+    if (sub.size() > 0) System.out.println(sub); else System.out.println();
+    insert(i);
+end
+
+
+

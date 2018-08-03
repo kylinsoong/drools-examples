@@ -1,0 +1,817 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Type Declaration · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="rules.html" />
+    
+    
+    <link rel="prev" href="functions.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="globals.html">
+            
+                <a href="globals.html">
+            
+                    
+                    Globals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="type-declaration.html">
+            
+                <a href="type-declaration.html">
+            
+                    
+                    Type Declaration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="rules.html">
+            
+                <a href="rules.html">
+            
+                    
+                    Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../docs/intro.html">
+            
+                <a href="../docs/intro.html">
+            
+                    
+                    规则高级语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docs/cep.html">
+            
+                <a href="../docs/cep.html">
+            
+                    
+                    CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../firerules/">
+            
+                <a href="../firerules/">
+            
+                    
+                    规则整合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../firerules/maven-setting.html">
+            
+                <a href="../firerules/maven-setting.html">
+            
+                    
+                    Maven 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../firerules/fire-kieserver.html">
+            
+                <a href="../firerules/fire-kieserver.html">
+            
+                    
+                    客户端 API 调运 KIE 服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../firerules/fire-locally.html">
+            
+                <a href="../firerules/fire-locally.html">
+            
+                    
+                    本地执行规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../docs/labs.html">
+            
+                <a href="../docs/labs.html">
+            
+                    
+                    LABS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../docs/rhdm.html">
+            
+                <a href="../docs/rhdm.html">
+            
+                    
+                    RHDM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../docs/phreak.html">
+            
+                <a href="../docs/phreak.html">
+            
+                    
+                    PHREAK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../cep-labs/">
+            
+                <a href="../cep-labs/">
+            
+                    
+                    CEP 规则编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../usecase.html">
+            
+                <a href="../usecase.html">
+            
+                    
+                    案例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../cep-fraud-detection-springboot/">
+            
+                <a href="../cep-fraud-detection-springboot/">
+            
+                    
+                    欺骗侦测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../intelligent-transportation/">
+            
+                <a href="../intelligent-transportation/">
+            
+                    
+                    智能交通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../dt-loan-approve/">
+            
+                <a href="../dt-loan-approve/">
+            
+                    
+                    贷款审批
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../logistics-freight-management/">
+            
+                <a href="../logistics-freight-management/">
+            
+                    
+                    运单管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Type Declaration</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="type-declaration">Type Declaration</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>.</p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#__">&#x8BED;&#x6CD5;</a></li>
+<li><a href="#___2">&#x58F0;&#x660E;&#x65B0;&#x7C7B;&#x578B;&#x793A;&#x4F8B;</a></li>
+<li><a href="#___3">&#x5143;&#x6570;&#x636E;&#x8868;</a></li>
+<li><a href="#___4">&#x5143;&#x6570;&#x636E;&#x58F0;&#x660E;&#x793A;&#x4F8B;</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__">&#x8BED;&#x6CD5;</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="src/img/drools-reference-typeDeclaration.png" alt="drools reference typeDeclaration.png">
+</div>
+<div class="title">Figure 1. <strong>meta_data</strong></div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="src/img/drools-reference-typeDeclaration-2.png" alt="drools reference typeDeclaration 2.png">
+</div>
+<div class="title">Figure 2. <strong>Type Declaration</strong></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x7C7B;&#x578B;&#x58F0;&#x660E;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#x76EE;&#x7684;&#xFF1A;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x65B0;&#x7C7B;&#x578B;&#xFF0C;&#x58F0;&#x660E;&#x5143;&#x6570;&#x636E;
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">&#x58F0;&#x660E;&#x65B0;&#x7C7B;&#x578B;&#x793A;&#x4F8B;</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><strong>testDeclareNewTypes.drl</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">package</span> org.drools.examples.newTypes;
+
+<span class="hljs-keyword">import</span> java.util.Date
+
+global java.util.List myGlobalList;
+
+declare Address
+  number : <span class="hljs-keyword">int</span>
+  streetName : String
+  city : String
+end
+
+declare Person
+  name : String
+  dateOfBirth : Date
+  address : Address
+end
+
+declare <span class="hljs-keyword">enum</span> DaysOfWeek
+  SUN,MON,TUE,WED,THU,FRI,SAT;
+end
+
+declare Employee
+  name : String
+  dayOff : DaysOfWeek
+end
+
+rule <span class="hljs-string">&quot;Declaing new Types&quot;</span>
+  <span class="hljs-function">when
+    <span class="hljs-title">eval</span><span class="hljs-params">(<span class="hljs-keyword">true</span>)</span>
+  then
+    Address address </span>= <span class="hljs-keyword">new</span> Address();
+    address.setNumber(<span class="hljs-number">100</span>);
+    address.setStreetName(<span class="hljs-string">&quot;Bing He Road&quot;</span>);
+    address.setCity(<span class="hljs-string">&quot;LanZhou&quot;</span>);
+    Person person = <span class="hljs-keyword">new</span> Person();
+    person.setName(<span class="hljs-string">&quot;Bob&quot;</span>);
+    person.setAddress(address);
+    myGlobalList.add(address);
+    insert(person);
+end
+
+rule <span class="hljs-string">&quot;Using a declared Type&quot;</span>
+  when
+    $p : Person( name == <span class="hljs-string">&quot;Bob&quot;</span> )
+  then
+    myGlobalList.add($p);
+    Employee employee = <span class="hljs-keyword">new</span> Employee();
+    employee.setName(<span class="hljs-string">&quot;Mr Yung&quot;</span>);
+    employee.setDayOff(DaysOfWeek.WED);
+    insert(employee);
+end
+
+rule <span class="hljs-string">&quot;Using a declared Enum&quot;</span>
+  when
+    $e : Employee( dayOff == DaysOfWeek.WED )
+  then
+    myGlobalList.add($e);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="src/main/resources/org/drools/examples/newTypes/testDeclareNewTypes.drl">link</a></p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Example_DeclaringNewTypes.java</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">KieServices ks = KieServices.Factory.get();
+KieContainer kContainer = ks.getKieClasspathContainer();
+KieSession kSession = kContainer.newKieSession(<span class="hljs-string">&quot;ksession-rules-newTypes&quot;</span>);
+List&lt;Object&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+kSession.setGlobal( <span class="hljs-string">&quot;myGlobalList&quot;</span>, list );
+kSession.fireAllRules();
+kSession.dispose();
+list.forEach(obj -&gt; System.out.println(<span class="hljs-string">&quot;class: &quot;</span> + obj.getClass() + <span class="hljs-string">&quot;, value: &quot;</span> + obj));</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="src/main/java/org/drools/examples/Example_DeclaringNewTypes.java">link</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___3">&#x5143;&#x6570;&#x636E;&#x8868;</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">&#x7C7B;&#x578B;</th>
+<th class="tableblock halign-left valign-top">Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@role( &lt;fact / event&gt; )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@typesafe( &lt;boolean&gt; )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@timestamp( &lt;attribute name&gt; )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@duration( &lt;attribute name&gt; )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@expires( &lt;time interval&gt; )</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@propertyChangeSupport</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@propertyReactive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Class</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">@position</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___4">&#x5143;&#x6570;&#x636E;&#x58F0;&#x660E;&#x793A;&#x4F8B;</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title"><strong>testMetadata.drl</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">package</span> org.drools.examples.metadata;
+
+<span class="hljs-keyword">import</span> java.util.Date
+<span class="hljs-keyword">import</span> org.drools.examples.model.Customer;
+
+declare Address
+  <span class="hljs-meta">@author</span>( Kylin )
+  <span class="hljs-meta">@dateOfCreation</span>( <span class="hljs-number">23</span>-Oct-<span class="hljs-number">2017</span> )
+
+  number : <span class="hljs-keyword">int</span> <span class="hljs-meta">@key</span> <span class="hljs-meta">@position</span>(<span class="hljs-number">0</span>)
+  streetName : String <span class="hljs-meta">@key</span> <span class="hljs-meta">@position</span>(<span class="hljs-number">1</span>)
+  city : String <span class="hljs-meta">@key</span> <span class="hljs-meta">@position</span>(<span class="hljs-number">2</span>)
+end
+
+declare Person
+  <span class="hljs-meta">@author</span>( Kylin )
+  <span class="hljs-meta">@dateOfCreation</span>( <span class="hljs-number">23</span>-Oct-<span class="hljs-number">2017</span> )
+
+  name : String <span class="hljs-meta">@key</span> <span class="hljs-meta">@maxLength</span>( <span class="hljs-number">30</span> ) <span class="hljs-meta">@position</span>(<span class="hljs-number">0</span>)
+  dateOfBirth : Date <span class="hljs-meta">@key</span> <span class="hljs-meta">@position</span>(<span class="hljs-number">1</span>)
+  address : Address
+end
+
+declare Customer
+  <span class="hljs-meta">@author</span>( Kylin )
+  <span class="hljs-meta">@dateOfCreation</span>( <span class="hljs-number">23</span>-Oct-<span class="hljs-number">2017</span> )
+end
+
+declare GoldenCustomer extends Customer
+  <span class="hljs-meta">@author</span>( Kylin )
+  <span class="hljs-meta">@dateOfCreation</span>( <span class="hljs-number">23</span>-Oct-<span class="hljs-number">2017</span> )
+
+  priority : <span class="hljs-keyword">int</span>
+end
+
+rule <span class="hljs-string">&quot;Declaring Metadata&quot;</span>
+  <span class="hljs-function">when
+    <span class="hljs-title">eval</span><span class="hljs-params">(<span class="hljs-keyword">true</span>)</span>
+  then
+    Person person </span>= <span class="hljs-keyword">new</span> Person(<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-keyword">new</span> Date());
+    Customer customer = <span class="hljs-keyword">new</span> Customer();
+    System.out.println(person);
+    System.out.println(customer);
+end
+
+rule <span class="hljs-string">&quot;Accessing Declared Types from the Application Code&quot;</span>
+  when
+    $c : GoldenCustomer(id == <span class="hljs-number">101</span>)
+  then
+    System.out.println($c);
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="src/main/resources/org/drools/examples/metadata/testMetadata.drl">link</a></p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Example_Metadata.java</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">KieServices ks = KieServices.Factory.get();
+KieContainer kContainer = ks.getKieClasspathContainer();
+KieBase kbase = kContainer.getKieBase(<span class="hljs-string">&quot;rules-metadata&quot;</span>);
+KieSession kSession = kbase.newKieSession();
+
+FactType factType = kbase.getFactType(<span class="hljs-string">&quot;org.drools.examples.metadata&quot;</span>, <span class="hljs-string">&quot;GoldenCustomer&quot;</span>);
+Object obj = factType.newInstance();
+factType.set(obj, <span class="hljs-string">&quot;id&quot;</span>, <span class="hljs-number">101</span>);
+factType.set(obj, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Bob&quot;</span>);
+factType.set(obj, <span class="hljs-string">&quot;discription&quot;</span>, <span class="hljs-string">&quot;this is a discription&quot;</span>);
+factType.set(obj, <span class="hljs-string">&quot;priority&quot;</span>, <span class="hljs-number">1</span>);
+kSession.insert(obj);
+
+kSession.fireAllRules();
+kSession.dispose();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="src/main/java/org/drools/examples/Example_Metadata.java">link</a></p>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="functions.html" class="navigation navigation-prev " aria-label="Previous page: Functions">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="rules.html" class="navigation navigation-next " aria-label="Next page: Rules">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Type Declaration","level":"1.2.3","depth":2,"next":{"title":"Rules","level":"1.2.4","depth":2,"path":"reference/rules.adoc","ref":"reference/rules.adoc","articles":[]},"previous":{"title":"Functions","level":"1.2.2","depth":2,"path":"reference/functions.adoc","ref":"reference/functions.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"wechat":"http://ksoong.org/cloud-labs/content/images/wechat.png","alipay":"http://ksoong.org/cloud-labs/content/images/alipay.png","title":"","button":"赞赏","alipayText":"支付宝捐赠","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/cloud-labs/blob/gh-pages"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"reference/type-declaration.adoc","mtime":"2017-10-23T12:07:22.455Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-08-03T13:04:30.083Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,45 @@
+* Initialize `org.jbpm.task.service.TaskServvice` schedule UnescalatedDeadlines use namedQuery `UnescalatedDeadlines`
+----
+select t.id, d.id, d.deadline_date from Task t, Deadline d where t.archived=0 and d.escalated=0 and (d.id in (select d1.id from Deadline d1 where t.id=d1.Deadlines_StartDeadLine_Id) or d.id in (select d2.id from Deadline d2 where t.id=d2.Deadlines_EndDeadLine_Id));
+----
+
+* `org.jbpm.task.service.TaskServiceSession` add User/Groups
+----
+select id, DTYPE from OrganizationalEntity where id='john' and DTYPE='User';
+insert into OrganizationalEntity (DTYPE, id) values ('User', 'john');
+select id, DTYPE from OrganizationalEntity where id='john' and DTYPE='Group';
+insert into OrganizationalEntity (DTYPE, id) values ('Group', 'PM');
+select * from OrganizationalEntity where DTYPE='User';
+select * from OrganizationalEntity where DTYPE='Group';
+----
+
+* `ksession.startProcess("com.sample.bpmn.hello")` referred sql
+----
+select id from OrganizationalEntity where id='john';
+insert into Task (archived, allowedToDelegate, taskInitiator_id, priority, activationTime, actualOwner_id, completedOn, createdBy_id, createdOn, documentAccessType, documentContentId, documentType, expirationTime, faultAccessType, faultContentId, faultName, faultType, outputAccessType, outputContentId, outputType, parentId, previousStatus, processId, processInstanceId, processSessionId, skipable, status, workItemId, OPTLOCK) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+insert into I18NText (language, shortText, text) values (?, ?, ?);
+insert into I18NText (language, shortText, text) values (?, ?, ?);
+insert into I18NText (language, shortText, text) values (?, ?, ?);
+update Task set archived=?, allowedToDelegate=?, taskInitiator_id=?, priority=?, activationTime=?, actualOwner_id=?, completedOn=?, createdBy_id=?, createdOn=?, documentAccessType=?, documentContentId=?, documentType=?, expirationTime=?, faultAccessType=?, faultContentId=?, faultName=?, faultType=?, outputAccessType=?, outputContentId=?, outputType=?, parentId=?, previousStatus=?, processId=?, processInstanceId=?, processSessionId=?, skipable=?, status=?, workItemId=?, OPTLOCK=? where id=? and OPTLOCK=?
+update I18NText set Task_Descriptions_Id=? where id=?
+update I18NText set Task_Names_Id=? where id=?
+update I18NText set Task_Subjects_Id=? where id=?
+insert into PeopleAssignments_BAs (task_id, entity_id) values (?, ?)
+insert into PeopleAssignments_PotOwners (task_id, entity_id) values (?, ?)
+----
+
+* `getClient().getTasksAssignedAsPotentialOwner("john", "en-UK", responseHandler)` referred sql
+----
+select t.id, t.processInstanceId, n1.text, s1.text, d1.text, t.status, t.priority, t.skipable, u.id, u1.id, t.createdOn, t.activationTime, t.expirationTime, t.processId, t.processSessionId from Task t left outer join OrganizationalEntity u1 on t.createdBy_id=u1.id left outer join OrganizationalEntity u on t.actualOwner_id=u.id left outer join I18NText s1 on t.id=s1.Task_Subjects_Id left outer join I18NText d1 on t.id=d1.Task_Descriptions_Id left outer join I18NText n1 on t.id=n1.Task_Names_Id, OrganizationalEntity u2 where t.archived=0 and u2.id='john' and (u2.id in (select p.entity_id from PeopleAssignments_PotOwners p where t.id=p.task_id)) and (n1.language=? or (select count(n2.Task_Names_Id) from I18NText n2 where t.id=n2.Task_Names_Id)=0) and (s1.language='en-UK' or (select count(s3.Task_Subjects_Id) from I18NText s3 where t.id=s3.Task_Subjects_Id)=0) and (d1.language='en-UK' or (select count(d2.Task_Descriptions_Id) from I18NText d2 where t.id=d2.Task_Descriptions_Id)=0) and (t.status in ('Created' , 'Ready' , 'Reserved' , 'InProgress' , 'Suspended')) and (t.expirationTime is null);
+select id from OrganizationalEntity where id='john' and DTYPE='User';
+----
+
+* All `select`
+----
+select * from OrganizationalEntity;
+select * from Task;
+select * from Deadline;
+select * from I18NText;
+select * from PeopleAssignments_BAs;
+select * from PeopleAssignments_PotOwners;
+----

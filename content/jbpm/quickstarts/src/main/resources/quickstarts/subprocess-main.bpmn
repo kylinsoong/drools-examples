@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.jboss.org/drools"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.subprocess-main" name="subprocess-main" tns:packageName="org.jbpm.quickstarts" >
+
+    <extensionElements>
+     <tns:import name="org.jbpm.quickstarts.subprocess.Account" />
+     <tns:import name="org.jbpm.quickstarts.subprocess.RiskyAccounts" />
+    </extensionElements>
+    <!-- nodes -->
+    <startEvent id="_1" name="StartProcess" />
+    <scriptTask id="_2" name="Start" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Mainprocess - Start, " + "Process ID: " + kcontext.getProcessInstance().getId());
+RiskyAccounts account = (RiskyAccounts)  kcontext.getKnowledgeRuntime().getGlobal("risky");
+System.out.println("Current risky account: "+ account);
+Account acc = new Account(-20, "Kobe Bryant");
+account.add(acc);
+System.out.println("Add  " + acc + " to risky acount list");
+
+</script>
+    </scriptTask>
+    <scriptTask id="_3" name="Done" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Mainprocess - Done, " + "Process ID: " + kcontext.getProcessInstance().getId());</script>
+    </scriptTask>
+    <endEvent id="_4" name="End" >
+        <terminateEventDefinition />
+    </endEvent>
+    <callActivity id="_5" name="SubProcess" calledElement="org.jbpm.quickstarts.subprocess-sub" >
+      <ioSpecification>
+        <inputSet>
+        </inputSet>
+        <outputSet>
+        </outputSet>
+      </ioSpecification>
+    </callActivity>
+
+    <!-- connections -->
+    <sequenceFlow id="_1-_2" sourceRef="_1" targetRef="_2" />
+    <sequenceFlow id="_5-_3" sourceRef="_5" targetRef="_3" />
+    <sequenceFlow id="_3-_4" sourceRef="_3" targetRef="_4" />
+    <sequenceFlow id="_2-_5" sourceRef="_2" targetRef="_5" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.subprocess-main" >
+      <bpmndi:BPMNShape bpmnElement="_1" >
+        <dc:Bounds x="30" y="107" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2" >
+        <dc:Bounds x="152" y="108" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_3" >
+        <dc:Bounds x="482" y="104" width="80" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4" >
+        <dc:Bounds x="636" y="101" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_5" >
+        <dc:Bounds x="313" y="105" width="110" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_1-_2" >
+        <di:waypoint x="54" y="131" />
+        <di:waypoint x="192" y="132" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_5-_3" >
+        <di:waypoint x="368" y="129" />
+        <di:waypoint x="522" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_3-_4" >
+        <di:waypoint x="522" y="128" />
+        <di:waypoint x="660" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2-_5" >
+        <di:waypoint x="192" y="132" />
+        <di:waypoint x="368" y="129" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

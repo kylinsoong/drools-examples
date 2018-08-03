@@ -1,0 +1,27 @@
+//created on: Aug 3, 2018
+package rules6
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+rule "CheckIn 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "CheckIn"
+then
+        System.out.println("CheckIn 的包裹: " + $event);
+end
+
+rule "Sorting 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "Sorting"
+then
+        System.out.println("Sorting 的包裹: " + $event);
+end
+
+
+rule "Staging 的包裹"
+when
+        $event:BagScannedEvent() from entry-point "Staging"
+then
+        System.out.println("Staging 的包裹: " + $event);
+end

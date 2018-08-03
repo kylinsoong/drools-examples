@@ -1,0 +1,12 @@
+package org.drools.examples.functions;
+
+function String sayHello(String msg) {
+  return "Hello " + msg + "!";
+}
+
+rule "using a function"
+  when
+    eval(true)
+  then
+    System.out.println(sayHello("TEST"));
+end

@@ -1,0 +1,45 @@
+package org.drools.examples;
+
+function String hello(String name) {
+	return "Hello "+name+"!";
+}
+
+rule "Using a static function"
+when
+	eval( true )
+then
+	System.out.println("using a static function: " + hello("Kylin Soong"));
+end
+
+declare Person
+	name : String
+	age : int
+end
+
+rule "Using a declared Type"
+when
+	eval( true )
+then
+	Person p = new Person();
+	p.setName("Kylin");
+	p.setAge(27);
+	System.out.println("Using a declared Type: " + p);
+end
+
+function Person createPerson(String name, int age) {
+	Person p = new Person();
+	p.setName("Kylin");
+	p.setAge(27);
+	return p;
+}
+
+rule "Using a declared Type in function"
+when
+	eval( true )
+then
+	System.out.println("Using a declared Type in function: " + createPerson("Kylin Soong", 27));
+end
+
+
+
+

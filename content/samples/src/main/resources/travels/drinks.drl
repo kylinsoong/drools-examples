@@ -1,0 +1,41 @@
+package travels;
+
+import com.sample.domain.travel.Reservation;
+import com.sample.domain.travel.Customer;
+import com.sample.domain.travel.DrinkFee;
+
+
+
+rule "GoldDrinksUpgrade"
+    dialect "mvel"
+    when
+        Reservation(drinkUpgrade == true)
+        Customer(loyaltyLevel == "Gold")
+        Customer(age >= 21)
+    then
+        insertLogical(new DrinkFee(10.00));
+end
+
+rule "SilverDrinksUpgrade"
+    dialect "mvel"
+    when
+        Reservation(drinkUpgrade == true)
+        Customer(loyaltyLevel == "Silver")
+        Customer(age >= 21)
+    then
+        insertLogical(new DrinkFee(15.00));
+end
+
+rule "BronzeDrinksUpgrade"
+    dialect "mvel"
+    when
+        Reservation(drinkUpgrade == true)
+        Customer(loyaltyLevel == "Bronze")
+        Customer(age >= 21)
+    then
+        insertLogical(new DrinkFee(20.00));
+end
+
+query "getDrinksFees"
+    Fee: DrinkFee();
+end

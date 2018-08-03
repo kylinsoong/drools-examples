@@ -1,0 +1,16 @@
+Warming up
+----------
+
+* Many end-to-end business processes require human interactions with the process. For example, humans may be needed for approvals, exception management, or performing activities required to advance the business process.
+* jBPM5 exploring the Human Task  which is based on the `WS-HumanTask specification`
+* jBPM supports a special human task node inside processes for modeling this interaction with human users.
+
+In order to use human tasks inside your processes you need three components:
+
+* A Human task node
+* A Human Task Server 
+* A Human Task Client
+
+To be precise, a Task Server where task are registered and a Task Client which is used to interact with tasks. task Server also can be treat as task management component
+
+

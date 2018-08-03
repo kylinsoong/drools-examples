@@ -1,0 +1,13 @@
+//created on: Aug 3, 2018
+package rules8
+
+import com.sample.model.BagScannedEvent;
+import com.sample.model.Location;
+
+rule "丢失包裹检测"
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    not($event2:BagScannedEvent(location == Location.SORTING, this != $event1, this.bagTag.id == $event1.bagTag.id, this after[0, 10m] $event1))
+then
+    System.out.println("丢失包裹: " + $event1.getBagTag().getId());
+end

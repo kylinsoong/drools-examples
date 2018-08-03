@@ -1,0 +1,7 @@
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+	<kbase name="kbase" packages="com.sample">
+		<ksession name="ksession" />
+	</kbase>
+
+</kmodule>

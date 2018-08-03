@@ -1,0 +1,59 @@
+package org.drools.examples.newTypes;
+
+import java.util.Date
+
+global java.util.List myGlobalList;
+
+declare Address
+  number : int
+  streetName : String
+  city : String
+end
+
+declare Person
+  name : String
+  dateOfBirth : Date
+  address : Address
+end
+
+declare enum DaysOfWeek
+  SUN,MON,TUE,WED,THU,FRI,SAT;
+end
+
+declare Employee
+  name : String
+  dayOff : DaysOfWeek
+end
+
+rule "Declaing new Types"
+  when
+    eval(true)
+  then
+    Address address = new Address();
+    address.setNumber(100);
+    address.setStreetName("Bing He Road");
+    address.setCity("LanZhou");
+    Person person = new Person();
+    person.setName("Bob");
+    person.setAddress(address);
+    myGlobalList.add(address);
+    insert(person);
+end
+
+rule "Using a declared Type"
+  when
+    $p : Person( name == "Bob" )
+  then
+    myGlobalList.add($p);
+    Employee employee = new Employee();
+    employee.setName("Mr Yung");
+    employee.setDayOff(DaysOfWeek.WED);
+    insert(employee);
+end
+
+rule "Using a declared Enum"
+  when
+    $e : Employee( dayOff == DaysOfWeek.WED )
+  then
+    myGlobalList.add($e);
+end

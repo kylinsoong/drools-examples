@@ -1,0 +1,11 @@
+<change-set xmlns='http://drools.org/drools-5.0/change-set'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema-instance'
+    xs:schemaLocation='http://drools.org/drools-5.0/change-set http://anonsvn.jboss.org/repos/labs/labs/jbossrules/trunk/drools-api/src/main/resources/change-set-1.0.0.xsd' >
+    <add>
+         <!--<resource source='http://localhost:8080/jboss-brms/org.drools.guvnor.Guvnor/package/MyRulesSample/LATEST' type='PKG' basicAuthentication="enabled" username="admin" password="admin"/>-->
+    	         <!--  <resource source='http://localhost:8080/jboss-brms/org.drools.guvnor.Guvnor/package/myDiscPkg/LATEST' type='PKG' basicAuthentication="enabled" username="admin" password="admin"/>-->
+    	    <resource source='http://hcs591jbosda903:8080/jboss-brms/org.drools.guvnor.Guvnor/package/OrderWorkflowDemo/LATEST' type='PKG' basicAuthentication="enabled" username="admin" password="admin" />
+               <!--<resource source='http://localhost:8080/jboss-brms/org.drools.guvnor.Guvnor/package/DemoFlow/LATEST' type='PKG' basicAuthentication="enabled" username="admin" password="admin"/>-->
+    </add>
+</change-set>
+

@@ -1,0 +1,1198 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CEP 规则编写 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../usecase.html" />
+    
+    
+    <link rel="prev" href="../docs/phreak.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../reference/">
+            
+                <a href="../reference/">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../reference/globals.html">
+            
+                <a href="../reference/globals.html">
+            
+                    
+                    Globals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../reference/functions.html">
+            
+                <a href="../reference/functions.html">
+            
+                    
+                    Functions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../reference/type-declaration.html">
+            
+                <a href="../reference/type-declaration.html">
+            
+                    
+                    Type Declaration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../reference/rules.html">
+            
+                <a href="../reference/rules.html">
+            
+                    
+                    Rules
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../reference/attributes.html">
+            
+                <a href="../reference/attributes.html">
+            
+                    
+                    Attributes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../docs/intro.html">
+            
+                <a href="../docs/intro.html">
+            
+                    
+                    规则高级语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../docs/cep.html">
+            
+                <a href="../docs/cep.html">
+            
+                    
+                    CEP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../firerules/">
+            
+                <a href="../firerules/">
+            
+                    
+                    规则整合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../firerules/maven-setting.html">
+            
+                <a href="../firerules/maven-setting.html">
+            
+                    
+                    Maven 配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../firerules/fire-kieserver.html">
+            
+                <a href="../firerules/fire-kieserver.html">
+            
+                    
+                    客户端 API 调运 KIE 服务器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../firerules/fire-locally.html">
+            
+                <a href="../firerules/fire-locally.html">
+            
+                    
+                    本地执行规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../docs/labs.html">
+            
+                <a href="../docs/labs.html">
+            
+                    
+                    LABS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../docs/rhdm.html">
+            
+                <a href="../docs/rhdm.html">
+            
+                    
+                    RHDM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../docs/phreak.html">
+            
+                <a href="../docs/phreak.html">
+            
+                    
+                    PHREAK
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    CEP 规则编写
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../usecase.html">
+            
+                <a href="../usecase.html">
+            
+                    
+                    案例
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../cep-fraud-detection-springboot/">
+            
+                <a href="../cep-fraud-detection-springboot/">
+            
+                    
+                    欺骗侦测
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../intelligent-transportation/">
+            
+                <a href="../intelligent-transportation/">
+            
+                    
+                    智能交通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../dt-loan-approve/">
+            
+                <a href="../dt-loan-approve/">
+            
+                    
+                    贷款审批
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../logistics-freight-management/">
+            
+                <a href="../logistics-freight-management/">
+            
+                    
+                    运单管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CEP 规则编写</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="cep-&#x5B9E;&#x9A8C;">CEP &#x5B9E;&#x9A8C;</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#__">&#x5B9E;&#x9A8C;&#x76EE;&#x7684;&#x53CA;&#x573A;&#x666F;</a></li>
+<li><a href="#_event_fact">Event/Fact &#x6A21;&#x578B;</a></li>
+<li><a href="#___2">&#x4E00;&#xFF1A;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;</a>
+<ul class="sectlevel2">
+<li><a href="#___3">&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</a></li>
+<li><a href="#___4">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___5">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#___6">&#x4E8C;&#xFF1A;&#x5305;&#x88F9;&#x6570;&#x7EDF;&#x8BA1;</a>
+<ul class="sectlevel2">
+<li><a href="#___7">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___8">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#___9">&#x4E09;&#xFF1A;&#x5305;&#x88F9;&#x91CD;&#x91CF;&#x7EDF;&#x8BA1;</a>
+<ul class="sectlevel2">
+<li><a href="#___10">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___11">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+<li><a href="#_kiesession_eventlistener">KieSession EventListener</a></li>
+</ul>
+</li>
+<li><a href="#__check_in_sorting">&#x56DB;&#xFF1A;&#x7EDF;&#x8BA1;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x65F6;&#x95F4;</a>
+<ul class="sectlevel2">
+<li><a href="#___12">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___13">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#___14">&#x4E94;&#xFF1A;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x7EDF;&#x8BA1;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;</a></li>
+<li><a href="#__entry_point">&#x516D;&#xFF1A;Entry Point &#x63D2;&#x5165;&#x4E8B;&#x4EF6;</a>
+<ul class="sectlevel2">
+<li><a href="#___15">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___16">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#___17">&#x4E03;&#xFF1A;&#x5305;&#x88F9;&#x5339;&#x914D;</a>
+<ul class="sectlevel2">
+<li><a href="#___18">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___19">&#x6267;&#x884C;&#x89C4;&#x5219;</a></li>
+</ul>
+</li>
+<li><a href="#___20">&#x516B;&#xFF1A;&#x4E8B;&#x4EF6;&#x8FC7;&#x671F;</a></li>
+<li><a href="#___21">&#x4E5D;&#xFF1A;&#x65F6;&#x95F4;&#x8FD0;&#x7B97;&#x7B26;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;</a>
+<ul class="sectlevel2">
+<li><a href="#___22">&#x7F16;&#x5199;&#x89C4;&#x5219;</a></li>
+<li><a href="#___23">&#x89C4;&#x5219;&#x6267;&#x884C;</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="__">&#x5B9E;&#x9A8C;&#x76EE;&#x7684;&#x53CA;&#x573A;&#x666F;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x901A;&#x8FC7;&#x5B9E;&#x9A8C;&#x53BB;&#x9A8C;&#x8BC1; Drools CEP &#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x53CA;&#x539F;&#x7406;&#xFF0C;&#x5305;&#x62EC;&#xFF1A; &#x65F6;&#x949F;&#x3001;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#x3001;&#x4E8B;&#x4EF6;&#x3001;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x3002;&#x5B9E;&#x9A8C;&#x573A;&#x666F;&#x662F;&#x57FA;&#x4E8E; CEP &#x6784;&#x5EFA;&#x673A;&#x573A;&#x5305;&#x88F9;&#x626B;&#x63CF;&#x7CFB;&#x7EDF;&#x3002;&#x4F7F;&#x7528;&#x89C4;&#x5219;&#x7684;&#x76EE;&#x7684;&#x662F;&#xFF1A;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;</p>
+</li>
+<li>
+<p>&#x6258;&#x8FD0;&#x884C;&#x91CC;&#x65F6;&#x8BA1;&#x7B97;&#x884C;&#x91CC;&#x7684;&#x91CD;&#x91CF;</p>
+</li>
+<li>
+<p>&#x8BA1;&#x7B97;&#x5305;&#x88F9;&#x5E73;&#x5747;&#x7684;&#x5904;&#x7406;&#x65F6;&#x95F4;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_event_fact">Event/Fact &#x6A21;&#x578B;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="src/img/cep-lab-events.png" alt="cep lab events.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BagTag</code> - &#x5305;&#x88F9;&#x7684;&#x6807;&#x8BB0;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x552F;&#x4E00;&#x8868;&#x8BC6;&#x4E00;&#x4E2A;&#x5305;&#x88F9;</p>
+</li>
+<li>
+<p><code>Location</code> - &#x5305;&#x88F9;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x5305;&#x88F9;&#x53EF;&#x80FD;&#x7684;&#x4F4D;&#x7F6E;&#x6709;&#x56DB;&#x4E2A;&#xFF1A;CHECK_IN&#x3001;SORTING&#x3001;STAGING &#x548C; LOADING</p>
+</li>
+<li>
+<p><code>BagScannedEvent</code> - &#x5305;&#x88F9;&#x626B;&#x63CF;&#x4E8B;&#x4EF6;&#xFF0C;&#x5F53;&#x5305;&#x88F9;&#x626B;&#x63CF;&#x65F6;&#x4E8B;&#x4EF6;&#x88AB;&#x6267;&#x884C;&#xFF0C;&#x5173;&#x8054;&#x4E00;&#x4E2A; <code>BagTag</code> &#x548C;&#x4E00;&#x4E2A; <code>Location</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title"><strong>BagTag.java</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BagTag</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String id;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BagTag</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">this</span>(UUID.randomUUID().toString());
+	}
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BagTag</span><span class="hljs-params">(String id)</span> </span>{
+		<span class="hljs-keyword">this</span>.id = id;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> id;
+	}
+
+	<span class="hljs-meta">@Override</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.id;
+	}
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Location.java</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Location implements Serializable {
+
+	CHECK_IN(<span class="hljs-string">&quot;check-in&quot;</span>), SORTING(<span class="hljs-string">&quot;sorting&quot;</span>), STAGING(<span class="hljs-string">&quot;staging&quot;</span>), LOADING(<span class="hljs-string">&quot;loading&quot;</span>);
+
+	<span class="hljs-keyword">private</span> String location;
+
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Location</span><span class="hljs-params">(String location)</span> </span>{
+		<span class="hljs-keyword">this</span>.setLocation(location);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getLocation</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> location;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setLocation</span><span class="hljs-params">(String location)</span> </span>{
+		<span class="hljs-keyword">this</span>.location = location;
+	}
+
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>BagScannedEvent.java</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BagScannedEvent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1L</span>;
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String id;
+
+	<span class="hljs-keyword">private</span> Date timestamp;
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> BagTag bagTag;
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Location location;
+
+	<span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">double</span> weight;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BagScannedEvent</span><span class="hljs-params">(BagTag bagTag, Location location, <span class="hljs-keyword">double</span> weight)</span> </span>{
+		<span class="hljs-keyword">this</span>(bagTag, location, weight, <span class="hljs-keyword">new</span> Date());
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BagScannedEvent</span><span class="hljs-params">(BagTag bagTag, Location location, <span class="hljs-keyword">double</span> weight, Date eventTimestamp)</span> </span>{
+		<span class="hljs-keyword">this</span>(UUID.randomUUID().toString(), bagTag, location, weight, eventTimestamp);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">BagScannedEvent</span><span class="hljs-params">(String id, BagTag bagTag, Location location, <span class="hljs-keyword">double</span> weight, Date eventTimestamp)</span> </span>{
+		<span class="hljs-keyword">this</span>.id = id;
+		<span class="hljs-keyword">this</span>.bagTag = bagTag;
+		<span class="hljs-keyword">this</span>.location = location;
+		<span class="hljs-keyword">this</span>.weight = weight;
+		<span class="hljs-keyword">this</span>.timestamp = eventTimestamp;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Location <span class="hljs-title">getLocation</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> location;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> id;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> BagTag <span class="hljs-title">getBagTag</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> bagTag;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getWeight</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> weight;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Date <span class="hljs-title">getTimestamp</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> timestamp;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTimestamp</span><span class="hljs-params">(Date eventTimestamp)</span> </span>{
+		<span class="hljs-keyword">this</span>.timestamp = eventTimestamp;
+	}
+
+	<span class="hljs-meta">@Override</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> StringBuilder().append(<span class="hljs-string">&quot;Event:{&quot;</span>).append(<span class="hljs-string">&quot;id: &quot;</span> + id).append(<span class="hljs-string">&quot;&#xFF0C; bagTag: &quot;</span> + bagTag).append(<span class="hljs-string">&quot;, timestamp: &quot;</span> + timestamp).append(<span class="hljs-string">&quot;, location: &quot;</span> + location).append(<span class="hljs-string">&quot;}&quot;</span>).toString();
+	}
+
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___2">&#x4E00;&#xFF1A;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>&#x89C4;&#x5219;&#x8BBE;&#x8BA1;&#x8981;&#x6C42;&#xFF1A;</strong> &#x8BBE;&#x8BA1;&#x89C4;&#x5219;&#x68C0;&#x6D4B;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x5728;&#x901A;&#x8FC7; <strong>CHECK_IN</strong> &#x4F4D;&#x7F6E; 10 &#x5206;&#x949F;&#x4EE5;&#x540E;&#x662F;&#x5426;&#x901A;&#x8FC7; <strong>SORTING</strong> &#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x5426;&#x5219;&#x8BF4;&#x660E;&#x89C4;&#x5219;&#x4E22;&#x5931;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___3">&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</h3>
+<div class="paragraph">
+<p>&#x5C06; BagScannedEvent &#x5B9A;&#x4E49;&#x4E3A;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x591A;&#x79CD;&#x65B9;&#x6CD5;&#x53BB;&#x5B8C;&#x6210;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x7C7B; BagScannedEvent &#x4E0A;&#x9762;&#x6DFB;&#x52A0;&#x6807;&#x8BB0;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">import</span> org.kie.api.definition.type.Expires;
+<span class="hljs-keyword">import</span> org.kie.api.definition.type.Role;
+<span class="hljs-keyword">import</span> org.kie.api.definition.type.Role.Type;
+<span class="hljs-keyword">import</span> org.kie.api.definition.type.Timestamp;
+
+<span class="hljs-meta">@Role</span>(Type.EVENT)
+<span class="hljs-meta">@Timestamp</span>(<span class="hljs-string">&quot;timestamp&quot;</span>)
+<span class="hljs-meta">@Expires</span>(<span class="hljs-string">&quot;1d&quot;</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BagScannedEvent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="src/main/resources/events.csv">src/main/resources/events.csv</a> &#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#xFF0C;&#x5171;&#x6709; 7 &#x4E2A; Event</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Event:{id: <span class="hljs-number">1</span>&#xFF0C; bagTag: <span class="hljs-number">1</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+Event:{id: <span class="hljs-number">2</span>&#xFF0C; bagTag: <span class="hljs-number">2</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">03</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+Event:{id: <span class="hljs-number">3</span>&#xFF0C; bagTag: <span class="hljs-number">2</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">09</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING }
+Event:{id: <span class="hljs-number">4</span>&#xFF0C; bagTag: <span class="hljs-number">3</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">11</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+Event:{id: <span class="hljs-number">5</span>&#xFF0C; bagTag: <span class="hljs-number">3</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">14</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING }
+Event:{id: <span class="hljs-number">6</span>&#xFF0C; bagTag: <span class="hljs-number">4</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">12</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+Event:{id: <span class="hljs-number">7</span>&#xFF0C; bagTag: <span class="hljs-number">4</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">10</span>:<span class="hljs-number">13</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___4">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x5728;&#x673A;&#x573A;&#x5305;&#x88F9;&#x626B;&#x63CF;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7;&#x4E86; CHECK_IN&#xFF0C;&#x5219; 10 &#x5206;&#x949F;&#x540E;&#x4F1A;&#x5728; SORTING &#x4F4D;&#x7F6E;&#xFF0C;&#x5426;&#x5219;&#x7CFB;&#x7EDF;&#x8BA4;&#x4E3A;&#x5305;&#x88F9;&#x4E22;&#x5931;&#xFF0C;&#x57FA;&#x4E8E;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x3002;&#x89C4;&#x5219;&#x5224;&#x65AD;&#x7684;&#x7ED3;&#x679C;&#x662F; <strong>&#x5305;&#x88F9; 1 &#x4E22;&#x5931;</strong>&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;&#x5305;&#x88F9;&#x5728;&#x5206;&#x7C7B;&#x524D;&#x4E22;&#x5931;&quot;</span>
+when
+    $event1:BagScannedEvent(location == Location.CHECK_IN)
+    <span class="hljs-comment">// TODO-- &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7;&#x4E86; CHECK_IN&#xFF0C;&#x5219; 10 &#x5206;&#x949F;&#x540E;&#x4F1A;&#x5728; SORTING &#x4F4D;&#x7F6E;&#xFF0C;&#x5426;&#x5219;&#x7CFB;&#x7EDF;&#x8BA4;&#x4E3A;&#x5305;&#x88F9;&#x4E22;&#x5931;</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x5206;&#x7C7B;&#x524D;&#x4E22;&#x5931;&#x5305;&#x88F9;: &quot;</span> + $event1.getBagTag().getId());
+end</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x5B8C;&#x6210;&#x5982;&#x4E0A;&#x89C4;&#x5219;&#x4E2D; <code>TODO</code> &#x90E8;&#x5206;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___5">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule1Main.java">Rule1Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x89C4;&#x5219;&#x8FD0;&#x884C;&#x8F93;&#x51FA;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">&#x5206;&#x7C7B;&#x524D;&#x4E22;&#x5931;&#x5305;&#x88F9;: <span class="hljs-number">1</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___6">&#x4E8C;&#xFF1A;&#x5305;&#x88F9;&#x6570;&#x7EDF;&#x8BA1;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x7F16;&#x5199;&#x89C4;&#x5219;&#x7EDF;&#x8BA1;&#x6700;&#x8FD1;&#x4E00;&#x5C0F;&#x65F6;&#x5185;&#x7ECF;&#x8FC7; SORTING &#x4F4D;&#x7F6E;&#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___7">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x4F7F;&#x7528; CEP &#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x7F16;&#x5199;&#x89C4;&#x5219;&#xFF0C;&#x7EDF;&#x8BA1;&#x6700;&#x8FD1;&#x4E00;&#x5C0F;&#x65F6;&#x5185;&#x7ECF;&#x8FC7; SORTING &#x4F4D;&#x7F6E;&#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;&#x6700;&#x8FD1;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;&quot;</span>
+when
+    <span class="hljs-comment">// TODO-- &#x4F7F;&#x7528; CEP &#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x7F16;&#x5199;&#x89C4;&#x5219;&#xFF0C;&#x7EDF;&#x8BA1;&#x6700;&#x8FD1;&#x4E00;&#x5C0F;&#x65F6;&#x5185;&#x7ECF;&#x8FC7; SORTING &#x4F4D;&#x7F6E;&#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: &quot;</span> + drools.getWorkingMemory().getSessionClock().getCurrentTime() + <span class="hljs-string">&quot;&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: &quot;</span> + $number );
+end</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x5B8C;&#x6210;&#x5982;&#x4E0A;&#x89C4;&#x5219;&#x4E2D; <code>TODO</code> &#x90E8;&#x5206;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___8">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule2Main.java">Rule2Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x89C4;&#x5219;&#x8FD0;&#x884C;&#x8F93;&#x51FA;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">0</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">1</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">2</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">3</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___9">&#x4E09;&#xFF1A;&#x5305;&#x88F9;&#x91CD;&#x91CF;&#x7EDF;&#x8BA1;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x7F16;&#x5199;&#x89C4;&#x5219;&#x7EDF;&#x8BA1;&#x7EDF;&#x8BA1;&#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684; 5 &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___10">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x4F7F;&#x7528;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x8BBE;&#x8BA1;&#x7EDF;&#x8BA1;&#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;5 &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; 5 &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;&quot;</span>
+when
+    <span class="hljs-comment">// TODO--</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: &quot;</span> + drools.getWorkingMemory().getSessionClock().getCurrentTime() + <span class="hljs-string">&quot;&#xFF0C; &#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; 5 &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;: &quot;</span> + $number );
+end</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x5B8C;&#x6210;&#x5982;&#x4E0A;&#x89C4;&#x5219;&#x4E2D; <code>TODO</code> &#x90E8;&#x5206;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___11">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule3Main.java">Rule3Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x89C4;&#x5219;&#x8FD0;&#x884C;&#x8F93;&#x51FA;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">0</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237200000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; <span class="hljs-number">5</span> &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;: <span class="hljs-number">0.0</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237740000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">1</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516237740000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; <span class="hljs-number">5</span> &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;: <span class="hljs-number">17.2</span>
+&#x5206;&#x7C7B;&#x524D;&#x4E22;&#x5931;&#x5305;&#x88F9;: <span class="hljs-number">1</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516238040000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">2</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516238040000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; <span class="hljs-number">5</span> &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;: <span class="hljs-number">15.899999999999999</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516241520000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">1</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516241580000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x901A;&#x8FC7; SORTING &#x7684;&#x5305;&#x88F9;&#x603B;&#x6570;: <span class="hljs-number">2</span>
+&#x7CFB;&#x7EDF;&#x5F53;&#x524D;&#x65F6;&#x95F4;: <span class="hljs-number">1516241580000</span>&#xFF0C; &#x8FC7;&#x53BB;&#x901A;&#x8FC7; CHECK_IN &#x7684;&#x8FDE;&#x7EED; <span class="hljs-number">5</span> &#x4E2A;&#x5305;&#x88F9;&#x7684;&#x5E73;&#x5747;&#x91CD;&#x91CF;: <span class="hljs-number">17.2</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kiesession_eventlistener">KieSession EventListener</h3>
+<div class="paragraph">
+<p>&#x6DFB;&#x52A0; EventListener &#x8BB0;&#x5F55;&#x89C4;&#x5219;&#x6267;&#x884C; Agenda &#x53CA; Runtime &#x72B6;&#x6001;&#x3002;</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__check_in_sorting">&#x56DB;&#xFF1A;&#x7EDF;&#x8BA1;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x65F6;&#x95F4;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x5305;&#x88F9;&#x626B;&#x63CF;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x7EDF;&#x8BA1;&#x8FC7;&#x53BB; 5 &#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___12">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;5 &#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x5904;&#x7406;&#x65F6;&#x95F4;&quot;</span>
+when
+    <span class="hljs-comment">// TODO--</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x5904;&#x7406;&#x65F6;&#x95F4;: &quot;</span> + $number);
+end</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x5B8C;&#x6210;&#x5982;&#x4E0A;&#x89C4;&#x5219;&#x4E2D; <code>TODO</code> &#x90E8;&#x5206;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___13">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule4Main.java">Rule4Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x89C4;&#x5219;&#x8FD0;&#x884C;&#x8F93;&#x51FA;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-number">5</span> &#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x5904;&#x7406;&#x65F6;&#x95F4;: <span class="hljs-number">200000.0</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___14">&#x4E94;&#xFF1A;&#x5E73;&#x5747;&#x65F6;&#x95F4;&#x7EDF;&#x8BA1;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>5 &#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x5305;&#x88F9;&#x4ECE; CHECK_IN &#x5230; SORTING &#x7684;&#x5E73;&#x5747;&#x5904;&#x7406;&#x65F6;&#x95F4;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x8D1F;&#x8D23;&#xFF0C;&#x4F8B;&#x5982;&#x5728; SORTING &#x4E2D;&#x5B58;&#x5728;&#x7684;&#x5305;&#x88F9;&#x5219;&#x9700;&#x8981;&#x786E;&#x4FDD; CHECK_IN &#x4E5F;&#x5B58;&#x5728;&#x6B21;&#x5305;&#x88F9;&#x3002;&#x672C;&#x90E8;&#x5206;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;&#x6B64;&#x89C4;&#x5219;&#x3002;</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__entry_point">&#x516D;&#xFF1A;Entry Point &#x63D2;&#x5165;&#x4E8B;&#x4EF6;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x7F16;&#x8F91;&#x89C4;&#x5219;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x4E0D;&#x540C;&#x4F4D;&#x7F6E;&#x7684;&#x5305;&#x88F9;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___15">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;CheckIn &#x7684;&#x5305;&#x88F9;&quot;</span>
+when
+        $event:BagScannedEvent() from entry-point <span class="hljs-string">&quot;CheckIn&quot;</span>
+then
+        System.out.println(<span class="hljs-string">&quot;CheckIn &#x7684;&#x5305;&#x88F9;: &quot;</span> + $event);
+end
+
+rule <span class="hljs-string">&quot;Sorting &#x7684;&#x5305;&#x88F9;&quot;</span>
+when
+        $event:BagScannedEvent() from entry-point <span class="hljs-string">&quot;Sorting&quot;</span>
+then
+        System.out.println(<span class="hljs-string">&quot;Sorting &#x7684;&#x5305;&#x88F9;: &quot;</span> + $event);
+end
+
+
+rule <span class="hljs-string">&quot;Staging &#x7684;&#x5305;&#x88F9;&quot;</span>
+when
+        $event:BagScannedEvent() from entry-point <span class="hljs-string">&quot;Staging&quot;</span>
+then
+        System.out.println(<span class="hljs-string">&quot;Staging &#x7684;&#x5305;&#x88F9;: &quot;</span> + $event);
+end</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___16">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule6Main.java">Rule6Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x89C4;&#x5219;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D; Event insert &#x903B;&#x8F91;&#x5982;&#x4E0B;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">        <span class="hljs-keyword">switch</span>(location) {
+        <span class="hljs-keyword">case</span> CHECK_IN :
+            kieSession.getEntryPoint(<span class="hljs-string">&quot;CheckIn&quot;</span>).insert(event);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> SORTING :
+            kieSession.getEntryPoint(<span class="hljs-string">&quot;Sorting&quot;</span>).insert(event);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> STAGING :
+            kieSession.getEntryPoint(<span class="hljs-string">&quot;Staging&quot;</span>).insert(event);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> LOADING :
+            kieSession.getEntryPoint(<span class="hljs-string">&quot;Loading&quot;</span>).insert(event);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">default</span>:
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Unexpected location.&quot;</span>);
+        }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___17">&#x4E03;&#xFF1A;&#x5305;&#x88F9;&#x5339;&#x914D;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x7F16;&#x5199;&#x89C4;&#x5219;&#x662F;&#x5B9E;&#x73B0;&#x5305;&#x88F9;&#x5339;&#x914D;&#xFF0C;&#x5305;&#x88F9;&#x4E8B;&#x4EF6;&#x6765;&#x81EA;&#x4E0D;&#x540C;&#x7684;&#x6D41;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___18">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;&#x5305;&#x88F9;&#x5339;&#x914D;&quot;</span>
+when
+    <span class="hljs-comment">//TODO--</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: &quot;</span> + $event1.getBagTag().getId());
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>NOTE&#xFF1A; &#x8865;&#x5145; TODO-- &#x90E8;&#x5206;&#x3002;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___19">&#x6267;&#x884C;&#x89C4;&#x5219;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule7Main.java">Rule7Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x6267;&#x884C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">All events:
+    Event:{id: <span class="hljs-number">1</span>&#xFF0C; bagTag: <span class="hljs-number">1</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+    Event:{id: <span class="hljs-number">2</span>&#xFF0C; bagTag: <span class="hljs-number">2</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">01</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+    Event:{id: <span class="hljs-number">3</span>&#xFF0C; bagTag: <span class="hljs-number">3</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">03</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+    Event:{id: <span class="hljs-number">4</span>&#xFF0C; bagTag: <span class="hljs-number">2</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">04</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING}
+    Event:{id: <span class="hljs-number">5</span>&#xFF0C; bagTag: <span class="hljs-number">1</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">11</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING}
+    Event:{id: <span class="hljs-number">6</span>&#xFF0C; bagTag: <span class="hljs-number">3</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">12</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING}
+    Event:{id: <span class="hljs-number">7</span>&#xFF0C; bagTag: <span class="hljs-number">4</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">33</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+    Event:{id: <span class="hljs-number">8</span>&#xFF0C; bagTag: <span class="hljs-number">5</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">35</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+    Event:{id: <span class="hljs-number">9</span>&#xFF0C; bagTag: <span class="hljs-number">4</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">44</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: SORTING}
+    Event:{id: <span class="hljs-number">10</span>&#xFF0C; bagTag: <span class="hljs-number">5</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">44</span>:<span class="hljs-number">30</span> CST <span class="hljs-number">2018</span>, location: SORTING}
+&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: <span class="hljs-number">2</span>
+&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: <span class="hljs-number">1</span>
+&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: <span class="hljs-number">3</span>
+&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: <span class="hljs-number">4</span>
+&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5305;&#x88F9;&#x7ECF;&#x8FC7; CHECK_IN &#x548C; SORTING: <span class="hljs-number">5</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___20">&#x516B;&#xFF1A;&#x4E8B;&#x4EF6;&#x8FC7;&#x671F;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x672C;&#x90E8;&#x5206;&#x6D4B;&#x8BD5; CEP &#x4E2D;&#x4E8B;&#x4EF6;&#x8FC7;&#x671F;&#x5C5E;&#x6027;&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x8BBE;&#x5B9A; BagScannedEvent &#x4E8B;&#x4EF6;&#x8FC7;&#x671F;&#x4E8B;&#x4EF6;&#x4E3A; 10 &#x5206;&#x949F;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-meta">@Role</span>(Type.EVENT)
+<span class="hljs-meta">@Timestamp</span>(<span class="hljs-string">&quot;timestamp&quot;</span>)
+<span class="hljs-meta">@Expires</span>(<span class="hljs-string">&quot;10m&quot;</span>) <span class="hljs-comment">// &quot;1d&quot;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BagScannedEvent</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>{</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>&#x5B9E;&#x73B0; DefaultRuleRuntimeEventListener&#xFF0C;&#x5F53;&#x4E8B;&#x4EF6;&#x5220;&#x9664;&#x540E;&#x6253;&#x5370;&#x8F93;&#x51FA;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoggingRuleRuntimeEventListener</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">DefaultRuleRuntimeEventListener</span> </span>{
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">objectDeleted</span><span class="hljs-params">(ObjectDeletedEvent event)</span> </span>{
+        System.out.println(<span class="hljs-string">&quot;Event deleted from WorkingMemory: &quot;</span> + event.getOldObject());
+        System.out.println(<span class="hljs-string">&quot;Number of facts in session: &quot;</span> + event.getKieRuntime().getFactCount());
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule8Main.java">Rule8Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;&#xFF0C;&#x6267;&#x884C;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">Event deleted from WorkingMemory: Event:{id: <span class="hljs-number">1</span>&#xFF0C; bagTag: <span class="hljs-number">1</span>, timestamp: Thu Jan <span class="hljs-number">18</span> <span class="hljs-number">09</span>:<span class="hljs-number">00</span>:<span class="hljs-number">00</span> CST <span class="hljs-number">2018</span>, location: CHECK_IN}
+Number of facts in session: <span class="hljs-number">3</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___21">&#x4E5D;&#xFF1A;&#x65F6;&#x95F4;&#x8FD0;&#x7B97;&#x7B26;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>&#x5728; &lt;&lt;&#x4E00;&#xFF1A;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;, &#x4E00;&#xFF1A;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;&gt;&gt; &#x90E8;&#x5206;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x89C4;&#x5219;&#x8FDB;&#x884C;&#x4E86;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;&#xFF0C;&#x672C;&#x90E8;&#x5206;&#x901A;&#x8FC7;&#x65F6;&#x95F4;&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x65B0;&#x8BBE;&#x8BA1;&#x89C4;&#x5219;&#x3002;</p>
+</div>
+<div class="sect2">
+<h3 id="___22">&#x7F16;&#x5199;&#x89C4;&#x5219;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">rule <span class="hljs-string">&quot;&#x4E22;&#x5931;&#x5305;&#x88F9;&#x68C0;&#x6D4B;&quot;</span>
+when
+    <span class="hljs-comment">//TODO--</span>
+then
+    System.out.println(<span class="hljs-string">&quot;&#x4E22;&#x5931;&#x5305;&#x88F9;: &quot;</span> + $event1.getBagTag().getId());
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>NOTE&#xFF1A; &#x8865;&#x5145; TODO-- &#x90E8;&#x5206;&#x3002;</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___23">&#x89C4;&#x5219;&#x6267;&#x884C;</h3>
+<div class="paragraph">
+<p>&#x8FD0;&#x884C; <a href="src/main/java/com/sample/Rule9Main.java">Rule9Main.java</a> &#x53EF;&#x6267;&#x884C;&#x89C4;&#x5219;.</p>
+</div>
+<div class="paragraph">
+<p>&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#x8C03;&#x793A;&#xFF1A;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To inspect the behaviour of Drools, set a breakpoint on line 519 of the ObjectTypeNode class. Expiration offsets are defined on the ObjectTypeNode of a given object. This is especially interesting to know when using subclassing in your events. I.e. when you have an event that matches 2 ObjectTypeNodes, one for its superclass and one for its subclass, 2 expiry actions are scheduled, one per OTN.</p>
+</li>
+<li>
+<p>To further inspect the behaviour, also set a breakpoint on line 92 of the PropagationEntry interface. This is the line of the Insert PropagationEntry that gets executed when a fact/event is inserted into the engine.</p>
+</li>
+<li>
+<p>When we now run the Main class in debug-mode, we can see that the expiration-offset on the OTN gets set when the network is created.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../docs/phreak.html" class="navigation navigation-prev " aria-label="Previous page: PHREAK">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../usecase.html" class="navigation navigation-next " aria-label="Next page: 案例">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CEP 规则编写","level":"1.5.3","depth":2,"next":{"title":"案例","level":"1.6","depth":1,"path":"usecase.adoc","ref":"usecase.adoc","articles":[{"title":"欺骗侦测","level":"1.6.1","depth":2,"path":"cep-fraud-detection-springboot/README.adoc","ref":"cep-fraud-detection-springboot/README.adoc","articles":[]},{"title":"智能交通","level":"1.6.2","depth":2,"path":"intelligent-transportation/README.adoc","ref":"intelligent-transportation/README.adoc","articles":[]},{"title":"贷款审批","level":"1.6.3","depth":2,"path":"dt-loan-approve/README.adoc","ref":"dt-loan-approve/README.adoc","articles":[]},{"title":"运单管理","level":"1.6.4","depth":2,"path":"logistics-freight-management/README.adoc","ref":"logistics-freight-management/README.adoc","articles":[]}]},"previous":{"title":"PHREAK","level":"1.5.2","depth":2,"path":"docs/phreak.adoc","ref":"docs/phreak.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"wechat":"http://ksoong.org/cloud-labs/content/images/wechat.png","alipay":"http://ksoong.org/cloud-labs/content/images/alipay.png","title":"","button":"赞赏","alipayText":"支付宝捐赠","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/cloud-labs/blob/gh-pages"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"cep-labs/README.adoc","mtime":"2018-08-03T10:19:54.904Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-08-03T13:04:30.083Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

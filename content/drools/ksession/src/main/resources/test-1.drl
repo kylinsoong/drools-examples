@@ -1,0 +1,14 @@
+package com.sample
+
+import java.util.List;
+
+rule "Test"
+    when
+        $list : List(size == 3) from collect(String())
+    then
+        System.out.println("Fired rule: Test");
+        for (Object fact : $list) {
+            System.out.println("Retracting fact");
+            retract(fact);
+        }
+end

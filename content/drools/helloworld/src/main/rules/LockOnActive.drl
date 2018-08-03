@@ -1,0 +1,46 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Message;
+
+/**
+* If you comment out "lock-on-active true", and uncomment "no-loop", infinit loop occurs.
+* Because no-loop is affect only when update() is invoked within the same rule.
+* For that situation, lock-on-active is useful.
+**/
+
+rule "Hello World"
+	lock-on-active true
+    when
+        m : Message( status == Message.HELLO, myMessage : message )
+    then
+        System.out.println( myMessage );
+        m.setMessage("Goodbye cruel world");
+        m.setStatus( Message.GOODBYE );
+        update( m );
+        kcontext.getKnowledgeRuntime().getAgenda().getAgendaGroup("GoodBye").setFocus();        
+
+end
+
+rule "See You" 
+	salience 100
+	agenda-group "GoodBye"
+	lock-on-active true
+//	no-loop
+    when
+        m : Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println("see you");
+        update(m);
+end
+
+rule "I'll be back"
+	salience 50
+	agenda-group "GoodBye"
+	lock-on-active true
+//	no-loop
+	when
+		m : Message( status == Message.GOODBYE, myMessage : message )
+	then
+		System.out.println("I'll be back");
+		update(m);
+end

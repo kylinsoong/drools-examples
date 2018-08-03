@@ -1,0 +1,32 @@
+package cep;
+
+import com.sample.domain.cep.*;
+import java.util.Date;
+
+global FireAlarm fireAlarm;
+
+declare SprinklerActivated
+    @role(event)
+    @timestamp(timestamp)
+    @expires(1m)
+end
+
+declare FireAlarm
+    @role(event)
+    @timestamp(timestamp)
+    @expires(1m)
+end
+
+
+
+
+rule "Sound the alarm"
+    when
+        $f : FireDetected() from entry-point "fireDetectionStream"
+        not(SprinklerActivated(this after[0s,10s] $f) from entry-point "fireDetectionStream")
+    then
+        fireAlarm.setActivated(true);
+        fireAlarm.setTimestamp(new Date());
+        fireAlarm.setDesc("Sound the alarm");
+end
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+    <kbase name="rules1" equalsBehavior="equality" eventProcessingMode="stream" packages="rules1">
+        <ksession name="ksession-rules1" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules2" equalsBehavior="equality" eventProcessingMode="stream" packages="rules2">
+        <ksession name="ksession-rules2" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules3" equalsBehavior="equality" eventProcessingMode="stream" packages="rules3">
+        <ksession name="ksession-rules3" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules4" equalsBehavior="equality" eventProcessingMode="stream" packages="rules4">
+        <ksession name="ksession-rules4" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules5" equalsBehavior="equality" eventProcessingMode="stream" packages="rules5">
+        <ksession name="ksession-rules5" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules6" equalsBehavior="equality" eventProcessingMode="stream" packages="rules6">
+        <ksession name="ksession-rules6" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules7" equalsBehavior="equality" eventProcessingMode="stream" packages="rules7">
+        <ksession name="ksession-rules7" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules8" equalsBehavior="equality" eventProcessingMode="stream" packages="rules8">
+        <ksession name="ksession-rules8" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+    <kbase name="rules9" equalsBehavior="equality" eventProcessingMode="stream" packages="rules9">
+        <ksession name="ksession-rules9" default="true" type="stateful" clockType="pseudo"/>
+    </kbase>
+    
+</kmodule>

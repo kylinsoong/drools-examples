@@ -1,0 +1,14 @@
+What's this
+-----------
+
+This article will demonstrate how to use jBPM Rest API invoke jBPM Server BPMN process 
+
+The Rest API is documented at the following URL when running BRMS 5.3 standalone
+
+http://localhost:8080/business-central-server/rs/server/resources/jbpm
+
+NOTE: if we deploy to other JEE container, we need change above url's `business-central-server` to reference web root.
+
+*jBPM-Drools-Example/jbpm/test/restclient* is the path of jBPM rest client project.
+
+

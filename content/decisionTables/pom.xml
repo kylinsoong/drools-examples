@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.drools.examples</groupId>
+   <artifactId>decisionTable-example</artifactId>
+   <version>1.0</version>
+
+   <name>DecisionTable-example</name>
+   <description>DecisionTable-example</description>
+
+   <url>https://github.com/kylinsoong</url>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <drools.version>6.5.0.Final-redhat-2</drools.version>
+   </properties>
+   
+   <dependencyManagement>
+     <dependencies>
+       <dependency>
+         <groupId>org.jboss.bom.brms</groupId>
+         <artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
+         <version>6.4.0.GA-redhat-2</version>
+         <type>pom</type>
+         <scope>import</scope>
+       </dependency>
+     </dependencies>
+   </dependencyManagement>
+
+	<dependencies>
+	  <dependency>
+	    <groupId>org.kie</groupId>
+	    <artifactId>kie-api</artifactId>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.drools</groupId>
+        <artifactId>drools-decisiontables</artifactId>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.drools</groupId>
+	    <artifactId>drools-core</artifactId>
+	  </dependency>
+	  <dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-simple</artifactId>
+	  </dependency>
+	  
+	  <dependency>
+	    <groupId>org.jbpm</groupId>
+        <artifactId>jbpm-test</artifactId>
+	  </dependency>
+	  
+	  
+	  <dependency>
+	    <groupId>junit</groupId>
+	    <artifactId>junit</artifactId>
+	    <scope>test</scope>
+	  </dependency>     
+	</dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5</version>
+            <configuration>
+               <source>1.8</source>
+               <target>1.8</target>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+
+</project>

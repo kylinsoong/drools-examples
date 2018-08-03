@@ -1,0 +1,14 @@
+package com.sample;
+
+declare Person
+	name : String
+	age : int
+end
+
+rule "Using a declared Type"
+when
+    person : Person (n : name, a : age)
+then
+	System.out.println("Name: " + n);
+	System.out.println("Age: " + a);
+end

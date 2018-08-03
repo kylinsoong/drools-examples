@@ -1,0 +1,20 @@
+//created on: Jul 27, 2018
+package or
+
+import org.kie.examples.phreak.nodes.Customer;
+import org.kie.examples.phreak.nodes.Category;
+import org.kie.examples.phreak.nodes.Order;
+import org.kie.examples.phreak.nodes.SuspiciousOperation;
+
+
+
+rule "Sample Rule 1"
+when
+    $c: Customer(category != Category.GOLD)
+    (Order(customer == $c, total > 10000) 
+    or
+    SuspiciousOperation(customer == $c)
+    )
+then
+    
+end

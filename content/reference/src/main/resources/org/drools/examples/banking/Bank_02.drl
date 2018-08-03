@@ -1,0 +1,10 @@
+package org.drools.examples.banking;
+
+rule "Rule 02"   
+    when
+        $number : Number()
+        not Number( intValue < $number.intValue ) 
+    then
+        System.out.println("Number found with value: " + $number.intValue() ); 
+        delete( $number );
+end

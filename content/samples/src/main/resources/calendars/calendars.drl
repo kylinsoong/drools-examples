@@ -1,0 +1,15 @@
+package calendars
+
+import com.sample.domain.calendars.*;
+
+rule "Interval-based timer"
+    timer (int: 10s 0)
+    when
+        $l : Light(status == "on")
+    then
+        modify( $l ) { status = "off" };
+        System.out.println($l);
+
+end
+
+

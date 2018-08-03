@@ -1,0 +1,35 @@
+如jBPM 6 中使用 jbpm-console 创建执行 BPM 流程 - I中所示，我们在jbpm-console 上创建执行了简单的BPM流程，本文在前文的基础之上演示如何创建执行一个较复杂的流程，即流程开始和执行User Task时需要输入数据。
+
+创建流程
+如 前文 中所示，选择Authoring -> Project Authoring，在Project Explorer中选择rganizational Unit 为 test，选择 Repository 为 myTestRepo，点击New Item -> Business Process创建流程TestProcess-1如下图所示：
+81_create_process.png
+流程和 前文 中类似，仅有一个User Task节点，User Task的执行者为kylin。
+
+创建Data Modeler
+选择Tools -> Data Modeler，点击Create按钮，创建data object，在弹出的输入框中Identifier填写为Person，Package选择org.jbpm.test，点击Ok按钮，在Create new field栏添加如下三个变量：类型为String的name，类型为Integer的age，类型为Boolean的adult，点击Save保存如下图所示：
+81_create_data_object.png
+
+编辑流程
+返回到流程编辑，添加一个person变量，类型为org.jbpm.test.Person，如下图所示：
+81_edit_process_variable.png
+流程编辑中编辑User Task，编辑DataInputSet，添加person_in变量，类型为org.jbpm.test.Person，如下图所示：
+81_edit_usertask_input_variable.png
+编辑DataOutputSet，添加person_out变量，类型为org.jbpm.test.Person，如下图所示：
+81_edit_usertask_output_variable.png
+编辑Assignments，添加Assignment，person变量映射到person_in变量，person_out变量映射到person变量，如下图所示：
+81_edit_usertask_variable_mapping.png
+保存流程编辑，在流程编辑导航栏选择Generate All Forms如下图所示：
+81_generate_forms.png
+同样在流程编辑导航栏选择选择Edit Process Form，编辑Process Form如下图所示：
+81_edit_process_forms.png
+在流程编辑导航栏选择选择Edit Task Form，编辑Task Form如下图所示：
+81_edit_task_forms.png
+至此编辑流程编辑完成。
+
+运行流程
+
+
+
+
+
+

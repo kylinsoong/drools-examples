@@ -1,0 +1,34 @@
+What's this
+-----------
+
+Primary purpose of this doc is give a procedure for testing jBPM Approval Demo.
+
+link:jBPM-approval-run.asciidoc[How to run jBPM Approval Demo on JBoss or OpenShift]
+
+Assume I have deployed jBPM Approval Demo on OpenShift, and can test via 
+
+http://jeedemo-ksoong.rhcloud.com/jbpm-approval 
+
+https://jeedemo-ksoong.rhcloud.com/jbpm-approval
+
+NOTE: `https` used for pentrating Chinese Firewall
+
+
+Test Procedure
+--------------
+
+* Fill out a Ticket name and Applicant name click Apply button
+
+image::img/jbpm-approval-1.png[Apply a Ticket]
+
+* Click John's Task, in task list click Approve
+
+image::img/jbpm-approval-2.png[John Approve]
+
+* Click Mary's Task, in task list click Approve
+
+image::img/jbpm-approval-3.png[Mary Approve]
+
+* Click Audit, in Audit View page view the audit log
+
+image::img/jbpm-approval-4.png[Audit View]

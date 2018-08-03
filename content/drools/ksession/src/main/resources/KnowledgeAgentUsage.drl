@@ -1,0 +1,8 @@
+package org.drools.examples;
+
+rule "KnowledgeAgent Usage Test"
+when
+	eval( true )
+then
+	System.out.println("KnowledgeAgent Usage Demo");
+end

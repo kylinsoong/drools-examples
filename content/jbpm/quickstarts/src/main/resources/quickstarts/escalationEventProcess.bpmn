@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<definitions id="Definition"
+             targetNamespace="http://www.omg.org/bpmn20"
+             typeLanguage="http://www.java.com/javaTypes"
+             expressionLanguage="http://www.mvel.org/2.0"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
+             xmlns:g="http://www.jboss.org/drools/flow/gpd"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+             xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+             xmlns:tns="http://www.jboss.org/drools">
+
+  <itemDefinition id="_inputDataItem" />
+  <itemDefinition id="_errorListItem" structureRef="java.util.List" />
+  <itemDefinition id="_hasErrorsItem" structureRef="Boolean" />
+
+  <escalation id="InputDataError" escalationCode="InputDataError" />
+  <process processType="Private" isExecutable="true" id="org.jbpm.quickstarts.escalationeventprocess" name="Escalation Boundary Event Process" tns:packageName="org.jbpm.quickstarts" >
+
+    <!-- process variables -->
+    <property id="inputData" itemSubjectRef="_inputDataItem"/>
+    <property id="errorList" itemSubjectRef="_errorListItem"/>
+    <property id="hasErrors" itemSubjectRef="_hasErrorsItem"/>
+
+    <!-- nodes -->
+    <startEvent id="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6" name="" />
+    <subProcess id="_2DC9A7E0-132A-4187-989A-323FC83E1E7E" name=""  >
+    <!-- nodes -->
+    <startEvent id="_F4A40D0E-0EA8-49A5-98E8-A23AA7A18838" name="" />
+    <scriptTask id="_EB2F4C1F-A295-4B00-801A-055C40CF59D3" name="Validate Input Data" scriptFormat="http://www.java.com/java" >
+      <script>kcontext.setVariable("hasErrors",inputData==null);
+System.out.println("Validation errors? "+kcontext.getVariable("hasErrors"));</script>
+    </scriptTask>
+    <exclusiveGateway id="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" name="" gatewayDirection="Diverging" />
+    <endEvent id="_FB36756B-9F6E-4931-B6B1-A0FA34B74738" name="" />
+    <endEvent id="_02EAF908-60B6-4978-A59C-1755CAB4775C" name="" >
+      <escalationEventDefinition escalationRef="InputDataError" />
+    </endEvent>
+    <!-- connections -->
+    <sequenceFlow id="_F4A40D0E-0EA8-49A5-98E8-A23AA7A18838-_EB2F4C1F-A295-4B00-801A-055C40CF59D3" sourceRef="_F4A40D0E-0EA8-49A5-98E8-A23AA7A18838" targetRef="_EB2F4C1F-A295-4B00-801A-055C40CF59D3" />
+    <sequenceFlow id="_EB2F4C1F-A295-4B00-801A-055C40CF59D3-_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" sourceRef="_EB2F4C1F-A295-4B00-801A-055C40CF59D3" targetRef="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" />
+    <sequenceFlow id="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69-_FB36756B-9F6E-4931-B6B1-A0FA34B74738" sourceRef="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" targetRef="_FB36756B-9F6E-4931-B6B1-A0FA34B74738" name="No Errors" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return hasErrors == false;</conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69-_02EAF908-60B6-4978-A59C-1755CAB4775C" sourceRef="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" targetRef="_02EAF908-60B6-4978-A59C-1755CAB4775C" name="Has Errors" >
+      <conditionExpression xsi:type="tFormalExpression" language="http://www.java.com/java" >return hasErrors == true;</conditionExpression>
+    </sequenceFlow>
+    </subProcess>
+    <scriptTask id="_11C2257F-0F96-490F-B880-933AFDFDBE8B" name="Do Your Job!" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Do Your Job!");</script>
+    </scriptTask>
+    <scriptTask id="_4717BD60-B961-43BD-9C55-944338A4A355" name="Inform Error" scriptFormat="http://www.java.com/java" >
+      <script>System.out.println("Escalation handled");
+errorList.add("Invalid input data!");</script>
+    </scriptTask>
+    <endEvent id="_EE96EFD8-8E54-4F5A-8A94-E0C1981058A2" name="" >
+        <terminateEventDefinition />
+    </endEvent>
+    <endEvent id="_9998DABC-069D-4B88-B592-29C462DBB769" name="" >
+        <terminateEventDefinition />
+    </endEvent>
+    <boundaryEvent id="_E6D5712E-CEF6-4B32-B13A-EF1D81F76270" name="" attachedToRef="_2DC9A7E0-132A-4187-989A-323FC83E1E7E" cancelActivity="false" >
+      <escalationEventDefinition escalationRef="InputDataError" />
+    </boundaryEvent>
+
+    <!-- connections -->
+    <sequenceFlow id="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6-_2DC9A7E0-132A-4187-989A-323FC83E1E7E" sourceRef="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6" targetRef="_2DC9A7E0-132A-4187-989A-323FC83E1E7E" />
+    <sequenceFlow id="_2DC9A7E0-132A-4187-989A-323FC83E1E7E-_11C2257F-0F96-490F-B880-933AFDFDBE8B" sourceRef="_2DC9A7E0-132A-4187-989A-323FC83E1E7E" targetRef="_11C2257F-0F96-490F-B880-933AFDFDBE8B" />
+    <sequenceFlow id="_E6D5712E-CEF6-4B32-B13A-EF1D81F76270-_4717BD60-B961-43BD-9C55-944338A4A355" sourceRef="_E6D5712E-CEF6-4B32-B13A-EF1D81F76270" targetRef="_4717BD60-B961-43BD-9C55-944338A4A355" />
+    <sequenceFlow id="_4717BD60-B961-43BD-9C55-944338A4A355-_EE96EFD8-8E54-4F5A-8A94-E0C1981058A2" sourceRef="_4717BD60-B961-43BD-9C55-944338A4A355" targetRef="_EE96EFD8-8E54-4F5A-8A94-E0C1981058A2" />
+    <sequenceFlow id="_11C2257F-0F96-490F-B880-933AFDFDBE8B-_9998DABC-069D-4B88-B592-29C462DBB769" sourceRef="_11C2257F-0F96-490F-B880-933AFDFDBE8B" targetRef="_9998DABC-069D-4B88-B592-29C462DBB769" />
+
+  </process>
+
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane bpmnElement="org.jbpm.quickstarts.escalationeventprocess" >
+      <bpmndi:BPMNShape bpmnElement="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6" >
+        <dc:Bounds x="1" y="242" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_2DC9A7E0-132A-4187-989A-323FC83E1E7E" >
+        <dc:Bounds x="90" y="77" width="414" height="362" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_F4A40D0E-0EA8-49A5-98E8-A23AA7A18838" >
+        <dc:Bounds x="180" y="14" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_EB2F4C1F-A295-4B00-801A-055C40CF59D3" >
+        <dc:Bounds x="119" y="83" width="164" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" >
+        <dc:Bounds x="175" y="189" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_FB36756B-9F6E-4931-B6B1-A0FA34B74738" >
+        <dc:Bounds x="57" y="275" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_02EAF908-60B6-4978-A59C-1755CAB4775C" >
+        <dc:Bounds x="279" y="276" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_11C2257F-0F96-490F-B880-933AFDFDBE8B" >
+        <dc:Bounds x="564" y="217" width="138" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_4717BD60-B961-43BD-9C55-944338A4A355" >
+        <dc:Bounds x="193" y="473" width="152" height="72" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_EE96EFD8-8E54-4F5A-8A94-E0C1981058A2" >
+        <dc:Bounds x="421" y="486" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_9998DABC-069D-4B88-B592-29C462DBB769" >
+        <dc:Bounds x="759" y="233" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_E6D5712E-CEF6-4B32-B13A-EF1D81F76270" >
+        <dc:Bounds x="76" y="483" width="48" height="48" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_F4A40D0E-0EA8-49A5-98E8-A23AA7A18838-_EB2F4C1F-A295-4B00-801A-055C40CF59D3" >
+        <di:waypoint x="114" y="-39" />
+        <di:waypoint x="111" y="46" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_EB2F4C1F-A295-4B00-801A-055C40CF59D3-_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69" >
+        <di:waypoint x="111" y="46" />
+        <di:waypoint x="109" y="136" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69-_FB36756B-9F6E-4931-B6B1-A0FA34B74738" >
+        <di:waypoint x="109" y="136" />
+        <di:waypoint x="-9" y="222" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_A58EC2D2-9CF9-49FA-ADBA-8861D457BF69-_02EAF908-60B6-4978-A59C-1755CAB4775C" >
+        <di:waypoint x="109" y="136" />
+        <di:waypoint x="213" y="223" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_3A8D3CD4-88F0-416A-BD49-4DC1C32BFCB6-_2DC9A7E0-132A-4187-989A-323FC83E1E7E" >
+        <di:waypoint x="25" y="266" />
+        <di:waypoint x="297" y="258" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2DC9A7E0-132A-4187-989A-323FC83E1E7E-_11C2257F-0F96-490F-B880-933AFDFDBE8B" >
+        <di:waypoint x="297" y="258" />
+        <di:waypoint x="633" y="257" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_E6D5712E-CEF6-4B32-B13A-EF1D81F76270-_4717BD60-B961-43BD-9C55-944338A4A355" >
+        <di:waypoint x="100" y="507" />
+        <di:waypoint x="269" y="509" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_4717BD60-B961-43BD-9C55-944338A4A355-_EE96EFD8-8E54-4F5A-8A94-E0C1981058A2" >
+        <di:waypoint x="269" y="509" />
+        <di:waypoint x="445" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_11C2257F-0F96-490F-B880-933AFDFDBE8B-_9998DABC-069D-4B88-B592-29C462DBB769" >
+        <di:waypoint x="633" y="257" />
+        <di:waypoint x="783" y="257" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</definitions>

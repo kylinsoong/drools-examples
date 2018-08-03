@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.jbpm.quickstarts</groupId>
+   <artifactId>jbpm-quickstarts</artifactId>
+   <version>1.0</version>
+
+   <name>jBPM Quick Start</name>
+   <description>jBPM Quick Start</description>
+
+   <url>https://github.com/kylinsoong</url>
+
+   <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <drools.version>5.3.5.Final</drools.version>
+      <jbpm.version>5.2.5.Final</jbpm.version>	
+   </properties>
+
+	<dependencies>
+	 	
+	 	<!--
+	 	<dependency>
+			<groupId>com.customized.tools</groupId>
+			<artifactId>cst-persist</artifactId>
+			<version>2.0</version>
+		</dependency>
+	 	-->
+	 	
+	 	<!-- Drools dependency -->
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-core</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-compiler</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.drools</groupId>
+	        <artifactId>drools-persistence-jpa</artifactId>
+	        <version>${drools.version}</version>
+		</dependency>
+		
+		<!-- Guvnor dependency -->
+		
+     
+        <!-- jBPM dependency -->
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-flow</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-flow-builder</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-persistence-jpa</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bam</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bpmn2</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-bpmn2-emfextmodel</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-workitems</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-human-task</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency> 
+		<dependency>
+	        <groupId>org.jbpm</groupId>
+	        <artifactId>jbpm-test</artifactId>
+	        <version>${jbpm.version}</version>
+		</dependency>
+	</dependencies>
+
+   <build>
+      <plugins>
+         <!-- Compiler plugin enforces Java 1.6 compatibility and activates 
+            annotation processors -->
+         <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+   <profiles>
+      <profile>
+         <id>jboss-public-repository</id>
+         <activation>
+            <property>
+               <name>jboss-public-repository</name>
+               <value>!false</value>
+            </property>
+         </activation>
+         <repositories>
+            <repository>
+               <id>jboss-public-repository-group</id>
+               <name>JBoss Public Maven Repository Group</name>
+               <url>http://repository.jboss.org/nexus/content/groups/public</url>
+               <releases>
+                  <enabled>true</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </snapshots>
+            </repository>
+         </repositories>
+         <pluginRepositories>
+            <pluginRepository>
+               <id>jboss-public-repository-group</id>
+               <name>JBoss Public Maven Repository Group</name>
+               <url>http://repository.jboss.org/nexus/content/groups/public</url>
+               <releases>
+                  <enabled>true</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </releases>
+               <snapshots>
+                  <enabled>false</enabled>
+                  <updatePolicy>never</updatePolicy>
+               </snapshots>
+            </pluginRepository>
+         </pluginRepositories>
+      </profile>
+
+   </profiles>
+
+</project>
