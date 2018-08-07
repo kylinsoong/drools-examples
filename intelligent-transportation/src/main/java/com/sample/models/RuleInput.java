@@ -141,6 +141,10 @@ public class RuleInput implements Serializable {
     public void setDiscount(Integer discount) {
         Discount = discount;
     }
+    
+    public Integer totalFee() {
+        return this.TollFee + this.AdminFee + this.Discount;
+    }
 
     @Override
     public String toString() {

@@ -225,9 +225,130 @@ public class RuleInput implements Serializable {
 
 * *规则表的定义* - 每个规则表，分为表格头和表格体两部分。表头定义表格的模板信息。第六行 RuleTable 关键字表示一个规则表从这里开始。第七行说明所在列是条件还是动作。第八行表示规则所要操作的对象模型，我们声明了一个 fee 变量，它的类型是前面定义的 RuleInput 类。在动作那一列我们就可以使用 fee 这个变量了。第九行就是条件模板或者动作模板，定义了输入业务模型实例的属性满足条件模板就执行动作模板，例如输入的 RuleInput 实例如果 operator==201，则满足了表格体的第一行第一列条件。同样，如果车辆被探测到的时间在 8 点到 24 点之间，那么满足了表格体的第一行第六列条件。其中 $1 表示第一个参数，$2 表示第二个参数，当只有一个参数时，就用 $param 来表示。第十行是对各个属性的描述。
 
-*基于决策表的规则文件——计算通行费*
+*基于决策表的规则文件——计算通行费* - link:src/main/resources/com/sample/rules/TollFee.xls[TollFee.xls] 表内容如下：
 
+image:src/img/tollfee-table.png[]
 
-*基于决策表的规则文件——计算附加费和折扣*
+*基于决策表的规则文件——计算附加费* - link:src/main/resources/com/sample/rules/AdminFee.xls[AdminFee.xls]
 
+image:src/img/adminfee-table.png[]
 
+*基于决策表的规则文件——折扣* - link:src/main/resources/com/sample/rules/Discount.xls[Discount.xls]
+
+image:src/img/discount-table.png[]
+
+== 规则运行
+
+=== 本地嵌入式运行
+
+运行 link:src/main/java/com/sample/Main.java[Main] 可以通过 Kie API 本地执行规则表格，此方法模拟了 10 个业务场景，计算结果如下:
+
+[source, java]
+----
+TEST START ...
+TEST 01: TollFee = 510, AdminFee = 50, Total = 510
+TEST 02: TollFee = 490, AdminFee = 50, Total = 490
+TEST 03: TollFee = 500, AdminFee = 50, Total = 500
+TEST 04: TollFee = 330, AdminFee = 0, Total = 330
+TEST 05: TollFee = 650, AdminFee = 0, Total = 650
+TEST 06: TollFee = 530, AdminFee = 0, Total = 530
+TEST 07: TollFee = 540, AdminFee = 0, Total = 540
+TEST 08: TollFee = 370, AdminFee = 100, Total = 370
+TEST 09: TollFee = 520, AdminFee = 100, Total = 520
+TEST 10: TollFee = 480, AdminFee = 100, Total = 480
+TEST SUCCESS
+----
+
+=== 本地 RHDM 服务器上运行
+
+参照 link:../docs/rhdm.adoc#_rhdm_7[RHDM 7 安装] 部分内容安装启动 RHDM 7，启动完成后登录 decision-central。
+
+上传业务对象模型，选择业务模型 RuleInput.java
+
+image:src/img/intelligent-transportation-models.png[]
+
+继续选择上传文件，上传三个规则表格
+
+image:src/img/intelligent-transportation-xls.png[]
+
+上传完成，decision-central Assets 如下如所示：
+
+image:src/img/intelligent-transportation-assets.png[]
+
+创建 KBase 和 KSession 后，点击 `Build & Deploy`，构建和部署完成后参照 参照 link:../docs/rhdm.adoc#_5[物流转运示例运行部分]，进行测试。
+
+*Rest 请求* - 如下图所示发送 REST 请求：
+
+image:src/img/rest-request.png[]
+
+[source, json]
+.*id*
+----
+sample_1.0.0
+----
+
+[source, json]
+.*body*
+----
+{
+    "lookup":"transportation-ksession",
+    "commands":[
+        {
+            "insert":{
+                "object":{
+                    "com.sample.models.RuleInput":{
+                        "identifyMethod":"TAG",
+                        "operator":"201",
+                        "detectionPointCode":"001",
+                        "accountType":"ANNUAL",
+                        "vehicleClass":"1",
+                        "dayOfWeek":5,
+                        "timeOfDay":18,
+                        "purposeOfUse":"A"
+                    }
+                },
+                "out-identifier":"results"
+            }
+        },
+        {
+            "fire-all-rules":{
+            }
+        }
+    ]
+}
+----
+
+[source, json]
+.*Rest 执行返回如下图所示*
+----
+"results": [
+        {
+          "value": {
+            "com.sample.models.RuleInput": {
+              "identifyMethod": "TAG",
+              "detectionTime": null,
+              "detectionPointCode": "001",
+              "accountType": "ANNUAL",
+              "vehicleClass": "1",
+              "dayOfWeek": 5,
+              "timeOfDay": 18,
+              "operator": "201",
+              "purposeOfUse": "A",
+              "tollFee": 510,
+              "adminFee": 50,
+              "discount": -20
+            }
+          },
+          "key": "results"
+        }
+      ]
+----
+
+=== OpenShift 容器云上运行
+
+如下两个镜像是 OpenShift 容器云上运行所需要的镜像：
+
+* registry.access.redhat.com/rhdm-7/rhdm70-decisioncentral-openshift
+* registry.access.redhat.com/rhdm-7/rhdm70-kieserver-openshift
+
+启动后使用如上类似的步骤运行。
