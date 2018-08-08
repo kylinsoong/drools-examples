@@ -20,7 +20,7 @@
 . link:usecase.adoc[案例]
 .. link:cep-fraud-detection-springboot/README.adoc[欺骗侦测]
 .. link:intelligent-transportation/README.adoc[智能交通]
-.. link:dt-loan-approve/README.adoc[贷款审批]
+.. link:loan-approve/README.adoc[贷款审批]
 .. link:logistics-freight-management/README.adoc[运单管理]
 . link:docs/fqa.adoc[FQA]
 
