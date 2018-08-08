@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
-    <kbase name="seats" packages="seats" >
-        <ksession name="SeatSession" />
+    <kbase name="loanApproval" packages="com.sample" >
+        <ksession name="loanApprovalSession" />
     </kbase>
     
     
