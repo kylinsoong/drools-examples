@@ -469,9 +469,17 @@
 <li><a href="#__">&#x4F1A;&#x5458;&#x7B49;&#x7EA7;&#x89C4;&#x5219;&#x8BED;&#x6CD5;&#x6811;&#x6784;&#x5EFA;</a></li>
 </ul>
 </li>
-<li><a href="#___2">&#x89C4;&#x5219;&#x6267;&#x884C;</a>
+<li><a href="#_phreak_vs_rateoo">PHREAK Vs RateOO</a>
 <ul class="sectlevel2">
-<li><a href="#_phreak_vs_rateoo">PHREAK Vs RateOO</a></li>
+<li><a href="#___2">&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;</a></li>
+<li><a href="#___3">&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</a></li>
+<li><a href="#___4">&#x6D4B;&#x8BD5;&#x89C4;&#x5219;</a></li>
+<li><a href="#___5">&#x8FD0;&#x884C;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5BF9;&#x6BD4;&#x7A0B;&#x5E8F;</a></li>
+<li><a href="#___6">&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;</a></li>
+</ul>
+</li>
+<li><a href="#___7">&#x89C4;&#x5219;&#x6267;&#x884C;</a>
+<ul class="sectlevel2">
 <li><a href="#__forward_chaining">&#x6B63;&#x5411;&#x63A8;&#x7406;&#xFF08;Forward chaining&#xFF09;</a></li>
 <li><a href="#__backward_chaining">&#x53CD;&#x5411;&#x63A8;&#x7406;&#xFF08;Backward chaining&#xFF09;</a></li>
 </ul>
@@ -619,28 +627,25 @@ end</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="___2">&#x89C4;&#x5219;&#x6267;&#x884C;</h2>
+<h2 id="_phreak_vs_rateoo">PHREAK Vs RateOO</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_phreak_vs_rateoo">PHREAK Vs RateOO</h3>
 <div class="paragraph">
 <p>&#x672C;&#x90E8;&#x5206;&#x901A;&#x8FC7;&#x5B9E;&#x9A8C;&#x9A8C;&#x8BC1; PHREAK &#x548C; RateOO &#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x901F;&#x7387;&#x3002;</p>
 </div>
-<div class="paragraph">
-<p><strong>&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;</strong></p>
-</div>
+<div class="sect2">
+<h3 id="___2">&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;</h3>
 <div class="paragraph">
 <p><a href="http://openjdk.java.net/projects/code-tools/jmh/" target="_blank">OpenJdk&#xFF1A; jmh</a></p>
 </div>
-<div class="paragraph">
-<p><strong>&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</strong></p>
 </div>
+<div class="sect2">
+<h3 id="___3">&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</h3>
 <div class="paragraph">
 <p><a href="https://github.com/kylinsoong/drools-examples/tree/master/benchmark" target="_blank">&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;</a></p>
 </div>
-<div class="paragraph">
-<p><strong>&#x6D4B;&#x8BD5;&#x89C4;&#x5219;</strong></p>
 </div>
+<div class="sect2">
+<h3 id="___4">&#x6D4B;&#x8BD5;&#x89C4;&#x5219;</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -673,9 +678,9 @@ end</code></pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>&#x8FD0;&#x884C;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5BF9;&#x6BD4;&#x7A0B;&#x5E8F;</strong></p>
 </div>
+<div class="sect2">
+<h3 id="___5">&#x8FD0;&#x884C;&#x6027;&#x80FD;&#x6D4B;&#x8BD5;&#x5BF9;&#x6BD4;&#x7A0B;&#x5E8F;</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-java" data-lang="java">$ mvn clean install
@@ -724,6 +729,30 @@ o.k.e.p.Benchmark.modification                  <span class="hljs-number">1000</
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="___6">&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;</h3>
+<div class="paragraph">
+<div class="title"><strong>grouping</strong></div>
+<p><span class="image"><img src="img/perf-groupping.png" alt="perf groupping.png"></span></p>
+</div>
+<div class="paragraph">
+<div class="title"><strong>laziness3</strong></div>
+<p><span class="image"><img src="img/perf-laziness3.png" alt="perf laziness3.png"></span></p>
+</div>
+<div class="paragraph">
+<div class="title"><strong>laziness6</strong></div>
+<p><span class="image"><img src="img/perf-laziness6.png" alt="perf laziness6.png"></span></p>
+</div>
+<div class="paragraph">
+<div class="title"><strong>modification</strong></div>
+<p><span class="image"><img src="img/perf-modification.png" alt="perf modification.png"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___7">&#x89C4;&#x5219;&#x6267;&#x884C;</h2>
+<div class="sectionbody">
 <div class="sect2">
 <h3 id="__forward_chaining">&#x6B63;&#x5411;&#x63A8;&#x7406;&#xFF08;Forward chaining&#xFF09;</h3>
 <div class="paragraph">
@@ -921,7 +950,7 @@ ksession.insert( <span class="hljs-keyword">new</span> Location(<span class="hlj
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"PHREAK","level":"1.5.2","depth":2,"next":{"title":"CEP 规则编写","level":"1.5.3","depth":2,"path":"cep-labs/README.adoc","ref":"cep-labs/README.adoc","articles":[]},"previous":{"title":"RHDM","level":"1.5.1","depth":2,"path":"docs/rhdm.adoc","ref":"docs/rhdm.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"wechat":"http://ksoong.org/cloud-labs/content/images/wechat.png","alipay":"http://ksoong.org/cloud-labs/content/images/alipay.png","title":"","button":"赞赏","alipayText":"支付宝捐赠","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/cloud-labs/blob/gh-pages"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"docs/phreak.adoc","mtime":"2018-08-03T08:46:12.531Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-08-08T06:02:14.723Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"PHREAK","level":"1.5.2","depth":2,"next":{"title":"CEP 规则编写","level":"1.5.3","depth":2,"path":"cep-labs/README.adoc","ref":"cep-labs/README.adoc","articles":[]},"previous":{"title":"RHDM","level":"1.5.1","depth":2,"path":"docs/rhdm.adoc","ref":"docs/rhdm.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"wechat":"http://ksoong.org/cloud-labs/content/images/wechat.png","alipay":"http://ksoong.org/cloud-labs/content/images/alipay.png","title":"","button":"赞赏","alipayText":"支付宝捐赠","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/cloud-labs/blob/gh-pages"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"docs/phreak.adoc","mtime":"2018-08-21T06:48:07.451Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2018-08-21T06:48:22.160Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
