@@ -119,21 +119,19 @@ then
 end
 ----
 
-== 规则执行
-
-=== PHREAK Vs RateOO
+== PHREAK Vs RateOO
 
 本部分通过实验验证 PHREAK 和 RateOO 算法的执行速率。
 
-*性能测试工具*
+=== 性能测试工具
 
 http://openjdk.java.net/projects/code-tools/jmh/[OpenJdk： jmh]
 
-*测试代码*
+=== 测试代码
 
 https://github.com/kylinsoong/drools-examples/tree/master/benchmark[点击下载测试代码]
 
-*测试规则*
+=== 测试规则
 
 * grouping.drl     -  面向集合的传播(Set-oriented propagation)
 * laziness3.drl    -  延迟规则评估
@@ -146,7 +144,7 @@ https://github.com/kylinsoong/drools-examples/tree/master/benchmark[点击下载
 * 100 个 Transaction - 大于 100 000 个 Fact 
 * 1000 个 Transaction - 大于 1 000 000 个 Fact
 
-*运行性能测试对比程序*
+=== 运行性能测试对比程序
 
 [source, java]
 ----
@@ -191,6 +189,22 @@ o.k.e.p.Benchmark.modification                   100       reteoo   avgt       2
 o.k.e.p.Benchmark.modification                  1000       phreak   avgt       200       67.818        2.744    ms/op
 o.k.e.p.Benchmark.modification                  1000       reteoo   avgt       200       93.808        4.409    ms/op
 ----
+
+=== 测试结果
+
+.*grouping*
+image:img/perf-groupping.png[]
+
+.*laziness3*
+image:img/perf-laziness3.png[]
+
+.*laziness6*
+image:img/perf-laziness6.png[]
+
+.*modification*
+image:img/perf-modification.png[]
+
+== 规则执行
 
 === 正向推理（Forward chaining）
 
