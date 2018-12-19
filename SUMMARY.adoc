@@ -13,6 +13,7 @@
 .. link:firerules/maven-setting.adoc[Maven 配置]
 .. link:firerules/fire-kieserver.adoc[客户端 API 调运 KIE 服务器]
 .. link:firerules/fire-locally.adoc[本地执行规则]
+. link:optaplanner/README.adoc[OptaPlanner]
 . link:docs/labs.adoc[LABS]
 .. link:docs/rhdm.adoc[RHDM]
 .. link:docs/phreak.adoc[PHREAK]
