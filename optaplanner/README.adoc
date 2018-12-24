@@ -1,1 +1,136 @@
 = OptaPlanner
+:toc: manual
+
+== 核心接口
+
+.*规划问题建模原则*
+[cols="2,5a"]
+|===
+|名称 |说明
+
+|`PlanningSolution`
+|指定某一个类是一个计划解决方案。
+
+[source, java]
+----
+@PlanningSolution
+public class Roster 
+----
+
+* 一个解决方案代表了某一个问题以及该问题的可能解决方案。
+* 一个可能的解决方案不需要是最佳的，甚至可以是不可行的。
+* 一个解决方案的计划变量可能是未初始化的（特别是在作为问题交付时）。
+
+一个解决方案是可变的，出于可伸缩性原因（反复计算增量分数），同一个解决方案实例被不断修改，它被克隆以计算出最佳解决方案。
+
+*原则:*
+
+* 每一个解决方案必须要有一个 `PlanningScore` 属性。
+* 每一个解决方案必须至少包含一个 `PlanningEntityCollectionProperty` 或 `PlanningEntityProperty` 属性。
+* 每一个解决方案推荐包含一个 `ConstraintConfigurationProvider` 属性。
+* 每一个解决方案使用 Drools 进行增量分数计算必须至少包含一个 `ProblemFactCollectionProperty` 或 `ProblemFactProperty` 属性。
+* 代表计划解决方案的类必须包含一个零参数的构造方法，因为增量分数计算过程中需要被反复克隆。
+
+|`PlanningScore`
+|指定一个属性代表一个计划解决方案（有`PlanningSolution`标记的类）的分数。
+
+[source, java]
+----
+@PlanningScore
+private HardMediumSoftLongScore score = null;
+----
+
+如果`PlanningSolution`标记的类没有实例化，则指定的分数属性可以为空。该属性被 `Solver` 每一次计算出一个分数时进行一次修改。
+
+|`ProblemFactProperty`
+|指定一个属性代表一个计划解决方案（有`PlanningSolution`标记的类）的问题事实。
+
+[source, java]
+----
+@ProblemFactProperty
+private RosterState rosterState;
+----
+
+一个问题事实在问题解决的过程中不应被修改，除非发出 `ProblemFactChange` 事件。一个问题事实也被当作规则引擎 KieSession 的一个事实，分数的规则可以重用问题事实。
+
+`PlanningEntity` 和 `ConstraintConfiguration` 标记的属性不能够指定为一个问题事实。
+
+|`ProblemFactCollectionProperty`
+|指定一个集合属性代表一个计划解决方案（有`PlanningSolution`标记的类）的问题事实集合。
+
+[source, java]
+----
+@ProblemFactCollectionProperty
+private List<Skill> skillList;
+----
+
+同样，一个问题事实在问题解决的过程中不应被修改，除非发出 `ProblemFactChange` 事件。一个问题事实也被当作规则引擎 KieSession 的一个事实，分数的规则可以重用问题事实。
+
+同样，`PlanningEntity` 和 `ConstraintConfiguration` 标记的属性不能够指定为一个问题事实。
+
+|`PlanningEntityProperty`
+|指定一个属性代表一个计划解决方案（有`PlanningSolution`标记的类）的计划实体。
+
+[source, java]
+----
+@PlanningEntityProperty
+private Skill skill;
+----
+
+计划实体必须标记 `PlanningEntity`，计划实体会被添加到 `ScoreDirector`。
+
+|`PlanningEntityCollectionProperty`
+|指定一个集合属性代表一个计划解决方案（有`PlanningSolution`标记的类）的计划实体集合。
+
+[source, java]
+----
+@PlanningEntityCollectionProperty
+private List<Shift> shiftList;
+----
+
+计划实体集合中的计划实体必须标记 `PlanningEntity`，计划实体集合中的计划实体会被添加到 `ScoreDirector`。
+
+|`ConstraintConfigurationProvider`
+|指定一个属性代表一个计划解决方案（有`PlanningSolution`标记的类）的约束配置。这个属性同样是一个问题事实，所以需要明确声明。
+
+该属性对应的类必须标记 `ConstraintConfiguration`。
+
+|`PlanningEntity`
+|指定一个类代表一个计划实体。
+
+[source, java]
+----
+@PlanningEntity(movableEntitySelectionFilter = MovableShiftFilter.class)
+public class Shift {
+----
+
+*原则:*
+
+* 一个计划实体必须要有一个 `PlanningVariable` 属性
+* 计划实体类必须要有一个零参数的构造方法。
+
+|`PlanningVariable`
+|指定一个属性或字段可以被改变，并且应该通过优化算法进行优化。
+
+[source, java]
+----
+@PlanningVariable(valueRangeProviderRefs = "employeeRange", nullable = true)
+private Employee employee = null;
+----
+
+该标记应该在 get 方法，或相应的属性上。
+
+|`PlanningPin`
+|标记在一个计划实体的布尔属性上，说明计划实体是否是固定不变。
+
+[source, java]
+----
+@PlanningPin
+private boolean pinnedByUser = false;
+----
+
+一个固定不变的计划实体在计划解决的过程中不会被改变，例如，它允许用户在解决之前将转换固定到特定员工，并且无论约束如何，解算器都不会撤消该转换。
+
+如果属性值为 `false` 计划实体是可变的；如果值为 `true`，计划实体不可变。
+
+|===
