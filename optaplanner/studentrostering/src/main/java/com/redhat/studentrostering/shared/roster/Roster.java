@@ -37,7 +37,9 @@ import com.redhat.studentrostering.shared.tenant.RosterParametrization;
 @PlanningSolution
 public class Roster extends AbstractPersistable {
 
-    @ProblemFactCollectionProperty
+	private static final long serialVersionUID = 2635777881241608105L;
+	
+	@ProblemFactCollectionProperty
     private List<Skill> skillList;
     @ProblemFactCollectionProperty
     private List<Spot> spotList;
