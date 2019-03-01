@@ -37,15 +37,15 @@ public class RestServiceController {
         ksession = newSessionFromClasspathContainer("ksession-cep-fraud-detection");
 	}
 
-	@RequestMapping("/rest/ping")
+	@RequestMapping("/transactions/ping")
     public Success greeting() {
         return new Success(counter.getAndIncrement(), "Success!");
     }
 	
-	@RequestMapping("/rest/transaction")
+	@RequestMapping("/transactions/transaction")
 	public Transaction addTransaction(@RequestParam(value="userID") String userID, @RequestParam(value="balance") String balance, @RequestParam(value="type") String type) {
 		
-	    logger.info("/rest/transaction?userID=" + userID + "&balance=" + balance + "&type=" + type);
+	    logger.info("/transactions/transaction?userID=" + userID + "&balance=" + balance + "&type=" + type);
 	    
 	    Transaction t = new Transaction(userID, new BigInteger(balance), TransactionType.valueOf(type));
 	    
