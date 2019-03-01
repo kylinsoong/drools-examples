@@ -1,34 +1,32 @@
-= Fraud Detection Example
+= 欺骗交易侦测
 :toc: manual
 
-Fraud detection including(the list below be thought as a fraud transaction):
+== 业务简介
+
+对系统交易进行监控，对欺骗交易能进行侦测和限制。
+
+欺骗交易的类型如下表：
 
 |===
-|Name |Descrirption |Link
+|名称 |描述
 
-|Max transactions per time interval
-|For a specific user, more than 3 transactions in less than 5 seconds
-|<<Max transactions per time interval, Max transactions per time interval>>
+|固定时间内交易次数限制
+|对一个用户，在固定时间内的交易次数有限制，例如，一个用户在 5 秒内不能有超过 3 笔的交易，如果超过则认为是欺诈交易。
 
-|Larget amount suspect
-|For a specific user's transaction, it will be suspect if the amount is more than twice the average of the last 4 Credit Card transactions
-|<<Larget amount suspect, Larget amount suspect>>
+|大额交易限制
+|对一个用户的一次交易, 有最大额度的限制，但最大额度不是固定的数目，例如，如果当前交易的额度是过去 4 次交易平均额度的 2 倍，则认为当前交易为欺诈交易。
 
-|Withdrawal new transaction
-|Withdrawal transaction is suspect if it occurs less than 10 seconds after a credit card transaction
-|<<Withdrawal new transaction, Withdrawal new transaction>>
+|交易撤销限制
+|交易完成 10 秒钟内不能撤销
 
-|Total amount limitation in specific time
-|Maximum amount should less than 1 000 000 in the 10 seconds time interval
-|<<Total amount limitation, Total amount limitation>>
+|固定时间内交易次数限制
+|固定时间内交易总额是有限制的，例如 10 秒钟内交易的总额不能超过 1 000 000 万。
 
-|Total amount limitation per user in specific time
-|Maximum amount should less than 200 000 in the 10 seconds time interval for a specifc user
-|<<Total amount limitation per user, Total amount limitation per user>>
-
+|用户固定时间内交易次数限制
+|对某一个用户，固定时间内交易总额是有限制的，例如 10 秒钟内交易的总额不能超过 200 000 万。
 |===
 
-== Rules
+== 规则
 
 [source, java]
 ----
@@ -102,71 +100,56 @@ rule "Maximum amount should less than 200 000 in the 10 seconds time interval fo
 end
 ----
 
-== Run
+== 运行
 
-=== Run with Spring Boot
+=== 本地运行
 
 [source, java]
-.*Build Project*
+.*1. 编译 & 构建*
 ----
 $ mvn clean package
 ----
 
 [source, java]
-.*Run Uber jar*
+.*2. 本地运行*
 ----
 $ java -jar target/cep-fraud-detection-0.1.0.jar
 ----
 
-=== Run on OpenShift
+=== 部署到 OpenShift
 
 [source, java]
-.*Create new project*
+.*1. 创建工程*
 ----
-$ oc new-project drools
-----
-
-[source, java]
-.*Build & Deploy*
-----
-$ mvn clean fabric8:deploy
+$ oc new-project rules-service
 ----
 
 [source, java]
-.*Expose Service*
+.*2. 部署到 OpenShift*
 ----
-$ oc expose svc/cep-fraud-detection
-----
-
-[source, java]
-.*Get Host*
-----
-$ oc get routes
-NAME                  HOST/PORT                                          PATH      SERVICES              PORT      TERMINATION   WILDCARD
-cep-fraud-detection   cep-fraud-detection-drools.192.168.42.102.nip.io             cep-fraud-detection   http                    None
+$ mvn package fabric8:deploy -Popenshift
 ----
 
-== Demonstration
+== 测试
 
-=== Max transactions per time interval
-
-Request with below link 3 times in less than 5 seconds:
+=== 固定时间内交易次数限制
 
 [source, bash]
+.*5 秒内连续访问如下链接 3 次*
 ----
-http://$HOST/rest/transaction?userID=USE1001&balance=10&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=10&type=CREDIT
 ----
 
 * The first 2 times' response like `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
 * The 3rd time response is `{"value":10,"denied":true,"deniedCause":"Transaction Denied! More than 3 transactions in less than 5 seconds","type":"CREDIT"}`.
 
-=== Larget amount suspect
+=== 大额交易限制
 
 Request with below link 5 times(make sure no 3 continue request in 5 seconds):
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?userID=USE1001&balance=$BALANCE&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=$BALANCE&type=CREDIT
 ----
 
 The *BALANCE* can be any number, but the 5th times balance should larger than twice the average of the last 4 Credit.
@@ -174,43 +157,43 @@ The *BALANCE* can be any number, but the 5th times balance should larger than tw
 * The first 4 times' response should like `{"value":40,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
 * The 5th times' response like `{"value":300,"denied":true,"deniedCause":"Transaction Denied! This Credit Card transaction amount of USD 300 is more than twice the average amount ( USD 122.5) of the last 4 Credit Card Transactions","type":"CREDIT"}`.
 
-=== Withdrawal new transaction
+=== 交易撤销
 
 Request with below 2 links in less than 10 seconds:
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?userID=USE1001&balance=10&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1001&balance=10&type=WITHDRAW
+http://$HOST/transactions/transaction?userID=USE1001&balance=10&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=10&type=WITHDRAW
 ----
 
 * The first request response `{"value":10,"denied":false,"deniedCause":null,"type":"CREDIT"}`.
 * The second request response `{"value":10,"denied":true,"deniedCause":"Transaction Denied! A withdrawal transaction is not allowed less than 10 seconds after a Credit Card transaction","type":"WITHDRAW"}`.
 
-=== Total amount limitation
+=== 最大交易额度
 
 Execute the below 6 requests
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?userID=USE1001&balance=200000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1002&balance=200000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1003&balance=200000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1004&balance=200000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1005&balance=200000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1006&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1002&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1003&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1004&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1005&balance=200000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1006&balance=200000&type=CREDIT
 ----
 
 NOTE: the *USE1006* credit requtest be denied.
 
-=== Total amount limitation per user
+=== 单个最大交易额度
 
 Execute the below 2 requests
 
 [source, bash]
 ----
-http://$HOST/rest/transaction?userID=USE1001&balance=150000&type=CREDIT
-http://$HOST/rest/transaction?userID=USE1001&balance=150000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=150000&type=CREDIT
+http://$HOST/transactions/transaction?userID=USE1001&balance=150000&type=CREDIT
 ----
 
 NOTE: the *USE1001* credit requtest be denied with `{"userID":"USE1001","value":150000,"denied":true,"deniedCause":"Transaction Denied! Total amount ( RMB 300000) larger than 200,000 in the 10 seconds for user[USE1001]","type":"CREDIT"}` notification.

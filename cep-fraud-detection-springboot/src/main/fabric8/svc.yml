@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    discovery.3scale.net/description-path: 
+    discovery.3scale.net/path:
+    discovery.3scale.net/port: "8080"
+    discovery.3scale.net/scheme: http
+  name: ${project.artifactId}
+  labels:
+    discovery.3scale.net: "true"
+spec:
+  ports:
+  - name: ${project.artifactId}
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: ${project.artifactId}

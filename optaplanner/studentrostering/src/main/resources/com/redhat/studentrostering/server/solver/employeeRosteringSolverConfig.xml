@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+  <!--<environmentMode>FAST_ASSERT</environmentMode>-->
+  <solutionClass>com.redhat.studentrostering.shared.roster.Roster</solutionClass>
+  <entityClass>com.redhat.studentrostering.shared.shift.Shift</entityClass>
+
+  <scoreDirectorFactory>
+    <scoreDrl>com/redhat/studentrostering/server/solver/employeeRosteringScoreRules.drl</scoreDrl>
+  </scoreDirectorFactory>
+
+  <termination>
+    <secondsSpentLimit>150</secondsSpentLimit>
+  </termination>
+</solver>
