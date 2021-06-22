@@ -127,7 +127,7 @@ $ oc new-project rules-service
 [source, java]
 .*2. 部署到 OpenShift*
 ----
-$ mvn package fabric8:deploy -Popenshift
+$ mvn package oc:deploy -Popenshift
 ----
 
 == 测试
